@@ -1,0 +1,43 @@
+services:
+  aac-duac-pi05:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: aac-duac-pi05:latest
+    container_name: aac-duac-pi05
+    shm_size: '16gb'
+    network_mode: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['${GPU_ID:-0}']
+              capabilities: [gpu]
+    environment:
+      NVIDIA_VISIBLE_DEVICES: ${NVIDIA_VISIBLE_DEVICES:-0}
+      MUJOCO_GL: ${MUJOCO_GL:-egl}
+      PYOPENGL_PLATFORM: ${PYOPENGL_PLATFORM:-egl}
+      XDG_CACHE_HOME: /workspace/aac-duac/.cache/duac
+      OPENPI_DATA_HOME: /workspace/aac-duac/checkpoints/openpi
+      LIBERO_CONFIG_PATH: /workspace/aac-duac/.libero
+      XLA_PYTHON_CLIENT_MEM_FRACTION: ${XLA_MEM_FRACTION:-0.85}
+      PYTHONPATH: /workspace/aac-duac:/workspace/aac-duac/src:/workspace/aac-duac/flowbased_aac:/workspace/aac-duac/adaptive_action_chunking:/workspace/aac-duac/external/openpi/src:/workspace/aac-duac/external/openpi/packages/openpi-client/src:/workspace/aac-duac/external/LIBERO
+    volumes:
+      - ${CHECKPOINTS_DIR_HOST:-../checkpoints}:/workspace/aac-duac/checkpoints
+      - ${OUT_DIR_HOST:-../outputs}:/workspace/aac-duac/outputs
+      - ${DATA_DIR_HOST:-../data}:/workspace/aac-duac/data
+      - ../flowbased_aac:/workspace/aac-duac/flowbased_aac
+      - ../adaptive_action_chunking:/workspace/aac-duac/adaptive_action_chunking
+      - ../analysis:/workspace/aac-duac/analysis
+      - ../tools:/workspace/aac-duac/tools
+      - ../src:/workspace/aac-duac/src
+      - ../eval:/workspace/aac-duac/eval
+      - ../configs:/workspace/aac-duac/configs
+      - ../docs:/workspace/aac-duac/docs
+      - ../manifest.json:/workspace/aac-duac/manifest.json
+      - ../README.md:/workspace/aac-duac/README.md
+    working_dir: /workspace/aac-duac
+    stdin_open: true
+    tty: true
+    command: sleep infinity

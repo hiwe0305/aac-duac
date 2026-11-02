@@ -1,0 +1,13 @@
+checkpoints/
+data/
+outputs/
+logs/
+external/
+.venv*/
+.hf_cache/
+.cache/
+.libero/
+.git/
+**/__pycache__/
+docs/
+**/*.egg-info/

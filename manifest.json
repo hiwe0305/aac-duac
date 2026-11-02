@@ -1,0 +1,81 @@
+{
+  "experiment": "O-LONG",
+  "title": "Adaptive Action Chunking (AAC vs DUAC) on Long-Horizon Tasks with pi0.5",
+  "primary_backbone": "pi05",
+  "primary_benchmark": "libero_10",
+  "skip_libero_pro": true,
+  "seed": 7,
+  "trials_per_task": 50,
+  "checkpoints": {
+    "pi05_libero": "checkpoints/openpi/openpi-assets/checkpoints/pi05_libero",
+    "paligemma_tokenizer": "checkpoints/openpi/big_vision/paligemma_tokenizer.model"
+  },
+  "runs": [
+    {
+      "id": "A1_duac_libero10",
+      "method": "duac",
+      "backbone": "pi05",
+      "suite": "libero_10",
+      "perturbation": "clean",
+      "path": "outputs/pi05/libero_10/duac",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A2_fixed10_libero10",
+      "method": "fixed_10",
+      "backbone": "pi05",
+      "suite": "libero_10",
+      "perturbation": "clean",
+      "path": "outputs/pi05/libero_10/fixed_10",
+      "expected_episodes": 500,
+      "require_state_bank": false,
+      "require_subgoals": true
+    },
+    {
+      "id": "A3_fixed8_libero10",
+      "method": "fixed_8",
+      "backbone": "pi05",
+      "suite": "libero_10",
+      "perturbation": "clean",
+      "path": "outputs/pi05/libero_10/fixed_8",
+      "expected_episodes": 500,
+      "require_state_bank": false,
+      "require_subgoals": true
+    },
+    {
+      "id": "A4_fixed5_libero10",
+      "method": "fixed_5",
+      "backbone": "pi05",
+      "suite": "libero_10",
+      "perturbation": "clean",
+      "path": "outputs/pi05/libero_10/fixed_5",
+      "expected_episodes": 500,
+      "require_state_bank": false,
+      "require_subgoals": true
+    },
+    {
+      "id": "A5_random_h_libero10",
+      "method": "random_h",
+      "backbone": "pi05",
+      "suite": "libero_10",
+      "perturbation": "clean",
+      "path": "outputs/pi05/libero_10/random_h",
+      "expected_episodes": 500,
+      "require_state_bank": false,
+      "require_subgoals": true
+    },
+    {
+      "id": "A6_aac_libero10",
+      "method": "aac",
+      "backbone": "pi05",
+      "suite": "libero_10",
+      "perturbation": "clean",
+      "path": "outputs/pi05/libero_10/aac",
+      "expected_episodes": 500,
+      "require_state_bank": false,
+      "require_subgoals": true
+    }
+  ]
+}
