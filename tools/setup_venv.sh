@@ -49,3 +49,4 @@ python3 "${PROJECT_ROOT}/tools/download_libero.py" --suite libero_10
 echo ""
 echo "[OK] Setup completed! Before running experiments in venv mode, run:"
 echo "  source adaptive_action_chunking/server141.env"
+
