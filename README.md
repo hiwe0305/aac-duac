@@ -59,24 +59,62 @@ Bên trong Docker image ([`docker/Dockerfile`](file:///home/hiwe/aac-duac/docker
 
 ---
 
-### Option B: Chạy trực tiếp bằng `venv` trên Server (`tools/setup_venv.sh`)
+### Option B: Cài Đặt Trực Tiếp Bằng `python -m venv` + `pip` (Không Cần `uv`, Không Cần `gcc`/`cc`)
 
-Nếu không dùng Docker trên server, sử dụng script [`tools/setup_venv.sh`](file:///home/hiwe/aac-duac/tools/setup_venv.sh) để tự động cài `uv`, clone `external/{openpi,LIBERO,aac-libero}` và tạo 2 môi trường `.venv-openpi` (Python 3.11) + `.venv-libero` (Python 3.10):
+Đã chuẩn bị sẵn 2 file requirements chỉ dùng 100% gói cài sẵn (`.whl` trên PyPI, không cần trình biên dịch C `cc` và không cần `uv`):
+- [`tools/requirements-openpi.txt`](file:///home/hiwe/aac-duac/tools/requirements-openpi.txt) (cho `.venv-openpi`)
+- [`tools/requirements-libero.txt`](file:///home/hiwe/aac-duac/tools/requirements-libero.txt) (cho `.venv-libero`)
 
-1. **Cài gói thư viện đồ họa EGL/OpenGL hệ thống (nếu server Ubuntu chưa có)**:
-   ```bash
-   sudo apt-get update && sudo apt-get install -y \
-     build-essential clang cmake git git-lfs curl wget aria2 ffmpeg \
-     libegl1 libegl1-mesa-dev libgl1-mesa-glx libosmesa6-dev libglew-dev libglfw3-dev
-   ```
-2. **Chạy script tự động tạo `.venv-openpi` và `.venv-libero`**:
-   ```bash
-   bash tools/setup_venv.sh
-   ```
-3. **Nạp biến môi trường (`PYTHONPATH`, `MUJOCO_GL=egl`, `OPENPI_DATA_HOME`) trước mỗi phiên chạy**:
-   ```bash
-   source adaptive_action_chunking/server141.env
-   ```
+Bạn có thể chạy **1 lệnh tự động** `bash tools/setup_venv.sh`, hoặc chạy **từng lệnh rời rạc** dưới đây:
+
+#### Bước B1: Clone 3 repo phụ thuộc (`openpi`, `LIBERO`, `aac-libero`)
+```bash
+export PROJECT_ROOT="$(pwd)"
+mkdir -p "$PROJECT_ROOT/external"
+[ -d "$PROJECT_ROOT/external/openpi" ] || git clone --recurse-submodules --depth 1 https://github.com/Physical-Intelligence/openpi.git "$PROJECT_ROOT/external/openpi"
+[ -d "$PROJECT_ROOT/external/LIBERO" ] || (git clone --depth 1 https://github.com/Lifelong-Robot-Learning/LIBERO.git "$PROJECT_ROOT/external/LIBERO" && touch "$PROJECT_ROOT/external/LIBERO/libero/__init__.py")
+[ -d "$PROJECT_ROOT/external/aac-libero" ] || git clone --depth 1 https://github.com/Adaptive-Action-Chunking/libero.git "$PROJECT_ROOT/external/aac-libero"
+```
+
+#### Bước B2: Tạo `.venv-openpi` bằng `python3 -m venv` + `pip`
+```bash
+# Tạo môi trường ảo Python >= 3.11 (ví dụ python3 trong conda base hoặc python3.11)
+python3 -m venv "$PROJECT_ROOT/.venv-openpi"
+
+# Nâng cấp pip và cài toàn bộ thư viện từ tools/requirements-openpi.txt (100% binary wheels)
+"$PROJECT_ROOT/.venv-openpi/bin/pip" install --upgrade pip setuptools wheel
+"$PROJECT_ROOT/.venv-openpi/bin/pip" install --only-binary=:all: -r "$PROJECT_ROOT/tools/requirements-openpi.txt"
+
+# Cài đặt openpi-client và openpi ở chế độ editable (--no-deps)
+"$PROJECT_ROOT/.venv-openpi/bin/pip" install --no-deps \
+  -e "$PROJECT_ROOT/external/openpi/packages/openpi-client" \
+  -e "$PROJECT_ROOT/external/openpi"
+
+# Copy bản vá transformers_replace của OpenPI
+SITE_PKGS="$("$PROJECT_ROOT/.venv-openpi/bin/python" -c "import transformers, os; print(os.path.dirname(transformers.__file__))")"
+cp -r "$PROJECT_ROOT/external/openpi/src/openpi/models_pytorch/transformers_replace/"* "$SITE_PKGS/"
+```
+
+#### Bước B3: Tạo `.venv-libero` bằng `python3 -m venv` + `pip`
+```bash
+# Tạo môi trường ảo cho LIBERO
+python3 -m venv "$PROJECT_ROOT/.venv-libero"
+
+# Cài đặt toàn bộ thư viện mô phỏng từ tools/requirements-libero.txt (MuJoCo 3.2.3, robosuite 1.4.1, BDDL...)
+"$PROJECT_ROOT/.venv-libero/bin/pip" install --upgrade pip "setuptools<70" wheel
+"$PROJECT_ROOT/.venv-libero/bin/pip" install --only-binary=:all: -r "$PROJECT_ROOT/tools/requirements-libero.txt"
+
+# Cài đặt LIBERO và openpi-client ở chế độ editable (--no-deps)
+"$PROJECT_ROOT/.venv-libero/bin/pip" install --no-deps \
+  -e "$PROJECT_ROOT/external/LIBERO" \
+  -e "$PROJECT_ROOT/external/openpi/packages/openpi-client"
+```
+
+#### Bước B4: Nạp biến môi trường & Khởi tạo cấu hình LIBERO
+```bash
+source adaptive_action_chunking/server141.env
+"$PROJECT_ROOT/.venv-libero/bin/python" tools/download_libero.py --suite libero_10
+```
 
 ---
 

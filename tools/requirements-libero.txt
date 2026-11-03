@@ -1,0 +1,24 @@
+# Core runtime dependencies for LIBERO evaluation client (100% prebuilt wheels, no C compiler needed)
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.5.1+cpu
+torchvision==0.20.1+cpu
+numpy<2.0.0
+scipy>=1.10.0
+robosuite==1.4.1
+mujoco==3.2.3
+bddl==1.0.1
+gym==0.25.2
+easydict
+cloudpickle
+einops
+opencv-python-headless
+imageio[ffmpeg]
+matplotlib
+pyyaml
+tqdm
+future
+termcolor
+websockets>=13.0
+msgpack>=1.0.0
+tyro>=0.9.5
+

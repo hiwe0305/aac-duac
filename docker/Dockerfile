@@ -71,7 +71,8 @@ RUN mkdir -p external && \
 # 3. Create /opt/venv-openpi (and symlink /workspace/aac-duac/.venv-openpi) using OpenPI's official uv.lock
 #    Stored in /opt so host bind-mounts into /workspace/aac-duac never shadow the environment
 RUN cd /workspace/aac-duac/external/openpi && \
-    UV_PROJECT_ENVIRONMENT=/opt/venv-openpi uv venv --python 3.11.9 /opt/venv-openpi && \
+    python3 -c 'import pathlib; p=pathlib.Path("uv.lock"); p.write_text(p.read_text().replace("    { name = \"evdev\", marker = \"\x27linux\x27 in sys_platform\" },\n", ""))' && \
+    UV_VENV_CLEAR=1 UV_PROJECT_ENVIRONMENT=/opt/venv-openpi uv venv --python 3.11.9 /opt/venv-openpi && \
     UV_PROJECT_ENVIRONMENT=/opt/venv-openpi GIT_LFS_SKIP_SMUDGE=1 uv sync --frozen --no-install-project --no-dev && \
     UV_PROJECT_ENVIRONMENT=/opt/venv-openpi GIT_LFS_SKIP_SMUDGE=1 uv pip install --python /opt/venv-openpi/bin/python --no-deps -e packages/openpi-client -e . && \
     SITE_PKGS=$(/opt/venv-openpi/bin/python -c "import transformers, os; print(os.path.dirname(transformers.__file__))") && \
