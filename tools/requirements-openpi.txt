@@ -8,7 +8,7 @@ equinox>=0.11.8
 filelock>=3.16.1
 flatbuffers>=24.3.25
 flax==0.10.2
-fsspec[gcs]>=2024.6.0
+# fsspec pinned below (datasets 3.6.0 needs fsspec<=2025.3.0)
 imageio>=2.36.1
 jax[cuda12]==0.5.3
 jaxtyping==0.2.36
@@ -32,3 +32,18 @@ typing-extensions>=4.12.2
 tyro>=0.9.5
 websockets>=13.0
 
+# Imported by openpi.training.data_loader when the policy is loaded (versions as in the hactt13 envs/openpi)
+datasets==3.6.0
+huggingface_hub==0.32.3
+torchvision==0.22.1
+jsonlines
+av>=14.2.0
+draccus==0.10.0
+termcolor
+omegaconf
+fsspec==2025.3.0
+gcsfs==2025.3.0
+pandas==2.2.3
+pyarrow==20.0.0
+# lerobot itself (pinned by openpi) must be installed WITHOUT its deps (pynput -> evdev needs a C compiler):
+#   .venv-openpi/bin/pip install --no-deps "lerobot @ git+https://github.com/huggingface/lerobot@0cf864870cf29f4738d3ade893e6fd13fbd7cdb5"

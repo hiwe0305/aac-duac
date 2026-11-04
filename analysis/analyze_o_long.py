@@ -766,15 +766,15 @@ def analyze_runs(
     report_md_text = "\n".join(md_lines) + "\n"
     (output_dir / "o_long_report.md").write_text(report_md_text, encoding="utf-8")
     # Also write outputs/REPORT.md as specified in docs/task3010.md Section 6
+    # Only for a real analysis inside outputs/ (never from --self-test, which runs in a temp dir).
     outputs_root = WORKSPACE_ROOT / "outputs"
-    if outputs_root.exists():
+    if outputs_root.exists() and Path(output_dir).resolve().is_relative_to(outputs_root.resolve()):
         (outputs_root / "REPORT.md").write_text(report_md_text, encoding="utf-8")
     return report
 
 
 def run_self_test() -> int:
     """Self-test statistical functions and end-to-end report generation."""
-    from adaptive_action_chunking.aac import run_aac_libero_eval
     from flowbased_aac.eval_libero import run_libero_evaluation
 
     print("[analysis/analyze_o_long.py --self-test] Running statistical pipeline verification...")
@@ -820,12 +820,12 @@ def run_self_test() -> int:
             task_ids=[0, 1],
             synthetic_dry_run=True,
         )
-        run_aac_libero_eval(
-            backbone="pi05",
+        run_libero_evaluation(
+            aac_selector="gaussian_bernoulli",
             suite="libero_10",
-            trials=2,
+            num_trials=2,
             seed=7,
-            out_dir=aac_dir,
+            output_dir=aac_dir,
             task_ids=[0, 1],
             synthetic_dry_run=True,
         )

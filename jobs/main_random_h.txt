@@ -1,0 +1,3 @@
+flowbased_aac/duac.py eval-liberopro --suite libero_10 --trials 50 --port {PORT} --random-horizon-from outputs/A/libero_10/duac/decisions.csv --state-bank --save-videos --output-dir outputs/A/libero_10/random_h
+flowbased_aac/duac.py eval-liberopro --suite libero_10_object --trials 50 --port {PORT} --random-horizon-from outputs/A/libero_10_object/duac/decisions.csv --state-bank --save-videos --output-dir outputs/A/libero_10_object/random_h
+flowbased_aac/duac.py eval-liberopro --suite libero_10_env --trials 50 --port {PORT} --random-horizon-from outputs/A/libero_10_env/duac/decisions.csv --state-bank --save-videos --output-dir outputs/A/libero_10_env/random_h

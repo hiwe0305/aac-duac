@@ -1,0 +1,12 @@
+flowbased_aac/duac.py eval-liberopro --suite libero_10 --trials 50 --port {PORT} --state-bank --save-videos --output-dir outputs/A/libero_10/duac
+flowbased_aac/duac.py eval-liberopro --suite libero_10 --trials 50 --port {PORT} --fixed-horizon 5 --state-bank --save-videos --output-dir outputs/A/libero_10/fixed_5
+flowbased_aac/duac.py eval-liberopro --suite libero_10 --trials 50 --port {PORT} --fixed-horizon 8 --state-bank --save-videos --output-dir outputs/A/libero_10/fixed_8
+flowbased_aac/duac.py eval-liberopro --suite libero_10 --trials 50 --port {PORT} --fixed-horizon 10 --state-bank --save-videos --output-dir outputs/A/libero_10/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_object --trials 50 --port {PORT} --state-bank --save-videos --output-dir outputs/A/libero_10_object/duac
+flowbased_aac/duac.py eval-liberopro --suite libero_10_object --trials 50 --port {PORT} --fixed-horizon 5 --state-bank --save-videos --output-dir outputs/A/libero_10_object/fixed_5
+flowbased_aac/duac.py eval-liberopro --suite libero_10_object --trials 50 --port {PORT} --fixed-horizon 8 --state-bank --save-videos --output-dir outputs/A/libero_10_object/fixed_8
+flowbased_aac/duac.py eval-liberopro --suite libero_10_object --trials 50 --port {PORT} --fixed-horizon 10 --state-bank --save-videos --output-dir outputs/A/libero_10_object/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_env --trials 50 --port {PORT} --state-bank --save-videos --output-dir outputs/A/libero_10_env/duac
+flowbased_aac/duac.py eval-liberopro --suite libero_10_env --trials 50 --port {PORT} --fixed-horizon 5 --state-bank --save-videos --output-dir outputs/A/libero_10_env/fixed_5
+flowbased_aac/duac.py eval-liberopro --suite libero_10_env --trials 50 --port {PORT} --fixed-horizon 8 --state-bank --save-videos --output-dir outputs/A/libero_10_env/fixed_8
+flowbased_aac/duac.py eval-liberopro --suite libero_10_env --trials 50 --port {PORT} --fixed-horizon 10 --state-bank --save-videos --output-dir outputs/A/libero_10_env/fixed_10

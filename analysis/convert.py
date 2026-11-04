@@ -224,7 +224,6 @@ def validate_run_dir(
 
 def run_self_test() -> int:
     """Run O-LONG Step 0.4 verification on both DUAC and AAC synthetic outputs."""
-    from adaptive_action_chunking.aac import run_aac_libero_eval
     from flowbased_aac.eval_libero import run_libero_evaluation
 
     print("[analysis/convert.py --self-test] Running Step 0.4 verification...")
@@ -242,12 +241,12 @@ def run_self_test() -> int:
             task_ids=[0, 1],
             synthetic_dry_run=True,
         )
-        run_aac_libero_eval(
-            backbone="pi05",
+        run_libero_evaluation(
+            aac_selector="gaussian_bernoulli",
             suite="libero_10",
-            trials=2,
+            num_trials=2,
             seed=7,
-            out_dir=aac_dir,
+            output_dir=aac_dir,
             task_ids=[0, 1],
             synthetic_dry_run=True,
         )

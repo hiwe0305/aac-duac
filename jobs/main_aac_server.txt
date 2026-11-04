@@ -1,0 +1,3 @@
+adaptive_action_chunking/aac.py eval-liberopro --backbone pi05 --suite libero_10 --selector gaussian_bernoulli --trials 50 --seed 7 --move_th 3 --port {PORT} --state-bank --videos --out_dir outputs/A/libero_10/aac
+adaptive_action_chunking/aac.py eval-liberopro --backbone pi05 --suite libero_10_object --selector gaussian_bernoulli --trials 50 --seed 7 --move_th 3 --port {PORT} --state-bank --videos --out_dir outputs/A/libero_10_object/aac
+adaptive_action_chunking/aac.py eval-liberopro --backbone pi05 --suite libero_10_env --selector gaussian_bernoulli --trials 50 --seed 7 --move_th 3 --port {PORT} --state-bank --videos --out_dir outputs/A/libero_10_env/aac

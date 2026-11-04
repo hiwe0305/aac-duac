@@ -1,0 +1,5 @@
+# Buoc 1 (bo sung): Fixed-10, 10 trial/task tren cac suite nhieu LIBERO-PRO co du 50 init state
+flowbased_aac/duac.py eval-liberopro --suite libero_10_swap --trials 10 --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_swap/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_object --trials 10 --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_object/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_env --trials 10 --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_env/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_lan --trials 10 --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_lan/fixed_10

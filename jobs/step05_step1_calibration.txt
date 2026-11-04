@@ -1,0 +1,9 @@
+# Buoc 0.5: DUAC clean libero_10, 10 trial/task (so voi 95.0%)
+flowbased_aac/duac.py eval-liberopro --suite libero_10 --trials 10 --port {PORT} --output-dir outputs/calibration/consistency_libero_10/duac
+# Buoc 1: Fixed-10, 10 trial/task tren 6 suite nhieu
+flowbased_aac/duac.py eval-liberopro --suite libero_10_with_mug --trials 10  --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_with_mug/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_with_milk --trials 10 --task-ids 0,1,2,5,6,7,8,9 --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_with_milk/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_with_red_box --trials 10  --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_with_red_box/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_with_red_stick --trials 10  --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_with_red_stick/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_with_blue_stick --trials 10  --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_with_blue_stick/fixed_10
+flowbased_aac/duac.py eval-liberopro --suite libero_10_with_diffpos_stick --trials 10  --port {PORT} --fixed-horizon 10 --output-dir outputs/calibration/libero_10_with_diffpos_stick/fixed_10

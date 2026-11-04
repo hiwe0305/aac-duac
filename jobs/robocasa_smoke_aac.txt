@@ -1,0 +1,17 @@
+# RoboCasa365 smoke (server aac, N=20): 16 composite_seen x 2 trial
+--tasks DeliverStraw --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/DeliverStraw
+--tasks GetToastedBread --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/GetToastedBread
+--tasks KettleBoiling --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/KettleBoiling
+--tasks LoadDishwasher --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/LoadDishwasher
+--tasks PackIdenticalLunches --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/PackIdenticalLunches
+--tasks PreSoakPan --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/PreSoakPan
+--tasks PrepareCoffee --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/PrepareCoffee
+--tasks RinseSinkBasin --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/RinseSinkBasin
+--tasks ScrubCuttingBoard --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/ScrubCuttingBoard
+--tasks SearingMeat --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/SearingMeat
+--tasks SetUpCuttingStation --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/SetUpCuttingStation
+--tasks StackBowlsCabinet --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/StackBowlsCabinet
+--tasks SteamInMicrowave --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/SteamInMicrowave
+--tasks StirVegetables --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/StirVegetables
+--tasks StoreLeftoversInBowl --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/StoreLeftoversInBowl
+--tasks WashLettuce --trials 2 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/WashLettuce

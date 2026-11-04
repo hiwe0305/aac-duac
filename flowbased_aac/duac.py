@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""DUAC CLI (`duac.py`) for pi0.5 + LIBERO / RoboCasa under the O-LONG specification.
+"""DUAC CLI for pi0.5 + LIBERO / LIBERO-PRO (O-LONG, docs/task3010.md).
 
-Subcommands:
-  - doctor:        Verify workspace layout, OpenPI/LIBERO repos, and checkpoint status.
-  - test:          Run unit & integration tests (Steps 0.1-0.4, DUAC math, CSV/NPZ schemas).
-  - serve-pi05:    Launch OpenPI pi0.5 WebSocket policy server with DUAC JVP divergence U_i(tau).
-  - eval-libero:   Evaluate DUAC / Fixed-k / Random-Horizon on clean LIBERO suites (default: libero_10).
-  - eval-liberopro: Alias for eval-libero supporting both clean (`libero_10`) and perturbed suites.
+  doctor          workspace, LIBERO / LIBERO-PRO data and checkpoint status
+  test            equations vs. the official AAC code (and the hactt13 DUAC reference when present),
+                  plus a synthetic end-to-end run of the real evaluation loop
+  serve-pi05      OpenPI pi0.5 websocket server returning one chunk + DUAC uncertainty (JIT, stateful RNG)
+  eval-libero     evaluate on clean LIBERO (external/LIBERO)
+  eval-liberopro  evaluate through LIBERO-PRO (required for libero_*_with_*; also usable for clean suites)
 """
 
 from __future__ import annotations
@@ -20,236 +20,217 @@ import sys
 import tempfile
 from typing import List, Optional
 
-# Ensure per-user XDG_CACHE_HOME to prevent /tmp/openpi permission clashes (O-LONG Section 7)
 if "XDG_CACHE_HOME" not in os.environ:
-    default_cache = Path.home() / ".cache" / "duac"
+    _cache = Path.home() / ".cache" / "duac"
     try:
-        default_cache.mkdir(parents=True, exist_ok=True)
-        os.environ["XDG_CACHE_HOME"] = str(default_cache)
+        _cache.mkdir(parents=True, exist_ok=True)
+        os.environ["XDG_CACHE_HOME"] = str(_cache)
     except OSError:
         os.environ["XDG_CACHE_HOME"] = f"/tmp/duac_{getpass.getuser()}"
 
 FLOWBASED_ROOT = Path(__file__).resolve().parent
 WORKSPACE_ROOT = FLOWBASED_ROOT.parent
-if str(FLOWBASED_ROOT) not in sys.path:
-    sys.path.insert(0, str(FLOWBASED_ROOT))
-if str(WORKSPACE_ROOT) not in sys.path:
-    sys.path.insert(0, str(WORKSPACE_ROOT))
+for _p in (FLOWBASED_ROOT, WORKSPACE_ROOT):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 
 from flowbased_aac.duac_policy import (  # noqa: E402
     DUACConfig,
-    OpenPI05DUACRunner,
     action_magnitude_pi05,
+    action_uncertainty,
     find_first_idx,
+    movement_lower_bound,
     prefix_mean_jump_horizon,
     select_duac_horizon,
 )
 from flowbased_aac.eval_libero import (  # noqa: E402
-    DECISIONS_CSV_COLUMNS,
-    EPISODES_CSV_COLUMNS,
-    SUBGOALS_CSV_COLUMNS,
+    LIBERO_ROOTS,
     evaluate_libero_subgoals,
     max_steps_for_suite,
     run_libero_evaluation,
     suite_step_budget_name,
 )
 
+HACTT13_DUAC_CORE = Path("/mnt/ssd-storage/hactt13/UQ_action_chunking/AAC_reproduce/flowbased_aac/flowbased_aac/core.py")
+
 
 def cmd_doctor(args: argparse.Namespace) -> int:
-    """Check environment, cloned repos, LIBERO benchmark data, and checkpoint readiness."""
     from tools.download_checkpoints import verify_checkpoints
     from tools.download_libero import configure_and_verify_benchmark
-
-    checkpoints_dir = WORKSPACE_ROOT / "checkpoints"
-    ckpt_report = verify_checkpoints(checkpoints_dir)
-    libero_report = configure_and_verify_benchmark("libero_10")
 
     checks = {
         "workspace_root": str(WORKSPACE_ROOT),
         "xdg_cache_home": os.environ.get("XDG_CACHE_HOME", ""),
         "openpi_repo": (WORKSPACE_ROOT / "external" / "openpi").exists(),
-        "libero_repo": (WORKSPACE_ROOT / "external" / "LIBERO").exists(),
-        "aac_libero_repo": (WORKSPACE_ROOT / "external" / "aac-libero").exists(),
-        "libero_benchmark_data": libero_report,
-        "checkpoints": ckpt_report,
+        "aac_libero_repo (official AAC)": (WORKSPACE_ROOT / "external" / "aac-libero").exists(),
+        "libero": {k: {"source": str(s), "exists": s.exists(), "config": (c / "config.yaml").exists()}
+                   for k, (s, c) in LIBERO_ROOTS.items()},
+        "libero_10_benchmark_data": configure_and_verify_benchmark("libero_10"),
+        "checkpoints": verify_checkpoints(WORKSPACE_ROOT / "checkpoints"),
     }
     print(json.dumps(checks, indent=2))
     return 0
 
 
+def _load_module(name: str, path: Path):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
 def cmd_test(args: argparse.Namespace) -> int:
-    """Run unit and integration tests for DUAC math and O-LONG Steps 0.1-0.4."""
-    print("[duac.py test] Running O-LONG & DUAC verification suite...")
+    import numpy as np
 
-    # 1. Step 0.1: suite_step_budget_name() and max_steps_for_suite()
-    assert suite_step_budget_name("libero_10") == "libero_10"
-    assert suite_step_budget_name("libero_10_with_object") == "libero_10"
-    assert suite_step_budget_name("libero_10_with_swap") == "libero_10"
-    assert suite_step_budget_name("libero_spatial_with_position") == "libero_spatial"
-    assert max_steps_for_suite("libero_10") == 520
-    assert max_steps_for_suite("libero_10_with_object") == 520
-    assert max_steps_for_suite("libero_spatial") == 220
-    assert max_steps_for_suite("libero_object") == 280
-    assert max_steps_for_suite("libero_goal") == 300
-    assert max_steps_for_suite("libero_90") == 400
-    print("  [PASS] Step 0.1: suite_step_budget_name() -> 520 active steps for libero_10")
+    print("[duac.py test] O-LONG / DUAC / AAC verification")
+    rng = np.random.default_rng(0)
 
-    # 2. Step 0.2: BDDL subgoal predicate evaluation helper
-    class DummyInnerEnv:
-        parsed_problem = {
-            "goal_state": [
-                ["turnon", "flat_stove_1"],
-                ["on", "moka_pot_1", "flat_stove_1_cook_region"],
-            ]
-        }
+    # Step 0.1
+    assert suite_step_budget_name("libero_10_with_mug") == "libero_10"
+    assert suite_step_budget_name("libero_object_temp_x0.2") == "libero_object"
+    assert max_steps_for_suite("libero_10") == 520 and max_steps_for_suite("libero_10_with_milk") == 520
+    print("  [PASS] step 0.1: libero_10_with_* -> libero_10 budget (520)")
 
-        def _eval_predicate(self, pred):
-            return pred[0] == "turnon"
+    # Step 0.2
+    class Inner:
+        parsed_problem = {"goal_state": [["turnon", "stove"], ["on", "moka_pot", "stove_region"]]}
 
-    class DummyWrapperEnv:
-        env = DummyInnerEnv()
+        def _eval_predicate(self, predicate):
+            return predicate[0] == "turnon"
 
-    n_sub, n_sat, bits = evaluate_libero_subgoals(DummyWrapperEnv())
-    assert (n_sub, n_sat, bits) == (2, 1, "10"), f"Unexpected subgoal result: {(n_sub, n_sat, bits)}"
-    print("  [PASS] Step 0.2: evaluate_libero_subgoals() -> (2, 1, '10')")
+    assert evaluate_libero_subgoals(type("W", (), {"env": Inner()})()) == (2, 1, "10")
+    print("  [PASS] step 0.2: goal predicates evaluated one by one")
 
-    # 3. DUAC prefix_mean_jump and action_magnitude math
-    u_step = [0.10, 0.11, 0.12, 0.12, 0.65, 0.70, 0.72, 0.74, 0.75, 0.76]
-    h_unc, u_prefix, u_diff = prefix_mean_jump_horizon(u_step, min_horizon=2)
-    assert h_unc == 4, f"Expected biggest jump after h=4 (from step 4 to 5), got h_unc={h_unc}"
+    # xi == official AAC action_magnitude + find_first_idx
+    sys.path.insert(0, str(WORKSPACE_ROOT / "external" / "aac-libero"))
+    from action_optimization import action_entropy_pi05 as aac
 
-    actions = [[0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0] for _ in range(10)]
-    m_step = action_magnitude_pi05(actions, w_pos=1.0, w_rot=1.0, w_grip=0.2)
-    # At step idx 0: pos_norm=0.5, rot_norm=1.0 -> m_1 = 1.5
-    # At step idx 3 (horizon 4): pos_norm=2.0, rot_norm=1.0 -> m_4 = 3.0 >= alpha=3.0
-    xi = find_first_idx(m_step, alpha=3.0, min_horizon=2)
-    assert xi == 4, f"Expected xi=4, got xi={xi}"
+    for _ in range(2000):
+        a = np.zeros((10, 7))
+        a[:, :3] = rng.uniform(-0.7, 0.7, 3) + rng.normal(0, 0.15, (10, 3))
+        a[:, 3:6] = rng.normal(0, 0.3, (10, 3))
+        a[:, 6] = np.where(rng.random(10) < 0.15, 1.0, -1.0)
+        official = {"action.end_effector_position": a[None, :, :3], "action.end_effector_rotation": a[None, :, 3:6],
+                    "action.gripper_close": aac.convert_gripper_to_binary(a[None, :, 6])}
+        chunk_m = aac.action_magnitude(official)
+        assert np.allclose(action_magnitude_pi05(a)[1:], chunk_m), "m_h differs from official AAC"
+        for th in (0.5, 1.5, 3.0):
+            assert movement_lower_bound(a, threshold=th) == aac.find_first_idx(chunk_m, th)
+    print("  [PASS] xi(alpha) identical to official AAC action_magnitude/find_first_idx (2000 chunks x 3 alphas)")
 
-    cfg = DUACConfig(chunk_horizon=10, min_horizon=2, tau=0.9, num_probes=40, alpha=3.0)
-    res = select_duac_horizon(u_step=u_step, actions=actions, config=cfg)
-    assert res.h_selected == 4 and res.h_unc == 4 and res.xi == 4
-    print("  [PASS] DUAC math: prefix_mean_jump + action_magnitude + select_duac_horizon")
+    # Equation (8) == official AAC elbow rule
+    for _ in range(2000):
+        u = rng.normal(size=10)
+        diffs = np.diff([np.mean(u[:k]) for k in range(1, 11)])
+        assert prefix_mean_jump_horizon(u, 2)[0] == max(int(np.argmax(diffs)) + 1, 2)
+    print("  [PASS] prefix-mean jump horizon identical to official AAC select_chunk_size")
 
-    # 4. Step 0.3 & 0.4: End-to-end synthetic run producing episodes.csv, decisions.csv, subgoals.csv, state_bank/*.npz,
-    #    followed by --random-horizon-from matched empirical control run.
-    with tempfile.TemporaryDirectory(prefix="duac_test_") as tmpdir:
-        tmp_path = Path(tmpdir)
-        duac_out = tmp_path / "duac_run"
-        summary_duac = run_libero_evaluation(
-            suite="libero_10",
-            num_trials=2,
-            seed=7,
-            alpha=3.0,
-            tau=0.9,
-            num_probes=40,
-            state_bank=True,
-            output_dir=duac_out,
-            task_ids=[0, 1],
-            synthetic_dry_run=True,
-        )
-        assert summary_duac["total_episodes"] == 4
-        assert (duac_out / "episodes.csv").exists()
-        assert (duac_out / "decisions.csv").exists()
-        assert (duac_out / "subgoals.csv").exists()
-        npz_files = sorted((duac_out / "state_bank").glob("*.npz"))
-        assert len(npz_files) == 4
-        for npz_p in npz_files:
-            with open(npz_p, "rb") as f:
-                magic = f.read(2)
-            assert magic == b"PK", f"Expected PK zip magic in {npz_p}, got {magic!r}"
+    # Equation (6) and the DUAC reference (hactt13), when readable on this server
+    u = action_uncertainty([0.0, -10.0], tau=0.9, action_dim=7)
+    assert np.allclose(u, [(0.1 ** 2 / 0.9) * 7, (0.1 ** 2 / 0.9) * (7 - 1.0)])
+    if HACTT13_DUAC_CORE.exists():
+        ref = _load_module("duac_reference_core", HACTT13_DUAC_CORE)
+        for _ in range(500):
+            a = rng.normal(0, 0.4, (10, 7))
+            d = rng.normal(size=10)
+            assert ref.movement_lower_bound(a, threshold=3.0) == movement_lower_bound(a, threshold=3.0)
+            assert ref.select_horizon(d, min_horizon=2) == prefix_mean_jump_horizon(d, 2)[0]
+            assert np.allclose(ref.action_uncertainty(d, tau=0.9, action_dim=7), action_uncertainty(d, tau=0.9, action_dim=7))
+        print("  [PASS] equation (6), (8) and xi identical to the hactt13 DUAC reference")
+    else:
+        print(f"  [SKIP] DUAC reference not found at {HACTT13_DUAC_CORE}")
 
-        rand_out = tmp_path / "rand_run"
-        summary_rand = run_libero_evaluation(
-            suite="libero_10",
-            num_trials=2,
-            seed=7,
-            random_horizon_from=duac_out / "decisions.csv",
-            output_dir=rand_out,
-            task_ids=[0, 1],
-            synthetic_dry_run=True,
-        )
-        assert summary_rand["method"] == "random_h"
-        assert summary_rand["total_episodes"] == 4
-    print("  [PASS] Step 0.3 & 0.4: CSV schemas, PK .npz state_bank, and --random-horizon-from verified.")
+    # Hutchinson estimator on a linear field: E[div] = trace of each diagonal block
+    try:
+        import jax
+        import jax.numpy as jnp
+        from flowbased_aac.duac_policy import linearized_hutchinson_action_divergence
+
+        m = jnp.asarray(rng.normal(size=(10 * 8, 10 * 8)), dtype=jnp.float32)
+        field = lambda x: (m @ x.reshape(-1)).reshape(10, 8)  # noqa: E731
+        _, div = linearized_hutchinson_action_divergence(field, jnp.zeros((10, 8)), jax.random.key(0),
+                                                         num_probes=100000, valid_action_dim=7)
+        blocks = np.asarray(m).reshape(10, 8, 10, 8)
+        expected = [np.trace(blocks[i, :7, i, :7]) for i in range(10)]
+        assert np.allclose(np.asarray(div), expected, atol=0.6), (np.asarray(div), expected)
+        print("  [PASS] Hutchinson block-trace estimator (JAX) matches exact traces, padded dims masked")
+    except ImportError:
+        print("  [SKIP] JAX not installed in this interpreter (run with .venv-openpi to test the estimator)")
+
+    # Arms
+    actions = np.tile([0.5, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0], (10, 1))
+    u_jump = [0.10, 0.11, 0.12, 0.12, 0.65, 0.70, 0.72, 0.74, 0.75, 0.76]
+    res = select_duac_horizon(u_jump, actions, DUACConfig())
+    assert (res.h_unc, res.xi, res.h_selected) == (4, 7, 7), res  # 7 * 0.5 = 3.5 > 3 first at h = 7
+    assert select_duac_horizon(u_jump, actions, DUACConfig(fixed_horizon=5)).h_selected == 5
+    print("  [PASS] arms: duac = max(h_unc, xi), fixed-k = k")
+
+    # Synthetic end-to-end run of the real loop: every arm, state bank, resume
+    with tempfile.TemporaryDirectory(prefix="duac_test_") as tmp:
+        tmp = Path(tmp)
+        common = dict(suite="libero_10", num_trials=2, task_ids=[0, 1], synthetic_dry_run=True)
+        s = run_libero_evaluation(output_dir=tmp / "duac", state_bank=True, **common)
+        assert s["total_episodes"] == 4
+        for npz in sorted((tmp / "duac" / "state_bank").glob("*.npz")):
+            assert npz.read_bytes()[:2] == b"PK"
+            bank = np.load(npz)
+            assert len(bank["states"]) == len(bank["actions"]) + 1 and bank["chunks"].shape[1:] == (10, 7)
+        assert run_libero_evaluation(output_dir=tmp / "f5", fixed_horizon=5, **common)["mean_h"] == 5
+        rh = run_libero_evaluation(output_dir=tmp / "rh", random_horizon_from=tmp / "duac" / "decisions.csv", **common)
+        assert rh["arm"] == "random_h"
+        aac_s = run_libero_evaluation(output_dir=tmp / "aac", aac_selector="gaussian_bernoulli", **common)
+        assert aac_s["arm"] == "aac" and aac_s["total_episodes"] == 4
+        # resume: drop one finished episode and the decisions after it, then resume
+        ep = (tmp / "f5" / "episodes.csv").read_text().splitlines()
+        (tmp / "f5" / "episodes.csv").write_text("\n".join(ep[:-1]) + "\n")
+        r = run_libero_evaluation(resume_dir=tmp / "f5", fixed_horizon=5, **common)
+        assert r["total_episodes"] == 4
+        import csv as _csv
+
+        rows = list(_csv.DictReader(open(tmp / "f5" / "decisions.csv")))
+        keys = [(r_["task_id"], r_["trial_id"], r_["decision_id"]) for r_ in rows]
+        assert len(keys) == len(set(keys)), "duplicated decisions after resume"
+        try:
+            run_libero_evaluation(output_dir=tmp / "x", num_trials=60, suite="libero_10", task_ids=[0],
+                                  synthetic_dry_run=True)
+            raise AssertionError("expected error for too few initial states")
+        except ValueError:
+            pass
+    print("  [PASS] synthetic run of the real loop: duac / fixed / random_h / aac, state bank, resume, init-state check")
     print("[duac.py test] ALL TESTS PASSED.")
     return 0
 
 
 def cmd_serve_pi05(args: argparse.Namespace) -> int:
-    """Start OpenPI pi0.5 WebSocket server with DUAC JVP divergence uncertainty."""
-    openpi_src = WORKSPACE_ROOT / "external" / "openpi" / "src"
-    openpi_client_src = WORKSPACE_ROOT / "external" / "openpi" / "packages" / "openpi-client" / "src"
-    for p in (openpi_src, openpi_client_src):
+    for p in (WORKSPACE_ROOT / "external" / "openpi" / "src",
+              WORKSPACE_ROOT / "external" / "openpi" / "packages" / "openpi-client" / "src"):
         if p.exists() and str(p) not in sys.path:
             sys.path.insert(0, str(p))
-
     from openpi.policies import policy_config as _policy_config
     from openpi.serving import websocket_policy_server
     from openpi.training import config as _config
-    from openpi_client import base_policy as _base_policy
+
+    from flowbased_aac.duac_policy import DuacPolicy
 
     ckpt_dir = Path(args.checkpoint_dir).resolve()
     if not ckpt_dir.exists():
-        raise FileNotFoundError(
-            f"Checkpoint directory not found: {ckpt_dir}\n"
-            f"Run: python3 tools/download_checkpoints.py --target pi05_libero"
-        )
-
-    train_cfg = _config.get_config(args.config)
-    base_pol = _policy_config.create_trained_policy(train_cfg, str(ckpt_dir))
-    duac_cfg = DUACConfig(
-        chunk_horizon=args.chunk_horizon,
-        min_horizon=2,
-        tau=args.tau,
-        num_probes=args.num_probes,
-        alpha=args.alpha,
-        seed=args.seed,
-    )
-    duac_runner = OpenPI05DUACRunner(base_pol, duac_cfg)
-
-    class DUACWebsocketPolicy(_base_policy.BasePolicy):
-        def __init__(self, runner: OpenPI05DUACRunner, compute_duac: bool = True) -> None:
-            self._runner = runner
-            self._compute_duac = compute_duac
-            self._step_counter = 0
-
-        def infer(self, obs: dict) -> dict:
-            self._step_counter += 1
-            if not self._compute_duac:
-                return self._runner.policy.infer(obs)
-            return self._runner.infer_with_duac(obs, seed=self._runner.config.seed + self._step_counter)
-
-        @property
-        def metadata(self) -> dict:
-            meta = dict(getattr(self._runner.policy, "metadata", {}) or {})
-            meta.update(
-                {
-                    "duac_enabled": not args.no_duac,
-                    "tau": args.tau,
-                    "num_probes": args.num_probes,
-                    "alpha": args.alpha,
-                }
-            )
-            return meta
-
-    policy_wrapper = DUACWebsocketPolicy(duac_runner, compute_duac=not args.no_duac)
-    print(
-        f"[duac.py serve-pi05] Serving {args.config} from {ckpt_dir} on {args.host}:{args.port} "
-        f"(DUAC={not args.no_duac}, tau={args.tau}, K={args.num_probes}, alpha={args.alpha})"
-    )
-    server = websocket_policy_server.WebsocketPolicyServer(
-        policy=policy_wrapper,
-        host=args.host,
-        port=args.port,
-        metadata=policy_wrapper.metadata,
-    )
-    server.serve_forever()
+        raise FileNotFoundError(f"checkpoint not found: {ckpt_dir}")
+    config = DUACConfig(tau=args.tau, num_probes=args.num_probes, min_horizon=args.min_horizon,
+                        valid_action_dim=args.valid_action_dim, alpha=args.alpha)
+    base = _policy_config.create_trained_policy(_config.get_config(args.config), str(ckpt_dir))
+    policy = DuacPolicy(base, config, seed=args.seed, seed_per_step=args.seed_per_step)
+    print(f"[duac.py serve-pi05] {args.config} from {ckpt_dir} on {args.host}:{args.port} "
+          f"(tau={args.tau}, K={args.num_probes}, seed={args.seed}, seed_per_step={args.seed_per_step})", flush=True)
+    websocket_policy_server.WebsocketPolicyServer(
+        policy=policy, host=args.host, port=args.port, metadata=policy.metadata
+    ).serve_forever()
     return 0
 
 
-def cmd_eval_libero(args: argparse.Namespace) -> int:
-    """Run LIBERO evaluation for DUAC, Fixed-k, or Random-Horizon."""
-    task_ids = [int(x) for x in args.task_ids.split(",")] if args.task_ids else None
+def cmd_eval(args: argparse.Namespace) -> int:
     summary = run_libero_evaluation(
         suite=args.suite,
         host=args.host,
@@ -263,86 +244,86 @@ def cmd_eval_libero(args: argparse.Namespace) -> int:
         random_horizon_from=Path(args.random_horizon_from) if args.random_horizon_from else None,
         state_bank=args.state_bank,
         save_videos=args.save_videos,
+        video_trials=args.video_trials,
         output_dir=Path(args.output_dir),
         resume_dir=Path(args.resume_dir) if args.resume_dir else None,
-        task_ids=task_ids,
+        task_ids=[int(x) for x in args.task_ids.split(",")] if args.task_ids else None,
+        trial_ids=parse_ids(args.trial_ids),
+        force_libero_pro=args.subcommand == "eval-liberopro",
         synthetic_dry_run=args.synthetic_dry_run,
     )
     print(json.dumps(summary, indent=2))
     return 0
 
 
+def parse_ids(text):
+    """'0,3,5' or '36-49' (inclusive) or a mix -> sorted list of ints; None if empty."""
+    if not text:
+        return None
+    out = []
+    for part in text.split(","):
+        a, _, b = part.partition("-")
+        out += list(range(int(a), int(b) + 1)) if b else [int(a)]
+    return sorted(set(out))
+
+
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="DUAC CLI for pi0.5 + LIBERO (O-LONG pipeline).")
+    parser = argparse.ArgumentParser(description="DUAC CLI for pi0.5 + LIBERO (O-LONG).")
     sub = parser.add_subparsers(dest="subcommand", required=True)
+    sub.add_parser("doctor")
+    sub.add_parser("test")
 
-    sub.add_parser("doctor", help="Check workspace, repositories, and checkpoints.")
-    sub.add_parser("test", help="Run DUAC & O-LONG unit and integration tests.")
+    p = sub.add_parser("serve-pi05", help="OpenPI pi0.5 server with DUAC uncertainty")
+    p.add_argument("--host", default="127.0.0.1")
+    p.add_argument("--port", type=int, default=8000)
+    p.add_argument("--config", default="pi05_libero")
+    p.add_argument("--checkpoint-dir", default=str(WORKSPACE_ROOT / "checkpoints" / "openpi" / "openpi-assets"
+                                                   / "checkpoints" / "pi05_libero"))
+    p.add_argument("--tau", type=float, default=0.9)
+    p.add_argument("--num-probes", type=int, default=40)
+    p.add_argument("--min-horizon", type=int, default=2)
+    p.add_argument("--valid-action-dim", type=int, default=7)
+    p.add_argument("--alpha", type=float, default=3.0, help="logged only; xi is applied by the evaluator")
+    p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--seed-per-step", action="store_true",
+                   help="reset the RNG at every call (NOT the O-LONG protocol, which uses a stateful RNG)")
 
-    p_serve = sub.add_parser("serve-pi05", help="Serve OpenPI pi0.5 with DUAC JVP divergence.")
-    p_serve.add_argument("--host", default="127.0.0.1")
-    p_serve.add_argument("--port", type=int, default=8000)
-    p_serve.add_argument("--config", default="pi05_libero")
-    p_serve.add_argument(
-        "--checkpoint-dir",
-        default=str(
-            WORKSPACE_ROOT / "checkpoints" / "openpi" / "openpi-assets" / "checkpoints" / "pi05_libero"
-        ),
-    )
-    p_serve.add_argument("--tau", type=float, default=0.9)
-    p_serve.add_argument("--num-probes", type=int, default=40)
-    p_serve.add_argument("--alpha", type=float, default=3.0)
-    p_serve.add_argument("--chunk-horizon", type=int, default=10)
-    p_serve.add_argument("--seed", type=int, default=0)
-    p_serve.add_argument("--no-duac", action="store_true", help="Disable JVP probes (for fast Fixed-k serving).")
-
-    for cmd_name in ("eval-libero", "eval-liberopro"):
-        p_eval = sub.add_parser(cmd_name, help=f"Evaluate on LIBERO ({cmd_name}).")
-        p_eval.add_argument("--suite", default="libero_10", help="LIBERO suite name (default: libero_10).")
-        p_eval.add_argument("--host", default="127.0.0.1")
-        p_eval.add_argument("--port", type=int, default=8000)
-        p_eval.add_argument("--num-trials", "--trials", dest="num_trials", type=int, default=50)
-        p_eval.add_argument("--seed", type=int, default=7)
-        p_eval.add_argument("--alpha", type=float, default=3.0)
-        p_eval.add_argument("--tau", type=float, default=0.9)
-        p_eval.add_argument("--num-probes", type=int, default=40)
-        p_eval.add_argument("--fixed-horizon", type=int, default=None)
-        p_eval.add_argument("--random-horizon-from", default=None)
-        p_eval.add_argument("--state-bank", action="store_true")
-        p_eval.add_argument("--no-state-bank", dest="state_bank", action="store_false")
-        p_eval.set_defaults(state_bank=False)
-        p_eval.add_argument("--save-videos", action="store_true")
-        p_eval.add_argument("--no-save-videos", dest="save_videos", action="store_false")
-        p_eval.set_defaults(save_videos=False)
-        p_eval.add_argument("--output-dir", "--out-dir", "--out_dir", dest="output_dir", default="outputs/A/libero_10/duac")
-        p_eval.add_argument("--resume-dir", default=None)
-        p_eval.add_argument("--task-ids", default=None, help="Optional comma-separated task IDs (e.g. '0,1').")
-        p_eval.add_argument(
-            "--synthetic-dry-run",
-            action="store_true",
-            help="Run synthetic dry-run without GPU/MuJoCo to verify logging & schemas.",
-        )
-
+    for name in ("eval-libero", "eval-liberopro"):
+        e = sub.add_parser(name)
+        e.add_argument("--suite", default="libero_10")
+        e.add_argument("--host", default="127.0.0.1")
+        e.add_argument("--port", type=int, default=8000)
+        e.add_argument("--num-trials", "--trials", dest="num_trials", type=int, default=50)
+        e.add_argument("--seed", type=int, default=7)
+        e.add_argument("--alpha", "--move-th", dest="alpha", type=float, default=3.0)
+        e.add_argument("--tau", type=float, default=0.9, help="logged in args.json (the server applies tau)")
+        e.add_argument("--num-probes", type=int, default=40, help="logged in args.json")
+        e.add_argument("--fixed-horizon", type=int, default=None)
+        e.add_argument("--random-horizon-from", default=None)
+        e.add_argument("--state-bank", action=argparse.BooleanOptionalAction, default=False)
+        e.add_argument("--save-videos", action=argparse.BooleanOptionalAction, default=False)
+        e.add_argument("--video-trials", type=int, default=2, help="record videos for trials 0..N-1 of each task")
+        e.add_argument("--output-dir", "--out-dir", dest="output_dir", default="outputs/A/libero_10/duac")
+        e.add_argument("--resume-dir", default=None)
+        e.add_argument("--task-ids", default=None, help="comma-separated, e.g. 0,1")
+        e.add_argument("--trial-ids", default=None, help="subset of trials, e.g. 36-49 or 0,5,7")
+        e.add_argument("--synthetic-dry-run", action="store_true")
     return parser
 
 
 def main(argv: Optional[List[str]] = None) -> int:
-    raw_argv = list(sys.argv[1:] if argv is None else argv)
-    if len(raw_argv) >= 2 and raw_argv[0] == "eval" and raw_argv[1] in ("libero", "liberopro"):
-        raw_argv = [f"eval-{raw_argv[1]}", *raw_argv[2:]]
-    parser = build_parser()
-    args = parser.parse_args(raw_argv)
+    raw = list(sys.argv[1:] if argv is None else argv)
+    if len(raw) >= 2 and raw[0] == "eval" and raw[1] in ("libero", "liberopro"):
+        raw = [f"eval-{raw[1]}", *raw[2:]]
+    args = build_parser().parse_args(raw)
     if args.subcommand == "doctor":
         return cmd_doctor(args)
     if args.subcommand == "test":
         return cmd_test(args)
     if args.subcommand == "serve-pi05":
         return cmd_serve_pi05(args)
-    if args.subcommand in ("eval-libero", "eval-liberopro"):
-        return cmd_eval_libero(args)
-    raise ValueError(f"Unknown subcommand {args.subcommand}")
+    return cmd_eval(args)
 
 
 if __name__ == "__main__":
     sys.exit(main())
-

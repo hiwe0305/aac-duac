@@ -2,7 +2,7 @@ checkpoints/
 .venv*/
 external/
 data/
-outputs/
+outputs
 logs/
 docs/paper/
 __pycache__/
@@ -10,5 +10,6 @@ __pycache__/
 .hf_cache/
 .cache/
 .libero/
+.libero-pro/
 *.egg-info/
 **/*.egg-info/

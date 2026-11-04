@@ -1,81 +1,239 @@
 {
   "experiment": "O-LONG",
-  "title": "Adaptive Action Chunking (AAC vs DUAC) on Long-Horizon Tasks with pi0.5",
-  "primary_backbone": "pi05",
-  "primary_benchmark": "libero_10",
-  "skip_libero_pro": true,
-  "seed": 7,
-  "trials_per_task": 50,
-  "checkpoints": {
-    "pi05_libero": "checkpoints/openpi/openpi-assets/checkpoints/pi05_libero",
-    "paligemma_tokenizer": "checkpoints/openpi/big_vision/paligemma_tokenizer.model"
+  "status": "Chay chinh dang chay (bat dau 2026-11-04 01:02) - chua co duyet cua Ha Cao",
+  "drafted": "2026-11-04",
+  "track_A": {
+    "policy": "pi0.5 OpenPI pi05_libero (H=10, 10 denoising steps)",
+    "checkpoint": "/mnt/ceph-cold-storage/temporal/hactt13/adaptive_action_chunking/checkpoints/openpi/openpi-assets/checkpoints/pi05_libero",
+    "suites": {
+      "libero_10": "clean, chay qua LIBERO-PRO (eval-liberopro) cho moi arm",
+      "libero_10_object": "calibration Fixed-10 = 68.0% [58.3, 76.3], 100 ep; duy nhat trong 30-70%",
+      "libero_10_env": "calibration Fixed-10 = 74.0% [64.6, 81.6], 100 ep; gan 70% nhat trong cac suite con lai, CI chua 70%"
+    },
+    "arms": {
+      "duac": "duac.py eval-liberopro (server duac.py serve-pi05 --seed 0, tau=0.9, K=40, alpha=3)",
+      "fixed_5": "duac.py eval-liberopro --fixed-horizon 5",
+      "fixed_8": "duac.py eval-liberopro --fixed-horizon 8",
+      "fixed_10": "duac.py eval-liberopro --fixed-horizon 10",
+      "random_h": "duac.py eval-liberopro --random-horizon-from <suite>/duac/decisions.csv",
+      "aac": "aac.py eval-liberopro --selector gaussian_bernoulli --move_th 3 (server aac.py serve-pi05 --n_samples 20 --seed 0 --no_seed_per_step)"
+    },
+    "trials_per_task": 50,
+    "episodes_per_suite_arm": 500,
+    "protocol": {
+      "env_seed": 7,
+      "init_state": "trial_id",
+      "policy_seed": 0,
+      "rng": "stateful (no seed per step)",
+      "num_steps_wait": 10,
+      "max_steps": 520,
+      "alpha_move_th": 3,
+      "tau": 0.9,
+      "num_probes": 40,
+      "aac_n_samples": 20,
+      "env": "OffScreenRenderEnv 256x256, raw images, server resize 224",
+      "aac_executes": "sample 0 (chunk_id=0), nhu client chinh thuc"
+    },
+    "outputs": "outputs/A/<suite>/<arm>/ (args.json, episodes/decisions/subgoals.csv, algo_log.jsonl, state_bank/*.npz, videos/ trial 0-1)"
+  },
+  "criteria_section5": {
+    "adaptive_work": "AAC hoac DUAC hon ca Fixed-5/8/10 >= 3 pp tren 2 suite nhieu gop lai, McNemar exact p<0.05 sau Holm, van hon >= 1 pp khi bo task co loi ich lon nhat, va tren clean khong thua Fixed tot nhat qua 2 pp",
+    "khong_work": "can tren CI cua chenh lech so voi Fixed tot nhat < 3 pp",
+    "chua_ket_luan": "con lai; ghi so episode can them",
+    "mean_h_control": "neu DUAC khong hon Fixed-8 hoac Random-h thi loi ich khong den tu chon h theo state",
+    "no_tuning": "khong chinh alpha, tau, N, nguong tren du lieu chay chinh"
+  },
+  "deviations": [
+    "Suite nhieu khong lay tu libero_10_with_* nhu task3010 muc 2.3: with_red_box/red_stick/blue_stick/diffpos_stick thieu asset (red_box, red_sticker, blue_red_sticker) ca o ban LIBERO-PRO chinh thuc; with_milk chi 10 init/task, task 3-4 co 0; with_mug Fixed-10 = 96% (ngoai 30-70%). Thay bang cac suite nhieu chinh thuc libero_10_object va libero_10_env (50 init/task).",
+    "libero_10_env (74%) hoi cao hon 70%; libero_10_swap (7%) va libero_10_lan (97%) bi loai vi ngoai khoang.",
+    "libero_10_object co 2 task o san (task 0, 7: 0/10) - cac task nay gan nhu khong phan biet duoc arm.",
+    "2026-11-04 02:00: doi cach lap lich (khong doi protocol). Run tuan tu 1 job/(suite, arm) duoc dung lai va chay tiep bang tools/schedule_track_a.py: chia theo (suite, arm, task, trial con thieu), hang doi chung 14 client, gop shard ve <suite>/<arm>/. 1.138 episode da xong duoc giu nguyen (shards/legacy); 10 episode dang chay do bi ngat (khong co dong trong episodes.csv) duoc chay lai tu dau; decision mo coi cua chung bi loai khi gop.",
+    "Server duoc khoi dong lai khi doi lich: RNG policy seed 0 bat dau lai tu dau (van stateful). Noise cua tung decision von da khong co dinh theo episode vi nhieu client dung chung 1 server, nen dieu nay khong doi tinh ghep cap (ghep cap dua tren init state = trial id, env seed 7).",
+    "Random-h: moi shard (task) bat dau RNG chon h tu seed 7; h van rut tu phan phoi h cua DUAC cung suite, cung task."
+  ],
+  "calibration": "outputs/calibration (khong dung trong phan tich chinh); tong hop: analysis/calibration_summary.py",
+  "consistency_step05": "DUAC clean libero_10 qua eval-liberopro: 95.0% (95/100), mean h 8.42 (tham chieu 95.0%, 8.45)",
+  "code": {
+    "git_head": "c1116f411a3951f44768698e55db97b7782ff6fd",
+    "uncommitted_changes": true,
+    "sha256": {
+      "flowbased_aac/flowbased_aac/duac_policy.py": "05bff0a369a6450eddb83001c5a783bbca51f85b25e01d10404eea173529f0e1",
+      "flowbased_aac/flowbased_aac/aac_official.py": "cc4292eeb8aaaaadfff3b0b28e7ed19ed2bf5b93459fd97267d19e005c4b7313",
+      "flowbased_aac/flowbased_aac/eval_libero.py": "12639ae516f8a6e7e6b3808f59e96b9165c86822ed88c4761d8a439bcebb0b66",
+      "flowbased_aac/duac.py": "ffee219a3804c5594afbab9a94cd2122a870fb8e8c7c686980f58723ecdfe67c",
+      "adaptive_action_chunking/aac.py": "8f9df99564cb3015465336cda5964ffe1173cb8f186db1e389397f9799dd3d18",
+      "adaptive_action_chunking/tools/serve_pi05_multisample.py": "4191fe55ebfb6642e77480cc3ebd350138a0717c9fadd023362943dbd8b2e582",
+      "external/aac-libero/action_optimization/action_entropy_pi05.py": "afccedc7198187373dfba9a967544f46f482328a9578933d65967ddfdb75ae74"
+    },
+    "official_aac": {
+      "repo": "https://github.com/Adaptive-Action-Chunking/libero",
+      "commit": "ff8c8e421f7805b5845a72d07fbd8f1171df74bf"
+    },
+    "duac_reference": "/mnt/ssd-storage/hactt13/UQ_action_chunking/AAC_reproduce/flowbased_aac (khong co code cong bo)"
   },
   "runs": [
     {
-      "id": "A1_duac_libero10",
-      "method": "duac",
-      "backbone": "pi05",
+      "id": "A_libero_10_duac",
       "suite": "libero_10",
-      "perturbation": "clean",
-      "path": "outputs/pi05/libero_10/duac",
+      "method": "duac",
+      "path": "outputs/A/libero_10/duac",
       "expected_episodes": 500,
       "require_state_bank": true,
       "require_subgoals": true
     },
     {
-      "id": "A2_fixed10_libero10",
-      "method": "fixed_10",
-      "backbone": "pi05",
+      "id": "A_libero_10_fixed_5",
       "suite": "libero_10",
-      "perturbation": "clean",
-      "path": "outputs/pi05/libero_10/fixed_10",
-      "expected_episodes": 500,
-      "require_state_bank": false,
-      "require_subgoals": true
-    },
-    {
-      "id": "A3_fixed8_libero10",
-      "method": "fixed_8",
-      "backbone": "pi05",
-      "suite": "libero_10",
-      "perturbation": "clean",
-      "path": "outputs/pi05/libero_10/fixed_8",
-      "expected_episodes": 500,
-      "require_state_bank": false,
-      "require_subgoals": true
-    },
-    {
-      "id": "A4_fixed5_libero10",
       "method": "fixed_5",
-      "backbone": "pi05",
-      "suite": "libero_10",
-      "perturbation": "clean",
-      "path": "outputs/pi05/libero_10/fixed_5",
+      "path": "outputs/A/libero_10/fixed_5",
       "expected_episodes": 500,
-      "require_state_bank": false,
+      "require_state_bank": true,
       "require_subgoals": true
     },
     {
-      "id": "A5_random_h_libero10",
+      "id": "A_libero_10_fixed_8",
+      "suite": "libero_10",
+      "method": "fixed_8",
+      "path": "outputs/A/libero_10/fixed_8",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_fixed_10",
+      "suite": "libero_10",
+      "method": "fixed_10",
+      "path": "outputs/A/libero_10/fixed_10",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_random_h",
+      "suite": "libero_10",
       "method": "random_h",
-      "backbone": "pi05",
-      "suite": "libero_10",
-      "perturbation": "clean",
-      "path": "outputs/pi05/libero_10/random_h",
+      "path": "outputs/A/libero_10/random_h",
       "expected_episodes": 500,
-      "require_state_bank": false,
+      "require_state_bank": true,
       "require_subgoals": true
     },
     {
-      "id": "A6_aac_libero10",
-      "method": "aac",
-      "backbone": "pi05",
+      "id": "A_libero_10_aac",
       "suite": "libero_10",
-      "perturbation": "clean",
-      "path": "outputs/pi05/libero_10/aac",
+      "method": "aac",
+      "path": "outputs/A/libero_10/aac",
       "expected_episodes": 500,
-      "require_state_bank": false,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_object_duac",
+      "suite": "libero_10_object",
+      "method": "duac",
+      "path": "outputs/A/libero_10_object/duac",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_object_fixed_5",
+      "suite": "libero_10_object",
+      "method": "fixed_5",
+      "path": "outputs/A/libero_10_object/fixed_5",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_object_fixed_8",
+      "suite": "libero_10_object",
+      "method": "fixed_8",
+      "path": "outputs/A/libero_10_object/fixed_8",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_object_fixed_10",
+      "suite": "libero_10_object",
+      "method": "fixed_10",
+      "path": "outputs/A/libero_10_object/fixed_10",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_object_random_h",
+      "suite": "libero_10_object",
+      "method": "random_h",
+      "path": "outputs/A/libero_10_object/random_h",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_object_aac",
+      "suite": "libero_10_object",
+      "method": "aac",
+      "path": "outputs/A/libero_10_object/aac",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_env_duac",
+      "suite": "libero_10_env",
+      "method": "duac",
+      "path": "outputs/A/libero_10_env/duac",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_env_fixed_5",
+      "suite": "libero_10_env",
+      "method": "fixed_5",
+      "path": "outputs/A/libero_10_env/fixed_5",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_env_fixed_8",
+      "suite": "libero_10_env",
+      "method": "fixed_8",
+      "path": "outputs/A/libero_10_env/fixed_8",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_env_fixed_10",
+      "suite": "libero_10_env",
+      "method": "fixed_10",
+      "path": "outputs/A/libero_10_env/fixed_10",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_env_random_h",
+      "suite": "libero_10_env",
+      "method": "random_h",
+      "path": "outputs/A/libero_10_env/random_h",
+      "expected_episodes": 500,
+      "require_state_bank": true,
+      "require_subgoals": true
+    },
+    {
+      "id": "A_libero_10_env_aac",
+      "suite": "libero_10_env",
+      "method": "aac",
+      "path": "outputs/A/libero_10_env/aac",
+      "expected_episodes": 500,
+      "require_state_bank": true,
       "require_subgoals": true
     }
-  ]
+  ],
+  "todo_step4": "analysis/analyze_o_long.py hien khoa run theo method (1 suite); can mo rong de gop 2 suite nhieu (bootstrap theo cum task x trial) truoc Buoc 4"
 }

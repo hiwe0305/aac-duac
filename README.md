@@ -1,261 +1,270 @@
-# O-LONG Runbook: Đánh Giá `AAC` vs `DUAC` trên $\pi_{0.5}$ (`libero_10`)
+# O-LONG: AAC và DUAC trên π0.5 với task dài
 
-Tài liệu hướng dẫn bàn giao (Handover Guideline) để cài đặt và chạy trọn vẹn thực nghiệm **O-LONG** ([`docs/task3010.md`](file:///home/hiwe/aac-duac/docs/task3010.md) — *"Adaptive action chunking có còn work trên task dài và khó không?"*) trên **máy chủ GPU Linux (Remote Headless GPU Server)**.
+Repo này chạy thực nghiệm **O-LONG** ([docs/task3010.md](docs/task3010.md)): hai phương pháp tự chọn horizon AAC và DUAC có thắng horizon cố định tốt nhất trên task dài và khó không, và nếu thắng thì thắng ở đâu.
 
-- **Model**: **$\pi_{0.5}$ (`pi05_libero`)** — OpenPI JAX.
-- **Benchmark**: **LIBERO-Long (`libero_10` clean)** — 10 tasks $\times$ 50 trials = **500 episodes / arm**, step budget = **520 active steps**.
-- **2 Tuỳ chọn cài đặt môi trường**:
-  - **Option A (Khuyên dùng — Docker)**: Đóng gói sẵn toàn bộ CUDA, EGL headless, `.venv-openpi`, `.venv-libero` và các repo phụ thuộc trong container `aac-duac-pi05`.
-  - **Option B (Chạy trực tiếp bằng `venv` trên Server)**: Tự động cài đặt 2 môi trường ảo `.venv-openpi` và `.venv-libero` ngay trên máy chủ qua script [`tools/setup_venv.sh`](file:///home/hiwe/aac-duac/tools/setup_venv.sh).
+| Track | Benchmark | Policy | Trạng thái |
+|---|---|---|---|
+| A | LIBERO-10 clean + 2 suite nhiễu LIBERO-PRO | π0.5 `pi05_libero` (OpenPI JAX, H = 10) | Đang chạy chính (mục 4) |
+| RoboCasa365 | composite (horizon trung vị 2.250 bước) | π0.5 `lerobot/pi05_robocasa` (PyTorch, chunk 50) | AAC/DUAC đã viết và kiểm; chờ GPU để smoke test (mục 7) |
+| BEHAVIOR-1K | 50 task việc nhà dài | π0.5 `openpi-comet` (JAX, chunk 32) | Chưa cài (mục 8) |
 
----
-
-## 1. Tóm Tắt Cấu Trúc & Trạng Thái Cài Đặt Theo [`docs/task3010.md`](file:///home/hiwe/aac-duac/docs/task3010.md)
-
-| Hạng mục trong [`docs/task3010.md`](file:///home/hiwe/aac-duac/docs/task3010.md) | Trạng thái | File thực thi |
-|---|---|---|
-| **Step 0.1**: Fix step budget `libero_10` = `520` active steps | Sẵn sàng | [`flowbased_aac/eval_libero.py`](file:///home/hiwe/aac-duac/flowbased_aac/flowbased_aac/eval_libero.py), [`adaptive_action_chunking/aac.py`](file:///home/hiwe/aac-duac/adaptive_action_chunking/aac.py) |
-| **Step 0.2**: Hook BDDL goal predicates sau mỗi `env.step` $\rightarrow$ `subgoals.csv` | Sẵn sàng | [`eval_libero_goal_predicates()`](file:///home/hiwe/aac-duac/flowbased_aac/flowbased_aac/eval_libero.py) |
-| **Step 0.3**: Đối chứng `Random-h` (`--random-horizon-from`) | Sẵn sàng | [`flowbased_aac/duac.py`](file:///home/hiwe/aac-duac/flowbased_aac/duac.py) |
-| **Step 0.4**: Chuẩn hoá `episodes.csv`, `decisions.csv`, `subgoals.csv`, `state_bank/*.npz` | Sẵn sàng | [`analysis/convert.py`](file:///home/hiwe/aac-duac/analysis/convert.py) |
-| **Track A (6 Arms)**: `duac`, `fixed_10`, `fixed_8`, `fixed_5`, `random_h`, `aac` | Sẵn sàng | [`manifest.json`](file:///home/hiwe/aac-duac/manifest.json) |
-| **Thống kê T1–T6 & Mục 5**: McNemar + 5,000 Cluster Bootstrap + Holm $\rightarrow$ `outputs/REPORT.md` | Sẵn sàng | [`analysis/analyze_o_long.py`](file:///home/hiwe/aac-duac/analysis/analyze_o_long.py) |
-
-### Yêu cầu phần cứng trên Server
-- **GPU**: 1 GPU NVIDIA $\ge 24\text{ GB}$ VRAM (RTX 3090 / 4090 / A5000 / L40S / A100), kiểm tra bằng `nvidia-smi`.
-- **Ổ cứng trống**: Tối thiểu **`50 GB`** (chứa môi trường, checkpoint `pi05_libero` ~`11.6 GiB`, và `outputs/`).
+**Nguồn thuật toán**
+- **AAC:** gọi thẳng code chính thức [Adaptive-Action-Chunking/libero](https://github.com/Adaptive-Action-Chunking/libero) (clone ở `external/aac-libero`), qua [aac_official.py](flowbased_aac/flowbased_aac/aac_official.py). Server lấy N = 20 chunk; action chạy là sample 0, đúng như client gốc.
+- **DUAC:** không có code công bố. Code ở [duac_policy.py](flowbased_aac/flowbased_aac/duac_policy.py) theo bản tái lập của hactt13 (`/mnt/ssd-storage/hactt13/UQ_action_chunking/AAC_reproduce/flowbased_aac`): phương trình 6 (vết Jacobian Hutchinson tại τ = 0.9, K = 40 probe, 7 chiều action) và phương trình 8 (bước nhảy của trung bình tiền tố), cộng cận dưới chuyển động ξ của AAC (α = 3).
+- `duac.py test` so bằng số với cả code AAC chính thức lẫn bản DUAC của hactt13 (mục 3).
 
 ---
 
-## 2. Bước 1: Clone Repo & Chọn Môi Trường Cài Đặt (Option A hoặc Option B)
+## 1. Cấu trúc
 
-Trên máy chủ GPU, mở `tmux` để giữ phiên làm việc không bị ngắt khi rớt SSH:
-```bash
-git clone https://github.com/hiwe0305/aac-duac.git
-cd aac-duac
-tmux new -s o_long
-```
-
-Chọn **1 trong 2** cách dưới đây:
-
----
-
-### Option A (Khuyên dùng): Chạy bằng Docker (`docker/docker-compose.yml`)
-
-Bên trong Docker image ([`docker/Dockerfile`](file:///home/hiwe/aac-duac/docker/Dockerfile)) đã cài đặt sẵn **NVIDIA EGL Headless**, **`.venv-openpi`** (`/opt/venv-openpi`), **`.venv-libero`** (`/opt/venv-libero`) và clone sẵn `external/{openpi,LIBERO,aac-libero}`.
-
-1. **(Tuỳ chọn) Chọn GPU trong [`docker/.env`](file:///home/hiwe/aac-duac/docker/.env)** (mặc định dùng GPU `0`):
-   ```bash
-   cat docker/.env
-   ```
-2. **Build và khởi chạy container nền `aac-duac-pi05`**:
-   ```bash
-   docker compose -f docker/docker-compose.yml up -d --build
-   ```
-3. **Truy cập vào bên trong container** (thư mục làm việc tự động là `/workspace/aac-duac`):
-   ```bash
-   docker exec -it aac-duac-pi05 bash
-   ```
+| Đường dẫn | Nội dung |
+|---|---|
+| `flowbased_aac/duac.py` | CLI DUAC: `doctor`, `test`, `serve-pi05`, `eval-libero`, `eval-liberopro` |
+| `adaptive_action_chunking/aac.py` | CLI AAC: `serve-pi05` (multi-sample), `eval-liberopro`, `eval-libero`, `test` |
+| `flowbased_aac/flowbased_aac/eval_libero.py` | Evaluator chung cho mọi arm (DUAC, Fixed-h, Random-h, AAC) |
+| `adaptive_action_chunking/tools/serve_pi05_multisample.py` | Server N sample, prefix ảnh và ngôn ngữ encode 1 lần |
+| `tools/run_jobs.sh` | Bật server, chạy danh sách job song song, tự resume |
+| `tools/run_track_a_main.sh`, `tools/make_main_jobs.sh` | Lần chạy chính của Track A |
+| `jobs/` | Danh sách job đã chạy (calibration, main) |
+| `analysis/` | `calibration_summary.py`, `explore_runs.py`, `analyze_o_long.py` (T1–T6), `convert.py` |
+| `manifest.json` | Manifest của Track A (suite, arm, protocol, tiêu chí mục 5, các deviation, sha256 code) |
+| `external/` | `openpi`, `LIBERO`, `LIBERO-PRO`, `aac-libero`, `robocasa365`, `robosuite` (không commit) |
+| `flowbased_aac/flowbased_aac/robocasa/` | π0.5 RoboCasa: policy AAC/DUAC (PyTorch), server, evaluator, self-test |
+| `outputs/` → `/mnt/ceph-hot-storage/hieudd/o_long/aac-duac` | Mọi output (hot storage, không ghi vào cold storage) |
+| `checkpoints/` | Symlink sang ceph-cold (chỉ đọc) |
 
 ---
 
-### Option B: Cài Đặt Trực Tiếp Bằng `python -m venv` + `pip` (Không Cần `uv`, Không Cần `gcc`/`cc`)
+## 2. Cài môi trường (server 3, không dùng Docker)
 
-Đã chuẩn bị sẵn 2 file requirements chỉ dùng 100% gói cài sẵn (`.whl` trên PyPI, không cần trình biên dịch C `cc` và không cần `uv`):
-- [`tools/requirements-openpi.txt`](file:///home/hiwe/aac-duac/tools/requirements-openpi.txt) (cho `.venv-openpi`)
-- [`tools/requirements-libero.txt`](file:///home/hiwe/aac-duac/tools/requirements-libero.txt) (cho `.venv-libero`)
+Cần GPU có ít nhất 24 GB (mỗi server π0.5 khoảng 9 GB) và Python 3.11 ở `/usr/bin/python3.11`. Mở `tmux` trước để không mất phiên khi rớt SSH.
 
-Bạn có thể chạy **1 lệnh tự động** `bash tools/setup_venv.sh`, hoặc chạy **từng lệnh rời rạc** dưới đây:
-
-#### Bước B1: Clone 3 repo phụ thuộc (`openpi`, `LIBERO`, `aac-libero`)
+### 2.1 Repo phụ thuộc
 ```bash
-export PROJECT_ROOT="$(pwd)"
-mkdir -p "$PROJECT_ROOT/external"
-[ -d "$PROJECT_ROOT/external/openpi" ] || git clone --recurse-submodules --depth 1 https://github.com/Physical-Intelligence/openpi.git "$PROJECT_ROOT/external/openpi"
-[ -d "$PROJECT_ROOT/external/LIBERO" ] || (git clone --depth 1 https://github.com/Lifelong-Robot-Learning/LIBERO.git "$PROJECT_ROOT/external/LIBERO" && touch "$PROJECT_ROOT/external/LIBERO/libero/__init__.py")
-[ -d "$PROJECT_ROOT/external/aac-libero" ] || git clone --depth 1 https://github.com/Adaptive-Action-Chunking/libero.git "$PROJECT_ROOT/external/aac-libero"
+mkdir -p external
+git clone --recurse-submodules --depth 1 https://github.com/Physical-Intelligence/openpi.git external/openpi
+git clone --depth 1 https://github.com/Lifelong-Robot-Learning/LIBERO.git external/LIBERO && touch external/LIBERO/libero/__init__.py
+git clone --depth 1 https://github.com/Adaptive-Action-Chunking/libero.git external/aac-libero
+# LIBERO-PRO: bản đã vá của hactt13 (assets là symlink sang ceph-cold). Cần file __init__.py,
+# nếu không thì Python sẽ import nhầm external/LIBERO.
+cp -a /mnt/ssd-storage/hactt13/UQ_action_chunking/AAC_reproduce/adaptive_action_chunking/third_party/LIBERO-PRO external/LIBERO-PRO
+touch external/LIBERO-PRO/libero/__init__.py
 ```
 
-#### Bước B2: Tạo `.venv-openpi` bằng `python3 -m venv` + `pip`
+### 2.2 `.venv-openpi` (policy server)
 ```bash
-# Tạo môi trường ảo Python >= 3.11 (ví dụ python3 trong conda base hoặc python3.11)
-python3 -m venv "$PROJECT_ROOT/.venv-openpi"
-
-# Nâng cấp pip và cài toàn bộ thư viện từ tools/requirements-openpi.txt (100% binary wheels)
-"$PROJECT_ROOT/.venv-openpi/bin/pip" install --upgrade pip setuptools wheel
-"$PROJECT_ROOT/.venv-openpi/bin/pip" install --only-binary=:all: -r "$PROJECT_ROOT/tools/requirements-openpi.txt"
-
-# Cài đặt openpi-client và openpi ở chế độ editable (--no-deps)
-"$PROJECT_ROOT/.venv-openpi/bin/pip" install --no-deps \
-  -e "$PROJECT_ROOT/external/openpi/packages/openpi-client" \
-  -e "$PROJECT_ROOT/external/openpi"
-
-# Copy bản vá transformers_replace của OpenPI
-SITE_PKGS="$("$PROJECT_ROOT/.venv-openpi/bin/python" -c "import transformers, os; print(os.path.dirname(transformers.__file__))")"
-cp -r "$PROJECT_ROOT/external/openpi/src/openpi/models_pytorch/transformers_replace/"* "$SITE_PKGS/"
+/usr/bin/python3.11 -m venv .venv-openpi
+.venv-openpi/bin/pip install --upgrade pip setuptools wheel
+.venv-openpi/bin/pip install --prefer-binary -r tools/requirements-openpi.txt
+.venv-openpi/bin/pip install --no-deps -e external/openpi/packages/openpi-client -e external/openpi
+# lerobot (OpenPI import khi nạp policy), đúng commit OpenPI ghim, KHÔNG kéo dependency (pynput -> evdev cần C compiler)
+.venv-openpi/bin/pip install --no-deps "lerobot @ git+https://github.com/huggingface/lerobot@0cf864870cf29f4738d3ade893e6fd13fbd7cdb5"
+.venv-openpi/bin/pip install "numpy==1.26.4"   # pip có thể tự nâng numpy lên 2.x; OpenPI cần < 2
+SITE=$(.venv-openpi/bin/python -c "import transformers, os; print(os.path.dirname(transformers.__file__))")
+cp -r external/openpi/src/openpi/models_pytorch/transformers_replace/* "$SITE/"
 ```
 
-#### Bước B3: Tạo `.venv-libero` bằng `python3 -m venv` + `pip`
+### 2.3 `.venv-libero` (mô phỏng)
 ```bash
-# Tạo môi trường ảo cho LIBERO
-python3 -m venv "$PROJECT_ROOT/.venv-libero"
-
-# Cài đặt toàn bộ thư viện mô phỏng từ tools/requirements-libero.txt (MuJoCo 3.2.3, robosuite 1.4.1, BDDL...)
-"$PROJECT_ROOT/.venv-libero/bin/pip" install --upgrade pip "setuptools<70" wheel
-"$PROJECT_ROOT/.venv-libero/bin/pip" install --only-binary=:all: -r "$PROJECT_ROOT/tools/requirements-libero.txt"
-
-# Cài đặt LIBERO và openpi-client ở chế độ editable (--no-deps)
-"$PROJECT_ROOT/.venv-libero/bin/pip" install --no-deps \
-  -e "$PROJECT_ROOT/external/LIBERO" \
-  -e "$PROJECT_ROOT/external/openpi/packages/openpi-client"
+/usr/bin/python3.11 -m venv .venv-libero
+.venv-libero/bin/pip install --upgrade pip "setuptools<70" wheel
+grep -v '^robosuite' tools/requirements-libero.txt > /tmp/req-libero.txt
+.venv-libero/bin/pip install --prefer-binary -r /tmp/req-libero.txt
+.venv-libero/bin/pip install --no-deps robosuite==1.4.1 pynput           # tránh evdev
+.venv-libero/bin/pip install --prefer-binary numba pillow six python-xlib "dm-tree>=0.1.8"
+.venv-libero/bin/pip install --no-deps -e external/LIBERO -e external/openpi/packages/openpi-client
 ```
 
-#### Bước B4: Nạp biến môi trường & Khởi tạo cấu hình LIBERO
+### 2.4 Checkpoint, cấu hình LIBERO và output (không cần tải gì)
+```bash
+COLD=/mnt/ceph-cold-storage/temporal/hactt13/adaptive_action_chunking/checkpoints
+mkdir -p checkpoints/openpi/big_vision checkpoints/lerobot
+ln -sfn $COLD/openpi/openpi-assets checkpoints/openpi/openpi-assets
+ln -sfn openpi-assets/checkpoints/pi05_libero checkpoints/openpi/pi05_libero
+# OpenPI không nhận symlink cho tokenizer: phải là file thật (4 MB)
+cp $COLD/openpi/big_vision/paligemma_tokenizer.model checkpoints/openpi/big_vision/
+
+mkdir -p /mnt/ceph-hot-storage/hieudd/o_long/aac-duac && ln -sfn /mnt/ceph-hot-storage/hieudd/o_long/aac-duac outputs
+
+source adaptive_action_chunking/server141.env       # MUJOCO_GL=egl, không chiếm trước GPU, PYTHONPATH
+.venv-libero/bin/python tools/download_libero.py --suite libero_10     # ghi .libero/config.yaml
+P=$PWD/external/LIBERO-PRO/libero/libero; mkdir -p .libero-pro
+printf "benchmark_root: $P\nbddl_files: $P/bddl_files\ninit_states: $P/init_files\ndatasets: $PWD/data/libero\nassets: $P/assets\n" > .libero-pro/config.yaml
+```
+
+Docker (`docker/`) có từ bản đầu nhưng **chưa được kiểm lại**: Dockerfile chưa cài `lerobot` và LIBERO-PRO.
+
+---
+
+## 3. Kiểm tra môi trường và code
 ```bash
 source adaptive_action_chunking/server141.env
-"$PROJECT_ROOT/.venv-libero/bin/python" tools/download_libero.py --suite libero_10
+bash tools/check_env.sh                                  # PASS/WARN/FAIL cho từng mục
+.venv-libero/bin/python flowbased_aac/duac.py doctor
+.venv-libero/bin/python flowbased_aac/duac.py test       # so với code AAC chính thức + bản DUAC của hactt13
+.venv-libero/bin/python adaptive_action_chunking/aac.py test
+PYTHONPATH=src:$PYTHONPATH .venv-libero/bin/python -m aac_duac.cli test   # gồm cả self-test của analysis/
 ```
+`duac.py test` kiểm:
+- ξ và luật bước nhảy trùng với `action_magnitude`/`find_first_idx`/`select_chunk_size` chính thức (2.000 chunk × 3 giá trị α).
+- Phương trình 6 và 8 trùng với bản của hactt13.
+- Bộ ước lượng Hutchinson so với vết Jacobian chính xác. Phần này cần JAX, nên chạy thêm bằng `.venv-openpi` nếu muốn kiểm.
+- Vòng lặp evaluator thật trên env giả: mọi arm, state bank, resume, và báo lỗi khi thiếu init state.
 
 ---
 
-## 3. Bước 2: Tải Dữ Liệu Benchmark, Tải Checkpoint `pi05_libero` & Kiểm Tra (`doctor` + `test`)
+## 4. Track A: LIBERO-10 với `pi05_libero`
 
-> Từ bước này trở đi, **mọi câu lệnh đều giống hệt nhau** cho cả **Option A** (chạy trong container tại `/workspace/aac-duac`) và **Option B** (chạy trên host sau khi `source adaptive_action_chunking/server141.env`).
+### 4.1 Protocol (mọi arm dùng chung)
+OffScreenRenderEnv 256×256, env seed 7, init state = trial id, 10 bước chờ rồi tối đa 520 bước policy. Ảnh gửi nguyên bản, server tự resize về 224. Policy seed 0, RNG stateful. α = 3, τ = 0.9, K = 40, N = 20. Mỗi suite × arm chạy 50 trial/task = 500 episode.
 
-### 3.1. Chuẩn bị & Xác minh Dữ liệu Benchmark LIBERO (`tools/download_libero.py`)
+### 4.2 Suite: kết quả kiểm dữ liệu và calibration
+Tóm tắt calibration: `analysis/calibration_summary.py`. Kết quả nằm ở `outputs/calibration/`.
+
+| Suite | Init/task | Env dựng được | Fixed-10, 10 trial/task | Dùng? |
+|---|---|---|---|---|
+| `libero_10` (clean) | 50 | ✅ | DUAC 95.0% (Bước 0.5, khớp mức tham chiếu 95.0%; mean h 8.42) | ✅ clean |
+| `libero_10_object` | 50 | ✅ | 68.0% [58.3, 76.3] | ✅ |
+| `libero_10_env` | 50 | ✅ | 74.0% [64.6, 81.6] | ✅ |
+| `libero_10_with_milk` | 10 (task 3, 4: 0) | task 3, 4 lỗi | 82.5% | ❌ |
+| `libero_10_with_mug` | 50 | ✅ | 96.0% | ❌ (gần trần) |
+| `libero_10_lan` | 50 | ✅ | 97.0% | ❌ |
+| `libero_10_swap` | 50 | ✅ | 7.0% | ❌ (gần sàn) |
+| `with_red_box`, `with_red_stick`, `with_blue_stick`, `with_diffpos_stick` | 10–50 | ❌ thiếu asset `red_box`, `red_sticker`, `blue_red_sticker` (kể cả trong repo LIBERO-PRO chính thức) | — | ❌ |
+
+Ghi chú về `libero_10_object`: task 0 và 7 đạt 0/10. Các task này gần như không giúp phân biệt các arm.
+
+### 4.3 Chạy
 ```bash
-# Tự động cấu hình .libero/config.yaml và kiểm tra đủ 10/10 file BDDL,
-# 10/10 file .pruned_init (500 trạng thái khởi tạo) & 106 file 3D MuJoCo XML assets của libero_10:
-python3 tools/download_libero.py --suite libero_10
-
-# (Tuỳ chọn) Chỉ chạy lệnh dưới nếu muốn tải thêm bộ dataset HDF5 demonstration gốc về data/libero/:
-# python3 tools/download_libero.py --suite libero_10 --download-demos
+bash tools/make_main_jobs.sh libero_10_object libero_10_env      # ghi jobs/main_*.txt (đã có sẵn)
+CONC=10 bash tools/run_track_a_main.sh > outputs/A_main_runner.txt 2>&1 &
 ```
+- **Phase 1:** 2 server DUAC (cổng 8000, 8001) chạy DUAC và Fixed-5/8/10.
+- **Phase 2:** 1 server DUAC chạy Random-h, đồng thời 1 server AAC (cổng 8015) chạy AAC.
+- Log nằm ở `outputs/A/logs/`. Chạy lại cùng lệnh thì các run dở dang được resume.
+- Mỗi client giới hạn 2 luồng CPU (`CLIENT_THREADS`).
 
-### 3.2. Tải Trọng số Model `pi05_libero` (~`11.58 GiB`) & Tokenizer PaliGemma
+Lệnh rời cho một suite (`SUITE=libero_10_object`, `OUT=outputs/A/$SUITE`):
 ```bash
-# 1. Tải checkpoint pi05_libero + paligemma_tokenizer.model (hỗ trợ tự động resume nếu đứt mạng)
-python3 tools/download_checkpoints.py --target pi05_libero
+.venv-openpi/bin/python flowbased_aac/duac.py serve-pi05 --port 8000 --seed 0
+.venv-libero/bin/python flowbased_aac/duac.py eval-liberopro --suite $SUITE --trials 50 --port 8000 --state-bank --save-videos --output-dir $OUT/duac
+.venv-libero/bin/python flowbased_aac/duac.py eval-liberopro --suite $SUITE --trials 50 --port 8000 --fixed-horizon 8 --state-bank --output-dir $OUT/fixed_8
+.venv-libero/bin/python flowbased_aac/duac.py eval-liberopro --suite $SUITE --trials 50 --port 8000 --random-horizon-from $OUT/duac/decisions.csv --output-dir $OUT/random_h
 
-# 2. Kiểm tra trạng thái (đảm bảo metadata_ready: true, tokenizer_ready: true, weights_ready: true)
-python3 tools/download_checkpoints.py --target pi05_libero --verify
+.venv-openpi/bin/python adaptive_action_chunking/aac.py serve-pi05 --n_samples 20 --port 8015 --seed 0 --no_seed_per_step
+.venv-libero/bin/python adaptive_action_chunking/aac.py eval-liberopro --backbone pi05 --suite $SUITE --selector gaussian_bernoulli \
+  --trials 50 --seed 7 --move_th 3 --port 8015 --state-bank --videos --out_dir $OUT/aac
 ```
+Thêm `--resume-dir <run>` để chạy tiếp một run bị ngắt. Các tham số phải giống `args.json` cũ.
 
-### 3.3. Chạy `doctor` và Bộ Test Kiểm tra Pipeline (`Step 0.1` $\rightarrow$ `0.4`)
-```bash
-PYTHONPATH=src python3 -m aac_duac.cli doctor
-PYTHONPATH=src python3 -m aac_duac.cli test
-```
-Khi màn hình báo `ALL TESTS PASSED` và `ALL STATISTICAL CHECKS PASSED`, hệ thống đã sẵn sàng chạy thực nghiệm.
+### 4.4 Output của mỗi run
+| File | Nội dung |
+|---|---|
+| `episodes.csv` | 1 dòng / episode: success, end_step, n_decisions, mean_h, wall_s |
+| `decisions.csv` | 1 dòng / decision: h_executed, h_method (h thuật toán đề xuất, kể cả ở arm Fixed), h_unc, move_lower_bound (ξ), infer_ms, gripper_toggle, profile `u_step_1..10`, `u_prefix_*`, `m_step_*` |
+| `algo_log.jsonl` | **Toàn bộ output của thuật toán ở mỗi decision.** AAC: `H_pos`, `H_rot`, `H_grip`, `H_total`, trung bình tiền tố và bước nhảy, `h_entropy`, `motion_m`, ξ, h, tỉ lệ gripper đóng trên N sample. DUAC: `U` (phương trình 6), `divergence`, trung bình tiền tố và bước nhảy, `h_unc`, `motion_m`, ξ. Kèm theo các action đã chạy |
+| `subgoals.csv` | 1 dòng / goal predicate × episode: `first_true_step` |
+| `state_bank/*.npz` | MuJoCo state từng bước, lệnh gripper, warm start, action, chunk. AAC có thêm `aac_samples` (N × H × 7); DUAC có thêm `duac_uncertainty` và `duac_divergence` |
+| `videos/` | Trial 0–1 của mỗi task |
 
 ---
 
-## 4. Bước 3: Chạy Thực Nghiệm Chính Track A (6 Arms $\times$ 500 Episodes)
+## 5. Phân tích
+```bash
+.venv-libero/bin/python analysis/calibration_summary.py outputs/calibration
+.venv-libero/bin/python analysis/explore_runs.py outputs/A                 # h theo giai đoạn, quanh gripper, AUROC của U
+PYTHONPATH=src:$PYTHONPATH .venv-libero/bin/python -m aac_duac.cli analyze --manifest manifest.json --output-dir outputs/analysis_report
+```
+**Việc còn phải làm:** `analyze_o_long.py` hiện chỉ phân tích từng suite riêng. Tiêu chí mục 5 lại cần gộp 2 suite nhiễu, bootstrap theo cụm task × trial. Phần này phải mở rộng trước Bước 4.
 
-Mở **2 cửa sổ terminal** (2 pane trong `tmux`).
-- Nếu dùng **Option A (Docker)**: ở mỗi terminal chạy `docker exec -it aac-duac-pi05 bash`.
-- Nếu dùng **Option B (`venv`)**: ở mỗi terminal chạy `source adaptive_action_chunking/server141.env`.
+## 6. Quan sát trên calibration (chưa phải so sánh giữa các arm)
+- h do DUAC đề xuất gần như không đổi theo giai đoạn (trước, giữa, sau các bước con: khoảng 8.4–8.8).
+- Quanh lúc đóng/mở gripper, h lại **dài hơn** (khoảng 9.0–9.4), vì ξ chiếm ưu thế khi tay robot chậm lại.
+- U trung bình của cả episode tách được episode thất bại (AUROC 0.76–0.83). Nhưng chỉ xét 5 decision đầu và so trong cùng một task thì AUROC còn khoảng 0.5. Như vậy U cao là hệ quả của thất bại, không phải tín hiệu báo trước.
 
 ---
 
-### Giai đoạn 4.1 — Chạy 5 Arms đầu với Server DUAC (Cổng `8000`)
+## 7. RoboCasa365 với `lerobot/pi05_robocasa` (AAC và DUAC)
 
-#### Terminal 1 (Server $\pi_{0.5}$ DUAC — cổng `8000`):
+Toàn bộ pipeline nằm trong repo này: env riêng, server riêng, evaluator riêng. Code của người khác chỉ dùng để tham khảo.
+
+### 7.1 Thành phần
+| Thành phần | Vị trí |
+|---|---|
+| Checkpoint `lerobot/pi05_robocasa` (revision `3206f645`; chunk 50, 3 camera 256×256, state 16, action 12), tải từ Hugging Face, đã kiểm sha256 | `/mnt/ceph-hot-storage/hieudd/checkpoints/lerobot/pi05_robocasa` ← `checkpoints/lerobot/pi05_robocasa` |
+| Env `.venv-robocasa` (Python 3.12 qua `uv`): lerobot 0.6.1, torch 2.7.1+cu128, robosuite 1.5.2, robocasa 1.0.1, mujoco 3.3.1 | `tools/setup_robocasa_env.sh`, `tools/requirements-robocasa.txt` |
+| RoboCasa365 và robosuite, clone từ GitHub chính thức | `external/robocasa365` (commit `3443cdf`), `external/robosuite` (`5ce6643f`) |
+| Asset (textures, fixtures, objects lightwheel / objaverse / aigen) | `/mnt/ceph-hot-storage/hieudd/robocasa365_assets/`, symlink từ `external/robocasa365/robocasa/models/assets/` |
+| Policy (AAC N sample + DUAC Hutchinson bằng PyTorch) | [pi05_torch.py](flowbased_aac/flowbased_aac/robocasa/pi05_torch.py) |
+| Server (giao thức websocket/msgpack của OpenPI) | [serve.py](flowbased_aac/flowbased_aac/robocasa/serve.py) |
+| Evaluator (env wrapper chính thức `lerobot.envs.robocasa.RoboCasaEnv`) | [eval_robocasa.py](flowbased_aac/flowbased_aac/robocasa/eval_robocasa.py) |
+| Self-test (không cần GPU) | [selftest.py](flowbased_aac/flowbased_aac/robocasa/selftest.py) |
+| Runner | `tools/run_robocasa_jobs.sh`, job ở `jobs/robocasa_*.txt` |
+
+**Lưu ý về dữ liệu.** Bản checkpoint trên ceph-cold (`/mnt/ceph-cold-storage/temporal/hactt13/.../checkpoints/lerobot/pi05_robocasa`) **bị hỏng**. File `policy_preprocessor_step_3_normalizer_processor.safetensors` toàn byte 0, và sha256 của `model.safetensors` không khớp với Hugging Face. Repo này dùng bản tải lại.
+
+### 7.2 Quy ước (theo LeRobot)
+- **Action** `[base_motion 0:4, control_mode 4, eef_pos 5:8, eef_rot 8:11, gripper 11]`. **State** `[base_pos 3, base_quat 4, eef_pos_rel 3, eef_quat_rel 4, gripper_qpos 2]`.
+- **Tiền xử lý:** chuẩn hoá MEAN_STD, state rời rạc hoá 256 bin vào prompt `Task: …, State: …;\nAction: `. Tokenizer SentencePiece PaliGemma có BOS, pad tới 200 token. Không dùng tokenizer HF `google/paligemma-3b-pt-224` vì repo đó bị gated; hai bên dùng cùng bộ từ vựng.
+- **Episode:** độ dài bằng horizon của task trong registry RoboCasa. Seed của trial k là `--seed + k`, giống nhau cho mọi arm. Thành công tính theo `info["is_success"]` của env.
+- **AAC:** gọi selector chính thức trên phần cánh tay `[pos, rot, gripper]`. Các chiều base và mode vẫn được thực thi nhưng không vào entropy hay ξ. Action chạy là sample 0.
+- **DUAC:** τ = 0.9 (bước Euler thứ 9 trong 10), K = 40 probe Rademacher trên 12 chiều action thật. Vết khối được ước lượng bằng vector-Jacobian product, `E[εᵀ(Jᵀε)]ᵢ = Tr(J_ii)`, với K probe xử lý chung trong một batch. U theo phương trình 6 với D = 12. h = max(h_unc, ξ).
+
+### 7.3 Đã kiểm (2026-11-04)
+- `selftest.py`: U khớp giá trị chính xác của field tuyến tính (sai số khoảng 1e-4). Dấu và mask padding đúng; chunk trùng tích phân Euler thường; AAC trả N sample với noise khác nhau. Mọi arm chạy được ở dry-run.
+- Model thật (chạy trên CPU): nạp đủ key, DUAC trả `(50, 12)` cùng U và divergence, AAC trả `(N, 50, 12)`.
+- Env: `atomic_seen` `OpenDrawer` cùng 4/16 task `composite_seen` (`DeliverStraw`, `KettleBoiling`, `PackIdenticalLunches`, `WashLettuce`) chạy được với asset lightwheel. 12 task còn lại cần bộ objaverse/aigen (dùng `--obj-registries objaverse,lightwheel,aigen`).
+- Tốc độ mô phỏng khoảng 8–9 bước/s mỗi client (Mesa CPU, 3 camera). Một episode composite 2.250 bước mất khoảng 4–5 phút.
+- **Chưa chạy trên GPU**, vì GPU đang bận với Track A. Server cần khoảng 9.5 GB VRAM, cộng thêm phần backward của DUAC với K = 40.
+
+### 7.4 Nhóm task (RoboCasa365 registry)
+| Nhóm | Task | Horizon trung vị / tối đa |
+|---|---|---|
+| `atomic_seen` | 18 | 600 / 1.050 |
+| `composite_seen` | 16 | **2.250 / 4.350** |
+| `composite_unseen` | 16 | 2.550 / 4.350 |
+
+### 7.5 Chạy
 ```bash
-./.venv-openpi/bin/python flowbased_aac/duac.py serve-pi05 \
-  --config pi05_libero \
-  --checkpoint-dir checkpoints/openpi/openpi-assets/checkpoints/pi05_libero \
-  --port 8000 \
-  --tau 0.9 \
-  --num-probes 40 \
-  --alpha 3.0
+bash tools/setup_robocasa_env.sh                                  # tạo .venv-robocasa (chỉ lần đầu)
+.venv-robocasa/bin/python flowbased_aac/flowbased_aac/robocasa/selftest.py
+# smoke test (Bước 0.4): 4 task composite x 2 trial; DUAC + Fixed-10/25/50, rồi AAC
+bash tools/run_robocasa_jobs.sh duac jobs/robocasa_smoke_duac.txt outputs/robocasa/smoke/logs 1 4
+bash tools/run_robocasa_jobs.sh aac  jobs/robocasa_smoke_aac.txt  outputs/robocasa/smoke/logs 1 2
 ```
-*(Đợi dòng thông báo `[duac.py serve-pi05] Serving pi05_libero ... on 127.0.0.1:8000` rồi chạy Terminal 2).*
-
-#### Terminal 2 (Client đánh giá LIBERO — chạy lần lượt):
+Lệnh rời:
 ```bash
-# [Smoke Test - 2 phút] Chạy thử 1 trial x 2 tasks để xác nhận GPU + MuJoCo + WebSocket hoạt động:
-./.venv-libero/bin/python flowbased_aac/duac.py eval-libero \
-  --suite libero_10 --port 8000 --num-trials 1 --task-ids 0,1 --seed 7 \
-  --state-bank --output-dir outputs/smoke_duac
-
-# [Arm 1/6] DUAC (tau=0.9, K=40, alpha=3.0, 500 episodes, lưu state_bank & video)
-./.venv-libero/bin/python flowbased_aac/duac.py eval-libero \
-  --suite libero_10 --port 8000 --num-trials 50 --seed 7 \
-  --alpha 3.0 --tau 0.9 --num-probes 40 \
-  --state-bank --save-videos \
-  --output-dir outputs/pi05/libero_10/duac
-
-# [Arm 2/6] Fixed-10 (Baseline mặc định h=10, 500 episodes)
-./.venv-libero/bin/python flowbased_aac/duac.py eval-libero \
-  --suite libero_10 --port 8000 --num-trials 50 --seed 7 \
-  --fixed-horizon 10 --no-state-bank --save-videos \
-  --output-dir outputs/pi05/libero_10/fixed_10
-
-# [Arm 3/6] Fixed-8 (Đối chứng khớp horizon trung bình của DUAC, 500 episodes)
-./.venv-libero/bin/python flowbased_aac/duac.py eval-libero \
-  --suite libero_10 --port 8000 --num-trials 50 --seed 7 \
-  --fixed-horizon 8 --no-state-bank --no-save-videos \
-  --output-dir outputs/pi05/libero_10/fixed_8
-
-# [Arm 4/6] Fixed-5 (Baseline replan dày h=5, 500 episodes)
-./.venv-libero/bin/python flowbased_aac/duac.py eval-libero \
-  --suite libero_10 --port 8000 --num-trials 50 --seed 7 \
-  --fixed-horizon 5 --no-state-bank --no-save-videos \
-  --output-dir outputs/pi05/libero_10/fixed_5
-
-# [Arm 5/6] Random-h (Đối chứng bốc ngẫu nhiên h từ phân phối của DUAC, 500 episodes)
-./.venv-libero/bin/python flowbased_aac/duac.py eval-libero \
-  --suite libero_10 --port 8000 --num-trials 50 --seed 7 \
-  --random-horizon-from outputs/pi05/libero_10/duac/decisions.csv \
-  --no-state-bank --no-save-videos \
-  --output-dir outputs/pi05/libero_10/random_h
+.venv-robocasa/bin/python flowbased_aac/flowbased_aac/robocasa/serve.py --mode duac --port 8100      # hoặc --mode aac --n-samples 20 --port 8120
+MUJOCO_GL=egl MUJOCO_EGL_DEVICE_ID=1 __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json \
+  .venv-robocasa/bin/python flowbased_aac/flowbased_aac/robocasa/eval_robocasa.py --tasks WashLettuce --trials 20 \
+  --port 8100 --state-bank --output-dir outputs/robocasa/WashLettuce/duac            # thêm --fixed-horizon 25, --random-horizon-from ..., --aac-selector gaussian_bernoulli
 ```
+Output: `episodes.csv`, `decisions.csv`, `algo_log.jsonl` (đủ profile 50 bước của AAC/DUAC), `state_bank/*.npz` (MuJoCo state ở mỗi decision, chunk, action đã chạy, 20 sample của AAC hoặc U/divergence của DUAC), và `videos/`.
+
+### 7.6 Việc tiếp theo
+1. Smoke test trên GPU khi Track A xong. Kiểm success khác 0, h có thay đổi, và đo `infer_ms` của DUAC và AAC.
+2. Calibration Fixed-25 trên `composite_seen`, chọn các task có success 20–70%.
+3. Chạy chính: DUAC, AAC, Random-h, Fixed-10/25/50, mỗi task 20 trial (số episode LeRobot khuyến nghị). Ghi vào `manifest.json` thành một track riêng trước khi chạy.
+4. Cân nhắc chọn lại α cho chunk 50, rồi ghi lại trong manifest **trước** khi chạy chính.
 
 ---
 
-### Giai đoạn 4.2 — Chạy Arm 6 (`AAC`) với Server Multi-Sample (Cổng `8015`)
+## 8. BEHAVIOR-1K với `openpi-comet` (để chạy sau)
 
-Bấm `Ctrl+C` ở **Terminal 1** để tắt server cổng `8000`, sau đó khởi động server Multi-Sample ($N=20$) cho AAC:
+**Chưa có gì trên server.** Đây là benchmark dài nhất: 50 task việc nhà, mỗi task gồm nhiều bước con, robot Galaxea R1 hai tay di động.
 
-#### Terminal 1 (Server $\pi_{0.5}$ Multi-Sample $N=20$ — cổng `8015`):
-```bash
-./.venv-openpi/bin/python adaptive_action_chunking/aac.py serve-pi05 \
-  --config pi05_libero \
-  --checkpoint_dir checkpoints/openpi/openpi-assets/checkpoints/pi05_libero \
-  --port 8015 \
-  --n_samples 20 \
-  --seed 0
-```
+| Thành phần | Nguồn |
+|---|---|
+| Code policy | [mli0603/openpi-comet](https://github.com/mli0603/openpi-comet), fork OpenPI (JAX), hạng 2 BEHAVIOR Challenge 2025 ([arXiv 2512.10071](https://arxiv.org/abs/2512.10071)) |
+| Checkpoint π0.5 | `pi05-b1kpt50-cs32` (50 task, chunk 32) và `pi05-b1kpt12-cs32` (12 task), theo model zoo trong README của openpi-comet; weight trên Hugging Face [sunshk/openpi_comet](https://huggingface.co/sunshk/openpi_comet) (bản PyTorch: `sunshk/openpi_comet_pytorch`) |
+| Checkpoint khác | [mafangniu/Behavior-Skill-VLA-Checkpoints](https://huggingface.co/mafangniu/Behavior-Skill-VLA-Checkpoints) (50 và 12 task, task-level hoặc skill-level) |
+| Simulator | BEHAVIOR-1K / OmniGibson trên NVIDIA Isaac Sim, cùng bộ asset BEHAVIOR (dung lượng lớn) |
 
-#### Terminal 2 (Client đánh giá AAC):
-```bash
-# [Arm 6/6] AAC (gaussian_bernoulli, N=20, move_th=3.0, 500 episodes)
-./.venv-libero/bin/python adaptive_action_chunking/aac.py eval-libero \
-  --backbone pi05 \
-  --suite libero_10 \
-  --selector gaussian_bernoulli \
-  --trials 50 \
-  --seed 7 \
-  --move_th 3.0 \
-  --port 8015 \
-  --official_openpi_protocol \
-  --videos \
-  --out_dir outputs/pi05/libero_10/aac
-```
+**Các bước dự kiến** (cần kiểm lại phiên bản trong README của openpi-comet và BEHAVIOR-1K trước khi cài):
+1. Kiểm phần cứng và quyền: Isaac Sim cần driver NVIDIA phù hợp và cài được không cần root; kiểm dung lượng ổ (asset BEHAVIOR lớn, SSD còn khoảng 107 GB).
+2. Cài BEHAVIOR-1K/OmniGibson vào một env riêng (ví dụ `.venv-behavior`), tải asset về hot storage.
+3. Clone openpi-comet vào `external/openpi-comet`, tải `pi05-b1kpt50-cs32`, chạy evaluator gốc trên 1 task × 1 episode.
+4. Vì là JAX OpenPI nên dùng lại được `make_duac_sampler`, nhưng chunk là 32 và số chiều action khác LIBERO, nên `valid_action_dim` phải đặt lại. AAC cần server N sample.
+5. Chi phí: theo một model card cộng đồng, episode thất bại có thể mất khoảng 30 phút. Phải đo ở smoke test trước khi lên kế hoạch số trial.
 
----
-
-## 5. Bước 4: Phân Tích Thống Kê & Xuất Báo Cáo (`outputs/REPORT.md`)
-
-Sau khi hoàn tất cả 6 arms trong `outputs/pi05/libero_10/{duac,fixed_10,fixed_8,fixed_5,random_h,aac}`, chạy lệnh:
-
-```bash
-PYTHONPATH=src python3 -m aac_duac.cli analyze \
-  --manifest manifest.json \
-  --output-dir outputs/analysis_report
-```
-
-Kết quả đầu ra tự động gồm:
-1. **`outputs/REPORT.md`** & **`outputs/analysis_report/o_long_report.md`**: Báo cáo Markdown hoàn chỉnh gồm kết luận tự động theo quy tắc Mục 5 (`Adaptive work` / `Không work` / `Chưa kết luận được`) và toàn bộ bảng **T1, T2, T3, T4, T5, T6**.
-2. **`outputs/analysis_report/o_long_report.json`**: File JSON chứa toàn bộ số liệu thống kê (Wilson CI, Exact McNemar, 5,000-lần Cluster Bootstrap, Holm-Bonferroni, phân rã theo Subgoal 1 & 2, và độ nhạy $\alpha$).
+Theo mục 2.7 của task, mỗi benchmark thêm vào là một track riêng và phải ghi vào `manifest.json` trước khi chạy chính.

@@ -1,12 +1,21 @@
-"""DUAC LIBERO evaluator implementing `docs/task3010.md` (O-LONG specification).
+"""One LIBERO / LIBERO-PRO evaluator for every O-LONG Track A arm (docs/task3010.md).
 
-Implements:
-  - Step 0.1: `suite_step_budget_name()` regex `^(libero_(10|90|goal|spatial|object))_with_.+$` -> 520 active steps.
-  - Step 0.2: Per-step BDDL goal predicate tracking (`inner._eval_predicate(g)` after every `env.step`),
-    recording `first_true_step` for each predicate in `subgoals.csv`.
-  - Step 0.3: `--fixed-horizon` (5, 8, 10) and `--random-horizon-from <decisions.csv>` (Random-h).
-  - Section 4.2: Exact schemas for `episodes.csv`, `decisions.csv` (including `h_executed`, `h_method`,
-    `move_lower_bound`, `infer_ms`, `gripper_toggle`), `subgoals.csv`, and `state_bank/task{TT}_trial{KK}.npz`.
+Arms
+  duac      DUAC server (``duac.py serve-pi05``), h = max(h_unc, xi)
+  fixed_k   same server, h = k (DUAC's proposal is still logged as h_method)
+  random_h  same server, h drawn from the h distribution of a DUAC run (``--random-horizon-from``)
+  aac       multi-sample server (``aac.py serve-pi05``), official AAC selector, executes sample 0
+
+Protocol (reference evaluator of hactt13 / official OpenPI LIBERO example)
+  OffScreenRenderEnv 256x256, env.seed(seed), init state = trial id, 10 dummy wait steps, then
+  ``max_steps`` (520 for libero_10) policy steps; raw images are sent and the server resizes to 224.
+
+Step 0.1  ``libero_<base>_with_*`` suites use the base suite's step budget and are loaded from
+          LIBERO-PRO (``external/LIBERO-PRO``); unknown suites or too few init states raise.
+Step 0.2  every goal predicate of the BDDL problem is evaluated after every ``env.step``; the
+          first step at which it holds is written to ``subgoals.csv``.
+State bank  per-step MuJoCo state, gripper command, warm start, executed actions and chunks
+          (same format as the reference ``--state-bank``), so episodes can be restored/branched.
 """
 
 from __future__ import annotations
@@ -18,12 +27,17 @@ import os
 from pathlib import Path
 import random
 import re
+import sys
 import time
-import zipfile
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
-from .duac_policy import DUACConfig, DUACDecisionResult, select_duac_horizon
+from .duac_policy import DUACConfig, select_duac_horizon
 
+WORKSPACE_ROOT = Path(__file__).resolve().parents[2]
+LIBERO_ROOTS = {
+    "libero": (WORKSPACE_ROOT / "external" / "LIBERO", WORKSPACE_ROOT / ".libero"),
+    "liberopro": (WORKSPACE_ROOT / "external" / "LIBERO-PRO", WORKSPACE_ROOT / ".libero-pro"),
+}
 
 SUITE_MAX_STEPS: Dict[str, int] = {
     "libero_spatial": 220,
@@ -32,276 +46,267 @@ SUITE_MAX_STEPS: Dict[str, int] = {
     "libero_10": 520,
     "libero_90": 400,
 }
+CLEAN_SUITES = set(SUITE_MAX_STEPS)
+NUM_STEPS_WAIT = 10
+ENV_RESOLUTION = 256
+DUMMY_ACTION = [0.0] * 6 + [-1.0]
+CHUNK_LOG_LEN = 10  # pi0.5 LIBERO chunk H = 10
 
-# Exact columns matching `docs/task3010.md` Section 4.2 + full metadata
 EPISODES_CSV_COLUMNS = [
-    "suite",
-    "task_id",
-    "trial_id",
-    "arm",
-    "success",
-    "end_step",
-    "n_decisions",
-    "mean_h",
-    "wall_s",
-    "method",
-    "backbone",
-    "benchmark",
-    "perturbation",
-    "task_name",
-    "episode_id",
-    "init_state_id",
-    "seed",
-    "env_steps",
-    "num_decisions",
-    "wall_time_s",
-    "forward_passes",
-    "jvp_probes",
+    "suite", "task_id", "trial_id", "arm", "success", "end_step", "n_decisions", "mean_h", "wall_s",
+    "task_name", "instruction", "benchmark", "perturbation", "seed",
 ]
+DECISIONS_CSV_COLUMNS = (
+    ["task_id", "trial_id", "decision_id", "sim_step", "h_executed", "h_method", "h_unc",
+     "move_lower_bound", "infer_ms", "roundtrip_ms", "gripper_toggle", "arm", "suite"]
+    + [f"u_step_{j}" for j in range(1, CHUNK_LOG_LEN + 1)]
+    + [f"u_prefix_{j}" for j in range(1, CHUNK_LOG_LEN + 1)]
+    + [f"m_step_{j}" for j in range(1, CHUNK_LOG_LEN + 1)]
+)
+SUBGOALS_CSV_COLUMNS = ["task_id", "trial_id", "arm", "predicate_idx", "predicate", "first_true_step"]
 
-DECISIONS_CSV_COLUMNS = [
-    "task_id",
-    "trial_id",
-    "decision_id",
-    "sim_step",
-    "h_executed",
-    "h_method",
-    "move_lower_bound",
-    "infer_ms",
-    "gripper_toggle",
-    "method",
-    "backbone",
-    "suite",
-    "episode_id",
-    "decision_idx",
-    "env_step",
-    "h_selected",
-    "h_unc",
-    "xi",
-    "u_step_1",
-    "u_step_2",
-    "u_step_3",
-    "u_step_4",
-    "u_step_5",
-    "u_step_6",
-    "u_step_7",
-    "u_step_8",
-    "u_step_9",
-    "u_step_10",
-    "u_prefix_1",
-    "u_prefix_2",
-    "u_prefix_3",
-    "u_prefix_4",
-    "u_prefix_5",
-    "u_prefix_6",
-    "u_prefix_7",
-    "u_prefix_8",
-    "u_prefix_9",
-    "u_prefix_10",
-    "m_step_1",
-    "m_step_2",
-    "m_step_3",
-    "m_step_4",
-    "m_step_5",
-    "m_step_6",
-    "m_step_7",
-    "m_step_8",
-    "m_step_9",
-    "m_step_10",
-]
+# Arguments that must match for a resumed run to remain one experiment.
+RESUME_CHECKED_ARGS = (
+    "suite", "arm", "seed", "trials", "max_steps", "alpha", "tau", "num_probes", "fixed_horizon",
+    "random_horizon_from", "selector", "libero_variant", "trial_ids",
+)
 
-# Section 4.2: 1 goal predicate x 1 episode
-SUBGOALS_CSV_COLUMNS = [
-    "task_id",
-    "trial_id",
-    "arm",
-    "predicate_idx",
-    "predicate",
-    "first_true_step",
-]
+PRO_LANGUAGE_VARIANT = re.compile(r"^libero_(spatial|object|goal|10)_(lan|object|swap|task|env)$")
+
+
+# --------------------------------------------------------------------------- suite helpers
 
 
 def suite_step_budget_name(suite_name: str) -> str:
-    """Normalize a suite name to its base LIBERO suite for step-budget lookup (Step 0.1)."""
+    """Step 0.1: map ``libero_10_with_mug`` (or ``*_temp_x0.2``) to the base suite of its step budget."""
+
     s = suite_name.strip().lower()
-    m = re.match(r"^(libero_(10|90|goal|spatial|object))_with_.+$", s)
-    if m:
-        return m.group(1)
-    m_temp = re.match(r"^(libero_(10|90|goal|spatial|object))_temp_.+$", s)
-    if m_temp:
-        return m_temp.group(1)
-    if s in ("libero_long", "libero-10", "libero10"):
-        return "libero_10"
+    for pattern in (
+        r"^(libero_(?:10|90|goal|spatial|object))_with_.+$",
+        r"^(libero_(?:10|90|goal|spatial|object))_temp_[xy][0-9.]+$",
+        r"^(libero_(?:10|goal|spatial|object))_(?:lan|object|swap|task|env)$",
+    ):
+        match = re.match(pattern, s)
+        if match:
+            return match.group(1)
     return s
 
 
 def max_steps_for_suite(suite_name: str) -> int:
-    """Return official active step budget for a LIBERO suite (520 for libero_10)."""
     base = suite_step_budget_name(suite_name)
     if base not in SUITE_MAX_STEPS:
-        raise ValueError(f"Unsupported suite {suite_name!r} (normalized: {base!r}).")
+        raise ValueError(f"unsupported suite {suite_name!r} (base {base!r})")
     return SUITE_MAX_STEPS[base]
 
 
 def parse_perturbation_from_suite(suite_name: str) -> str:
-    """Extract perturbation label from suite name (`clean` for standard LIBERO suites)."""
     s = suite_name.strip().lower()
-    m = re.match(r"^libero_(?:10|90|goal|spatial|object)_with_(.+)$", s)
-    if m:
-        return m.group(1)
-    return "clean"
+    if s in CLEAN_SUITES:
+        return "clean"
+    base = suite_step_budget_name(s)
+    return s[len(base) + 1 :] if s.startswith(base + "_") else s
+
+
+def libero_variant_for(suite_name: str, force_pro: bool = False) -> str:
+    """LIBERO-PRO is needed for every non-clean suite; ``force_pro`` also uses it for clean suites."""
+
+    return "liberopro" if force_pro or suite_name not in CLEAN_SUITES else "libero"
+
+
+def activate_libero(variant: str) -> None:
+    """Point ``import libero`` and its config at LIBERO or LIBERO-PRO (must run before the import)."""
+
+    source, config_dir = LIBERO_ROOTS[variant]
+    if not (source / "libero" / "libero").exists():
+        raise FileNotFoundError(f"{variant} source not found at {source}")
+    if not (config_dir / "config.yaml").exists():
+        raise FileNotFoundError(f"missing {config_dir / 'config.yaml'} (run tools/download_libero.py)")
+    loaded = sys.modules.get("libero")
+    if loaded is not None:
+        loaded_from = Path(getattr(loaded, "__file__", "") or list(loaded.__path__)[0]).resolve()
+        if source.resolve() not in loaded_from.parents:
+            raise RuntimeError(f"libero already imported from {loaded_from}; cannot switch to {variant} in-process")
+        return
+    os.environ["LIBERO_CONFIG_PATH"] = str(config_dir)
+    sys.path.insert(0, str(source))
+    import libero.libero
+
+    loaded_from = Path(libero.libero.__file__).resolve()
+    if source.resolve() not in loaded_from.parents:
+        raise RuntimeError(
+            f"wanted {variant} from {source} but imported {loaded_from}; "
+            f"make sure {source / 'libero' / '__init__.py'} exists"
+        )
+
+
+# --------------------------------------------------------------------------- step 0.2: subgoals
 
 
 def get_libero_goal_predicates(env: Any) -> List[Any]:
-    """Return list of BDDL goal_state predicates from a LIBERO environment."""
     inner = getattr(env, "env", env)
     parsed = getattr(inner, "parsed_problem", None)
-    if not isinstance(parsed, dict):
-        return []
-    return list(parsed.get("goal_state", []))
+    return list(parsed.get("goal_state", [])) if isinstance(parsed, dict) else []
 
 
 def eval_libero_goal_predicates(env: Any) -> Tuple[List[str], List[bool]]:
-    """Evaluate each BDDL goal predicate after `env.step` (Step 0.2 of `docs/task3010.md`).
+    """Evaluate each BDDL goal predicate (``inner._eval_predicate`` as in ``_check_success``)."""
 
-    Returns:
-        (predicate_strings, flags)
-    """
     inner = getattr(env, "env", env)
     goal_state = get_libero_goal_predicates(env)
-    if not goal_state or not hasattr(inner, "_eval_predicate"):
-        return [], []
-    pred_strs: List[str] = []
-    flags: List[bool] = []
-    for g in goal_state:
-        pred_strs.append(" ".join(str(x) for x in g) if isinstance(g, (list, tuple)) else str(g))
-        try:
-            flags.append(bool(inner._eval_predicate(g)))
-        except Exception:
-            flags.append(False)
-    return pred_strs, flags
+    if not goal_state:
+        raise RuntimeError("environment exposes no BDDL goal_state; cannot log subgoals")
+    names = [" ".join(str(x) for x in g) if isinstance(g, (list, tuple)) else str(g) for g in goal_state]
+    flags = [bool(inner._eval_predicate(g)) for g in goal_state]
+    return names, flags
 
 
 def evaluate_libero_subgoals(env: Any) -> Tuple[int, int, str]:
-    """Helper returning (num_subgoals, num_satisfied, subgoal_bits) for a LIBERO environment."""
     _, flags = eval_libero_goal_predicates(env)
-    n_sub = len(flags)
-    n_sat = sum(1 for f in flags if f)
-    bits = "".join("1" if f else "0" for f in flags)
-    return n_sub, n_sat, bits
+    return len(flags), sum(flags), "".join("1" if f else "0" for f in flags)
+
+
+# --------------------------------------------------------------------------- helpers
 
 
 def load_random_horizon_pools(decisions_csv_path: Path) -> Tuple[Dict[int, List[int]], List[int]]:
-    """Load empirical h_executed / h_selected pools per task_id from a DUAC decisions.csv (Step 0.3)."""
+    """Empirical DUAC executed-horizon distribution, per task and pooled (Random-h arm)."""
+
     per_task: Dict[int, List[int]] = {}
-    global_pool: List[int] = []
-    with open(decisions_csv_path, "r", encoding="utf-8", newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            tid = int(row["task_id"])
-            h_str = row.get("h_executed") or row.get("h_selected")
-            if h_str is None:
-                continue
-            h_val = int(float(h_str))
-            per_task.setdefault(tid, []).append(h_val)
-            global_pool.append(h_val)
-    if not global_pool:
-        raise ValueError(f"No decision rows found in {decisions_csv_path}")
-    return per_task, global_pool
+    pooled: List[int] = []
+    with open(decisions_csv_path, newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            h = int(float(row["h_executed"]))
+            per_task.setdefault(int(row["task_id"]), []).append(h)
+            pooled.append(h)
+    if not pooled:
+        raise ValueError(f"no decisions in {decisions_csv_path}")
+    return per_task, pooled
 
 
-def _pad_or_trim_10(vals: Sequence[float]) -> List[float]:
-    out = [float(x) for x in vals[:10]]
-    while len(out) < 10:
-        out.append(out[-1] if out else 0.0)
-    return out
+def _pad_or_trim_10(values: Sequence[float]) -> List[float]:
+    out = [float(x) for x in list(values)[:CHUNK_LOG_LEN]]
+    return out + [float("nan")] * (CHUNK_LOG_LEN - len(out))
 
 
 def _has_gripper_toggle(actions: Sequence[Sequence[float]], h_exec: int) -> int:
-    """Return 1 if gripper command changes sign within the executed prefix (or full 10-step chunk)."""
-    if not actions:
-        return 0
-    g0 = 1 if float(actions[0][6]) >= 0.0 else -1
-    limit = min(len(actions), max(h_exec, 2))
-    for t in range(1, limit):
-        gt = 1 if float(actions[t][6]) >= 0.0 else -1
-        if gt != g0:
-            return 1
-    return 0
+    """1 if the binarized gripper command changes within the executed prefix."""
 
-
-def write_npz_without_numpy(path: Path, arrays: Dict[str, Tuple[Tuple[int, ...], List[float]]]) -> None:
-    """Fallback writer producing a valid `.npz` (ZIP with `.npy` entries, PK magic bytes) when numpy is absent."""
-    import struct
-
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(path, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
-        for name, (shape, flat_vals) in arrays.items():
-            header_dict = f"{{'descr': '<f4', 'fortran_order': False, 'shape': {shape}, }}"
-            magic = b"\x93NUMPY\x01\x00"
-            pad_len = (16 - ((len(magic) + 2 + len(header_dict) + 1) % 16)) % 16
-            header_bytes = (header_dict + (" " * pad_len) + "\n").encode("latin1")
-            header_len = struct.pack("<H", len(header_bytes))
-            payload = struct.pack(f"<{len(flat_vals)}f", *[float(v) for v in flat_vals])
-            zf.writestr(f"{name}.npy", magic + header_len + header_bytes + payload)
-
-
-def save_state_bank_entry(
-    path: Path,
-    u_step_rows: List[List[float]],
-    u_prefix_rows: List[List[float]],
-    m_step_rows: List[List[float]],
-    h_executed_rows: List[int],
-    h_method_rows: List[int],
-    xi_rows: List[int],
-    sim_step_rows: List[int],
-) -> None:
-    """Save per-episode DUAC decision arrays to compressed `.npz` (`state_bank/task{TT}_trial{KK}.npz`)."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        import numpy as np
-
-        np.savez_compressed(
-            path,
-            u_step=np.asarray(u_step_rows, dtype=np.float32),
-            u_prefix=np.asarray(u_prefix_rows, dtype=np.float32),
-            m_step=np.asarray(m_step_rows, dtype=np.float32),
-            h_executed=np.asarray(h_executed_rows, dtype=np.int32),
-            h_selected=np.asarray(h_executed_rows, dtype=np.int32),
-            h_method=np.asarray(h_method_rows, dtype=np.int32),
-            xi=np.asarray(xi_rows, dtype=np.int32),
-            sim_step=np.asarray(sim_step_rows, dtype=np.int32),
-        )
-    except ImportError:
-        n_dec = len(h_executed_rows)
-        h_dim = len(u_step_rows[0]) if u_step_rows else 10
-        write_npz_without_numpy(
-            path,
-            {
-                "u_step": ((n_dec, h_dim), [x for r in u_step_rows for x in r]),
-                "u_prefix": ((n_dec, h_dim), [x for r in u_prefix_rows for x in r]),
-                "m_step": ((n_dec, h_dim), [x for r in m_step_rows for x in r]),
-                "h_executed": ((n_dec,), [float(x) for x in h_executed_rows]),
-                "h_selected": ((n_dec,), [float(x) for x in h_executed_rows]),
-                "h_method": ((n_dec,), [float(x) for x in h_method_rows]),
-                "xi": ((n_dec,), [float(x) for x in xi_rows]),
-                "sim_step": ((n_dec,), [float(x) for x in sim_step_rows]),
-            },
-        )
+    signs = [float(a[6]) >= 0.0 for a in list(actions)[: max(h_exec, 1)]]
+    return int(any(s != signs[0] for s in signs))
 
 
 def _quat2axisangle(quat: Sequence[float]) -> List[float]:
-    """Convert (x, y, z, w) quaternion from robosuite obs to 3D axis-angle vector."""
-    x, y, z, w = float(quat[0]), float(quat[1]), float(quat[2]), float(quat[3])
-    if w > 1.0:
-        w = 1.0
-    elif w < -1.0:
-        w = -1.0
+    x, y, z, w = (float(q) for q in quat)
+    w = min(1.0, max(-1.0, w))
     den = math.sqrt(max(1.0 - w * w, 0.0))
     if math.isclose(den, 0.0):
         return [0.0, 0.0, 0.0]
     angle = 2.0 * math.acos(w)
-    return [(x * angle) / den, (y * angle) / den, (z * angle) / den]
+    return [x * angle / den, y * angle / den, z * angle / den]
+
+
+def save_state_bank(path: Path, record: Dict[str, Any]) -> None:
+    """Reference state-bank format: ``states[t]`` is the MuJoCo state the observation at step t was
+    rendered from and ``actions[t]`` the action applied at step t (wait steps included)."""
+
+    import numpy as np
+
+    arrays = {
+        "states": np.asarray(record["states"], dtype=np.float64),
+        "gripper_actions": np.asarray(record["gripper_actions"], dtype=np.float64),
+        "qacc_warmstart": np.asarray(record["qacc_warmstart"], dtype=np.float64),
+        "initial_joint": np.asarray(record["initial_joint"], dtype=np.float64),
+        "actions": np.asarray(record["actions"], dtype=np.float64).reshape(-1, 7),
+        "decision_steps": np.asarray(record["decision_steps"], dtype=np.int32),
+        "chunks": np.asarray(record["chunks"], dtype=np.float32),
+        "normalized_chunks": np.asarray(record["normalized_chunks"], dtype=np.float32),
+        "chunk_sizes": np.asarray(record["chunk_sizes"], dtype=np.int32),
+        "num_steps_wait": np.asarray(NUM_STEPS_WAIT, dtype=np.int32),
+        "success": np.asarray(record["success"]),
+    }
+    for key in ("aac_samples", "aac_normalized_samples", "duac_uncertainty", "duac_divergence"):
+        if record.get(key):
+            arrays[key] = np.asarray(record[key], dtype=np.float32)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(path, **arrays)
+
+
+def _read_complete_rows(path: Path) -> List[Dict[str, str]]:
+    if not path.exists():
+        return []
+    with open(path, newline="", encoding="utf-8") as handle:
+        return [r for r in csv.DictReader(handle) if None not in r and None not in r.values()]
+
+
+def _rewrite(path: Path, columns: List[str], rows: List[Dict[str, Any]]) -> None:
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=columns)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def _prepare_resume(out_dir: Path) -> Dict[Tuple[int, int], Dict[str, str]]:
+    """Keep finished episodes only; drop decisions/subgoals of the episode that was interrupted."""
+
+    episodes = _read_complete_rows(out_dir / "episodes.csv")
+    done = {(int(r["task_id"]), int(r["trial_id"])): r for r in episodes}
+    for name, columns in (("decisions.csv", DECISIONS_CSV_COLUMNS), ("subgoals.csv", SUBGOALS_CSV_COLUMNS)):
+        rows = [r for r in _read_complete_rows(out_dir / name) if (int(r["task_id"]), int(r["trial_id"])) in done]
+        _rewrite(out_dir / name, columns, rows)
+    _rewrite(out_dir / "episodes.csv", EPISODES_CSV_COLUMNS, list(done.values()))
+    log = out_dir / "algo_log.jsonl"
+    if log.exists():
+        kept = []
+        for line in log.read_text(encoding="utf-8").splitlines():
+            try:
+                rec = json.loads(line)
+            except json.JSONDecodeError:  # line cut by the interruption
+                continue
+            if (int(rec["task_id"]), int(rec["trial_id"])) in done:
+                kept.append(line)
+        log.write_text("".join(k + "\n" for k in kept), encoding="utf-8")
+    return done
+
+
+# --------------------------------------------------------------------------- simulator backend
+
+
+class LiberoBackend:
+    """Real LIBERO / LIBERO-PRO tasks, environments and the websocket policy client."""
+
+    def __init__(self, suite: str, variant: str, host: str, port: int):
+        activate_libero(variant)
+        from libero.libero import benchmark, get_libero_path
+        from libero.libero.envs import OffScreenRenderEnv
+        from openpi_client import websocket_client_policy
+
+        registry = benchmark.get_benchmark_dict()
+        if suite not in registry:
+            raise ValueError(f"suite {suite!r} is not registered in {variant} ({LIBERO_ROOTS[variant][0]})")
+        self.suite = suite
+        self.task_suite = registry[suite]()
+        self._bddl_root = Path(get_libero_path("bddl_files"))
+        self._env_cls = OffScreenRenderEnv
+        self.client = websocket_client_policy.WebsocketClientPolicy(host=host, port=port)
+
+    def init_states(self, task_id: int):
+        if "_temp_" in self.suite:
+            return self.task_suite.get_task_init_states(task_id, self.suite)
+        return self.task_suite.get_task_init_states(task_id)
+
+    def make_env(self, task, seed: int):
+        folder = self.suite if "_temp_" in self.suite else task.problem_folder
+        env = self._env_cls(
+            bddl_file_name=str(self._bddl_root / folder / task.bddl_file),
+            camera_heights=ENV_RESOLUTION,
+            camera_widths=ENV_RESOLUTION,
+        )
+        env.seed(seed)
+        instruction = env.language_instruction if PRO_LANGUAGE_VARIANT.match(self.suite) else task.language
+        return env, instruction
+
+
+# --------------------------------------------------------------------------- evaluation loop
 
 
 def run_libero_evaluation(
@@ -315,557 +320,276 @@ def run_libero_evaluation(
     num_probes: int = 40,
     fixed_horizon: Optional[int] = None,
     random_horizon_from: Optional[Path] = None,
+    aac_selector: Optional[str] = None,
     state_bank: bool = False,
     save_videos: bool = False,
+    video_trials: int = 2,
     output_dir: Path = Path("outputs/A/libero_10/duac"),
     resume_dir: Optional[Path] = None,
     task_ids: Optional[List[int]] = None,
+    trial_ids: Optional[List[int]] = None,
+    force_libero_pro: bool = False,
+    max_steps: Optional[int] = None,
     synthetic_dry_run: bool = False,
+    backend: Any = None,
 ) -> Dict[str, Any]:
-    """Run DUAC (or Fixed-h / Random-h) evaluation on LIBERO and write `docs/task3010.md` Section 4 artifacts."""
-    out_dir = (resume_dir if resume_dir is not None else output_dir).resolve()
-    out_dir.mkdir(parents=True, exist_ok=True)
-    state_bank_dir = out_dir / "state_bank"
-    if state_bank:
-        state_bank_dir.mkdir(parents=True, exist_ok=True)
-
-    base_suite = suite_step_budget_name(suite)
-    max_steps = max_steps_for_suite(suite)
-    perturbation = parse_perturbation_from_suite(suite)
-    benchmark_name = "libero" if perturbation == "clean" else "liberopro"
-
-    random_pools_by_task: Dict[int, List[int]] = {}
-    random_pool_global: List[int] = []
-    if random_horizon_from is not None:
-        random_pools_by_task, random_pool_global = load_random_horizon_pools(Path(random_horizon_from))
-
-    if fixed_horizon is not None:
-        method_name = f"fixed_{fixed_horizon}"
-    elif random_horizon_from is not None:
-        method_name = "random_h"
-    else:
-        method_name = "duac"
-
-    args_payload = {
-        "arm": method_name,
-        "method": method_name,
-        "backbone": "pi05",
-        "benchmark": benchmark_name,
-        "suite": suite,
-        "base_suite": base_suite,
-        "perturbation": perturbation,
-        "max_steps": max_steps,
-        "host": host,
-        "port": port,
-        "trials": num_trials,
-        "seed": seed,
-        "alpha": alpha,
-        "tau": tau,
-        "num_probes": num_probes,
-        "fixed_horizon": fixed_horizon,
-        "random_horizon_from": str(random_horizon_from) if random_horizon_from else None,
-        "state_bank": state_bank,
-        "save_videos": save_videos,
-        "out_dir": str(out_dir),
-        "synthetic_dry_run": synthetic_dry_run,
-    }
-    (out_dir / "args.json").write_text(json.dumps(args_payload, indent=2), encoding="utf-8")
-
-    episodes_csv_path = out_dir / "episodes.csv"
-    decisions_csv_path = out_dir / "decisions.csv"
-    subgoals_csv_path = out_dir / "subgoals.csv"
-
-    completed_episodes: set[Tuple[int, int]] = set()
-    existing_episode_rows: List[Dict[str, Any]] = []
-    if resume_dir is not None and episodes_csv_path.exists():
-        with open(episodes_csv_path, "r", encoding="utf-8", newline="") as f:
-            for row in csv.DictReader(f):
-                tid = int(row["task_id"])
-                epid = int(row.get("trial_id", row.get("episode_id", 0)))
-                completed_episodes.add((tid, epid))
-                existing_episode_rows.append(row)
-
-    ep_mode = "a" if completed_episodes and episodes_csv_path.exists() else "w"
-    dec_mode = "a" if completed_episodes and decisions_csv_path.exists() else "w"
-    sub_mode = "a" if completed_episodes and subgoals_csv_path.exists() else "w"
-
-    ep_file = open(episodes_csv_path, ep_mode, encoding="utf-8", newline="")
-    dec_file = open(decisions_csv_path, dec_mode, encoding="utf-8", newline="")
-    sub_file = open(subgoals_csv_path, sub_mode, encoding="utf-8", newline="")
-
-    ep_writer = csv.DictWriter(ep_file, fieldnames=EPISODES_CSV_COLUMNS)
-    dec_writer = csv.DictWriter(dec_file, fieldnames=DECISIONS_CSV_COLUMNS)
-    sub_writer = csv.DictWriter(sub_file, fieldnames=SUBGOALS_CSV_COLUMNS)
-
-    if ep_mode == "w":
-        ep_writer.writeheader()
-    if dec_mode == "w":
-        dec_writer.writeheader()
-    if sub_mode == "w":
-        sub_writer.writeheader()
-
-    rng = random.Random(seed)
-
-    if synthetic_dry_run:
-        t_list = task_ids if task_ids is not None else list(range(10 if base_suite == "libero_10" else 2))
-        total_eps = 0
-        total_succ = 0
-        all_h: List[int] = []
-
-        for tid in t_list:
-            t_name = f"{base_suite}_task_{tid:02d}"
-            task_pool = random_pools_by_task.get(tid, random_pool_global) if random_horizon_from else None
-            cfg = DUACConfig(
-                chunk_horizon=10,
-                min_horizon=2,
-                tau=tau,
-                num_probes=num_probes,
-                alpha=alpha,
-                fixed_horizon=fixed_horizon,
-                random_horizon_pool=task_pool,
-                seed=seed + tid,
-            )
-            for ep_idx in range(num_trials):
-                if (tid, ep_idx) in completed_episodes:
-                    continue
-                t0 = time.time()
-                sim_step = 0
-                dec_idx = 0
-                ep_h_list: List[int] = []
-                u_step_rows: List[List[float]] = []
-                u_prefix_rows: List[List[float]] = []
-                m_step_rows: List[List[float]] = []
-                h_exec_rows: List[int] = []
-                h_method_rows: List[int] = []
-                xi_rows: List[int] = []
-                sim_step_rows: List[int] = []
-
-                target_steps = min(max_steps, 48)
-                pred_names = [f"turnon stove_{tid}", f"on moka_pot_{tid} stove_{tid}_region"]
-                first_true: List[Optional[int]] = [None, None]
-
-                while sim_step < target_steps:
-                    t_infer0 = time.time()
-                    jump_at = 6 + ((tid + ep_idx + dec_idx) % 4)
-                    u_step = [
-                        0.12 + 0.015 * j + (0.40 if j >= jump_at else 0.0) + 0.005 * rng.random()
-                        for j in range(10)
-                    ]
-                    grip_flip = (dec_idx == 2) or (dec_idx == 5)
-                    actions = [
-                        [0.35, 0.18, -0.12, 0.04, -0.02, 0.02, (-1.0 if (grip_flip and j >= 4) else 1.0)]
-                        for j in range(10)
-                    ]
-                    res: DUACDecisionResult = select_duac_horizon(
-                        u_step=u_step,
-                        actions=actions,
-                        config=cfg,
-                        rng=rng,
-                    )
-                    infer_ms = max((time.time() - t_infer0) * 1000.0, 0.05)
-                    h_method_proposed = max(res.xi, res.h_unc)
-                    h_exec = res.h_selected
-                    g_toggle = _has_gripper_toggle(actions, h_exec)
-
-                    u10 = _pad_or_trim_10(res.u_step)
-                    up10 = _pad_or_trim_10(res.u_prefix)
-                    m10 = _pad_or_trim_10(res.m_step)
-
-                    dec_row: Dict[str, Any] = {
-                        "task_id": tid,
-                        "trial_id": ep_idx,
-                        "decision_id": dec_idx,
-                        "sim_step": sim_step,
-                        "h_executed": h_exec,
-                        "h_method": h_method_proposed,
-                        "move_lower_bound": res.xi,
-                        "infer_ms": round(infer_ms, 3),
-                        "gripper_toggle": g_toggle,
-                        "method": method_name,
-                        "backbone": "pi05",
-                        "suite": suite,
-                        "episode_id": ep_idx,
-                        "decision_idx": dec_idx,
-                        "env_step": sim_step,
-                        "h_selected": h_exec,
-                        "h_unc": res.h_unc,
-                        "xi": res.xi,
-                    }
-                    for j in range(10):
-                        dec_row[f"u_step_{j+1}"] = round(u10[j], 6)
-                        dec_row[f"u_prefix_{j+1}"] = round(up10[j], 6)
-                        dec_row[f"m_step_{j+1}"] = round(m10[j], 6)
-                    dec_writer.writerow(dec_row)
-
-                    u_step_rows.append(u10)
-                    u_prefix_rows.append(up10)
-                    m_step_rows.append(m10)
-                    h_exec_rows.append(h_exec)
-                    h_method_rows.append(h_method_proposed)
-                    xi_rows.append(res.xi)
-                    sim_step_rows.append(sim_step)
-
-                    for _ in range(h_exec):
-                        if sim_step >= target_steps:
-                            break
-                        sim_step += 1
-                        if first_true[0] is None and sim_step >= target_steps // 3:
-                            first_true[0] = sim_step
-                        if first_true[1] is None and sim_step >= (target_steps * 4) // 5 and ((tid + ep_idx) % 3 != 0):
-                            first_true[1] = sim_step
-
-                    ep_h_list.append(h_exec)
-                    all_h.append(h_exec)
-                    dec_idx += 1
-
-                for p_i, p_str in enumerate(pred_names):
-                    sub_writer.writerow(
-                        {
-                            "task_id": tid,
-                            "trial_id": ep_idx,
-                            "arm": method_name,
-                            "predicate_idx": p_i,
-                            "predicate": p_str,
-                            "first_true_step": "" if first_true[p_i] is None else first_true[p_i],
-                        }
-                    )
-
-                if state_bank:
-                    npz_path = state_bank_dir / f"task{tid:02d}_trial{ep_idx:02d}.npz"
-                    save_state_bank_entry(
-                        npz_path,
-                        u_step_rows,
-                        u_prefix_rows,
-                        m_step_rows,
-                        h_exec_rows,
-                        h_method_rows,
-                        xi_rows,
-                        sim_step_rows,
-                    )
-
-                succ = 1 if (first_true[0] is not None and first_true[1] is not None) else 0
-                total_eps += 1
-                total_succ += succ
-                mean_h = sum(ep_h_list) / max(len(ep_h_list), 1)
-                wall_s = max(time.time() - t0, 1e-4)
-                jvp_per_dec = 0 if (fixed_horizon is not None or random_horizon_from is not None) else num_probes
-
-                ep_writer.writerow(
-                    {
-                        "suite": suite,
-                        "task_id": tid,
-                        "trial_id": ep_idx,
-                        "arm": method_name,
-                        "success": succ,
-                        "end_step": sim_step,
-                        "n_decisions": dec_idx,
-                        "mean_h": round(mean_h, 4),
-                        "wall_s": round(wall_s, 4),
-                        "method": method_name,
-                        "backbone": "pi05",
-                        "benchmark": benchmark_name,
-                        "perturbation": perturbation,
-                        "task_name": t_name,
-                        "episode_id": ep_idx,
-                        "init_state_id": ep_idx,
-                        "seed": seed,
-                        "env_steps": sim_step,
-                        "num_decisions": dec_idx,
-                        "wall_time_s": round(wall_s, 4),
-                        "forward_passes": dec_idx * 10,
-                        "jvp_probes": dec_idx * jvp_per_dec,
-                    }
-                )
-        ep_file.close()
-        dec_file.close()
-        sub_file.close()
-
-        sr = (total_succ / total_eps) if total_eps > 0 else 0.0
-        summary = {
-            "arm": method_name,
-            "method": method_name,
-            "backbone": "pi05",
-            "suite": suite,
-            "base_suite": base_suite,
-            "max_steps": max_steps,
-            "total_episodes": total_eps,
-            "total_successes": total_succ,
-            "success_rate": round(sr, 6),
-            "mean_h": round(sum(all_h) / max(len(all_h), 1), 4),
-            "synthetic_dry_run": True,
-        }
-        (out_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
-        (out_dir / "success_rate.txt").write_text(f"{sr:.6f}\n", encoding="utf-8")
-        return summary
-
-    # Real LIBERO evaluation with OpenPI WebSocket client + Official OpenPI 224x224 protocol
-    from tools.download_libero import configure_and_verify_benchmark
-    os.environ.setdefault("LIBERO_CONFIG_PATH", str(Path(__file__).resolve().parents[2] / ".libero"))
-    configure_and_verify_benchmark(base_suite)
+    """Run one arm on one suite and write args.json, episodes/decisions/subgoals CSVs, summary, state bank."""
 
     import numpy as np
-    from libero.libero import benchmark, get_libero_path
-    from libero.libero.envs import OffScreenRenderEnv
-    from openpi_client import image_tools, websocket_client_policy
 
-    benchmark_dict = benchmark.get_benchmark_dict()
-    if suite in benchmark_dict:
-        task_suite = benchmark_dict[suite]()
-    elif base_suite in benchmark_dict:
-        task_suite = benchmark_dict[base_suite]()
+    if aac_selector is not None:
+        arm = "aac" if aac_selector == "gaussian_bernoulli" else f"aac_{aac_selector}"
+    elif fixed_horizon is not None:
+        if fixed_horizon < 1:
+            raise ValueError("fixed_horizon must be positive")
+        arm = f"fixed_{fixed_horizon}"
+    elif random_horizon_from is not None:
+        arm = "random_h"
     else:
-        raise ValueError(f"Unsupported suite {suite!r} not found in LIBERO benchmark_dict.")
+        arm = "duac"
 
-    client = websocket_client_policy.WebsocketClientPolicy(host=host, port=port)
-    num_tasks = task_suite.n_tasks
-    t_list = task_ids if task_ids is not None else list(range(num_tasks))
+    variant = libero_variant_for(suite, force_libero_pro)
+    max_steps = max_steps or max_steps_for_suite(suite)
+    perturbation = parse_perturbation_from_suite(suite)
+    out_dir = Path(resume_dir if resume_dir is not None else output_dir).resolve()
+    out_dir.mkdir(parents=True, exist_ok=True)
 
-    total_eps = len(existing_episode_rows)
-    total_succ = sum(int(r["success"]) for r in existing_episode_rows)
-    all_h = [float(r["mean_h"]) for r in existing_episode_rows]
-    dummy_action = [0.0] * 6 + [-1.0]
-    num_steps_wait = 10
-    resize_size = 224
+    args_payload = {
+        "suite": suite, "arm": arm, "libero_variant": variant, "seed": seed, "trials": num_trials,
+        "max_steps": max_steps, "num_steps_wait": NUM_STEPS_WAIT, "alpha": alpha, "tau": tau,
+        "num_probes": num_probes, "fixed_horizon": fixed_horizon,
+        "random_horizon_from": str(random_horizon_from) if random_horizon_from else None,
+        "selector": aac_selector, "task_ids": task_ids, "trial_ids": trial_ids, "state_bank": state_bank,
+        "save_videos": save_videos, "video_trials": video_trials, "host": host, "port": port,
+        "synthetic_dry_run": synthetic_dry_run,
+    }
+    completed: Dict[Tuple[int, int], Dict[str, str]] = {}
+    if resume_dir is not None and (out_dir / "args.json").exists():
+        previous = json.loads((out_dir / "args.json").read_text())
+        mismatched = [k for k in RESUME_CHECKED_ARGS if previous.get(k) != args_payload.get(k)]
+        if mismatched:
+            raise ValueError(f"cannot resume {out_dir}: different {', '.join(mismatched)}")
+        completed = _prepare_resume(out_dir)
+    else:
+        if (out_dir / "episodes.csv").exists():
+            raise FileExistsError(f"{out_dir} already has results; use --resume-dir or a new --output-dir")
+        (out_dir / "args.json").write_text(json.dumps(args_payload, indent=2) + "\n")
+        for name, columns in (("episodes.csv", EPISODES_CSV_COLUMNS), ("decisions.csv", DECISIONS_CSV_COLUMNS),
+                              ("subgoals.csv", SUBGOALS_CSV_COLUMNS)):
+            _rewrite(out_dir / name, columns, [])
+
+    if backend is None:
+        if synthetic_dry_run:
+            from .synthetic import SyntheticBackend
+
+            backend = SyntheticBackend(suite, multi_sample=aac_selector is not None)
+        else:
+            backend = LiberoBackend(suite, variant, host, port)
+
+    random_pools: Dict[int, List[int]] = {}
+    random_pool_all: List[int] = []
+    if random_horizon_from is not None:
+        random_pools, random_pool_all = load_random_horizon_pools(Path(random_horizon_from))
+    if aac_selector is not None:
+        from .aac_official import aac_decision
+
+    task_suite = backend.task_suite
+    t_list = task_ids if task_ids is not None else list(range(task_suite.n_tasks))
+    rng = random.Random(seed)
+    np.random.seed(seed)
+
+    def append(name: str, columns: List[str], row: Dict[str, Any]) -> None:
+        with open(out_dir / name, "a", newline="", encoding="utf-8") as handle:
+            csv.DictWriter(handle, fieldnames=columns).writerow(row)
 
     for tid in t_list:
         task = task_suite.get_task(tid)
-        initial_states = task_suite.get_task_init_states(tid)
-        task_description = task.language
-        task_bddl_file = os.path.join(get_libero_path("bddl_files"), task.problem_folder, task.bddl_file)
-        env = OffScreenRenderEnv(
-            bddl_file_name=task_bddl_file,
-            camera_heights=256,
-            camera_widths=256,
-        )
-        env.seed(seed)
-
-        task_pool = random_pools_by_task.get(tid, random_pool_global) if random_horizon_from else None
-        cfg = DUACConfig(
-            chunk_horizon=10,
-            min_horizon=2,
-            tau=tau,
-            num_probes=num_probes,
-            alpha=alpha,
-            fixed_horizon=fixed_horizon,
-            random_horizon_pool=task_pool,
-            seed=seed + tid,
-        )
-
-        n_ep = min(num_trials, len(initial_states))
-        for ep_idx in range(n_ep):
-            if (tid, ep_idx) in completed_episodes:
-                continue
-
-            env.reset()
-            obs = env.set_init_state(initial_states[ep_idx])
-            t = 0
-            done = False
-            dec_idx = 0
-            ep_h_list = []
-            u_step_rows = []
-            u_prefix_rows = []
-            m_step_rows = []
-            h_exec_rows = []
-            h_method_rows = []
-            xi_rows = []
-            sim_step_rows = []
-            t0 = time.time()
-
-            while t < num_steps_wait:
-                obs, _, done, _ = env.step(dummy_action)
-                t += 1
-
-            pred_strs_init, flags_init = eval_libero_goal_predicates(env)
-            first_true_steps: List[Optional[int]] = [
-                0 if f else None for f in flags_init
-            ]
-
-            active_steps = 0
-            while active_steps < max_steps and not done:
-                img = np.ascontiguousarray(obs["agentview_image"][::-1, ::-1])
-                wrist_img = np.ascontiguousarray(obs["robot0_eye_in_hand_image"][::-1, ::-1])
-                img = image_tools.convert_to_uint8(
-                    image_tools.resize_with_pad(img, resize_size, resize_size)
-                )
-                wrist_img = image_tools.convert_to_uint8(
-                    image_tools.resize_with_pad(wrist_img, resize_size, resize_size)
-                )
-
-                state_vec = np.concatenate(
-                    (
-                        obs["robot0_eef_pos"],
-                        _quat2axisangle(obs["robot0_eef_quat"]),
-                        obs["robot0_gripper_qpos"],
-                    )
-                )
-                element = {
-                    "observation/image": img,
-                    "observation/wrist_image": wrist_img,
-                    "observation/state": state_vec,
-                    "prompt": str(task_description),
-                }
-
-                t_infer0 = time.time()
-                resp = client.infer(element)
-                infer_ms = (time.time() - t_infer0) * 1000.0
-
-                actions_arr = np.asarray(resp["actions"])
-                norm_arr = np.asarray(resp.get("normalized_action", actions_arr))
-                u_step_srv = resp.get("u_step")
-                if u_step_srv is not None:
-                    u_step_list = [float(x) for x in np.asarray(u_step_srv).tolist()]
-                else:
-                    u_step_list = [0.0] * len(actions_arr)
-
-                actions_list = actions_arr.tolist()
-                res = select_duac_horizon(
-                    u_step=u_step_list,
-                    actions=actions_list,
-                    config=cfg,
-                    normalized_pos_rot=norm_arr[:, :6].tolist(),
-                    rng=rng,
-                )
-                h_method_proposed = max(res.xi, res.h_unc)
-                h_exec = res.h_selected
-                g_toggle = _has_gripper_toggle(actions_list, h_exec)
-
-                u10 = _pad_or_trim_10(res.u_step)
-                up10 = _pad_or_trim_10(res.u_prefix)
-                m10 = _pad_or_trim_10(res.m_step)
-                dec_row = {
-                    "task_id": tid,
-                    "trial_id": ep_idx,
-                    "decision_id": dec_idx,
-                    "sim_step": active_steps,
-                    "h_executed": h_exec,
-                    "h_method": h_method_proposed,
-                    "move_lower_bound": res.xi,
-                    "infer_ms": round(infer_ms, 3),
-                    "gripper_toggle": g_toggle,
-                    "method": method_name,
-                    "backbone": "pi05",
-                    "suite": suite,
-                    "episode_id": ep_idx,
-                    "decision_idx": dec_idx,
-                    "env_step": active_steps,
-                    "h_selected": h_exec,
-                    "h_unc": res.h_unc,
-                    "xi": res.xi,
-                }
-                for j in range(10):
-                    dec_row[f"u_step_{j+1}"] = round(u10[j], 6)
-                    dec_row[f"u_prefix_{j+1}"] = round(up10[j], 6)
-                    dec_row[f"m_step_{j+1}"] = round(m10[j], 6)
-                dec_writer.writerow(dec_row)
-
-                u_step_rows.append(u10)
-                u_prefix_rows.append(up10)
-                m_step_rows.append(m10)
-                h_exec_rows.append(h_exec)
-                h_method_rows.append(h_method_proposed)
-                xi_rows.append(res.xi)
-                sim_step_rows.append(active_steps)
-
-                ep_h_list.append(h_exec)
-                dec_idx += 1
-
-                for step_i in range(h_exec):
-                    if active_steps >= max_steps or done:
-                        break
-                    act = actions_list[step_i]
-                    obs, _, done, _ = env.step(act)
-                    active_steps += 1
-                    # Step 0.2 of docs/task3010.md: check each goal predicate after every env.step
-                    _, step_flags = eval_libero_goal_predicates(env)
-                    for p_i, flag_val in enumerate(step_flags):
-                        if flag_val and p_i < len(first_true_steps) and first_true_steps[p_i] is None:
-                            first_true_steps[p_i] = active_steps
-                    if done:
-                        break
-
-            for p_i, p_str in enumerate(pred_strs_init):
-                sub_writer.writerow(
-                    {
-                        "task_id": tid,
-                        "trial_id": ep_idx,
-                        "arm": method_name,
-                        "predicate_idx": p_i,
-                        "predicate": p_str,
-                        "first_true_step": "" if first_true_steps[p_i] is None else first_true_steps[p_i],
-                    }
-                )
-
-            if state_bank:
-                npz_path = state_bank_dir / f"task{tid:02d}_trial{ep_idx:02d}.npz"
-                save_state_bank_entry(
-                    npz_path,
-                    u_step_rows,
-                    u_prefix_rows,
-                    m_step_rows,
-                    h_exec_rows,
-                    h_method_rows,
-                    xi_rows,
-                    sim_step_rows,
-                )
-
-            succ = 1 if done else 0
-            total_eps += 1
-            total_succ += succ
-            mean_h = sum(ep_h_list) / max(len(ep_h_list), 1)
-            all_h.append(mean_h)
-            wall_s = max(time.time() - t0, 1e-4)
-            jvp_per_dec = 0 if (fixed_horizon is not None or random_horizon_from is not None) else num_probes
-
-            ep_writer.writerow(
-                {
-                    "suite": suite,
-                    "task_id": tid,
-                    "trial_id": ep_idx,
-                    "arm": method_name,
-                    "success": succ,
-                    "end_step": active_steps,
-                    "n_decisions": dec_idx,
-                    "mean_h": round(mean_h, 4),
-                    "wall_s": round(wall_s, 4),
-                    "method": method_name,
-                    "backbone": "pi05",
-                    "benchmark": benchmark_name,
-                    "perturbation": perturbation,
-                    "task_name": task.name,
-                    "episode_id": ep_idx,
-                    "init_state_id": ep_idx,
-                    "seed": seed,
-                    "env_steps": active_steps,
-                    "num_decisions": dec_idx,
-                    "wall_time_s": round(wall_s, 4),
-                    "forward_passes": dec_idx * 10,
-                    "jvp_probes": dec_idx * jvp_per_dec,
-                }
+        initial_states = backend.init_states(tid)
+        trials = list(trial_ids) if trial_ids is not None else list(range(num_trials))
+        if max(trials) >= len(initial_states) or num_trials > len(initial_states):
+            raise ValueError(
+                f"{suite} task {tid} has only {len(initial_states)} initial states, {num_trials} trials requested"
             )
-            ep_file.flush()
-            dec_file.flush()
-            sub_file.flush()
+        env, instruction = backend.make_env(task, seed)
+        cfg = DUACConfig(
+            tau=tau, num_probes=num_probes, alpha=alpha, fixed_horizon=fixed_horizon,
+            random_horizon_pool=(random_pools.get(tid) or random_pool_all) if random_horizon_from else None,
+        )
 
+        for trial in trials:
+            if (tid, trial) in completed:
+                continue
+            started = time.time()
+            env.reset()
+            obs = env.set_init_state(initial_states[trial])
+            done = False
+            bank = None
+            if state_bank:
+                bank = {k: [] for k in ("states", "gripper_actions", "qacc_warmstart", "actions",
+                                        "decision_steps", "chunks", "normalized_chunks", "chunk_sizes",
+                                        "aac_samples", "aac_normalized_samples", "duac_uncertainty",
+                                        "duac_divergence")}
+                bank["initial_joint"] = np.array(env.robots[0].controller.initial_joint)
+
+            def record_state() -> None:
+                bank["states"].append(env.get_sim_state())
+                bank["gripper_actions"].append(
+                    np.broadcast_to(env.robots[0].gripper.current_action, (2,)).astype(np.float64)
+                )
+                bank["qacc_warmstart"].append(np.array(env.sim.data.qacc_warmstart))
+
+            if bank is not None:
+                record_state()
+            for _ in range(NUM_STEPS_WAIT):
+                obs, _, done, _ = env.step(DUMMY_ACTION)
+                if bank is not None:
+                    bank["actions"].append(DUMMY_ACTION)
+                    record_state()
+
+            predicates, flags = eval_libero_goal_predicates(env)
+            first_true: List[Optional[int]] = [0 if f else None for f in flags]
+            frames = []
+            want_video = save_videos and trial < video_trials
+            active = 0
+            decisions: List[int] = []
+
+            while active < max_steps and not done:
+                request = {
+                    "observation/image": np.ascontiguousarray(obs["agentview_image"][::-1, ::-1]),
+                    "observation/wrist_image": np.ascontiguousarray(obs["robot0_eye_in_hand_image"][::-1, ::-1]),
+                    "observation/state": np.concatenate(
+                        (obs["robot0_eef_pos"], _quat2axisangle(obs["robot0_eef_quat"]), obs["robot0_gripper_qpos"])
+                    ),
+                    "prompt": str(instruction),
+                }
+                sent = time.time()
+                response = backend.client.infer(request)
+                roundtrip_ms = (time.time() - sent) * 1000.0
+                infer_ms = (response.get("policy_timing") or {}).get("infer_ms", roundtrip_ms)
+
+                if aac_selector is not None:
+                    d = aac_decision(response["actions"], response["normalized_action"],
+                                     selector=aac_selector, move_th=alpha)
+                    chunk, normalized_chunk = d["chunk"], d["normalized_chunk"]
+                    h_exec, h_unc, xi = d["h_selected"], d["h_unc"], d["xi"]
+                    u_step, u_prefix, m_step = d["u_step"], d["u_prefix"], d["m_step"]
+                    detail = {"algorithm": "aac", "selector": aac_selector, **d["detail"]}
+                else:
+                    chunk = np.asarray(response["actions"])[:, :7]
+                    normalized_chunk = np.asarray(response["normalized_action"])
+                    if chunk.ndim != 2:
+                        raise RuntimeError(f"expected (H, 7) actions from the DUAC server, got {chunk.shape}")
+                    res = select_duac_horizon(np.asarray(response["u_step"]).tolist(), chunk, cfg, rng=rng)
+                    h_exec, h_unc, xi = res.h_selected, res.h_unc, res.xi
+                    u_step, u_prefix, m_step = res.u_step, res.u_prefix, res.m_step
+                    detail = {
+                        "algorithm": "duac", "tau": tau, "num_probes": num_probes,
+                        "U": res.u_step,  # equation (6), per action position
+                        "divergence": np.asarray(response.get("duac_divergence", [])).tolist(),  # Tr(dv_i/da_i)
+                        "U_prefix_mean": res.u_prefix, "U_prefix_diff": res.u_diff, "h_unc": h_unc,
+                        "motion_m": res.m_step, "xi": xi, "h_duac": min(len(chunk), max(h_unc, xi)),
+                        "server_h_unc": int(np.asarray(response.get("duac_horizon", -1))),
+                    }
+                detail.update({
+                    "task_id": tid, "trial_id": trial, "decision_id": len(decisions), "sim_step": active,
+                    "arm": arm, "suite": suite, "h_executed": h_exec, "infer_ms": round(float(infer_ms), 3),
+                    "executed_chunk": np.round(chunk[:h_exec], 6).tolist(),
+                })
+                with open(out_dir / "algo_log.jsonl", "a", encoding="utf-8") as handle:
+                    handle.write(json.dumps(detail) + "\n")
+
+                row = {
+                    "task_id": tid, "trial_id": trial, "decision_id": len(decisions), "sim_step": active,
+                    "h_executed": h_exec, "h_method": min(len(chunk), max(h_unc, xi)), "h_unc": h_unc,
+                    "move_lower_bound": xi, "infer_ms": round(float(infer_ms), 3),
+                    "roundtrip_ms": round(roundtrip_ms, 3), "gripper_toggle": _has_gripper_toggle(chunk, h_exec),
+                    "arm": arm, "suite": suite,
+                }
+                for j, (u, up, m) in enumerate(zip(_pad_or_trim_10(u_step), _pad_or_trim_10(u_prefix),
+                                                   _pad_or_trim_10(m_step)), start=1):
+                    row[f"u_step_{j}"], row[f"u_prefix_{j}"], row[f"m_step_{j}"] = u, up, m
+                append("decisions.csv", DECISIONS_CSV_COLUMNS, row)
+                decisions.append(h_exec)
+                if bank is not None:
+                    bank["decision_steps"].append(NUM_STEPS_WAIT + active)
+                    bank["chunks"].append(chunk)
+                    bank["normalized_chunks"].append(normalized_chunk)
+                    bank["chunk_sizes"].append(h_exec)
+                    if aac_selector is not None:  # all N samples, for offline re-analysis of AAC
+                        bank["aac_samples"].append(np.asarray(response["actions"])[:, :, :7])
+                        bank["aac_normalized_samples"].append(np.asarray(response["normalized_action"])[:, :, :7])
+                    else:
+                        bank["duac_uncertainty"].append(np.asarray(u_step))
+                        bank["duac_divergence"].append(np.asarray(response.get("duac_divergence", np.zeros(len(chunk)))))
+
+                for action in chunk[:h_exec]:
+                    obs, _, done, _ = env.step(action.tolist())
+                    active += 1
+                    if bank is not None:
+                        bank["actions"].append(action)
+                        record_state()
+                    _, flags = eval_libero_goal_predicates(env)
+                    for i, flag in enumerate(flags):
+                        if flag and first_true[i] is None:
+                            first_true[i] = active
+                    if want_video:
+                        frames.append(np.asarray(obs["agentview_image"])[::-1, ::-1])
+                    if done or active >= max_steps:
+                        break
+
+            success = int(bool(done))
+            for i, predicate in enumerate(predicates):
+                append("subgoals.csv", SUBGOALS_CSV_COLUMNS, {
+                    "task_id": tid, "trial_id": trial, "arm": arm, "predicate_idx": i, "predicate": predicate,
+                    "first_true_step": "" if first_true[i] is None else first_true[i],
+                })
+            if bank is not None:
+                bank["success"] = bool(success)
+                save_state_bank(out_dir / "state_bank" / f"task{tid:02d}_trial{trial:02d}.npz", bank)
+            if want_video and frames:
+                import imageio.v2 as imageio
+
+                video_dir = out_dir / "videos"
+                video_dir.mkdir(parents=True, exist_ok=True)
+                status = "success" if success else "failure"
+                imageio.mimwrite(video_dir / f"task{tid:02d}_trial{trial:02d}_{status}.mp4", frames, fps=10)
+            append("episodes.csv", EPISODES_CSV_COLUMNS, {
+                "suite": suite, "task_id": tid, "trial_id": trial, "arm": arm, "success": success,
+                "end_step": active, "n_decisions": len(decisions),
+                "mean_h": round(sum(decisions) / max(len(decisions), 1), 4),
+                "wall_s": round(time.time() - started, 3), "task_name": task.name, "instruction": instruction,
+                "benchmark": variant, "perturbation": perturbation, "seed": seed,
+            })
+            print(f"[{arm}] {suite} task={tid} trial={trial} success={success} steps={active} "
+                  f"decisions={len(decisions)}", flush=True)
         env.close()
 
-    ep_file.close()
-    dec_file.close()
-    sub_file.close()
-
-    sr = (total_succ / total_eps) if total_eps > 0 else 0.0
+    episodes = _read_complete_rows(out_dir / "episodes.csv")
+    per_task: Dict[int, List[int]] = {}
+    for r in episodes:
+        per_task.setdefault(int(r["task_id"]), []).append(int(r["success"]))
+    n_dec = sum(int(r["n_decisions"]) for r in episodes)
+    h_total = sum(float(r["mean_h"]) * int(r["n_decisions"]) for r in episodes)
+    total = len(episodes)
+    successes = sum(int(r["success"]) for r in episodes)
     summary = {
-        "arm": method_name,
-        "method": method_name,
-        "backbone": "pi05",
-        "suite": suite,
-        "base_suite": base_suite,
-        "max_steps": max_steps,
-        "total_episodes": total_eps,
-        "total_successes": total_succ,
-        "success_rate": round(sr, 6),
-        "mean_h": round(sum(all_h) / max(len(all_h), 1), 4),
-        "synthetic_dry_run": False,
+        "arm": arm, "suite": suite, "libero_variant": variant, "max_steps": max_steps,
+        "total_episodes": total, "total_successes": successes,
+        "success_rate": round(successes / total, 6) if total else 0.0,
+        "mean_h": round(h_total / n_dec, 4) if n_dec else 0.0,
+        "decisions_per_episode": round(n_dec / total, 3) if total else 0.0,
+        "tasks": {str(t): {"episodes": len(v), "success_rate": round(sum(v) / len(v), 4)} for t, v in sorted(per_task.items())},
+        "synthetic_dry_run": synthetic_dry_run,
     }
-    (out_dir / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
-    (out_dir / "success_rate.txt").write_text(f"{sr:.6f}\n", encoding="utf-8")
+    (out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    (out_dir / "success_rate.txt").write_text(
+        f"Total success count:{successes}, total num_trials:{total}, total success_rate:{summary['success_rate']}\n"
+    )
     return summary
+
+
+__all__ = [
+    "DECISIONS_CSV_COLUMNS", "EPISODES_CSV_COLUMNS", "SUBGOALS_CSV_COLUMNS", "LiberoBackend",
+    "eval_libero_goal_predicates", "evaluate_libero_subgoals", "libero_variant_for", "max_steps_for_suite",
+    "parse_perturbation_from_suite", "run_libero_evaluation", "suite_step_budget_name",
+]
