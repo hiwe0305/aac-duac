@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PreSoakPan,0,0,fixed_10,1,2062,2400,207,10.0,474.9,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,1,1,fixed_10,0,2400,2400,240,10.0,562.3,Pick the pan and sponge and place them into the sink. Then turn on the water.

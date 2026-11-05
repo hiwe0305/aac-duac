@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+SetUpCuttingStation,0,0,aac,0,2400,2400,71,33.831,101.5,Pick up the knife from the drawer and place it on the cutting board. Then place the meat from the plate to the cutting board.
+SetUpCuttingStation,1,1,aac,0,2400,2400,136,17.721,642.5,Pick up the knife from the drawer and place it on the cutting board. Then place the meat from the plate to the cutting board.

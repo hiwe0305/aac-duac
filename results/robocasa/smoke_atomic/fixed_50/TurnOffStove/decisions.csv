@@ -1,0 +1,16 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+TurnOffStove,0,0,0,50,9,2,9,271.57,275.81,0,fixed_50
+TurnOffStove,0,1,50,50,49,49,5,231.6,235.26,0,fixed_50
+TurnOffStove,0,2,100,50,25,25,24,232.42,237.7,0,fixed_50
+TurnOffStove,0,3,150,50,50,8,50,229.34,231.76,0,fixed_50
+TurnOffStove,0,4,200,50,26,22,26,229.64,232.04,0,fixed_50
+TurnOffStove,0,5,250,50,49,49,15,274.97,276.84,0,fixed_50
+TurnOffStove,0,6,300,50,29,7,29,228.58,231.11,1,fixed_50
+TurnOffStove,0,7,350,50,11,2,11,229.52,232.26,0,fixed_50
+TurnOffStove,0,8,400,50,15,2,15,231.76,235.55,0,fixed_50
+TurnOffStove,0,9,450,50,13,13,11,225.2,227.12,0,fixed_50
+TurnOffStove,0,10,500,50,32,32,16,229.15,232.78,0,fixed_50
+TurnOffStove,0,11,550,50,36,36,16,230.45,362.17,1,fixed_50
+TurnOffStove,0,12,600,50,43,43,22,233.02,236.5,0,fixed_50
+TurnOffStove,0,13,650,50,49,49,40,225.01,228.04,0,fixed_50
+TurnOffStove,0,14,700,50,11,7,11,223.96,226.17,0,fixed_50

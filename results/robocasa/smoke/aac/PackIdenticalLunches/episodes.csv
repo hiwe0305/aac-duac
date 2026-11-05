@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PackIdenticalLunches,0,0,aac,0,3900,3900,245,15.984,904.2,"Place one chili pepper and one sausage in each tupperware on the nearby counter, to pack two identical lunches."
+PackIdenticalLunches,1,1,aac,0,3900,3900,212,18.406,856.7,"Place one corn and one salami in each tupperware on the nearby counter, to pack two identical lunches."

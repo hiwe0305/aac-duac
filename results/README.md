@@ -4,6 +4,7 @@
 
 - **Báo cáo Track A:** [REPORT.md](REPORT.md)
 - **Phân tích nguyên nhân (8 biểu đồ):** [track_a/analysis/DIAGNOSIS.md](track_a/analysis/DIAGNOSIS.md)
+- **RoboCasa smoke:** [robocasa/smoke/SUMMARY.md](robocasa/smoke/SUMMARY.md)
 - **Bảng thống kê T1–T3 và tiêu chí mục 5:** [track_a/analysis/track_a_results.md](track_a/analysis/track_a_results.md)
 
 ## Nội dung
@@ -15,6 +16,8 @@
 | `track_a/analysis/track_a_results.{md,json}` | T1 (Wilson CI), T2 (McNemar exact, bootstrap theo cụm task × trial 5.000 lần, Holm), T3 (theo task, bỏ task tốt nhất), kết luận theo mục 5 |
 | `track_a/analysis/DIAGNOSIS.md`, `figures/F1–F8.png` | Phân tích nguyên nhân và 8 biểu đồ |
 | `track_a/analysis/diagnosis.json` | Số liệu đứng sau các hình F1–F8 (h_unc/ξ, profile U, h quanh sự kiện, AUROC, các cặp khác kết quả) |
+| `robocasa/smoke/` | RoboCasa365 smoke (16 task composite × 2 trial × 5 arm): `SUMMARY.md`, và `<arm>/<task>/{episodes,decisions}.csv`, `summary.json`, `args.json`. Không có `algo_log.jsonl` (193 MB), state bank, video |
+| `robocasa/smoke_atomic/` | Kiểm tra nhanh trên task atomic sau khi sửa thứ tự state/action |
 | `calibration/` | Bước 1: Fixed-10, 10 trial/task, trên các suite ứng viên; Bước 0.5: DUAC clean. Có `calibration_summary.txt` |
 
 Suite: `libero_10` (clean), `libero_10_object`, `libero_10_env`. Arm: `duac`, `aac`, `fixed_5`, `fixed_8`, `fixed_10`, `random_h`.

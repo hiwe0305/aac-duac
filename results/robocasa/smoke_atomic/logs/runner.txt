@@ -1,0 +1,39 @@
+2026-11-05 08:25:13 server 8100 ready
+2026-11-05 08:25:13 START port=8100 --tasks CloseBlenderLid --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/CloseBlenderLid
+2026-11-05 08:25:13 START port=8100 --tasks CloseFridge --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/CloseFridge
+2026-11-05 08:25:13 START port=8100 --tasks CloseToasterOvenDoor --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/CloseToasterOvenDoor
+2026-11-05 08:25:13 START port=8100 --tasks CoffeeSetupMug --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/CoffeeSetupMug
+2026-11-05 08:25:13 START port=8100 --tasks NavigateKitchen --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/NavigateKitchen
+2026-11-05 08:25:13 START port=8100 --tasks OpenCabinet --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/OpenCabinet
+2026-11-05 08:25:13 START port=8100 --tasks OpenDrawer --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/OpenDrawer
+2026-11-05 08:25:13 START port=8100 --tasks OpenStandMixerHead --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/OpenStandMixerHead
+2026-11-05 08:25:13 START port=8100 --tasks PickPlaceCounterToCabinet --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/PickPlaceCounterToCabinet
+2026-11-05 08:26:20 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/CloseFridge
+2026-11-05 08:26:20 START port=8100 --tasks PickPlaceCounterToStove --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/PickPlaceCounterToStove
+2026-11-05 08:26:32 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/CloseToasterOvenDoor
+2026-11-05 08:26:32 START port=8100 --tasks PickPlaceDrawerToCounter --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/PickPlaceDrawerToCounter
+2026-11-05 08:26:34 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/OpenStandMixerHead
+2026-11-05 08:26:34 START port=8100 --tasks PickPlaceSinkToCounter --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/PickPlaceSinkToCounter
+2026-11-05 08:26:40 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/NavigateKitchen
+2026-11-05 08:26:40 START port=8100 --tasks PickPlaceToasterToCounter --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/PickPlaceToasterToCounter
+2026-11-05 08:26:54 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/CoffeeSetupMug
+2026-11-05 08:26:54 START port=8100 --tasks SlideDishwasherRack --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/SlideDishwasherRack
+2026-11-05 08:27:23 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/OpenDrawer
+2026-11-05 08:27:23 START port=8100 --tasks TurnOffStove --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/TurnOffStove
+2026-11-05 08:27:34 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/PickPlaceCounterToCabinet
+2026-11-05 08:27:34 START port=8100 --tasks TurnOnElectricKettle --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/TurnOnElectricKettle
+2026-11-05 08:27:46 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/PickPlaceSinkToCounter
+2026-11-05 08:27:46 START port=8100 --tasks TurnOnMicrowave --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/TurnOnMicrowave
+2026-11-05 08:28:07 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/CloseBlenderLid
+2026-11-05 08:28:07 START port=8100 --tasks TurnOnSinkFaucet --trials 1 --port 8100 --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --save-videos --output-dir outputs/robocasa/smoke_atomic/fixed_50/TurnOnSinkFaucet
+2026-11-05 08:28:16 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/SlideDishwasherRack
+2026-11-05 08:28:35 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/PickPlaceToasterToCounter
+2026-11-05 08:28:37 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/PickPlaceCounterToStove
+2026-11-05 08:28:42 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/PickPlaceDrawerToCounter
+2026-11-05 08:28:42 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/OpenCabinet
+2026-11-05 08:28:54 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/TurnOnElectricKettle
+2026-11-05 08:29:14 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/TurnOnMicrowave
+2026-11-05 08:29:21 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/TurnOffStove
+2026-11-05 08:29:34 END rc=0 outputs/robocasa/smoke_atomic/fixed_50/TurnOnSinkFaucet
+2026-11-05 08:29:34 all jobs finished
+ATOMIC DONE 2026-11-05 08:29:34

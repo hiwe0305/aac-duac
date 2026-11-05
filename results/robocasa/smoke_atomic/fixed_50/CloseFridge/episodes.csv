@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+CloseFridge,0,0,fixed_50,1,315,900,7,50.0,62.9,Close the fridge door.

@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+LoadDishwasher,0,0,fixed_25,0,1800,1800,72,25.0,319.1,"Pick up the cup and bowl from the counter, place them in the dishwasher, and close the dishwasher door."
+LoadDishwasher,1,1,fixed_25,0,1800,1800,72,25.0,400.5,"Pick up the cup and bowl from the counter, place them in the dishwasher, and close the dishwasher door."

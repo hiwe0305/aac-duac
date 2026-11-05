@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+TurnOffStove,0,0,fixed_50,0,750,750,15,50.0,115.1,Turn off the front left burner of the stove.

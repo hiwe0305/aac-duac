@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PickPlaceSinkToCounter,0,0,fixed_50,1,302,900,7,50.0,68.8,Pick the celery from the sink and place it on the plate located on the counter.

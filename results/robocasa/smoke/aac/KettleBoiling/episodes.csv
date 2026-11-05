@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+KettleBoiling,0,0,aac,0,1500,1500,51,29.745,269.3,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,1,1,aac,0,1500,1500,72,21.111,347.3,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.

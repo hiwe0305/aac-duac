@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+NavigateKitchen,0,0,fixed_50,0,450,450,9,50.0,82.7,Navigate to the toaster oven.

@@ -1,0 +1,10 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+CloseToasterOvenDoor,0,0,0,50,25,18,25,245.86,922.96,0,fixed_50
+CloseToasterOvenDoor,0,1,50,50,12,12,5,284.5,362.45,0,fixed_50
+CloseToasterOvenDoor,0,2,100,50,23,5,23,231.26,235.07,0,fixed_50
+CloseToasterOvenDoor,0,3,150,50,23,3,23,234.16,240.98,0,fixed_50
+CloseToasterOvenDoor,0,4,200,50,27,27,5,232.24,235.32,0,fixed_50
+CloseToasterOvenDoor,0,5,250,50,18,6,18,234.4,239.42,0,fixed_50
+CloseToasterOvenDoor,0,6,300,50,42,29,42,231.84,235.5,0,fixed_50
+CloseToasterOvenDoor,0,7,350,50,6,6,6,231.92,236.39,0,fixed_50
+CloseToasterOvenDoor,0,8,400,50,24,24,14,231.71,234.17,0,fixed_50

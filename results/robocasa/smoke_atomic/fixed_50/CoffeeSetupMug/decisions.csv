@@ -1,0 +1,13 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+CoffeeSetupMug,0,0,0,50,10,4,10,240.89,739.48,0,fixed_50
+CoffeeSetupMug,0,1,50,50,49,49,8,277.31,279.71,0,fixed_50
+CoffeeSetupMug,0,2,100,50,41,13,41,231.54,452.7,1,fixed_50
+CoffeeSetupMug,0,3,150,50,14,2,14,233.82,237.87,0,fixed_50
+CoffeeSetupMug,0,4,200,50,37,5,37,231.51,237.95,1,fixed_50
+CoffeeSetupMug,0,5,250,50,15,15,5,233.7,287.88,0,fixed_50
+CoffeeSetupMug,0,6,300,50,43,31,43,231.19,356.36,0,fixed_50
+CoffeeSetupMug,0,7,350,50,49,49,18,234.95,240.08,1,fixed_50
+CoffeeSetupMug,0,8,400,50,14,12,14,232.92,238.04,0,fixed_50
+CoffeeSetupMug,0,9,450,50,15,3,15,231.54,239.61,0,fixed_50
+CoffeeSetupMug,0,10,500,50,49,49,48,231.48,337.43,0,fixed_50
+CoffeeSetupMug,0,11,550,50,23,11,23,234.01,239.05,0,fixed_50

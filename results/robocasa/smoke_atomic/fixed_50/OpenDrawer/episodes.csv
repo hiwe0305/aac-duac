@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+OpenDrawer,0,0,fixed_50,0,750,750,15,50.0,126.1,Open the right drawer.

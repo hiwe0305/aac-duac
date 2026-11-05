@@ -1,0 +1,10 @@
+{
+  "arm": "duac",
+  "episodes": 2,
+  "success_rate": 0.0,
+  "mean_h": 21.762,
+  "tasks": {
+    "StirVegetables": 0.0
+  },
+  "synthetic_dry_run": false
+}

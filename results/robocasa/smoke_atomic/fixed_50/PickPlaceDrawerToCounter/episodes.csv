@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PickPlaceDrawerToCounter,0,0,fixed_50,0,750,750,15,50.0,126.3,Pick the ladle from the drawer and place it on the counter.

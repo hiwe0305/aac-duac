@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+RinseSinkBasin,0,0,fixed_10,0,1350,1350,135,10.0,251.8,Turn on the sink and manuever the spout to wash all locations of the sink basin.
+RinseSinkBasin,1,1,fixed_10,0,1350,1350,135,10.0,327.9,Turn on the sink and manuever the spout to wash all locations of the sink basin.

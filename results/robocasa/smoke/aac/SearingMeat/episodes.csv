@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+SearingMeat,0,0,aac,0,4350,4350,151,28.967,1045.7,Grab the pan from the cabinet and place it on the rear left burner on the stove. Then place the chicken breast on the stove and turn the burner on.
+SearingMeat,1,1,aac,0,4350,4350,130,33.531,775.2,Grab the pan from the cabinet and place it on the front left burner on the stove. Then place the lamb chop on the stove and turn the burner on.

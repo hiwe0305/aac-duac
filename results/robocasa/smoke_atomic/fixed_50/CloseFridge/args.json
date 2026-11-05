@@ -1,0 +1,20 @@
+{
+  "tasks": "CloseFridge",
+  "trials": 1,
+  "seed": 0,
+  "max_steps": null,
+  "obj_registries": "objaverse,lightwheel,aigen",
+  "host": "127.0.0.1",
+  "port": 8100,
+  "alpha": 3.0,
+  "tau": 0.9,
+  "num_probes": 40,
+  "fixed_horizon": 50,
+  "random_horizon_from": null,
+  "aac_selector": null,
+  "state_bank": false,
+  "save_videos": true,
+  "video_trials": 2,
+  "synthetic_dry_run": false,
+  "arm": "fixed_50"
+}

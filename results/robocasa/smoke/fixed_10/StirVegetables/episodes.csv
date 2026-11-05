@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+StirVegetables,0,0,fixed_10,0,2400,2400,240,10.0,568.9,Put the mushroom and beet in the pot. Retrieve the spatula and lightly stir the vegetables in the pot.
+StirVegetables,1,1,fixed_10,0,2400,2400,240,10.0,636.9,Put the squash and asparagus in the pot. Retrieve the spatula and lightly stir the vegetables in the pot.

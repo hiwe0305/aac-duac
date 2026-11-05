@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+WashLettuce,0,0,aac,1,1375,1650,68,20.441,271.5,Wash the lettuce in the sink by running water over it.
+WashLettuce,1,1,aac,0,1650,1650,88,19.148,348.3,Wash the lettuce in the sink by running water over it.

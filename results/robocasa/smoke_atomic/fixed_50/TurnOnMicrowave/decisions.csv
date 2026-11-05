@@ -1,0 +1,10 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+TurnOnMicrowave,0,0,0,50,5,2,5,239.74,441.86,1,fixed_50
+TurnOnMicrowave,0,1,50,50,16,2,16,229.72,231.77,0,fixed_50
+TurnOnMicrowave,0,2,100,50,9,2,9,228.52,232.0,0,fixed_50
+TurnOnMicrowave,0,3,150,50,44,44,14,227.84,593.97,0,fixed_50
+TurnOnMicrowave,0,4,200,50,33,33,23,231.68,236.54,0,fixed_50
+TurnOnMicrowave,0,5,250,50,14,2,14,233.7,257.93,0,fixed_50
+TurnOnMicrowave,0,6,300,50,9,5,9,237.62,240.65,0,fixed_50
+TurnOnMicrowave,0,7,350,50,23,23,23,234.97,238.75,0,fixed_50
+TurnOnMicrowave,0,8,400,50,5,3,5,226.66,229.88,0,fixed_50

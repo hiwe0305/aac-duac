@@ -1,0 +1,16 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+PickPlaceCounterToCabinet,0,0,0,50,11,3,11,249.29,266.99,0,fixed_50
+PickPlaceCounterToCabinet,0,1,50,50,12,12,10,233.68,240.97,1,fixed_50
+PickPlaceCounterToCabinet,0,2,100,50,6,6,6,233.18,488.91,0,fixed_50
+PickPlaceCounterToCabinet,0,3,150,50,8,6,8,231.27,235.33,1,fixed_50
+PickPlaceCounterToCabinet,0,4,200,50,23,23,4,233.92,236.68,1,fixed_50
+PickPlaceCounterToCabinet,0,5,250,50,28,28,5,231.73,234.44,1,fixed_50
+PickPlaceCounterToCabinet,0,6,300,50,3,2,3,232.16,411.52,0,fixed_50
+PickPlaceCounterToCabinet,0,7,350,50,12,12,2,231.76,235.97,1,fixed_50
+PickPlaceCounterToCabinet,0,8,400,50,3,3,3,233.18,238.88,0,fixed_50
+PickPlaceCounterToCabinet,0,9,450,50,10,9,10,235.59,239.2,1,fixed_50
+PickPlaceCounterToCabinet,0,10,500,50,8,4,8,279.19,281.26,0,fixed_50
+PickPlaceCounterToCabinet,0,11,550,50,43,43,4,243.86,245.93,1,fixed_50
+PickPlaceCounterToCabinet,0,12,600,50,4,4,3,236.43,388.89,0,fixed_50
+PickPlaceCounterToCabinet,0,13,650,50,4,4,4,233.59,239.93,1,fixed_50
+PickPlaceCounterToCabinet,0,14,700,50,16,16,7,232.18,236.17,0,fixed_50

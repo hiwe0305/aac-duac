@@ -1,0 +1,10 @@
+{
+  "arm": "fixed_10",
+  "episodes": 2,
+  "success_rate": 1.0,
+  "mean_h": 10.0,
+  "tasks": {
+    "LoadDishwasher": 1.0
+  },
+  "synthetic_dry_run": false
+}

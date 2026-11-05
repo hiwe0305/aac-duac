@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PickPlaceCounterToCabinet,0,0,fixed_50,1,730,750,15,50.0,136.2,Pick the sausage from the counter and place it in the cabinet.

@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+TurnOnElectricKettle,0,0,fixed_50,0,450,450,9,50.0,76.6,Press down the lever to turn on the electric kettle.

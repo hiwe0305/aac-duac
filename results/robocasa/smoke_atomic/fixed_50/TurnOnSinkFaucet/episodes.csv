@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+TurnOnSinkFaucet,0,0,fixed_50,1,515,600,11,50.0,83.6,Turn on the sink faucet.

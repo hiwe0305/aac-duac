@@ -1,0 +1,8 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+CloseFridge,0,0,0,50,50,3,50,234.74,237.62,0,fixed_50
+CloseFridge,0,1,50,50,26,12,26,265.49,344.86,0,fixed_50
+CloseFridge,0,2,100,50,9,9,9,231.67,233.9,0,fixed_50
+CloseFridge,0,3,150,50,19,19,3,232.52,237.46,0,fixed_50
+CloseFridge,0,4,200,50,12,2,12,243.7,245.82,0,fixed_50
+CloseFridge,0,5,250,50,39,39,14,234.42,236.21,0,fixed_50
+CloseFridge,0,6,300,50,42,42,6,235.57,239.21,0,fixed_50

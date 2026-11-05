@@ -207,7 +207,7 @@ Toàn bộ pipeline nằm trong repo này: env riêng, server riêng, evaluator 
 **Lưu ý về dữ liệu.** Bản checkpoint trên ceph-cold (`/mnt/ceph-cold-storage/temporal/hactt13/.../checkpoints/lerobot/pi05_robocasa`) **bị hỏng**. File `policy_preprocessor_step_3_normalizer_processor.safetensors` toàn byte 0, và sha256 của `model.safetensors` không khớp với Hugging Face. Repo này dùng bản tải lại.
 
 ### 7.2 Quy ước (theo LeRobot)
-- **Action** `[base_motion 0:4, control_mode 4, eef_pos 5:8, eef_rot 8:11, gripper 11]`. **State** `[base_pos 3, base_quat 4, eef_pos_rel 3, eef_quat_rel 4, gripper_qpos 2]`.
+- **Action và state theo thứ tự gốc của robosuite** (đúng với stats của checkpoint, **không** phải thứ tự của wrapper `RoboCasaEnv` trong LeRobot). Action: `[eef_pos 0:3, eef_rot 3:6, gripper 6, base 7:10, torso 10, mode 11]`. State: `[base_to_eef_pos 0:3, base_to_eef_quat 3:7, base_pos 7:10, base_quat 10:14, gripper_qpos 14:16]`. `eval_robocasa.py` hoán vị `agent_pos` của wrapper sang thứ tự này (`STATE_FROM_WRAPPER`) và đổi action ngược lại khi `env.step` (`to_wrapper_action`, gripper/mode nhị phân hoá tại 0). Với thứ tự cũ thì |z| của state lên tới 45 và mọi arm đạt 0% (kết quả hỏng để ở `outputs/robocasa/_invalid_action_order/`).
 - **Tiền xử lý:** chuẩn hoá MEAN_STD, state rời rạc hoá 256 bin vào prompt `Task: …, State: …;\nAction: `. Tokenizer SentencePiece PaliGemma có BOS, pad tới 200 token. Không dùng tokenizer HF `google/paligemma-3b-pt-224` vì repo đó bị gated; hai bên dùng cùng bộ từ vựng.
 - **Episode:** độ dài bằng horizon của task trong registry RoboCasa. Seed của trial k là `--seed + k`, giống nhau cho mọi arm. Thành công tính theo `info["is_success"]` của env.
 - **AAC:** gọi selector chính thức trên phần cánh tay `[pos, rot, gripper]`. Các chiều base và mode vẫn được thực thi nhưng không vào entropy hay ξ. Action chạy là sample 0.
@@ -218,7 +218,6 @@ Toàn bộ pipeline nằm trong repo này: env riêng, server riêng, evaluator 
 - Model thật (chạy trên CPU): nạp đủ key, DUAC trả `(50, 12)` cùng U và divergence, AAC trả `(N, 50, 12)`.
 - Env: `atomic_seen` `OpenDrawer` cùng 4/16 task `composite_seen` (`DeliverStraw`, `KettleBoiling`, `PackIdenticalLunches`, `WashLettuce`) chạy được với asset lightwheel. 12 task còn lại cần bộ objaverse/aigen (dùng `--obj-registries objaverse,lightwheel,aigen`).
 - Tốc độ mô phỏng khoảng 8–9 bước/s mỗi client (Mesa CPU, 3 camera). Một episode composite 2.250 bước mất khoảng 4–5 phút.
-- **Chưa chạy trên GPU**, vì GPU đang bận với Track A. Server cần khoảng 9.5 GB VRAM, cộng thêm phần backward của DUAC với K = 40.
 
 ### 7.4 Nhóm task (RoboCasa365 registry)
 | Nhóm | Task | Horizon trung vị / tối đa |
@@ -231,7 +230,7 @@ Toàn bộ pipeline nằm trong repo này: env riêng, server riêng, evaluator 
 ```bash
 bash tools/setup_robocasa_env.sh                                  # tạo .venv-robocasa (chỉ lần đầu)
 .venv-robocasa/bin/python flowbased_aac/flowbased_aac/robocasa/selftest.py
-# smoke test (Bước 0.4): 4 task composite x 2 trial; DUAC + Fixed-10/25/50, rồi AAC
+# smoke test: 16 task composite x 2 trial; DUAC + Fixed-10/25/50, rồi AAC
 bash tools/run_robocasa_jobs.sh duac jobs/robocasa_smoke_duac.txt outputs/robocasa/smoke/logs 1 4
 bash tools/run_robocasa_jobs.sh aac  jobs/robocasa_smoke_aac.txt  outputs/robocasa/smoke/logs 1 2
 ```
@@ -244,11 +243,28 @@ MUJOCO_GL=egl MUJOCO_EGL_DEVICE_ID=1 __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/g
 ```
 Output: `episodes.csv`, `decisions.csv`, `algo_log.jsonl` (đủ profile 50 bước của AAC/DUAC), `state_bank/*.npz` (MuJoCo state ở mỗi decision, chunk, action đã chạy, 20 sample của AAC hoặc U/divergence của DUAC), và `videos/`.
 
-### 7.6 Việc tiếp theo
-1. Smoke test trên GPU khi Track A xong. Kiểm success khác 0, h có thay đổi, và đo `infer_ms` của DUAC và AAC.
-2. Calibration Fixed-25 trên `composite_seen`, chọn các task có success 20–70%.
-3. Chạy chính: DUAC, AAC, Random-h, Fixed-10/25/50, mỗi task 20 trial (số episode LeRobot khuyến nghị). Ghi vào `manifest.json` thành một track riêng trước khi chạy.
-4. Cân nhắc chọn lại α cho chunk 50, rồi ghi lại trong manifest **trước** khi chạy chính.
+### 7.6 Smoke test trên GPU (2026-11-05, đã xong)
+16 task `composite_seen` × 2 trial × 5 arm = 160 episode, không job nào lỗi. Bảng đầy đủ ở [results/robocasa/smoke/SUMMARY.md](results/robocasa/smoke/SUMMARY.md).
+- Tổng success: Fixed-10 4/32, Fixed-25 3/32, Fixed-50 4/32, DUAC 4/32, AAC 2/32. Mỗi ô chỉ 2 trial nên chưa so sánh được.
+- h thay đổi thật: DUAC trung bình 30.2 (trung vị 28), AAC 22.3 (trung vị 17), trải từ khoảng 7 tới 50.
+- ξ vẫn quyết định h phần lớn thời gian (ξ > h_unc ở 58% decision của DUAC, 73% của AAC).
+- `infer_ms`: Fixed/DUAC khoảng 240 ms, AAC khoảng 296 ms. Một episode mất 7–9 phút với 10 client song song.
+
+### 7.7 Chạy chính (5 task × 20 trial × 5 arm = 500 episode)
+Task: `PreSoakPan, ScrubCuttingBoard, StackBowlsCabinet, KettleBoiling, LoadDishwasher`, tức các task có success > 0 ở smoke. Job ở `jobs/robocasa_main_{duac,aac}.txt`.
+```bash
+cd /mnt/ssd-storage/hieudd/aac-duac
+nvidia-smi                                                   # GPU phải trống (server cần khoảng 10 GB)
+setsid nohup bash tools/run_robocasa_main.sh > /dev/null 2>&1 &   # chạy nền, không chết khi đóng terminal
+tail -f outputs/robocasa/main/logs/runner_duac.txt          # sau đó là runner_aac.txt; xong khi có "ALL MAIN DONE"
+```
+- Ước tính khoảng 6 giờ cho phần server DUAC (DUAC + Fixed-10/25/50) và khoảng 3 giờ cho AAC.
+- Chạy lại đúng lệnh trên là resume: job đã có episode sẽ chạy tiếp bằng `--resume-dir`.
+- Đổi số client song song bằng `CONC=8 setsid nohup bash tools/run_robocasa_main.sh ...` (mặc định 10; 24 CPU).
+- Dừng: `pkill -f "[r]un_robocasa_main.sh"; pkill -f "[r]un_robocasa_jobs.sh"; pkill -f "[e]val_robocasa.py"; pkill -f "robocasa/[s]erve.py"`.
+- Khi xong, `outputs/robocasa/main/SUMMARY.md` được sinh tự động bởi `analysis/robocasa_summary.py` (success + Wilson CI, so sánh ghép cặp theo (task, trial), thống kê h, h_unc, ξ).
+
+Còn lại: ablation không có ξ để tách đóng góp của phần bất định; ghi track này vào `manifest.json`.
 
 ---
 

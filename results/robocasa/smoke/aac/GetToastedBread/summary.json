@@ -1,0 +1,10 @@
+{
+  "arm": "aac",
+  "episodes": 2,
+  "success_rate": 0.0,
+  "mean_h": 45.21,
+  "tasks": {
+    "GetToastedBread": 0.0
+  },
+  "synthetic_dry_run": false
+}

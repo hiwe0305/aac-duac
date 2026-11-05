@@ -1,0 +1,10 @@
+{
+  "arm": "duac",
+  "episodes": 2,
+  "success_rate": 0.0,
+  "mean_h": 37.617,
+  "tasks": {
+    "SearingMeat": 0.0
+  },
+  "synthetic_dry_run": false
+}

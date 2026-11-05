@@ -1,0 +1,6 @@
+# RoboCasa365 main (server aac, N=20): 5 composite task x 20 trial
+--tasks PreSoakPan --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/PreSoakPan
+--tasks ScrubCuttingBoard --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/ScrubCuttingBoard
+--tasks StackBowlsCabinet --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/StackBowlsCabinet
+--tasks KettleBoiling --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/KettleBoiling
+--tasks LoadDishwasher --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/LoadDishwasher

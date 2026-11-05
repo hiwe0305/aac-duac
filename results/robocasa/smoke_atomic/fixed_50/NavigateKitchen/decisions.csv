@@ -1,0 +1,10 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+NavigateKitchen,0,0,0,50,42,2,42,251.03,484.58,0,fixed_50
+NavigateKitchen,0,1,50,50,50,2,50,230.91,233.89,0,fixed_50
+NavigateKitchen,0,2,100,50,50,3,50,229.71,232.03,0,fixed_50
+NavigateKitchen,0,3,150,50,50,2,50,231.72,235.8,0,fixed_50
+NavigateKitchen,0,4,200,50,50,13,50,239.66,242.38,0,fixed_50
+NavigateKitchen,0,5,250,50,50,5,50,236.93,242.63,0,fixed_50
+NavigateKitchen,0,6,300,50,50,2,50,233.81,235.66,0,fixed_50
+NavigateKitchen,0,7,350,50,50,41,50,231.8,236.76,0,fixed_50
+NavigateKitchen,0,8,400,50,50,44,50,231.47,234.48,0,fixed_50

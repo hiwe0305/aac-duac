@@ -1,0 +1,10 @@
+{
+  "arm": "aac",
+  "episodes": 2,
+  "success_rate": 0.0,
+  "mean_h": 20.939,
+  "tasks": {
+    "StackBowlsCabinet": 0.0
+  },
+  "synthetic_dry_run": false
+}

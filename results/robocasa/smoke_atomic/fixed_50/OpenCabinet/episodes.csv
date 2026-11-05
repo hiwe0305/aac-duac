@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+OpenCabinet,0,0,fixed_50,0,1050,1050,21,50.0,205.5,Open the cabinet doors.

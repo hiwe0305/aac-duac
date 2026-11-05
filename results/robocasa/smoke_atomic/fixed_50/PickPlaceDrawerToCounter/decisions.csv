@@ -1,0 +1,16 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+PickPlaceDrawerToCounter,0,0,0,50,9,2,9,233.95,312.02,0,fixed_50
+PickPlaceDrawerToCounter,0,1,50,50,5,2,5,232.37,235.42,0,fixed_50
+PickPlaceDrawerToCounter,0,2,100,50,20,20,6,229.03,233.34,0,fixed_50
+PickPlaceDrawerToCounter,0,3,150,50,49,49,19,230.85,291.16,0,fixed_50
+PickPlaceDrawerToCounter,0,4,200,50,17,17,6,240.3,246.93,1,fixed_50
+PickPlaceDrawerToCounter,0,5,250,50,7,7,6,229.63,231.97,1,fixed_50
+PickPlaceDrawerToCounter,0,6,300,50,4,2,4,229.12,232.39,0,fixed_50
+PickPlaceDrawerToCounter,0,7,350,50,24,4,24,230.87,235.46,1,fixed_50
+PickPlaceDrawerToCounter,0,8,400,50,9,9,6,231.35,495.2,0,fixed_50
+PickPlaceDrawerToCounter,0,9,450,50,22,22,3,229.02,232.47,0,fixed_50
+PickPlaceDrawerToCounter,0,10,500,50,30,30,5,232.07,234.14,0,fixed_50
+PickPlaceDrawerToCounter,0,11,550,50,4,4,4,231.23,234.5,0,fixed_50
+PickPlaceDrawerToCounter,0,12,600,50,34,34,4,232.94,237.57,0,fixed_50
+PickPlaceDrawerToCounter,0,13,650,50,6,6,4,227.54,436.83,1,fixed_50
+PickPlaceDrawerToCounter,0,14,700,50,20,20,5,229.62,233.47,0,fixed_50

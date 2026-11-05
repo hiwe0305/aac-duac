@@ -1,0 +1,35 @@
+2026-11-05 10:21:55 server 8120 ready
+2026-11-05 10:21:56 START port=8120 --tasks DeliverStraw --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/DeliverStraw
+2026-11-05 10:21:56 START port=8120 --tasks GetToastedBread --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/GetToastedBread
+2026-11-05 10:21:56 START port=8120 --tasks KettleBoiling --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/KettleBoiling
+2026-11-05 10:21:56 START port=8120 --tasks LoadDishwasher --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/LoadDishwasher
+2026-11-05 10:21:56 START port=8120 --tasks PackIdenticalLunches --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/PackIdenticalLunches
+2026-11-05 10:21:56 START port=8120 --tasks PreSoakPan --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/PreSoakPan
+2026-11-05 10:21:56 START port=8120 --tasks PrepareCoffee --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/PrepareCoffee
+2026-11-05 10:21:56 START port=8120 --tasks RinseSinkBasin --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/RinseSinkBasin
+2026-11-05 10:21:56 START port=8120 --tasks ScrubCuttingBoard --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/ScrubCuttingBoard
+2026-11-05 10:21:56 START port=8120 --tasks SearingMeat --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/SearingMeat
+2026-11-05 10:28:35 END rc=0 outputs/robocasa/smoke/aac/RinseSinkBasin
+2026-11-05 10:28:35 START port=8120 --tasks SetUpCuttingStation --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/SetUpCuttingStation
+2026-11-05 10:30:48 END rc=0 outputs/robocasa/smoke/aac/ScrubCuttingBoard
+2026-11-05 10:30:48 START port=8120 --tasks StackBowlsCabinet --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/StackBowlsCabinet
+2026-11-05 10:32:16 END rc=0 outputs/robocasa/smoke/aac/KettleBoiling
+2026-11-05 10:32:16 START port=8120 --tasks SteamInMicrowave --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/SteamInMicrowave
+2026-11-05 10:34:10 END rc=0 outputs/robocasa/smoke/aac/DeliverStraw
+2026-11-05 10:34:10 START port=8120 --tasks StirVegetables --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/StirVegetables
+2026-11-05 10:34:19 END rc=0 outputs/robocasa/smoke/aac/PrepareCoffee
+2026-11-05 10:34:19 START port=8120 --tasks StoreLeftoversInBowl --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/StoreLeftoversInBowl
+2026-11-05 10:35:08 END rc=0 outputs/robocasa/smoke/aac/GetToastedBread
+2026-11-05 10:35:08 START port=8120 --tasks WashLettuce --trials 2 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/smoke/aac/WashLettuce
+2026-11-05 10:35:54 END rc=0 outputs/robocasa/smoke/aac/LoadDishwasher
+2026-11-05 10:38:24 END rc=0 outputs/robocasa/smoke/aac/PreSoakPan
+2026-11-05 10:40:11 END rc=0 outputs/robocasa/smoke/aac/StackBowlsCabinet
+2026-11-05 10:41:04 END rc=0 outputs/robocasa/smoke/aac/SetUpCuttingStation
+2026-11-05 10:45:32 END rc=0 outputs/robocasa/smoke/aac/WashLettuce
+2026-11-05 10:46:59 END rc=0 outputs/robocasa/smoke/aac/SteamInMicrowave
+2026-11-05 10:51:20 END rc=0 outputs/robocasa/smoke/aac/PackIdenticalLunches
+2026-11-05 10:51:27 END rc=0 outputs/robocasa/smoke/aac/StirVegetables
+2026-11-05 10:52:20 END rc=0 outputs/robocasa/smoke/aac/SearingMeat
+2026-11-05 10:53:43 END rc=0 outputs/robocasa/smoke/aac/StoreLeftoversInBowl
+2026-11-05 10:53:43 all jobs finished
+ALL SMOKE DONE 2026-11-05 10:53:43

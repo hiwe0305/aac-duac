@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+GetToastedBread,0,0,fixed_10,0,3000,3000,300,10.0,614.1,"Start the toaster. Once the lever pops up, take the bread to the plate on the dining counter."
+GetToastedBread,1,1,fixed_10,0,3000,3000,300,10.0,670.5,"Start the toaster. Once the lever pops up, take the bread to the plate on the dining counter."

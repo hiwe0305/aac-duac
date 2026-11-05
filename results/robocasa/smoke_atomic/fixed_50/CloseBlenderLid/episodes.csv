@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+CloseBlenderLid,0,0,fixed_50,0,900,900,18,50.0,170.0,Close the lid blender by securely placing the lid on top.

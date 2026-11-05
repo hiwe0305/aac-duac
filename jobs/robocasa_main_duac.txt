@@ -1,0 +1,21 @@
+# RoboCasa365 main (server duac): 5 composite task x 20 trial x {duac, fixed_10, fixed_25, fixed_50}
+--tasks PreSoakPan --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --state-bank --save-videos --output-dir outputs/robocasa/main/duac/PreSoakPan
+--tasks PreSoakPan --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 10 --output-dir outputs/robocasa/main/fixed_10/PreSoakPan
+--tasks PreSoakPan --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 25 --output-dir outputs/robocasa/main/fixed_25/PreSoakPan
+--tasks PreSoakPan --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --output-dir outputs/robocasa/main/fixed_50/PreSoakPan
+--tasks ScrubCuttingBoard --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --state-bank --save-videos --output-dir outputs/robocasa/main/duac/ScrubCuttingBoard
+--tasks ScrubCuttingBoard --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 10 --output-dir outputs/robocasa/main/fixed_10/ScrubCuttingBoard
+--tasks ScrubCuttingBoard --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 25 --output-dir outputs/robocasa/main/fixed_25/ScrubCuttingBoard
+--tasks ScrubCuttingBoard --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --output-dir outputs/robocasa/main/fixed_50/ScrubCuttingBoard
+--tasks StackBowlsCabinet --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --state-bank --save-videos --output-dir outputs/robocasa/main/duac/StackBowlsCabinet
+--tasks StackBowlsCabinet --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 10 --output-dir outputs/robocasa/main/fixed_10/StackBowlsCabinet
+--tasks StackBowlsCabinet --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 25 --output-dir outputs/robocasa/main/fixed_25/StackBowlsCabinet
+--tasks StackBowlsCabinet --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --output-dir outputs/robocasa/main/fixed_50/StackBowlsCabinet
+--tasks KettleBoiling --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --state-bank --save-videos --output-dir outputs/robocasa/main/duac/KettleBoiling
+--tasks KettleBoiling --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 10 --output-dir outputs/robocasa/main/fixed_10/KettleBoiling
+--tasks KettleBoiling --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 25 --output-dir outputs/robocasa/main/fixed_25/KettleBoiling
+--tasks KettleBoiling --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --output-dir outputs/robocasa/main/fixed_50/KettleBoiling
+--tasks LoadDishwasher --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --state-bank --save-videos --output-dir outputs/robocasa/main/duac/LoadDishwasher
+--tasks LoadDishwasher --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 10 --output-dir outputs/robocasa/main/fixed_10/LoadDishwasher
+--tasks LoadDishwasher --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 25 --output-dir outputs/robocasa/main/fixed_25/LoadDishwasher
+--tasks LoadDishwasher --trials 20 --port {PORT} --obj-registries objaverse,lightwheel,aigen --fixed-horizon 50 --output-dir outputs/robocasa/main/fixed_50/LoadDishwasher

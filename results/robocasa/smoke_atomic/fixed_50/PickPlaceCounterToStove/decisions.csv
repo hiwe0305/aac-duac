@@ -1,0 +1,13 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+PickPlaceCounterToStove,0,0,0,50,9,2,9,233.14,236.54,0,fixed_50
+PickPlaceCounterToStove,0,1,50,50,9,9,7,229.81,232.84,0,fixed_50
+PickPlaceCounterToStove,0,2,100,50,6,6,4,228.49,264.8,1,fixed_50
+PickPlaceCounterToStove,0,3,150,50,16,16,3,230.5,233.79,1,fixed_50
+PickPlaceCounterToStove,0,4,200,50,31,31,6,230.55,233.86,1,fixed_50
+PickPlaceCounterToStove,0,5,250,50,9,9,3,229.66,330.47,0,fixed_50
+PickPlaceCounterToStove,0,6,300,50,50,46,50,228.56,230.76,0,fixed_50
+PickPlaceCounterToStove,0,7,350,50,48,48,8,228.1,461.86,0,fixed_50
+PickPlaceCounterToStove,0,8,400,50,50,46,50,228.79,230.97,0,fixed_50
+PickPlaceCounterToStove,0,9,450,50,39,7,39,228.56,232.64,0,fixed_50
+PickPlaceCounterToStove,0,10,500,50,30,2,30,230.4,233.32,0,fixed_50
+PickPlaceCounterToStove,0,11,550,50,50,7,50,228.28,746.74,0,fixed_50

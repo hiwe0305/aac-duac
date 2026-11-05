@@ -1,0 +1,12 @@
+task,trial,decision_id,sim_step,h_executed,h_method,h_unc,move_lower_bound,infer_ms,roundtrip_ms,gripper_toggle,arm
+TurnOnSinkFaucet,0,0,0,50,12,4,12,230.33,235.43,0,fixed_50
+TurnOnSinkFaucet,0,1,50,50,18,18,9,229.23,231.49,0,fixed_50
+TurnOnSinkFaucet,0,2,100,50,17,7,17,228.76,233.63,0,fixed_50
+TurnOnSinkFaucet,0,3,150,50,39,39,33,236.65,240.12,0,fixed_50
+TurnOnSinkFaucet,0,4,200,50,47,17,47,227.21,230.23,0,fixed_50
+TurnOnSinkFaucet,0,5,250,50,25,14,25,229.11,232.2,0,fixed_50
+TurnOnSinkFaucet,0,6,300,50,50,6,50,232.39,365.25,0,fixed_50
+TurnOnSinkFaucet,0,7,350,50,49,49,20,224.78,228.03,0,fixed_50
+TurnOnSinkFaucet,0,8,400,50,45,45,43,232.61,234.85,0,fixed_50
+TurnOnSinkFaucet,0,9,450,50,30,17,30,224.83,226.9,0,fixed_50
+TurnOnSinkFaucet,0,10,500,50,20,20,4,222.82,224.71,0,fixed_50

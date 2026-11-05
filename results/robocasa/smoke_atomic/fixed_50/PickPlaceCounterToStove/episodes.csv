@@ -1,0 +1,2 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PickPlaceCounterToStove,0,0,fixed_50,0,600,600,12,50.0,133.5,Pick the broccoli from the plate and place it in the pan.

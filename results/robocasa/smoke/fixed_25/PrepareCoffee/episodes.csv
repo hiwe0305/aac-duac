@@ -1,0 +1,3 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PrepareCoffee,0,0,fixed_25,0,1800,1800,72,25.0,323.3,"Pick the mug from the cabinet, place it under the coffee machine dispenser, and press the start button."
+PrepareCoffee,1,1,fixed_25,0,1800,1800,72,25.0,418.2,"Pick the mug from the cabinet, place it under the coffee machine dispenser, and press the start button."
