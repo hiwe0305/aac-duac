@@ -30,3 +30,4 @@ h5py
 lxml
 hidapi
 # tianshou: only used by robocasa's training scripts, not needed for evaluation
+matplotlib  # imported by the official AAC code (external/aac-libero)

@@ -2,8 +2,6 @@ checkpoints/
 .venv*/
 external/
 data/
-outputs
-logs/
 docs/paper/
 __pycache__/
 **/__pycache__/
