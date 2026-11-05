@@ -3,7 +3,8 @@
 
 Environment: LeRobot's official wrapper ``lerobot.envs.robocasa.RoboCasaEnv`` (RoboCasa365 RoboCasaGymEnv,
 256x256 cameras robot0_agentview_left / eye_in_hand / agentview_right, 16-d state, 12-d action
-[base_motion 0:4, control_mode 4, eef_pos 5:8, eef_rot 8:11, gripper 11]). Episode length = the horizon
+[base_motion 0:4, control_mode 4, eef_pos 5:8, eef_rot 8:11, gripper 11]; the policy uses the native
+robosuite order, see ARM_IDX below). Episode length = the horizon
 registered by RoboCasa for the task (unless --max-steps). Seed of trial k = --seed + k, identical for every arm.
 
 Horizon rules operate on the arm part of the action, reordered to the LIBERO/AAC layout [pos, rot, gripper]:
@@ -37,7 +38,25 @@ for p in (ROOT / "flowbased_aac", ROOT / "external" / "openpi" / "packages" / "o
 
 from flowbased_aac.duac_policy import DUACConfig, select_duac_horizon  # noqa: E402
 
-ARM_IDX = np.r_[5:8, 8:11, 11]  # RoboCasa action -> [eef_pos, eef_rot, gripper]
+# The checkpoint (lerobot/pi05_robocasa) was trained in the native robosuite PandaOmron layout, verified from its
+# normalization stats (gripper dim 6 std 0.99, torso dim 10 std 0, base_pos at state 7:10 with mean (2.67, -2.24, 0.70)):
+#   action [eef_pos 0:3, eef_rot 3:6, gripper 6, base 7:10, torso 10, control_mode 11]
+#   state  [base_to_eef_pos 0:3, base_to_eef_quat 3:7, base_pos 7:10, base_quat 10:14, gripper_qpos 14:16]
+# The LeRobot RoboCasaEnv wrapper uses another order, so state and action are converted here.
+ARM_IDX = np.r_[0:3, 3:6, 6]  # model action -> [eef_pos, eef_rot, gripper] (AAC / xi layout)
+STATE_FROM_WRAPPER = np.r_[7:10, 10:14, 0:3, 3:7, 14:16]  # wrapper agent_pos -> model state
+
+
+def to_wrapper_action(a: np.ndarray) -> np.ndarray:
+    """Model action (native order) -> LeRobot RoboCasaEnv flat action [base 0:4, mode 4, pos 5:8, rot 8:11, grip 11].
+
+    Gripper and control mode were trained on {-1, 1} (threshold 0); the RoboCasa365 gym wrapper thresholds at 0.5,
+    so they are binarized at 0 here.
+    """
+    a = np.clip(np.asarray(a, dtype=np.float32), -1.0, 1.0)
+    grip = np.float32(1.0 if a[6] > 0 else -1.0)
+    mode = np.float32(1.0 if a[11] > 0 else -1.0)
+    return np.concatenate([a[7:11], [mode], a[0:3], a[3:6], [grip]]).astype(np.float32)
 CAMERAS = ["robot0_agentview_left", "robot0_eye_in_hand", "robot0_agentview_right"]
 EPISODE_COLS = ["task", "trial", "seed", "arm", "success", "end_step", "max_steps", "n_decisions", "mean_h", "wall_s",
                 "instruction"]
@@ -100,7 +119,7 @@ class SyntheticClient:
         self.multi, self.n, self.h, self.rng = multi, n, h, np.random.default_rng(0)
 
     def infer(self, _):
-        base = np.zeros((self.h, 12)); base[:, 5:8] = 0.3; base[:, 11] = -1
+        base = np.zeros((self.h, 12)); base[:, 0:3] = 0.3; base[:, 6] = -1; base[:, 11] = -1
         if self.multi:
             a = base[None] + self.rng.normal(size=(self.n, self.h, 12)) * np.linspace(0.02, 0.3, self.h)[None, :, None]
             return {"actions": a, "normalized_action": a, "policy_timing": {"infer_ms": 1.0}}
@@ -175,7 +194,7 @@ def run(args) -> Dict[str, Any]:
                                     "executed_actions", "aac_samples", "duac_uncertainty", "duac_divergence")}
             frames, step, hs, success = [], 0, [], False
             while step < max_steps and not success:
-                request = {"images": [obs["pixels"][c] for c in CAMERAS], "state": obs["agent_pos"], "task": instruction}
+                request = {"images": [obs["pixels"][c] for c in CAMERAS], "state": np.asarray(obs["agent_pos"])[STATE_FROM_WRAPPER], "task": instruction}
                 sent = time.time()
                 reply = client.infer(request)
                 roundtrip_ms = 1000 * (time.time() - sent)
@@ -220,7 +239,7 @@ def run(args) -> Dict[str, Any]:
                     bank["duac_divergence"].append(np.asarray(reply["duac_divergence"]))
                 hs.append(h)
                 for action in chunk[:h]:
-                    obs, _, terminated, truncated, info = env.step(np.asarray(action, dtype=np.float32))
+                    obs, _, terminated, truncated, info = env.step(to_wrapper_action(action))
                     bank["executed_actions"].append(action)
                     step += 1
                     if args.save_videos and trial < args.video_trials:

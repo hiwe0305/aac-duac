@@ -11,3 +11,4 @@ __pycache__/
 .libero-pro/
 *.egg-info/
 **/*.egg-info/
+outputs

@@ -1,0 +1,50 @@
+{
+  "arm": "aac",
+  "suite": "libero_10",
+  "total_episodes": 500,
+  "total_successes": 470,
+  "success_rate": 0.94,
+  "mean_h": 7.2284,
+  "tasks": {
+    "0": {
+      "episodes": 50,
+      "success_rate": 0.94
+    },
+    "1": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "2": {
+      "episodes": 50,
+      "success_rate": 0.94
+    },
+    "3": {
+      "episodes": 50,
+      "success_rate": 0.96
+    },
+    "4": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "5": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "6": {
+      "episodes": 50,
+      "success_rate": 0.9
+    },
+    "7": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "8": {
+      "episodes": 50,
+      "success_rate": 0.7
+    },
+    "9": {
+      "episodes": 50,
+      "success_rate": 0.98
+    }
+  }
+}

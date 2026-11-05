@@ -1,0 +1,50 @@
+{
+  "arm": "fixed_10",
+  "suite": "libero_10",
+  "total_episodes": 500,
+  "total_successes": 477,
+  "success_rate": 0.954,
+  "mean_h": 10.0,
+  "tasks": {
+    "0": {
+      "episodes": 50,
+      "success_rate": 0.94
+    },
+    "1": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "2": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "3": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "4": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "5": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "6": {
+      "episodes": 50,
+      "success_rate": 0.92
+    },
+    "7": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "8": {
+      "episodes": 50,
+      "success_rate": 0.78
+    },
+    "9": {
+      "episodes": 50,
+      "success_rate": 0.96
+    }
+  }
+}

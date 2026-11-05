@@ -1,0 +1,1001 @@
+task_id,trial_id,arm,predicate_idx,predicate,first_true_step
+0,0,aac,0,in alphabet_soup_1 basket_1_contain_region,149
+0,0,aac,1,in tomato_sauce_1 basket_1_contain_region,273
+0,1,aac,0,in alphabet_soup_1 basket_1_contain_region,139
+0,1,aac,1,in tomato_sauce_1 basket_1_contain_region,264
+0,2,aac,0,in alphabet_soup_1 basket_1_contain_region,153
+0,2,aac,1,in tomato_sauce_1 basket_1_contain_region,261
+0,3,aac,0,in alphabet_soup_1 basket_1_contain_region,140
+0,3,aac,1,in tomato_sauce_1 basket_1_contain_region,241
+0,4,aac,0,in alphabet_soup_1 basket_1_contain_region,149
+0,4,aac,1,in tomato_sauce_1 basket_1_contain_region,263
+0,5,aac,0,in alphabet_soup_1 basket_1_contain_region,123
+0,5,aac,1,in tomato_sauce_1 basket_1_contain_region,263
+0,6,aac,0,in alphabet_soup_1 basket_1_contain_region,164
+0,6,aac,1,in tomato_sauce_1 basket_1_contain_region,292
+0,7,aac,0,in alphabet_soup_1 basket_1_contain_region,131
+0,7,aac,1,in tomato_sauce_1 basket_1_contain_region,
+0,8,aac,0,in alphabet_soup_1 basket_1_contain_region,137
+0,8,aac,1,in tomato_sauce_1 basket_1_contain_region,236
+0,9,aac,0,in alphabet_soup_1 basket_1_contain_region,158
+0,9,aac,1,in tomato_sauce_1 basket_1_contain_region,279
+0,10,aac,0,in alphabet_soup_1 basket_1_contain_region,141
+0,10,aac,1,in tomato_sauce_1 basket_1_contain_region,267
+0,11,aac,0,in alphabet_soup_1 basket_1_contain_region,149
+0,11,aac,1,in tomato_sauce_1 basket_1_contain_region,257
+0,12,aac,0,in alphabet_soup_1 basket_1_contain_region,139
+0,12,aac,1,in tomato_sauce_1 basket_1_contain_region,262
+0,13,aac,0,in alphabet_soup_1 basket_1_contain_region,209
+0,13,aac,1,in tomato_sauce_1 basket_1_contain_region,318
+0,14,aac,0,in alphabet_soup_1 basket_1_contain_region,140
+0,14,aac,1,in tomato_sauce_1 basket_1_contain_region,269
+0,15,aac,0,in alphabet_soup_1 basket_1_contain_region,137
+0,15,aac,1,in tomato_sauce_1 basket_1_contain_region,250
+0,16,aac,0,in alphabet_soup_1 basket_1_contain_region,164
+0,16,aac,1,in tomato_sauce_1 basket_1_contain_region,286
+0,17,aac,0,in alphabet_soup_1 basket_1_contain_region,125
+0,17,aac,1,in tomato_sauce_1 basket_1_contain_region,253
+0,18,aac,0,in alphabet_soup_1 basket_1_contain_region,151
+0,18,aac,1,in tomato_sauce_1 basket_1_contain_region,275
+0,19,aac,0,in alphabet_soup_1 basket_1_contain_region,137
+0,19,aac,1,in tomato_sauce_1 basket_1_contain_region,267
+0,20,aac,0,in alphabet_soup_1 basket_1_contain_region,159
+0,20,aac,1,in tomato_sauce_1 basket_1_contain_region,286
+0,21,aac,0,in alphabet_soup_1 basket_1_contain_region,153
+0,21,aac,1,in tomato_sauce_1 basket_1_contain_region,273
+0,22,aac,0,in alphabet_soup_1 basket_1_contain_region,141
+0,22,aac,1,in tomato_sauce_1 basket_1_contain_region,265
+0,23,aac,0,in alphabet_soup_1 basket_1_contain_region,127
+0,23,aac,1,in tomato_sauce_1 basket_1_contain_region,247
+0,24,aac,0,in alphabet_soup_1 basket_1_contain_region,147
+0,24,aac,1,in tomato_sauce_1 basket_1_contain_region,307
+0,25,aac,0,in alphabet_soup_1 basket_1_contain_region,146
+0,25,aac,1,in tomato_sauce_1 basket_1_contain_region,262
+0,26,aac,0,in alphabet_soup_1 basket_1_contain_region,148
+0,26,aac,1,in tomato_sauce_1 basket_1_contain_region,264
+0,27,aac,0,in alphabet_soup_1 basket_1_contain_region,222
+0,27,aac,1,in tomato_sauce_1 basket_1_contain_region,347
+0,28,aac,0,in alphabet_soup_1 basket_1_contain_region,134
+0,28,aac,1,in tomato_sauce_1 basket_1_contain_region,274
+0,29,aac,0,in alphabet_soup_1 basket_1_contain_region,142
+0,29,aac,1,in tomato_sauce_1 basket_1_contain_region,263
+0,30,aac,0,in alphabet_soup_1 basket_1_contain_region,160
+0,30,aac,1,in tomato_sauce_1 basket_1_contain_region,289
+0,31,aac,0,in alphabet_soup_1 basket_1_contain_region,140
+0,31,aac,1,in tomato_sauce_1 basket_1_contain_region,252
+0,32,aac,0,in alphabet_soup_1 basket_1_contain_region,148
+0,32,aac,1,in tomato_sauce_1 basket_1_contain_region,270
+0,33,aac,0,in alphabet_soup_1 basket_1_contain_region,413
+0,33,aac,1,in tomato_sauce_1 basket_1_contain_region,
+0,34,aac,0,in alphabet_soup_1 basket_1_contain_region,135
+0,34,aac,1,in tomato_sauce_1 basket_1_contain_region,250
+0,35,aac,0,in alphabet_soup_1 basket_1_contain_region,149
+0,35,aac,1,in tomato_sauce_1 basket_1_contain_region,261
+0,36,aac,0,in alphabet_soup_1 basket_1_contain_region,201
+0,36,aac,1,in tomato_sauce_1 basket_1_contain_region,335
+0,37,aac,0,in alphabet_soup_1 basket_1_contain_region,160
+0,37,aac,1,in tomato_sauce_1 basket_1_contain_region,287
+0,38,aac,0,in alphabet_soup_1 basket_1_contain_region,256
+0,38,aac,1,in tomato_sauce_1 basket_1_contain_region,382
+0,39,aac,0,in alphabet_soup_1 basket_1_contain_region,141
+0,39,aac,1,in tomato_sauce_1 basket_1_contain_region,
+0,40,aac,0,in alphabet_soup_1 basket_1_contain_region,140
+0,40,aac,1,in tomato_sauce_1 basket_1_contain_region,258
+0,41,aac,0,in alphabet_soup_1 basket_1_contain_region,155
+0,41,aac,1,in tomato_sauce_1 basket_1_contain_region,270
+0,42,aac,0,in alphabet_soup_1 basket_1_contain_region,143
+0,42,aac,1,in tomato_sauce_1 basket_1_contain_region,262
+0,43,aac,0,in alphabet_soup_1 basket_1_contain_region,126
+0,43,aac,1,in tomato_sauce_1 basket_1_contain_region,253
+0,44,aac,0,in alphabet_soup_1 basket_1_contain_region,146
+0,44,aac,1,in tomato_sauce_1 basket_1_contain_region,265
+0,45,aac,0,in alphabet_soup_1 basket_1_contain_region,135
+0,45,aac,1,in tomato_sauce_1 basket_1_contain_region,253
+0,46,aac,0,in alphabet_soup_1 basket_1_contain_region,163
+0,46,aac,1,in tomato_sauce_1 basket_1_contain_region,292
+0,47,aac,0,in alphabet_soup_1 basket_1_contain_region,147
+0,47,aac,1,in tomato_sauce_1 basket_1_contain_region,277
+0,48,aac,0,in alphabet_soup_1 basket_1_contain_region,340
+0,48,aac,1,in tomato_sauce_1 basket_1_contain_region,462
+0,49,aac,0,in alphabet_soup_1 basket_1_contain_region,144
+0,49,aac,1,in tomato_sauce_1 basket_1_contain_region,260
+1,0,aac,0,in cream_cheese_1 basket_1_contain_region,126
+1,0,aac,1,in butter_1 basket_1_contain_region,245
+1,1,aac,0,in cream_cheese_1 basket_1_contain_region,135
+1,1,aac,1,in butter_1 basket_1_contain_region,252
+1,2,aac,0,in cream_cheese_1 basket_1_contain_region,134
+1,2,aac,1,in butter_1 basket_1_contain_region,236
+1,3,aac,0,in cream_cheese_1 basket_1_contain_region,132
+1,3,aac,1,in butter_1 basket_1_contain_region,233
+1,4,aac,0,in cream_cheese_1 basket_1_contain_region,134
+1,4,aac,1,in butter_1 basket_1_contain_region,249
+1,5,aac,0,in cream_cheese_1 basket_1_contain_region,145
+1,5,aac,1,in butter_1 basket_1_contain_region,262
+1,6,aac,0,in cream_cheese_1 basket_1_contain_region,131
+1,6,aac,1,in butter_1 basket_1_contain_region,233
+1,7,aac,0,in cream_cheese_1 basket_1_contain_region,141
+1,7,aac,1,in butter_1 basket_1_contain_region,246
+1,8,aac,0,in cream_cheese_1 basket_1_contain_region,137
+1,8,aac,1,in butter_1 basket_1_contain_region,254
+1,9,aac,0,in cream_cheese_1 basket_1_contain_region,144
+1,9,aac,1,in butter_1 basket_1_contain_region,265
+1,10,aac,0,in cream_cheese_1 basket_1_contain_region,134
+1,10,aac,1,in butter_1 basket_1_contain_region,245
+1,11,aac,0,in cream_cheese_1 basket_1_contain_region,134
+1,11,aac,1,in butter_1 basket_1_contain_region,235
+1,12,aac,0,in cream_cheese_1 basket_1_contain_region,127
+1,12,aac,1,in butter_1 basket_1_contain_region,229
+1,13,aac,0,in cream_cheese_1 basket_1_contain_region,146
+1,13,aac,1,in butter_1 basket_1_contain_region,241
+1,14,aac,0,in cream_cheese_1 basket_1_contain_region,142
+1,14,aac,1,in butter_1 basket_1_contain_region,256
+1,15,aac,0,in cream_cheese_1 basket_1_contain_region,144
+1,15,aac,1,in butter_1 basket_1_contain_region,259
+1,16,aac,0,in cream_cheese_1 basket_1_contain_region,151
+1,16,aac,1,in butter_1 basket_1_contain_region,260
+1,17,aac,0,in cream_cheese_1 basket_1_contain_region,135
+1,17,aac,1,in butter_1 basket_1_contain_region,245
+1,18,aac,0,in cream_cheese_1 basket_1_contain_region,145
+1,18,aac,1,in butter_1 basket_1_contain_region,251
+1,19,aac,0,in cream_cheese_1 basket_1_contain_region,131
+1,19,aac,1,in butter_1 basket_1_contain_region,238
+1,20,aac,0,in cream_cheese_1 basket_1_contain_region,130
+1,20,aac,1,in butter_1 basket_1_contain_region,245
+1,21,aac,0,in cream_cheese_1 basket_1_contain_region,138
+1,21,aac,1,in butter_1 basket_1_contain_region,252
+1,22,aac,0,in cream_cheese_1 basket_1_contain_region,147
+1,22,aac,1,in butter_1 basket_1_contain_region,246
+1,23,aac,0,in cream_cheese_1 basket_1_contain_region,135
+1,23,aac,1,in butter_1 basket_1_contain_region,236
+1,24,aac,0,in cream_cheese_1 basket_1_contain_region,136
+1,24,aac,1,in butter_1 basket_1_contain_region,249
+1,25,aac,0,in cream_cheese_1 basket_1_contain_region,132
+1,25,aac,1,in butter_1 basket_1_contain_region,235
+1,26,aac,0,in cream_cheese_1 basket_1_contain_region,141
+1,26,aac,1,in butter_1 basket_1_contain_region,248
+1,27,aac,0,in cream_cheese_1 basket_1_contain_region,144
+1,27,aac,1,in butter_1 basket_1_contain_region,249
+1,28,aac,0,in cream_cheese_1 basket_1_contain_region,128
+1,28,aac,1,in butter_1 basket_1_contain_region,
+1,29,aac,0,in cream_cheese_1 basket_1_contain_region,128
+1,29,aac,1,in butter_1 basket_1_contain_region,367
+1,30,aac,0,in cream_cheese_1 basket_1_contain_region,134
+1,30,aac,1,in butter_1 basket_1_contain_region,241
+1,31,aac,0,in cream_cheese_1 basket_1_contain_region,141
+1,31,aac,1,in butter_1 basket_1_contain_region,247
+1,32,aac,0,in cream_cheese_1 basket_1_contain_region,133
+1,32,aac,1,in butter_1 basket_1_contain_region,287
+1,33,aac,0,in cream_cheese_1 basket_1_contain_region,135
+1,33,aac,1,in butter_1 basket_1_contain_region,237
+1,34,aac,0,in cream_cheese_1 basket_1_contain_region,138
+1,34,aac,1,in butter_1 basket_1_contain_region,248
+1,35,aac,0,in cream_cheese_1 basket_1_contain_region,432
+1,35,aac,1,in butter_1 basket_1_contain_region,252
+1,36,aac,0,in cream_cheese_1 basket_1_contain_region,136
+1,36,aac,1,in butter_1 basket_1_contain_region,241
+1,37,aac,0,in cream_cheese_1 basket_1_contain_region,138
+1,37,aac,1,in butter_1 basket_1_contain_region,239
+1,38,aac,0,in cream_cheese_1 basket_1_contain_region,147
+1,38,aac,1,in butter_1 basket_1_contain_region,257
+1,39,aac,0,in cream_cheese_1 basket_1_contain_region,135
+1,39,aac,1,in butter_1 basket_1_contain_region,242
+1,40,aac,0,in cream_cheese_1 basket_1_contain_region,142
+1,40,aac,1,in butter_1 basket_1_contain_region,261
+1,41,aac,0,in cream_cheese_1 basket_1_contain_region,131
+1,41,aac,1,in butter_1 basket_1_contain_region,234
+1,42,aac,0,in cream_cheese_1 basket_1_contain_region,138
+1,42,aac,1,in butter_1 basket_1_contain_region,253
+1,43,aac,0,in cream_cheese_1 basket_1_contain_region,139
+1,43,aac,1,in butter_1 basket_1_contain_region,247
+1,44,aac,0,in cream_cheese_1 basket_1_contain_region,138
+1,44,aac,1,in butter_1 basket_1_contain_region,253
+1,45,aac,0,in cream_cheese_1 basket_1_contain_region,150
+1,45,aac,1,in butter_1 basket_1_contain_region,267
+1,46,aac,0,in cream_cheese_1 basket_1_contain_region,167
+1,46,aac,1,in butter_1 basket_1_contain_region,276
+1,47,aac,0,in cream_cheese_1 basket_1_contain_region,133
+1,47,aac,1,in butter_1 basket_1_contain_region,259
+1,48,aac,0,in cream_cheese_1 basket_1_contain_region,125
+1,48,aac,1,in butter_1 basket_1_contain_region,231
+1,49,aac,0,in cream_cheese_1 basket_1_contain_region,134
+1,49,aac,1,in butter_1 basket_1_contain_region,234
+2,0,aac,0,turnon flat_stove_1,
+2,0,aac,1,on moka_pot_1 flat_stove_1_cook_region,305
+2,1,aac,0,turnon flat_stove_1,99
+2,1,aac,1,on moka_pot_1 flat_stove_1_cook_region,241
+2,2,aac,0,turnon flat_stove_1,
+2,2,aac,1,on moka_pot_1 flat_stove_1_cook_region,320
+2,3,aac,0,turnon flat_stove_1,87
+2,3,aac,1,on moka_pot_1 flat_stove_1_cook_region,235
+2,4,aac,0,turnon flat_stove_1,
+2,4,aac,1,on moka_pot_1 flat_stove_1_cook_region,284
+2,5,aac,0,turnon flat_stove_1,
+2,5,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,6,aac,0,turnon flat_stove_1,
+2,6,aac,1,on moka_pot_1 flat_stove_1_cook_region,278
+2,7,aac,0,turnon flat_stove_1,
+2,7,aac,1,on moka_pot_1 flat_stove_1_cook_region,277
+2,8,aac,0,turnon flat_stove_1,
+2,8,aac,1,on moka_pot_1 flat_stove_1_cook_region,245
+2,9,aac,0,turnon flat_stove_1,
+2,9,aac,1,on moka_pot_1 flat_stove_1_cook_region,246
+2,10,aac,0,turnon flat_stove_1,89
+2,10,aac,1,on moka_pot_1 flat_stove_1_cook_region,238
+2,11,aac,0,turnon flat_stove_1,86
+2,11,aac,1,on moka_pot_1 flat_stove_1_cook_region,241
+2,12,aac,0,turnon flat_stove_1,
+2,12,aac,1,on moka_pot_1 flat_stove_1_cook_region,251
+2,13,aac,0,turnon flat_stove_1,
+2,13,aac,1,on moka_pot_1 flat_stove_1_cook_region,233
+2,14,aac,0,turnon flat_stove_1,95
+2,14,aac,1,on moka_pot_1 flat_stove_1_cook_region,250
+2,15,aac,0,turnon flat_stove_1,
+2,15,aac,1,on moka_pot_1 flat_stove_1_cook_region,251
+2,16,aac,0,turnon flat_stove_1,96
+2,16,aac,1,on moka_pot_1 flat_stove_1_cook_region,247
+2,17,aac,0,turnon flat_stove_1,
+2,17,aac,1,on moka_pot_1 flat_stove_1_cook_region,268
+2,18,aac,0,turnon flat_stove_1,
+2,18,aac,1,on moka_pot_1 flat_stove_1_cook_region,251
+2,19,aac,0,turnon flat_stove_1,
+2,19,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,20,aac,0,turnon flat_stove_1,
+2,20,aac,1,on moka_pot_1 flat_stove_1_cook_region,229
+2,21,aac,0,turnon flat_stove_1,99
+2,21,aac,1,on moka_pot_1 flat_stove_1_cook_region,234
+2,22,aac,0,turnon flat_stove_1,107
+2,22,aac,1,on moka_pot_1 flat_stove_1_cook_region,292
+2,23,aac,0,turnon flat_stove_1,
+2,23,aac,1,on moka_pot_1 flat_stove_1_cook_region,243
+2,24,aac,0,turnon flat_stove_1,103
+2,24,aac,1,on moka_pot_1 flat_stove_1_cook_region,245
+2,25,aac,0,turnon flat_stove_1,104
+2,25,aac,1,on moka_pot_1 flat_stove_1_cook_region,252
+2,26,aac,0,turnon flat_stove_1,
+2,26,aac,1,on moka_pot_1 flat_stove_1_cook_region,367
+2,27,aac,0,turnon flat_stove_1,
+2,27,aac,1,on moka_pot_1 flat_stove_1_cook_region,225
+2,28,aac,0,turnon flat_stove_1,
+2,28,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,29,aac,0,turnon flat_stove_1,
+2,29,aac,1,on moka_pot_1 flat_stove_1_cook_region,306
+2,30,aac,0,turnon flat_stove_1,87
+2,30,aac,1,on moka_pot_1 flat_stove_1_cook_region,232
+2,31,aac,0,turnon flat_stove_1,90
+2,31,aac,1,on moka_pot_1 flat_stove_1_cook_region,239
+2,32,aac,0,turnon flat_stove_1,
+2,32,aac,1,on moka_pot_1 flat_stove_1_cook_region,230
+2,33,aac,0,turnon flat_stove_1,126
+2,33,aac,1,on moka_pot_1 flat_stove_1_cook_region,247
+2,34,aac,0,turnon flat_stove_1,94
+2,34,aac,1,on moka_pot_1 flat_stove_1_cook_region,362
+2,35,aac,0,turnon flat_stove_1,
+2,35,aac,1,on moka_pot_1 flat_stove_1_cook_region,223
+2,36,aac,0,turnon flat_stove_1,
+2,36,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,37,aac,0,turnon flat_stove_1,92
+2,37,aac,1,on moka_pot_1 flat_stove_1_cook_region,236
+2,38,aac,0,turnon flat_stove_1,95
+2,38,aac,1,on moka_pot_1 flat_stove_1_cook_region,243
+2,39,aac,0,turnon flat_stove_1,82
+2,39,aac,1,on moka_pot_1 flat_stove_1_cook_region,221
+2,40,aac,0,turnon flat_stove_1,
+2,40,aac,1,on moka_pot_1 flat_stove_1_cook_region,368
+2,41,aac,0,turnon flat_stove_1,90
+2,41,aac,1,on moka_pot_1 flat_stove_1_cook_region,232
+2,42,aac,0,turnon flat_stove_1,
+2,42,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,43,aac,0,turnon flat_stove_1,
+2,43,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,44,aac,0,turnon flat_stove_1,90
+2,44,aac,1,on moka_pot_1 flat_stove_1_cook_region,234
+2,45,aac,0,turnon flat_stove_1,90
+2,45,aac,1,on moka_pot_1 flat_stove_1_cook_region,232
+2,46,aac,0,turnon flat_stove_1,
+2,46,aac,1,on moka_pot_1 flat_stove_1_cook_region,246
+2,47,aac,0,turnon flat_stove_1,
+2,47,aac,1,on moka_pot_1 flat_stove_1_cook_region,
+2,48,aac,0,turnon flat_stove_1,
+2,48,aac,1,on moka_pot_1 flat_stove_1_cook_region,224
+2,49,aac,0,turnon flat_stove_1,
+2,49,aac,1,on moka_pot_1 flat_stove_1_cook_region,237
+3,0,aac,0,close white_cabinet_1_bottom_region,335
+3,0,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,231
+3,1,aac,0,close white_cabinet_1_bottom_region,225
+3,1,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,161
+3,2,aac,0,close white_cabinet_1_bottom_region,
+3,2,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,171
+3,3,aac,0,close white_cabinet_1_bottom_region,
+3,3,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,473
+3,4,aac,0,close white_cabinet_1_bottom_region,234
+3,4,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,166
+3,5,aac,0,close white_cabinet_1_bottom_region,
+3,5,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,129
+3,6,aac,0,close white_cabinet_1_bottom_region,
+3,6,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,487
+3,7,aac,0,close white_cabinet_1_bottom_region,
+3,7,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,114
+3,8,aac,0,close white_cabinet_1_bottom_region,
+3,8,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,353
+3,9,aac,0,close white_cabinet_1_bottom_region,
+3,9,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,153
+3,10,aac,0,close white_cabinet_1_bottom_region,
+3,10,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,120
+3,11,aac,0,close white_cabinet_1_bottom_region,
+3,11,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,286
+3,12,aac,0,close white_cabinet_1_bottom_region,
+3,12,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,148
+3,13,aac,0,close white_cabinet_1_bottom_region,
+3,13,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,266
+3,14,aac,0,close white_cabinet_1_bottom_region,
+3,14,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,123
+3,15,aac,0,close white_cabinet_1_bottom_region,241
+3,15,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,165
+3,16,aac,0,close white_cabinet_1_bottom_region,
+3,16,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,176
+3,17,aac,0,close white_cabinet_1_bottom_region,
+3,17,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,401
+3,18,aac,0,close white_cabinet_1_bottom_region,233
+3,18,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,162
+3,19,aac,0,close white_cabinet_1_bottom_region,257
+3,19,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,150
+3,20,aac,0,close white_cabinet_1_bottom_region,288
+3,20,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,189
+3,21,aac,0,close white_cabinet_1_bottom_region,
+3,21,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,122
+3,22,aac,0,close white_cabinet_1_bottom_region,
+3,22,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,147
+3,23,aac,0,close white_cabinet_1_bottom_region,
+3,23,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,173
+3,24,aac,0,close white_cabinet_1_bottom_region,
+3,24,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,251
+3,25,aac,0,close white_cabinet_1_bottom_region,226
+3,25,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,159
+3,26,aac,0,close white_cabinet_1_bottom_region,
+3,26,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,120
+3,27,aac,0,close white_cabinet_1_bottom_region,
+3,27,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,179
+3,28,aac,0,close white_cabinet_1_bottom_region,
+3,28,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,153
+3,29,aac,0,close white_cabinet_1_bottom_region,261
+3,29,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,153
+3,30,aac,0,close white_cabinet_1_bottom_region,227
+3,30,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,154
+3,31,aac,0,close white_cabinet_1_bottom_region,
+3,31,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,150
+3,32,aac,0,close white_cabinet_1_bottom_region,
+3,32,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,233
+3,33,aac,0,close white_cabinet_1_bottom_region,
+3,33,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,191
+3,34,aac,0,close white_cabinet_1_bottom_region,
+3,34,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,
+3,35,aac,0,close white_cabinet_1_bottom_region,223
+3,35,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,153
+3,36,aac,0,close white_cabinet_1_bottom_region,
+3,36,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,368
+3,37,aac,0,close white_cabinet_1_bottom_region,
+3,37,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,117
+3,38,aac,0,close white_cabinet_1_bottom_region,
+3,38,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,
+3,39,aac,0,close white_cabinet_1_bottom_region,
+3,39,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,117
+3,40,aac,0,close white_cabinet_1_bottom_region,
+3,40,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,169
+3,41,aac,0,close white_cabinet_1_bottom_region,
+3,41,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,159
+3,42,aac,0,close white_cabinet_1_bottom_region,
+3,42,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,158
+3,43,aac,0,close white_cabinet_1_bottom_region,
+3,43,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,128
+3,44,aac,0,close white_cabinet_1_bottom_region,414
+3,44,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,198
+3,45,aac,0,close white_cabinet_1_bottom_region,228
+3,45,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,156
+3,46,aac,0,close white_cabinet_1_bottom_region,
+3,46,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,137
+3,47,aac,0,close white_cabinet_1_bottom_region,
+3,47,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,158
+3,48,aac,0,close white_cabinet_1_bottom_region,
+3,48,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,
+3,49,aac,0,close white_cabinet_1_bottom_region,231
+3,49,aac,1,in akita_black_bowl_1 white_cabinet_1_bottom_region,145
+4,0,aac,0,on porcelain_mug_1 plate_1,92
+4,0,aac,1,on white_yellow_mug_1 plate_2,232
+4,1,aac,0,on porcelain_mug_1 plate_1,111
+4,1,aac,1,on white_yellow_mug_1 plate_2,244
+4,2,aac,0,on porcelain_mug_1 plate_1,105
+4,2,aac,1,on white_yellow_mug_1 plate_2,247
+4,3,aac,0,on porcelain_mug_1 plate_1,118
+4,3,aac,1,on white_yellow_mug_1 plate_2,239
+4,4,aac,0,on porcelain_mug_1 plate_1,109
+4,4,aac,1,on white_yellow_mug_1 plate_2,218
+4,5,aac,0,on porcelain_mug_1 plate_1,102
+4,5,aac,1,on white_yellow_mug_1 plate_2,227
+4,6,aac,0,on porcelain_mug_1 plate_1,115
+4,6,aac,1,on white_yellow_mug_1 plate_2,241
+4,7,aac,0,on porcelain_mug_1 plate_1,120
+4,7,aac,1,on white_yellow_mug_1 plate_2,241
+4,8,aac,0,on porcelain_mug_1 plate_1,108
+4,8,aac,1,on white_yellow_mug_1 plate_2,221
+4,9,aac,0,on porcelain_mug_1 plate_1,115
+4,9,aac,1,on white_yellow_mug_1 plate_2,237
+4,10,aac,0,on porcelain_mug_1 plate_1,112
+4,10,aac,1,on white_yellow_mug_1 plate_2,228
+4,11,aac,0,on porcelain_mug_1 plate_1,141
+4,11,aac,1,on white_yellow_mug_1 plate_2,262
+4,12,aac,0,on porcelain_mug_1 plate_1,99
+4,12,aac,1,on white_yellow_mug_1 plate_2,224
+4,13,aac,0,on porcelain_mug_1 plate_1,
+4,13,aac,1,on white_yellow_mug_1 plate_2,238
+4,14,aac,0,on porcelain_mug_1 plate_1,113
+4,14,aac,1,on white_yellow_mug_1 plate_2,235
+4,15,aac,0,on porcelain_mug_1 plate_1,117
+4,15,aac,1,on white_yellow_mug_1 plate_2,241
+4,16,aac,0,on porcelain_mug_1 plate_1,114
+4,16,aac,1,on white_yellow_mug_1 plate_2,239
+4,17,aac,0,on porcelain_mug_1 plate_1,101
+4,17,aac,1,on white_yellow_mug_1 plate_2,227
+4,18,aac,0,on porcelain_mug_1 plate_1,98
+4,18,aac,1,on white_yellow_mug_1 plate_2,217
+4,19,aac,0,on porcelain_mug_1 plate_1,107
+4,19,aac,1,on white_yellow_mug_1 plate_2,231
+4,20,aac,0,on porcelain_mug_1 plate_1,105
+4,20,aac,1,on white_yellow_mug_1 plate_2,242
+4,21,aac,0,on porcelain_mug_1 plate_1,116
+4,21,aac,1,on white_yellow_mug_1 plate_2,236
+4,22,aac,0,on porcelain_mug_1 plate_1,103
+4,22,aac,1,on white_yellow_mug_1 plate_2,231
+4,23,aac,0,on porcelain_mug_1 plate_1,107
+4,23,aac,1,on white_yellow_mug_1 plate_2,230
+4,24,aac,0,on porcelain_mug_1 plate_1,98
+4,24,aac,1,on white_yellow_mug_1 plate_2,230
+4,25,aac,0,on porcelain_mug_1 plate_1,112
+4,25,aac,1,on white_yellow_mug_1 plate_2,225
+4,26,aac,0,on porcelain_mug_1 plate_1,116
+4,26,aac,1,on white_yellow_mug_1 plate_2,236
+4,27,aac,0,on porcelain_mug_1 plate_1,98
+4,27,aac,1,on white_yellow_mug_1 plate_2,230
+4,28,aac,0,on porcelain_mug_1 plate_1,119
+4,28,aac,1,on white_yellow_mug_1 plate_2,246
+4,29,aac,0,on porcelain_mug_1 plate_1,101
+4,29,aac,1,on white_yellow_mug_1 plate_2,245
+4,30,aac,0,on porcelain_mug_1 plate_1,116
+4,30,aac,1,on white_yellow_mug_1 plate_2,239
+4,31,aac,0,on porcelain_mug_1 plate_1,114
+4,31,aac,1,on white_yellow_mug_1 plate_2,229
+4,32,aac,0,on porcelain_mug_1 plate_1,111
+4,32,aac,1,on white_yellow_mug_1 plate_2,232
+4,33,aac,0,on porcelain_mug_1 plate_1,99
+4,33,aac,1,on white_yellow_mug_1 plate_2,214
+4,34,aac,0,on porcelain_mug_1 plate_1,105
+4,34,aac,1,on white_yellow_mug_1 plate_2,228
+4,35,aac,0,on porcelain_mug_1 plate_1,
+4,35,aac,1,on white_yellow_mug_1 plate_2,222
+4,36,aac,0,on porcelain_mug_1 plate_1,95
+4,36,aac,1,on white_yellow_mug_1 plate_2,221
+4,37,aac,0,on porcelain_mug_1 plate_1,114
+4,37,aac,1,on white_yellow_mug_1 plate_2,232
+4,38,aac,0,on porcelain_mug_1 plate_1,114
+4,38,aac,1,on white_yellow_mug_1 plate_2,243
+4,39,aac,0,on porcelain_mug_1 plate_1,95
+4,39,aac,1,on white_yellow_mug_1 plate_2,232
+4,40,aac,0,on porcelain_mug_1 plate_1,107
+4,40,aac,1,on white_yellow_mug_1 plate_2,222
+4,41,aac,0,on porcelain_mug_1 plate_1,99
+4,41,aac,1,on white_yellow_mug_1 plate_2,214
+4,42,aac,0,on porcelain_mug_1 plate_1,112
+4,42,aac,1,on white_yellow_mug_1 plate_2,239
+4,43,aac,0,on porcelain_mug_1 plate_1,95
+4,43,aac,1,on white_yellow_mug_1 plate_2,219
+4,44,aac,0,on porcelain_mug_1 plate_1,106
+4,44,aac,1,on white_yellow_mug_1 plate_2,230
+4,45,aac,0,on porcelain_mug_1 plate_1,103
+4,45,aac,1,on white_yellow_mug_1 plate_2,233
+4,46,aac,0,on porcelain_mug_1 plate_1,100
+4,46,aac,1,on white_yellow_mug_1 plate_2,238
+4,47,aac,0,on porcelain_mug_1 plate_1,139
+4,47,aac,1,on white_yellow_mug_1 plate_2,260
+4,48,aac,0,on porcelain_mug_1 plate_1,103
+4,48,aac,1,on white_yellow_mug_1 plate_2,215
+4,49,aac,0,on porcelain_mug_1 plate_1,115
+4,49,aac,1,on white_yellow_mug_1 plate_2,229
+5,0,aac,0,in black_book_1 desk_caddy_1_back_contain_region,150
+5,1,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,2,aac,0,in black_book_1 desk_caddy_1_back_contain_region,153
+5,3,aac,0,in black_book_1 desk_caddy_1_back_contain_region,149
+5,4,aac,0,in black_book_1 desk_caddy_1_back_contain_region,169
+5,5,aac,0,in black_book_1 desk_caddy_1_back_contain_region,186
+5,6,aac,0,in black_book_1 desk_caddy_1_back_contain_region,152
+5,7,aac,0,in black_book_1 desk_caddy_1_back_contain_region,137
+5,8,aac,0,in black_book_1 desk_caddy_1_back_contain_region,153
+5,9,aac,0,in black_book_1 desk_caddy_1_back_contain_region,157
+5,10,aac,0,in black_book_1 desk_caddy_1_back_contain_region,153
+5,11,aac,0,in black_book_1 desk_caddy_1_back_contain_region,160
+5,12,aac,0,in black_book_1 desk_caddy_1_back_contain_region,171
+5,13,aac,0,in black_book_1 desk_caddy_1_back_contain_region,145
+5,14,aac,0,in black_book_1 desk_caddy_1_back_contain_region,144
+5,15,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,16,aac,0,in black_book_1 desk_caddy_1_back_contain_region,158
+5,17,aac,0,in black_book_1 desk_caddy_1_back_contain_region,144
+5,18,aac,0,in black_book_1 desk_caddy_1_back_contain_region,144
+5,19,aac,0,in black_book_1 desk_caddy_1_back_contain_region,182
+5,20,aac,0,in black_book_1 desk_caddy_1_back_contain_region,162
+5,21,aac,0,in black_book_1 desk_caddy_1_back_contain_region,179
+5,22,aac,0,in black_book_1 desk_caddy_1_back_contain_region,180
+5,23,aac,0,in black_book_1 desk_caddy_1_back_contain_region,194
+5,24,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,25,aac,0,in black_book_1 desk_caddy_1_back_contain_region,251
+5,26,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,27,aac,0,in black_book_1 desk_caddy_1_back_contain_region,156
+5,28,aac,0,in black_book_1 desk_caddy_1_back_contain_region,155
+5,29,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,30,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,31,aac,0,in black_book_1 desk_caddy_1_back_contain_region,144
+5,32,aac,0,in black_book_1 desk_caddy_1_back_contain_region,150
+5,33,aac,0,in black_book_1 desk_caddy_1_back_contain_region,149
+5,34,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,35,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,36,aac,0,in black_book_1 desk_caddy_1_back_contain_region,176
+5,37,aac,0,in black_book_1 desk_caddy_1_back_contain_region,257
+5,38,aac,0,in black_book_1 desk_caddy_1_back_contain_region,154
+5,39,aac,0,in black_book_1 desk_caddy_1_back_contain_region,144
+5,40,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,41,aac,0,in black_book_1 desk_caddy_1_back_contain_region,151
+5,42,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,43,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,44,aac,0,in black_book_1 desk_caddy_1_back_contain_region,186
+5,45,aac,0,in black_book_1 desk_caddy_1_back_contain_region,155
+5,46,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,47,aac,0,in black_book_1 desk_caddy_1_back_contain_region,146
+5,48,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+5,49,aac,0,in black_book_1 desk_caddy_1_back_contain_region,
+6,0,aac,0,on porcelain_mug_1 plate_1,115
+6,0,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,206
+6,1,aac,0,on porcelain_mug_1 plate_1,
+6,1,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,224
+6,2,aac,0,on porcelain_mug_1 plate_1,129
+6,2,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,234
+6,3,aac,0,on porcelain_mug_1 plate_1,118
+6,3,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,221
+6,4,aac,0,on porcelain_mug_1 plate_1,113
+6,4,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,240
+6,5,aac,0,on porcelain_mug_1 plate_1,122
+6,5,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,216
+6,6,aac,0,on porcelain_mug_1 plate_1,120
+6,6,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,286
+6,7,aac,0,on porcelain_mug_1 plate_1,121
+6,7,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,225
+6,8,aac,0,on porcelain_mug_1 plate_1,132
+6,8,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,233
+6,9,aac,0,on porcelain_mug_1 plate_1,131
+6,9,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,420
+6,10,aac,0,on porcelain_mug_1 plate_1,117
+6,10,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,219
+6,11,aac,0,on porcelain_mug_1 plate_1,115
+6,11,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,215
+6,12,aac,0,on porcelain_mug_1 plate_1,123
+6,12,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,230
+6,13,aac,0,on porcelain_mug_1 plate_1,
+6,13,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,214
+6,14,aac,0,on porcelain_mug_1 plate_1,113
+6,14,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,242
+6,15,aac,0,on porcelain_mug_1 plate_1,112
+6,15,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,202
+6,16,aac,0,on porcelain_mug_1 plate_1,121
+6,16,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,217
+6,17,aac,0,on porcelain_mug_1 plate_1,
+6,17,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,267
+6,18,aac,0,on porcelain_mug_1 plate_1,133
+6,18,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,231
+6,19,aac,0,on porcelain_mug_1 plate_1,127
+6,19,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,222
+6,20,aac,0,on porcelain_mug_1 plate_1,126
+6,20,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,213
+6,21,aac,0,on porcelain_mug_1 plate_1,114
+6,21,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,213
+6,22,aac,0,on porcelain_mug_1 plate_1,112
+6,22,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,206
+6,23,aac,0,on porcelain_mug_1 plate_1,123
+6,23,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,219
+6,24,aac,0,on porcelain_mug_1 plate_1,137
+6,24,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,229
+6,25,aac,0,on porcelain_mug_1 plate_1,127
+6,25,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,242
+6,26,aac,0,on porcelain_mug_1 plate_1,130
+6,26,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,223
+6,27,aac,0,on porcelain_mug_1 plate_1,112
+6,27,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,206
+6,28,aac,0,on porcelain_mug_1 plate_1,110
+6,28,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,220
+6,29,aac,0,on porcelain_mug_1 plate_1,105
+6,29,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,200
+6,30,aac,0,on porcelain_mug_1 plate_1,114
+6,30,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,210
+6,31,aac,0,on porcelain_mug_1 plate_1,134
+6,31,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,234
+6,32,aac,0,on porcelain_mug_1 plate_1,255
+6,32,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,241
+6,33,aac,0,on porcelain_mug_1 plate_1,121
+6,33,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,235
+6,34,aac,0,on porcelain_mug_1 plate_1,129
+6,34,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,261
+6,35,aac,0,on porcelain_mug_1 plate_1,110
+6,35,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,392
+6,36,aac,0,on porcelain_mug_1 plate_1,117
+6,36,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,227
+6,37,aac,0,on porcelain_mug_1 plate_1,119
+6,37,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,221
+6,38,aac,0,on porcelain_mug_1 plate_1,126
+6,38,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,214
+6,39,aac,0,on porcelain_mug_1 plate_1,113
+6,39,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,211
+6,40,aac,0,on porcelain_mug_1 plate_1,112
+6,40,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,219
+6,41,aac,0,on porcelain_mug_1 plate_1,
+6,41,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,
+6,42,aac,0,on porcelain_mug_1 plate_1,150
+6,42,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,255
+6,43,aac,0,on porcelain_mug_1 plate_1,116
+6,43,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,213
+6,44,aac,0,on porcelain_mug_1 plate_1,112
+6,44,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,217
+6,45,aac,0,on porcelain_mug_1 plate_1,124
+6,45,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,224
+6,46,aac,0,on porcelain_mug_1 plate_1,115
+6,46,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,268
+6,47,aac,0,on porcelain_mug_1 plate_1,343
+6,47,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,242
+6,48,aac,0,on porcelain_mug_1 plate_1,113
+6,48,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,207
+6,49,aac,0,on porcelain_mug_1 plate_1,114
+6,49,aac,1,on chocolate_pudding_1 living_room_table_plate_right_region,220
+7,0,aac,0,in alphabet_soup_1 basket_1_contain_region,121
+7,0,aac,1,in cream_cheese_1 basket_1_contain_region,239
+7,1,aac,0,in alphabet_soup_1 basket_1_contain_region,148
+7,1,aac,1,in cream_cheese_1 basket_1_contain_region,340
+7,2,aac,0,in alphabet_soup_1 basket_1_contain_region,125
+7,2,aac,1,in cream_cheese_1 basket_1_contain_region,261
+7,3,aac,0,in alphabet_soup_1 basket_1_contain_region,126
+7,3,aac,1,in cream_cheese_1 basket_1_contain_region,248
+7,4,aac,0,in alphabet_soup_1 basket_1_contain_region,115
+7,4,aac,1,in cream_cheese_1 basket_1_contain_region,248
+7,5,aac,0,in alphabet_soup_1 basket_1_contain_region,131
+7,5,aac,1,in cream_cheese_1 basket_1_contain_region,263
+7,6,aac,0,in alphabet_soup_1 basket_1_contain_region,254
+7,6,aac,1,in cream_cheese_1 basket_1_contain_region,379
+7,7,aac,0,in alphabet_soup_1 basket_1_contain_region,120
+7,7,aac,1,in cream_cheese_1 basket_1_contain_region,237
+7,8,aac,0,in alphabet_soup_1 basket_1_contain_region,176
+7,8,aac,1,in cream_cheese_1 basket_1_contain_region,311
+7,9,aac,0,in alphabet_soup_1 basket_1_contain_region,150
+7,9,aac,1,in cream_cheese_1 basket_1_contain_region,267
+7,10,aac,0,in alphabet_soup_1 basket_1_contain_region,132
+7,10,aac,1,in cream_cheese_1 basket_1_contain_region,266
+7,11,aac,0,in alphabet_soup_1 basket_1_contain_region,132
+7,11,aac,1,in cream_cheese_1 basket_1_contain_region,249
+7,12,aac,0,in alphabet_soup_1 basket_1_contain_region,129
+7,12,aac,1,in cream_cheese_1 basket_1_contain_region,268
+7,13,aac,0,in alphabet_soup_1 basket_1_contain_region,130
+7,13,aac,1,in cream_cheese_1 basket_1_contain_region,253
+7,14,aac,0,in alphabet_soup_1 basket_1_contain_region,137
+7,14,aac,1,in cream_cheese_1 basket_1_contain_region,262
+7,15,aac,0,in alphabet_soup_1 basket_1_contain_region,126
+7,15,aac,1,in cream_cheese_1 basket_1_contain_region,247
+7,16,aac,0,in alphabet_soup_1 basket_1_contain_region,132
+7,16,aac,1,in cream_cheese_1 basket_1_contain_region,256
+7,17,aac,0,in alphabet_soup_1 basket_1_contain_region,148
+7,17,aac,1,in cream_cheese_1 basket_1_contain_region,285
+7,18,aac,0,in alphabet_soup_1 basket_1_contain_region,124
+7,18,aac,1,in cream_cheese_1 basket_1_contain_region,241
+7,19,aac,0,in alphabet_soup_1 basket_1_contain_region,129
+7,19,aac,1,in cream_cheese_1 basket_1_contain_region,231
+7,20,aac,0,in alphabet_soup_1 basket_1_contain_region,119
+7,20,aac,1,in cream_cheese_1 basket_1_contain_region,248
+7,21,aac,0,in alphabet_soup_1 basket_1_contain_region,131
+7,21,aac,1,in cream_cheese_1 basket_1_contain_region,265
+7,22,aac,0,in alphabet_soup_1 basket_1_contain_region,114
+7,22,aac,1,in cream_cheese_1 basket_1_contain_region,233
+7,23,aac,0,in alphabet_soup_1 basket_1_contain_region,129
+7,23,aac,1,in cream_cheese_1 basket_1_contain_region,257
+7,24,aac,0,in alphabet_soup_1 basket_1_contain_region,158
+7,24,aac,1,in cream_cheese_1 basket_1_contain_region,294
+7,25,aac,0,in alphabet_soup_1 basket_1_contain_region,122
+7,25,aac,1,in cream_cheese_1 basket_1_contain_region,258
+7,26,aac,0,in alphabet_soup_1 basket_1_contain_region,162
+7,26,aac,1,in cream_cheese_1 basket_1_contain_region,293
+7,27,aac,0,in alphabet_soup_1 basket_1_contain_region,124
+7,27,aac,1,in cream_cheese_1 basket_1_contain_region,243
+7,28,aac,0,in alphabet_soup_1 basket_1_contain_region,116
+7,28,aac,1,in cream_cheese_1 basket_1_contain_region,232
+7,29,aac,0,in alphabet_soup_1 basket_1_contain_region,175
+7,29,aac,1,in cream_cheese_1 basket_1_contain_region,292
+7,30,aac,0,in alphabet_soup_1 basket_1_contain_region,114
+7,30,aac,1,in cream_cheese_1 basket_1_contain_region,224
+7,31,aac,0,in alphabet_soup_1 basket_1_contain_region,171
+7,31,aac,1,in cream_cheese_1 basket_1_contain_region,297
+7,32,aac,0,in alphabet_soup_1 basket_1_contain_region,130
+7,32,aac,1,in cream_cheese_1 basket_1_contain_region,270
+7,33,aac,0,in alphabet_soup_1 basket_1_contain_region,116
+7,33,aac,1,in cream_cheese_1 basket_1_contain_region,243
+7,34,aac,0,in alphabet_soup_1 basket_1_contain_region,142
+7,34,aac,1,in cream_cheese_1 basket_1_contain_region,263
+7,35,aac,0,in alphabet_soup_1 basket_1_contain_region,141
+7,35,aac,1,in cream_cheese_1 basket_1_contain_region,260
+7,36,aac,0,in alphabet_soup_1 basket_1_contain_region,130
+7,36,aac,1,in cream_cheese_1 basket_1_contain_region,253
+7,37,aac,0,in alphabet_soup_1 basket_1_contain_region,125
+7,37,aac,1,in cream_cheese_1 basket_1_contain_region,255
+7,38,aac,0,in alphabet_soup_1 basket_1_contain_region,134
+7,38,aac,1,in cream_cheese_1 basket_1_contain_region,262
+7,39,aac,0,in alphabet_soup_1 basket_1_contain_region,120
+7,39,aac,1,in cream_cheese_1 basket_1_contain_region,242
+7,40,aac,0,in alphabet_soup_1 basket_1_contain_region,114
+7,40,aac,1,in cream_cheese_1 basket_1_contain_region,229
+7,41,aac,0,in alphabet_soup_1 basket_1_contain_region,123
+7,41,aac,1,in cream_cheese_1 basket_1_contain_region,238
+7,42,aac,0,in alphabet_soup_1 basket_1_contain_region,132
+7,42,aac,1,in cream_cheese_1 basket_1_contain_region,260
+7,43,aac,0,in alphabet_soup_1 basket_1_contain_region,135
+7,43,aac,1,in cream_cheese_1 basket_1_contain_region,267
+7,44,aac,0,in alphabet_soup_1 basket_1_contain_region,150
+7,44,aac,1,in cream_cheese_1 basket_1_contain_region,284
+7,45,aac,0,in alphabet_soup_1 basket_1_contain_region,135
+7,45,aac,1,in cream_cheese_1 basket_1_contain_region,274
+7,46,aac,0,in alphabet_soup_1 basket_1_contain_region,152
+7,46,aac,1,in cream_cheese_1 basket_1_contain_region,286
+7,47,aac,0,in alphabet_soup_1 basket_1_contain_region,157
+7,47,aac,1,in cream_cheese_1 basket_1_contain_region,277
+7,48,aac,0,in alphabet_soup_1 basket_1_contain_region,121
+7,48,aac,1,in cream_cheese_1 basket_1_contain_region,255
+7,49,aac,0,in alphabet_soup_1 basket_1_contain_region,123
+7,49,aac,1,in cream_cheese_1 basket_1_contain_region,276
+8,0,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,0,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,0,aac,2,turnon flat_stove_1,0
+8,1,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,1,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,1,aac,2,turnon flat_stove_1,0
+8,2,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,2,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,2,aac,2,turnon flat_stove_1,0
+8,3,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,3,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,3,aac,2,turnon flat_stove_1,0
+8,4,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,4,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,4,aac,2,turnon flat_stove_1,0
+8,5,aac,0,on moka_pot_1 flat_stove_1_cook_region,372
+8,5,aac,1,on moka_pot_2 flat_stove_1_cook_region,144
+8,5,aac,2,turnon flat_stove_1,0
+8,6,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,6,aac,1,on moka_pot_2 flat_stove_1_cook_region,145
+8,6,aac,2,turnon flat_stove_1,0
+8,7,aac,0,on moka_pot_1 flat_stove_1_cook_region,372
+8,7,aac,1,on moka_pot_2 flat_stove_1_cook_region,136
+8,7,aac,2,turnon flat_stove_1,0
+8,8,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,8,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,8,aac,2,turnon flat_stove_1,0
+8,9,aac,0,on moka_pot_1 flat_stove_1_cook_region,344
+8,9,aac,1,on moka_pot_2 flat_stove_1_cook_region,149
+8,9,aac,2,turnon flat_stove_1,0
+8,10,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,10,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,10,aac,2,turnon flat_stove_1,0
+8,11,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,11,aac,1,on moka_pot_2 flat_stove_1_cook_region,140
+8,11,aac,2,turnon flat_stove_1,0
+8,12,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,12,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,12,aac,2,turnon flat_stove_1,0
+8,13,aac,0,on moka_pot_1 flat_stove_1_cook_region,426
+8,13,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,13,aac,2,turnon flat_stove_1,0
+8,14,aac,0,on moka_pot_1 flat_stove_1_cook_region,367
+8,14,aac,1,on moka_pot_2 flat_stove_1_cook_region,146
+8,14,aac,2,turnon flat_stove_1,0
+8,15,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,15,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,15,aac,2,turnon flat_stove_1,0
+8,16,aac,0,on moka_pot_1 flat_stove_1_cook_region,337
+8,16,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,16,aac,2,turnon flat_stove_1,0
+8,17,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,17,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,17,aac,2,turnon flat_stove_1,0
+8,18,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,18,aac,1,on moka_pot_2 flat_stove_1_cook_region,144
+8,18,aac,2,turnon flat_stove_1,0
+8,19,aac,0,on moka_pot_1 flat_stove_1_cook_region,345
+8,19,aac,1,on moka_pot_2 flat_stove_1_cook_region,148
+8,19,aac,2,turnon flat_stove_1,0
+8,20,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,20,aac,1,on moka_pot_2 flat_stove_1_cook_region,134
+8,20,aac,2,turnon flat_stove_1,0
+8,21,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,21,aac,1,on moka_pot_2 flat_stove_1_cook_region,241
+8,21,aac,2,turnon flat_stove_1,0
+8,22,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,22,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,22,aac,2,turnon flat_stove_1,0
+8,23,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,23,aac,1,on moka_pot_2 flat_stove_1_cook_region,138
+8,23,aac,2,turnon flat_stove_1,0
+8,24,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,24,aac,1,on moka_pot_2 flat_stove_1_cook_region,132
+8,24,aac,2,turnon flat_stove_1,0
+8,25,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,25,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,25,aac,2,turnon flat_stove_1,0
+8,26,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,26,aac,1,on moka_pot_2 flat_stove_1_cook_region,155
+8,26,aac,2,turnon flat_stove_1,0
+8,27,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,27,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,27,aac,2,turnon flat_stove_1,0
+8,28,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,28,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,28,aac,2,turnon flat_stove_1,0
+8,29,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,29,aac,1,on moka_pot_2 flat_stove_1_cook_region,367
+8,29,aac,2,turnon flat_stove_1,0
+8,30,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,30,aac,1,on moka_pot_2 flat_stove_1_cook_region,450
+8,30,aac,2,turnon flat_stove_1,0
+8,31,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,31,aac,1,on moka_pot_2 flat_stove_1_cook_region,447
+8,31,aac,2,turnon flat_stove_1,0
+8,32,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,32,aac,1,on moka_pot_2 flat_stove_1_cook_region,142
+8,32,aac,2,turnon flat_stove_1,0
+8,33,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,33,aac,1,on moka_pot_2 flat_stove_1_cook_region,397
+8,33,aac,2,turnon flat_stove_1,0
+8,34,aac,0,on moka_pot_1 flat_stove_1_cook_region,403
+8,34,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,34,aac,2,turnon flat_stove_1,0
+8,35,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,35,aac,1,on moka_pot_2 flat_stove_1_cook_region,306
+8,35,aac,2,turnon flat_stove_1,0
+8,36,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,36,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,36,aac,2,turnon flat_stove_1,0
+8,37,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,37,aac,1,on moka_pot_2 flat_stove_1_cook_region,156
+8,37,aac,2,turnon flat_stove_1,0
+8,38,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,38,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,38,aac,2,turnon flat_stove_1,0
+8,39,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,39,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,39,aac,2,turnon flat_stove_1,0
+8,40,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,40,aac,1,on moka_pot_2 flat_stove_1_cook_region,132
+8,40,aac,2,turnon flat_stove_1,0
+8,41,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,41,aac,1,on moka_pot_2 flat_stove_1_cook_region,147
+8,41,aac,2,turnon flat_stove_1,0
+8,42,aac,0,on moka_pot_1 flat_stove_1_cook_region,463
+8,42,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,42,aac,2,turnon flat_stove_1,0
+8,43,aac,0,on moka_pot_1 flat_stove_1_cook_region,420
+8,43,aac,1,on moka_pot_2 flat_stove_1_cook_region,189
+8,43,aac,2,turnon flat_stove_1,0
+8,44,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,44,aac,1,on moka_pot_2 flat_stove_1_cook_region,146
+8,44,aac,2,turnon flat_stove_1,0
+8,45,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,45,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,45,aac,2,turnon flat_stove_1,0
+8,46,aac,0,on moka_pot_1 flat_stove_1_cook_region,494
+8,46,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,46,aac,2,turnon flat_stove_1,0
+8,47,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,47,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,47,aac,2,turnon flat_stove_1,0
+8,48,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,48,aac,1,on moka_pot_2 flat_stove_1_cook_region,301
+8,48,aac,2,turnon flat_stove_1,0
+8,49,aac,0,on moka_pot_1 flat_stove_1_cook_region,
+8,49,aac,1,on moka_pot_2 flat_stove_1_cook_region,
+8,49,aac,2,turnon flat_stove_1,0
+9,0,aac,0,in white_yellow_mug_1 microwave_1_heating_region,124
+9,0,aac,1,close microwave_1,235
+9,1,aac,0,in white_yellow_mug_1 microwave_1_heating_region,263
+9,1,aac,1,close microwave_1,407
+9,2,aac,0,in white_yellow_mug_1 microwave_1_heating_region,125
+9,2,aac,1,close microwave_1,205
+9,3,aac,0,in white_yellow_mug_1 microwave_1_heating_region,213
+9,3,aac,1,close microwave_1,448
+9,4,aac,0,in white_yellow_mug_1 microwave_1_heating_region,251
+9,4,aac,1,close microwave_1,416
+9,5,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,5,aac,1,close microwave_1,
+9,6,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,6,aac,1,close microwave_1,
+9,7,aac,0,in white_yellow_mug_1 microwave_1_heating_region,151
+9,7,aac,1,close microwave_1,270
+9,8,aac,0,in white_yellow_mug_1 microwave_1_heating_region,382
+9,8,aac,1,close microwave_1,
+9,9,aac,0,in white_yellow_mug_1 microwave_1_heating_region,174
+9,9,aac,1,close microwave_1,
+9,10,aac,0,in white_yellow_mug_1 microwave_1_heating_region,478
+9,10,aac,1,close microwave_1,
+9,11,aac,0,in white_yellow_mug_1 microwave_1_heating_region,198
+9,11,aac,1,close microwave_1,309
+9,12,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,12,aac,1,close microwave_1,
+9,13,aac,0,in white_yellow_mug_1 microwave_1_heating_region,201
+9,13,aac,1,close microwave_1,328
+9,14,aac,0,in white_yellow_mug_1 microwave_1_heating_region,170
+9,14,aac,1,close microwave_1,
+9,15,aac,0,in white_yellow_mug_1 microwave_1_heating_region,172
+9,15,aac,1,close microwave_1,384
+9,16,aac,0,in white_yellow_mug_1 microwave_1_heating_region,274
+9,16,aac,1,close microwave_1,406
+9,17,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,17,aac,1,close microwave_1,
+9,18,aac,0,in white_yellow_mug_1 microwave_1_heating_region,183
+9,18,aac,1,close microwave_1,300
+9,19,aac,0,in white_yellow_mug_1 microwave_1_heating_region,301
+9,19,aac,1,close microwave_1,
+9,20,aac,0,in white_yellow_mug_1 microwave_1_heating_region,173
+9,20,aac,1,close microwave_1,273
+9,21,aac,0,in white_yellow_mug_1 microwave_1_heating_region,271
+9,21,aac,1,close microwave_1,
+9,22,aac,0,in white_yellow_mug_1 microwave_1_heating_region,183
+9,22,aac,1,close microwave_1,296
+9,23,aac,0,in white_yellow_mug_1 microwave_1_heating_region,241
+9,23,aac,1,close microwave_1,439
+9,24,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,24,aac,1,close microwave_1,
+9,25,aac,0,in white_yellow_mug_1 microwave_1_heating_region,212
+9,25,aac,1,close microwave_1,375
+9,26,aac,0,in white_yellow_mug_1 microwave_1_heating_region,227
+9,26,aac,1,close microwave_1,368
+9,27,aac,0,in white_yellow_mug_1 microwave_1_heating_region,186
+9,27,aac,1,close microwave_1,311
+9,28,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,28,aac,1,close microwave_1,
+9,29,aac,0,in white_yellow_mug_1 microwave_1_heating_region,412
+9,29,aac,1,close microwave_1,
+9,30,aac,0,in white_yellow_mug_1 microwave_1_heating_region,150
+9,30,aac,1,close microwave_1,270
+9,31,aac,0,in white_yellow_mug_1 microwave_1_heating_region,204
+9,31,aac,1,close microwave_1,335
+9,32,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,32,aac,1,close microwave_1,
+9,33,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,33,aac,1,close microwave_1,
+9,34,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,34,aac,1,close microwave_1,
+9,35,aac,0,in white_yellow_mug_1 microwave_1_heating_region,296
+9,35,aac,1,close microwave_1,
+9,36,aac,0,in white_yellow_mug_1 microwave_1_heating_region,213
+9,36,aac,1,close microwave_1,346
+9,37,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,37,aac,1,close microwave_1,
+9,38,aac,0,in white_yellow_mug_1 microwave_1_heating_region,201
+9,38,aac,1,close microwave_1,328
+9,39,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,39,aac,1,close microwave_1,
+9,40,aac,0,in white_yellow_mug_1 microwave_1_heating_region,247
+9,40,aac,1,close microwave_1,
+9,41,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,41,aac,1,close microwave_1,
+9,42,aac,0,in white_yellow_mug_1 microwave_1_heating_region,152
+9,42,aac,1,close microwave_1,252
+9,43,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,43,aac,1,close microwave_1,
+9,44,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,44,aac,1,close microwave_1,
+9,45,aac,0,in white_yellow_mug_1 microwave_1_heating_region,293
+9,45,aac,1,close microwave_1,415
+9,46,aac,0,in white_yellow_mug_1 microwave_1_heating_region,208
+9,46,aac,1,close microwave_1,359
+9,47,aac,0,in white_yellow_mug_1 microwave_1_heating_region,164
+9,47,aac,1,close microwave_1,267
+9,48,aac,0,in white_yellow_mug_1 microwave_1_heating_region,
+9,48,aac,1,close microwave_1,
+9,49,aac,0,in white_yellow_mug_1 microwave_1_heating_region,243
+9,49,aac,1,close microwave_1,394

@@ -1,0 +1,1001 @@
+task_id,trial_id,arm,predicate_idx,predicate,first_true_step
+0,0,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,154
+0,0,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,1,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,142
+0,1,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,2,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,143
+0,2,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,3,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,222
+0,3,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,4,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,180
+0,4,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,5,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,457
+0,5,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,6,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,209
+0,6,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,7,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,7,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,8,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,277
+0,8,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,9,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,396
+0,9,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,10,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,160
+0,10,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,11,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,197
+0,11,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,12,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,270
+0,12,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,13,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,251
+0,13,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,14,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,131
+0,14,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,15,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,133
+0,15,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,16,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,212
+0,16,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,17,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,272
+0,17,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,18,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,129
+0,18,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,19,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,441
+0,19,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,20,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,135
+0,20,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,21,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,135
+0,21,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,22,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,153
+0,22,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,23,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,109
+0,23,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,24,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,24,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,25,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,183
+0,25,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,26,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,144
+0,26,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,27,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,128
+0,27,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,28,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,153
+0,28,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,29,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,137
+0,29,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,30,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,165
+0,30,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,31,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,31,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,32,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,32,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,33,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,193
+0,33,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,34,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,161
+0,34,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,35,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,177
+0,35,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,36,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,146
+0,36,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,37,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,141
+0,37,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,38,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,250
+0,38,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,39,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,138
+0,39,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,40,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,203
+0,40,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,41,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,41,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,42,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,42,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,43,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,211
+0,43,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,44,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,44,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,307
+0,45,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,307
+0,45,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,46,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,46,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,47,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,237
+0,47,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,48,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,206
+0,48,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+0,49,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+0,49,fixed_8,1,in yellow_tomato_sauce_1 red_basket_1_contain_region,
+1,0,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,136
+1,0,fixed_8,1,in green_butter_1 red_basket_1_contain_region,275
+1,1,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,133
+1,1,fixed_8,1,in green_butter_1 red_basket_1_contain_region,240
+1,2,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,131
+1,2,fixed_8,1,in green_butter_1 red_basket_1_contain_region,247
+1,3,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,130
+1,3,fixed_8,1,in green_butter_1 red_basket_1_contain_region,241
+1,4,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,141
+1,4,fixed_8,1,in green_butter_1 red_basket_1_contain_region,250
+1,5,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,127
+1,5,fixed_8,1,in green_butter_1 red_basket_1_contain_region,235
+1,6,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,146
+1,6,fixed_8,1,in green_butter_1 red_basket_1_contain_region,258
+1,7,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,139
+1,7,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,8,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,135
+1,8,fixed_8,1,in green_butter_1 red_basket_1_contain_region,244
+1,9,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,140
+1,9,fixed_8,1,in green_butter_1 red_basket_1_contain_region,250
+1,10,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,128
+1,10,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,11,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,145
+1,11,fixed_8,1,in green_butter_1 red_basket_1_contain_region,257
+1,12,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,128
+1,12,fixed_8,1,in green_butter_1 red_basket_1_contain_region,235
+1,13,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,130
+1,13,fixed_8,1,in green_butter_1 red_basket_1_contain_region,258
+1,14,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,134
+1,14,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,15,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,135
+1,15,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,16,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,137
+1,16,fixed_8,1,in green_butter_1 red_basket_1_contain_region,249
+1,17,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,136
+1,17,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,18,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,139
+1,18,fixed_8,1,in green_butter_1 red_basket_1_contain_region,251
+1,19,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,133
+1,19,fixed_8,1,in green_butter_1 red_basket_1_contain_region,240
+1,20,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,139
+1,20,fixed_8,1,in green_butter_1 red_basket_1_contain_region,250
+1,21,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,142
+1,21,fixed_8,1,in green_butter_1 red_basket_1_contain_region,248
+1,22,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,135
+1,22,fixed_8,1,in green_butter_1 red_basket_1_contain_region,251
+1,23,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,139
+1,23,fixed_8,1,in green_butter_1 red_basket_1_contain_region,250
+1,24,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,130
+1,24,fixed_8,1,in green_butter_1 red_basket_1_contain_region,242
+1,25,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,132
+1,25,fixed_8,1,in green_butter_1 red_basket_1_contain_region,240
+1,26,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,137
+1,26,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,27,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,127
+1,27,fixed_8,1,in green_butter_1 red_basket_1_contain_region,228
+1,28,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,131
+1,28,fixed_8,1,in green_butter_1 red_basket_1_contain_region,277
+1,29,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,133
+1,29,fixed_8,1,in green_butter_1 red_basket_1_contain_region,242
+1,30,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,139
+1,30,fixed_8,1,in green_butter_1 red_basket_1_contain_region,240
+1,31,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,134
+1,31,fixed_8,1,in green_butter_1 red_basket_1_contain_region,246
+1,32,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,135
+1,32,fixed_8,1,in green_butter_1 red_basket_1_contain_region,260
+1,33,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,148
+1,33,fixed_8,1,in green_butter_1 red_basket_1_contain_region,260
+1,34,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,147
+1,34,fixed_8,1,in green_butter_1 red_basket_1_contain_region,265
+1,35,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,136
+1,35,fixed_8,1,in green_butter_1 red_basket_1_contain_region,249
+1,36,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,135
+1,36,fixed_8,1,in green_butter_1 red_basket_1_contain_region,251
+1,37,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,136
+1,37,fixed_8,1,in green_butter_1 red_basket_1_contain_region,237
+1,38,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,140
+1,38,fixed_8,1,in green_butter_1 red_basket_1_contain_region,244
+1,39,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,133
+1,39,fixed_8,1,in green_butter_1 red_basket_1_contain_region,240
+1,40,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,139
+1,40,fixed_8,1,in green_butter_1 red_basket_1_contain_region,282
+1,41,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,145
+1,41,fixed_8,1,in green_butter_1 red_basket_1_contain_region,250
+1,42,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,134
+1,42,fixed_8,1,in green_butter_1 red_basket_1_contain_region,234
+1,43,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,136
+1,43,fixed_8,1,in green_butter_1 red_basket_1_contain_region,321
+1,44,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,140
+1,44,fixed_8,1,in green_butter_1 red_basket_1_contain_region,244
+1,45,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,134
+1,45,fixed_8,1,in green_butter_1 red_basket_1_contain_region,235
+1,46,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,138
+1,46,fixed_8,1,in green_butter_1 red_basket_1_contain_region,243
+1,47,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,132
+1,47,fixed_8,1,in green_butter_1 red_basket_1_contain_region,250
+1,48,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,135
+1,48,fixed_8,1,in green_butter_1 red_basket_1_contain_region,244
+1,49,fixed_8,0,in red_cream_cheese_1 red_basket_1_contain_region,140
+1,49,fixed_8,1,in green_butter_1 red_basket_1_contain_region,244
+2,0,fixed_8,0,turnon yellow_stove_1,81
+2,0,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,227
+2,1,fixed_8,0,turnon yellow_stove_1,80
+2,1,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,225
+2,2,fixed_8,0,turnon yellow_stove_1,75
+2,2,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,238
+2,3,fixed_8,0,turnon yellow_stove_1,81
+2,3,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,230
+2,4,fixed_8,0,turnon yellow_stove_1,79
+2,4,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,245
+2,5,fixed_8,0,turnon yellow_stove_1,78
+2,5,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,238
+2,6,fixed_8,0,turnon yellow_stove_1,78
+2,6,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,225
+2,7,fixed_8,0,turnon yellow_stove_1,80
+2,7,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,228
+2,8,fixed_8,0,turnon yellow_stove_1,89
+2,8,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,268
+2,9,fixed_8,0,turnon yellow_stove_1,74
+2,9,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,232
+2,10,fixed_8,0,turnon yellow_stove_1,87
+2,10,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,228
+2,11,fixed_8,0,turnon yellow_stove_1,73
+2,11,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,226
+2,12,fixed_8,0,turnon yellow_stove_1,90
+2,12,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,245
+2,13,fixed_8,0,turnon yellow_stove_1,80
+2,13,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,249
+2,14,fixed_8,0,turnon yellow_stove_1,88
+2,14,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,254
+2,15,fixed_8,0,turnon yellow_stove_1,81
+2,15,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,232
+2,16,fixed_8,0,turnon yellow_stove_1,87
+2,16,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,17,fixed_8,0,turnon yellow_stove_1,77
+2,17,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,212
+2,18,fixed_8,0,turnon yellow_stove_1,79
+2,18,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,229
+2,19,fixed_8,0,turnon yellow_stove_1,85
+2,19,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,235
+2,20,fixed_8,0,turnon yellow_stove_1,80
+2,20,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,240
+2,21,fixed_8,0,turnon yellow_stove_1,85
+2,21,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,228
+2,22,fixed_8,0,turnon yellow_stove_1,77
+2,22,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,230
+2,23,fixed_8,0,turnon yellow_stove_1,82
+2,23,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,227
+2,24,fixed_8,0,turnon yellow_stove_1,74
+2,24,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,222
+2,25,fixed_8,0,turnon yellow_stove_1,85
+2,25,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,26,fixed_8,0,turnon yellow_stove_1,87
+2,26,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,296
+2,27,fixed_8,0,turnon yellow_stove_1,111
+2,27,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,285
+2,28,fixed_8,0,turnon yellow_stove_1,82
+2,28,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,249
+2,29,fixed_8,0,turnon yellow_stove_1,74
+2,29,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,274
+2,30,fixed_8,0,turnon yellow_stove_1,78
+2,30,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,31,fixed_8,0,turnon yellow_stove_1,77
+2,31,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,214
+2,32,fixed_8,0,turnon yellow_stove_1,97
+2,32,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,243
+2,33,fixed_8,0,turnon yellow_stove_1,77
+2,33,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,273
+2,34,fixed_8,0,turnon yellow_stove_1,92
+2,34,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,35,fixed_8,0,turnon yellow_stove_1,81
+2,35,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,240
+2,36,fixed_8,0,turnon yellow_stove_1,83
+2,36,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,246
+2,37,fixed_8,0,turnon yellow_stove_1,74
+2,37,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,217
+2,38,fixed_8,0,turnon yellow_stove_1,84
+2,38,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,233
+2,39,fixed_8,0,turnon yellow_stove_1,83
+2,39,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,40,fixed_8,0,turnon yellow_stove_1,79
+2,40,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,234
+2,41,fixed_8,0,turnon yellow_stove_1,84
+2,41,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,247
+2,42,fixed_8,0,turnon yellow_stove_1,96
+2,42,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,43,fixed_8,0,turnon yellow_stove_1,85
+2,43,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,239
+2,44,fixed_8,0,turnon yellow_stove_1,88
+2,44,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,227
+2,45,fixed_8,0,turnon yellow_stove_1,82
+2,45,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,252
+2,46,fixed_8,0,turnon yellow_stove_1,80
+2,46,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,235
+2,47,fixed_8,0,turnon yellow_stove_1,82
+2,47,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,
+2,48,fixed_8,0,turnon yellow_stove_1,80
+2,48,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,235
+2,49,fixed_8,0,turnon yellow_stove_1,81
+2,49,fixed_8,1,on yellow_moka_pot_1 yellow_stove_1_cook_region,243
+3,0,fixed_8,0,close wooden_cabinet_1_bottom_region,219
+3,0,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,148
+3,1,fixed_8,0,close wooden_cabinet_1_bottom_region,251
+3,1,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,143
+3,2,fixed_8,0,close wooden_cabinet_1_bottom_region,229
+3,2,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,141
+3,3,fixed_8,0,close wooden_cabinet_1_bottom_region,209
+3,3,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,134
+3,4,fixed_8,0,close wooden_cabinet_1_bottom_region,205
+3,4,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,129
+3,5,fixed_8,0,close wooden_cabinet_1_bottom_region,244
+3,5,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,135
+3,6,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,6,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,146
+3,7,fixed_8,0,close wooden_cabinet_1_bottom_region,215
+3,7,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,143
+3,8,fixed_8,0,close wooden_cabinet_1_bottom_region,207
+3,8,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,138
+3,9,fixed_8,0,close wooden_cabinet_1_bottom_region,219
+3,9,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,139
+3,10,fixed_8,0,close wooden_cabinet_1_bottom_region,235
+3,10,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,153
+3,11,fixed_8,0,close wooden_cabinet_1_bottom_region,246
+3,11,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,141
+3,12,fixed_8,0,close wooden_cabinet_1_bottom_region,209
+3,12,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,136
+3,13,fixed_8,0,close wooden_cabinet_1_bottom_region,227
+3,13,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,147
+3,14,fixed_8,0,close wooden_cabinet_1_bottom_region,261
+3,14,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,145
+3,15,fixed_8,0,close wooden_cabinet_1_bottom_region,214
+3,15,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,138
+3,16,fixed_8,0,close wooden_cabinet_1_bottom_region,227
+3,16,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,148
+3,17,fixed_8,0,close wooden_cabinet_1_bottom_region,210
+3,17,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,137
+3,18,fixed_8,0,close wooden_cabinet_1_bottom_region,217
+3,18,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,138
+3,19,fixed_8,0,close wooden_cabinet_1_bottom_region,237
+3,19,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,138
+3,20,fixed_8,0,close wooden_cabinet_1_bottom_region,218
+3,20,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,146
+3,21,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,21,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,141
+3,22,fixed_8,0,close wooden_cabinet_1_bottom_region,226
+3,22,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,149
+3,23,fixed_8,0,close wooden_cabinet_1_bottom_region,240
+3,23,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,142
+3,24,fixed_8,0,close wooden_cabinet_1_bottom_region,219
+3,24,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,136
+3,25,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,25,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,153
+3,26,fixed_8,0,close wooden_cabinet_1_bottom_region,215
+3,26,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,137
+3,27,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,27,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,153
+3,28,fixed_8,0,close wooden_cabinet_1_bottom_region,219
+3,28,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,144
+3,29,fixed_8,0,close wooden_cabinet_1_bottom_region,213
+3,29,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,140
+3,30,fixed_8,0,close wooden_cabinet_1_bottom_region,226
+3,30,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,156
+3,31,fixed_8,0,close wooden_cabinet_1_bottom_region,212
+3,31,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,135
+3,32,fixed_8,0,close wooden_cabinet_1_bottom_region,221
+3,32,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,128
+3,33,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,33,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,139
+3,34,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,34,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,131
+3,35,fixed_8,0,close wooden_cabinet_1_bottom_region,206
+3,35,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,137
+3,36,fixed_8,0,close wooden_cabinet_1_bottom_region,217
+3,36,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,140
+3,37,fixed_8,0,close wooden_cabinet_1_bottom_region,212
+3,37,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,138
+3,38,fixed_8,0,close wooden_cabinet_1_bottom_region,212
+3,38,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,135
+3,39,fixed_8,0,close wooden_cabinet_1_bottom_region,209
+3,39,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,130
+3,40,fixed_8,0,close wooden_cabinet_1_bottom_region,228
+3,40,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,138
+3,41,fixed_8,0,close wooden_cabinet_1_bottom_region,238
+3,41,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,144
+3,42,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,42,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,141
+3,43,fixed_8,0,close wooden_cabinet_1_bottom_region,233
+3,43,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,137
+3,44,fixed_8,0,close wooden_cabinet_1_bottom_region,217
+3,44,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,137
+3,45,fixed_8,0,close wooden_cabinet_1_bottom_region,222
+3,45,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,130
+3,46,fixed_8,0,close wooden_cabinet_1_bottom_region,217
+3,46,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,142
+3,47,fixed_8,0,close wooden_cabinet_1_bottom_region,256
+3,47,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,146
+3,48,fixed_8,0,close wooden_cabinet_1_bottom_region,
+3,48,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,142
+3,49,fixed_8,0,close wooden_cabinet_1_bottom_region,212
+3,49,fixed_8,1,in black_bowl_1 wooden_cabinet_1_bottom_region,137
+4,0,fixed_8,0,on porcelain_mug_1 yellow_plate_1,115
+4,0,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,229
+4,1,fixed_8,0,on porcelain_mug_1 yellow_plate_1,107
+4,1,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,230
+4,2,fixed_8,0,on porcelain_mug_1 yellow_plate_1,105
+4,2,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,225
+4,3,fixed_8,0,on porcelain_mug_1 yellow_plate_1,
+4,3,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,228
+4,4,fixed_8,0,on porcelain_mug_1 yellow_plate_1,111
+4,4,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,238
+4,5,fixed_8,0,on porcelain_mug_1 yellow_plate_1,108
+4,5,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,230
+4,6,fixed_8,0,on porcelain_mug_1 yellow_plate_1,105
+4,6,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,254
+4,7,fixed_8,0,on porcelain_mug_1 yellow_plate_1,100
+4,7,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,220
+4,8,fixed_8,0,on porcelain_mug_1 yellow_plate_1,111
+4,8,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,229
+4,9,fixed_8,0,on porcelain_mug_1 yellow_plate_1,94
+4,9,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,242
+4,10,fixed_8,0,on porcelain_mug_1 yellow_plate_1,102
+4,10,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,272
+4,11,fixed_8,0,on porcelain_mug_1 yellow_plate_1,103
+4,11,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,227
+4,12,fixed_8,0,on porcelain_mug_1 yellow_plate_1,97
+4,12,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,224
+4,13,fixed_8,0,on porcelain_mug_1 yellow_plate_1,103
+4,13,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,227
+4,14,fixed_8,0,on porcelain_mug_1 yellow_plate_1,96
+4,14,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,233
+4,15,fixed_8,0,on porcelain_mug_1 yellow_plate_1,111
+4,15,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,229
+4,16,fixed_8,0,on porcelain_mug_1 yellow_plate_1,117
+4,16,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,237
+4,17,fixed_8,0,on porcelain_mug_1 yellow_plate_1,109
+4,17,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,235
+4,18,fixed_8,0,on porcelain_mug_1 yellow_plate_1,110
+4,18,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,240
+4,19,fixed_8,0,on porcelain_mug_1 yellow_plate_1,102
+4,19,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,226
+4,20,fixed_8,0,on porcelain_mug_1 yellow_plate_1,90
+4,20,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,211
+4,21,fixed_8,0,on porcelain_mug_1 yellow_plate_1,108
+4,21,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,239
+4,22,fixed_8,0,on porcelain_mug_1 yellow_plate_1,92
+4,22,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,226
+4,23,fixed_8,0,on porcelain_mug_1 yellow_plate_1,110
+4,23,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,229
+4,24,fixed_8,0,on porcelain_mug_1 yellow_plate_1,99
+4,24,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,216
+4,25,fixed_8,0,on porcelain_mug_1 yellow_plate_1,112
+4,25,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,240
+4,26,fixed_8,0,on porcelain_mug_1 yellow_plate_1,107
+4,26,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,250
+4,27,fixed_8,0,on porcelain_mug_1 yellow_plate_1,124
+4,27,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,250
+4,28,fixed_8,0,on porcelain_mug_1 yellow_plate_1,121
+4,28,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,231
+4,29,fixed_8,0,on porcelain_mug_1 yellow_plate_1,107
+4,29,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,232
+4,30,fixed_8,0,on porcelain_mug_1 yellow_plate_1,103
+4,30,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,222
+4,31,fixed_8,0,on porcelain_mug_1 yellow_plate_1,122
+4,31,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,262
+4,32,fixed_8,0,on porcelain_mug_1 yellow_plate_1,112
+4,32,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,252
+4,33,fixed_8,0,on porcelain_mug_1 yellow_plate_1,105
+4,33,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,228
+4,34,fixed_8,0,on porcelain_mug_1 yellow_plate_1,116
+4,34,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,262
+4,35,fixed_8,0,on porcelain_mug_1 yellow_plate_1,112
+4,35,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,227
+4,36,fixed_8,0,on porcelain_mug_1 yellow_plate_1,102
+4,36,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,268
+4,37,fixed_8,0,on porcelain_mug_1 yellow_plate_1,121
+4,37,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,245
+4,38,fixed_8,0,on porcelain_mug_1 yellow_plate_1,109
+4,38,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,235
+4,39,fixed_8,0,on porcelain_mug_1 yellow_plate_1,109
+4,39,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,221
+4,40,fixed_8,0,on porcelain_mug_1 yellow_plate_1,129
+4,40,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,
+4,41,fixed_8,0,on porcelain_mug_1 yellow_plate_1,113
+4,41,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,235
+4,42,fixed_8,0,on porcelain_mug_1 yellow_plate_1,103
+4,42,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,230
+4,43,fixed_8,0,on porcelain_mug_1 yellow_plate_1,112
+4,43,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,234
+4,44,fixed_8,0,on porcelain_mug_1 yellow_plate_1,118
+4,44,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,243
+4,45,fixed_8,0,on porcelain_mug_1 yellow_plate_1,119
+4,45,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,244
+4,46,fixed_8,0,on porcelain_mug_1 yellow_plate_1,107
+4,46,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,264
+4,47,fixed_8,0,on porcelain_mug_1 yellow_plate_1,102
+4,47,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,221
+4,48,fixed_8,0,on porcelain_mug_1 yellow_plate_1,100
+4,48,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,219
+4,49,fixed_8,0,on porcelain_mug_1 yellow_plate_1,109
+4,49,fixed_8,1,on white_yellow_mug_1 yellow_plate_2,245
+5,0,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,238
+5,1,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,2,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,264
+5,3,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,290
+5,4,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,5,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,245
+5,6,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,237
+5,7,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,8,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,9,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,209
+5,10,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,11,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,251
+5,12,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,205
+5,13,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,275
+5,14,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,228
+5,15,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,289
+5,16,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,17,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,294
+5,18,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,234
+5,19,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,20,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,294
+5,21,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,210
+5,22,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,23,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,253
+5,24,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,257
+5,25,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,243
+5,26,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,234
+5,27,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,28,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,223
+5,29,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,206
+5,30,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,293
+5,31,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,235
+5,32,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,202
+5,33,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,205
+5,34,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,242
+5,35,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,36,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,37,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,196
+5,38,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,39,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,275
+5,40,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,239
+5,41,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,230
+5,42,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,224
+5,43,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,241
+5,44,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,203
+5,45,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+5,46,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,289
+5,47,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,218
+5,48,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,228
+5,49,fixed_8,0,in black_bowl_1 desk_caddy_1_back_contain_region,
+6,0,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,114
+6,0,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,251
+6,1,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,102
+6,1,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,200
+6,2,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,106
+6,2,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,222
+6,3,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,110
+6,3,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,216
+6,4,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,106
+6,4,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,209
+6,5,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,113
+6,5,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,
+6,6,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,107
+6,6,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,
+6,7,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,102
+6,7,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,221
+6,8,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,112
+6,8,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,215
+6,9,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,108
+6,9,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,206
+6,10,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,105
+6,10,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,197
+6,11,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,113
+6,11,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,205
+6,12,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,109
+6,12,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,212
+6,13,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,114
+6,13,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,212
+6,14,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,108
+6,14,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,202
+6,15,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,107
+6,15,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,216
+6,16,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,113
+6,16,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,208
+6,17,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,105
+6,17,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,209
+6,18,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,104
+6,18,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,345
+6,19,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,103
+6,19,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,217
+6,20,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,101
+6,20,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,209
+6,21,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,107
+6,21,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,207
+6,22,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,107
+6,22,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,205
+6,23,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,104
+6,23,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,203
+6,24,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,109
+6,24,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,213
+6,25,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,110
+6,25,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,211
+6,26,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,118
+6,26,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,226
+6,27,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,103
+6,27,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,211
+6,28,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,105
+6,28,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,221
+6,29,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,112
+6,29,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,241
+6,30,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,107
+6,30,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,
+6,31,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,102
+6,31,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,253
+6,32,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,112
+6,32,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,209
+6,33,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,99
+6,33,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,230
+6,34,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,108
+6,34,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,212
+6,35,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,101
+6,35,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,203
+6,36,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,112
+6,36,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,208
+6,37,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,101
+6,37,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,250
+6,38,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,111
+6,38,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,217
+6,39,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,102
+6,39,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,201
+6,40,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,108
+6,40,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,220
+6,41,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,111
+6,41,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,215
+6,42,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,106
+6,42,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,213
+6,43,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,106
+6,43,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,206
+6,44,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,96
+6,44,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,226
+6,45,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,105
+6,45,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,203
+6,46,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,127
+6,46,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,216
+6,47,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,116
+6,47,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,216
+6,48,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,100
+6,48,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,260
+6,49,fixed_8,0,on white_yellow_mug_1 yellow_plate_1,96
+6,49,fixed_8,1,on green_chocolate_pudding_1 living_room_table_yellow_plate_right_region,
+7,0,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,0,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,1,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,1,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,2,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,2,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,3,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,3,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,4,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,4,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,5,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,5,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,6,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,494
+7,6,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,7,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,7,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,8,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,8,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,9,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,9,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,10,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,10,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,11,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,11,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,12,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,12,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,13,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,13,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,14,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,14,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,15,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,15,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,16,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,16,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,17,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,510
+7,17,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,18,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,18,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,19,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,19,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,20,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,20,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,21,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,21,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,22,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,22,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,23,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,23,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,24,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,24,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,25,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,25,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,26,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,26,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,27,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,388
+7,27,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,28,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,28,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,29,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,29,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,30,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,30,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,31,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,31,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,32,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,32,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,33,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,33,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,34,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,34,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,35,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,35,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,36,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,36,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,37,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,37,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,38,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,38,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,39,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,39,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,40,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,40,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,41,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,41,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,42,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,42,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,43,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,43,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,44,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,44,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,45,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,45,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,46,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,46,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,47,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,47,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,48,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,48,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+7,49,fixed_8,0,in bigger_alphabet_soup_1 red_basket_1_contain_region,
+7,49,fixed_8,1,in red_cream_cheese_1 red_basket_1_contain_region,
+8,0,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,412
+8,0,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,212
+8,0,fixed_8,2,turnon flat_stove_1,0
+8,1,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,404
+8,1,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,203
+8,1,fixed_8,2,turnon flat_stove_1,0
+8,2,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,
+8,2,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,185
+8,2,fixed_8,2,turnon flat_stove_1,0
+8,3,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,384
+8,3,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,187
+8,3,fixed_8,2,turnon flat_stove_1,0
+8,4,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,389
+8,4,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,184
+8,4,fixed_8,2,turnon flat_stove_1,0
+8,5,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,395
+8,5,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,194
+8,5,fixed_8,2,turnon flat_stove_1,0
+8,6,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,377
+8,6,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,186
+8,6,fixed_8,2,turnon flat_stove_1,0
+8,7,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,403
+8,7,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,217
+8,7,fixed_8,2,turnon flat_stove_1,0
+8,8,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,378
+8,8,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,192
+8,8,fixed_8,2,turnon flat_stove_1,0
+8,9,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,389
+8,9,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,199
+8,9,fixed_8,2,turnon flat_stove_1,0
+8,10,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,396
+8,10,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,183
+8,10,fixed_8,2,turnon flat_stove_1,0
+8,11,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,383
+8,11,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,195
+8,11,fixed_8,2,turnon flat_stove_1,0
+8,12,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,386
+8,12,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,191
+8,12,fixed_8,2,turnon flat_stove_1,0
+8,13,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,425
+8,13,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,186
+8,13,fixed_8,2,turnon flat_stove_1,0
+8,14,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,423
+8,14,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,178
+8,14,fixed_8,2,turnon flat_stove_1,0
+8,15,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,392
+8,15,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,188
+8,15,fixed_8,2,turnon flat_stove_1,0
+8,16,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,406
+8,16,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,190
+8,16,fixed_8,2,turnon flat_stove_1,0
+8,17,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,374
+8,17,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,185
+8,17,fixed_8,2,turnon flat_stove_1,0
+8,18,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,425
+8,18,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,185
+8,18,fixed_8,2,turnon flat_stove_1,0
+8,19,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,
+8,19,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,210
+8,19,fixed_8,2,turnon flat_stove_1,0
+8,20,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,369
+8,20,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,189
+8,20,fixed_8,2,turnon flat_stove_1,0
+8,21,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,387
+8,21,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,190
+8,21,fixed_8,2,turnon flat_stove_1,0
+8,22,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,387
+8,22,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,172
+8,22,fixed_8,2,turnon flat_stove_1,0
+8,23,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,400
+8,23,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,198
+8,23,fixed_8,2,turnon flat_stove_1,0
+8,24,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,396
+8,24,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,186
+8,24,fixed_8,2,turnon flat_stove_1,0
+8,25,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,411
+8,25,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,194
+8,25,fixed_8,2,turnon flat_stove_1,0
+8,26,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,415
+8,26,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,194
+8,26,fixed_8,2,turnon flat_stove_1,0
+8,27,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,396
+8,27,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,196
+8,27,fixed_8,2,turnon flat_stove_1,0
+8,28,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,418
+8,28,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,205
+8,28,fixed_8,2,turnon flat_stove_1,0
+8,29,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,
+8,29,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,188
+8,29,fixed_8,2,turnon flat_stove_1,0
+8,30,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,
+8,30,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,256
+8,30,fixed_8,2,turnon flat_stove_1,0
+8,31,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,388
+8,31,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,189
+8,31,fixed_8,2,turnon flat_stove_1,0
+8,32,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,365
+8,32,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,177
+8,32,fixed_8,2,turnon flat_stove_1,0
+8,33,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,371
+8,33,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,167
+8,33,fixed_8,2,turnon flat_stove_1,0
+8,34,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,398
+8,34,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,202
+8,34,fixed_8,2,turnon flat_stove_1,0
+8,35,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,423
+8,35,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,199
+8,35,fixed_8,2,turnon flat_stove_1,0
+8,36,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,369
+8,36,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,198
+8,36,fixed_8,2,turnon flat_stove_1,0
+8,37,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,393
+8,37,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,217
+8,37,fixed_8,2,turnon flat_stove_1,0
+8,38,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,395
+8,38,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,199
+8,38,fixed_8,2,turnon flat_stove_1,0
+8,39,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,388
+8,39,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,216
+8,39,fixed_8,2,turnon flat_stove_1,0
+8,40,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,387
+8,40,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,185
+8,40,fixed_8,2,turnon flat_stove_1,0
+8,41,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,368
+8,41,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,160
+8,41,fixed_8,2,turnon flat_stove_1,0
+8,42,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,417
+8,42,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,205
+8,42,fixed_8,2,turnon flat_stove_1,0
+8,43,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,383
+8,43,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,188
+8,43,fixed_8,2,turnon flat_stove_1,0
+8,44,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,378
+8,44,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,179
+8,44,fixed_8,2,turnon flat_stove_1,0
+8,45,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,421
+8,45,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,192
+8,45,fixed_8,2,turnon flat_stove_1,0
+8,46,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,359
+8,46,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,182
+8,46,fixed_8,2,turnon flat_stove_1,0
+8,47,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,441
+8,47,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,
+8,47,fixed_8,2,turnon flat_stove_1,0
+8,48,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,362
+8,48,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,163
+8,48,fixed_8,2,turnon flat_stove_1,0
+8,49,fixed_8,0,on yellow_moka_pot_1 flat_stove_1_cook_region,401
+8,49,fixed_8,1,on yellow_moka_pot_2 flat_stove_1_cook_region,227
+8,49,fixed_8,2,turnon flat_stove_1,0
+9,0,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,256
+9,0,fixed_8,1,close microwave_1,
+9,1,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,157
+9,1,fixed_8,1,close microwave_1,265
+9,2,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,288
+9,2,fixed_8,1,close microwave_1,
+9,3,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,321
+9,3,fixed_8,1,close microwave_1,
+9,4,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,472
+9,4,fixed_8,1,close microwave_1,
+9,5,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,261
+9,5,fixed_8,1,close microwave_1,
+9,6,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,6,fixed_8,1,close microwave_1,
+9,7,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,173
+9,7,fixed_8,1,close microwave_1,439
+9,8,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,120
+9,8,fixed_8,1,close microwave_1,220
+9,9,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,9,fixed_8,1,close microwave_1,
+9,10,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,263
+9,10,fixed_8,1,close microwave_1,467
+9,11,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,11,fixed_8,1,close microwave_1,
+9,12,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,469
+9,12,fixed_8,1,close microwave_1,
+9,13,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,307
+9,13,fixed_8,1,close microwave_1,
+9,14,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,130
+9,14,fixed_8,1,close microwave_1,247
+9,15,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,15,fixed_8,1,close microwave_1,
+9,16,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,16,fixed_8,1,close microwave_1,
+9,17,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,446
+9,17,fixed_8,1,close microwave_1,
+9,18,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,132
+9,18,fixed_8,1,close microwave_1,245
+9,19,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,19,fixed_8,1,close microwave_1,
+9,20,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,20,fixed_8,1,close microwave_1,
+9,21,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,21,fixed_8,1,close microwave_1,
+9,22,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,138
+9,22,fixed_8,1,close microwave_1,246
+9,23,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,470
+9,23,fixed_8,1,close microwave_1,
+9,24,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,131
+9,24,fixed_8,1,close microwave_1,248
+9,25,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,25,fixed_8,1,close microwave_1,
+9,26,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,26,fixed_8,1,close microwave_1,
+9,27,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,27,fixed_8,1,close microwave_1,
+9,28,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,28,fixed_8,1,close microwave_1,
+9,29,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,149
+9,29,fixed_8,1,close microwave_1,498
+9,30,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,240
+9,30,fixed_8,1,close microwave_1,435
+9,31,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,134
+9,31,fixed_8,1,close microwave_1,229
+9,32,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,32,fixed_8,1,close microwave_1,
+9,33,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,33,fixed_8,1,close microwave_1,
+9,34,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,140
+9,34,fixed_8,1,close microwave_1,282
+9,35,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,35,fixed_8,1,close microwave_1,
+9,36,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,197
+9,36,fixed_8,1,close microwave_1,
+9,37,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,37,fixed_8,1,close microwave_1,
+9,38,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,38,fixed_8,1,close microwave_1,
+9,39,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,154
+9,39,fixed_8,1,close microwave_1,263
+9,40,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,40,fixed_8,1,close microwave_1,369
+9,41,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,41,fixed_8,1,close microwave_1,
+9,42,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,42,fixed_8,1,close microwave_1,
+9,43,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,494
+9,43,fixed_8,1,close microwave_1,
+9,44,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,223
+9,44,fixed_8,1,close microwave_1,427
+9,45,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,141
+9,45,fixed_8,1,close microwave_1,327
+9,46,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,150
+9,46,fixed_8,1,close microwave_1,252
+9,47,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,47,fixed_8,1,close microwave_1,
+9,48,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,132
+9,48,fixed_8,1,close microwave_1,226
+9,49,fixed_8,0,in red_coffee_mug_1 microwave_1_heating_region,
+9,49,fixed_8,1,close microwave_1,

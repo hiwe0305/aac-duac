@@ -1,0 +1,54 @@
+{
+  "arm": "fixed_10",
+  "suite": "libero_10_env",
+  "libero_variant": "liberopro",
+  "max_steps": 520,
+  "total_episodes": 100,
+  "total_successes": 74,
+  "success_rate": 0.74,
+  "mean_h": 10.0,
+  "decisions_per_episode": 31.85,
+  "tasks": {
+    "0": {
+      "episodes": 10,
+      "success_rate": 1.0
+    },
+    "1": {
+      "episodes": 10,
+      "success_rate": 0.9
+    },
+    "2": {
+      "episodes": 10,
+      "success_rate": 0.4
+    },
+    "3": {
+      "episodes": 10,
+      "success_rate": 0.3
+    },
+    "4": {
+      "episodes": 10,
+      "success_rate": 1.0
+    },
+    "5": {
+      "episodes": 10,
+      "success_rate": 0.9
+    },
+    "6": {
+      "episodes": 10,
+      "success_rate": 0.8
+    },
+    "7": {
+      "episodes": 10,
+      "success_rate": 1.0
+    },
+    "8": {
+      "episodes": 10,
+      "success_rate": 0.4
+    },
+    "9": {
+      "episodes": 10,
+      "success_rate": 0.7
+    }
+  },
+  "synthetic_dry_run": false
+}

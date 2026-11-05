@@ -1,0 +1,22 @@
+{
+  "suite": "libero_10_swap",
+  "arm": "fixed_10",
+  "libero_variant": "liberopro",
+  "seed": 7,
+  "trials": 10,
+  "max_steps": 520,
+  "num_steps_wait": 10,
+  "alpha": 3.0,
+  "tau": 0.9,
+  "num_probes": 40,
+  "fixed_horizon": 10,
+  "random_horizon_from": null,
+  "selector": null,
+  "task_ids": null,
+  "state_bank": false,
+  "save_videos": false,
+  "video_trials": 2,
+  "host": "127.0.0.1",
+  "port": 8000,
+  "synthetic_dry_run": false
+}

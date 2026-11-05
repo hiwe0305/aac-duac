@@ -13,6 +13,9 @@ Repo này chạy thực nghiệm **O-LONG** ([docs/task3010.md](docs/task3010.md
 - **DUAC:** không có code công bố. Code ở [duac_policy.py](flowbased_aac/flowbased_aac/duac_policy.py) theo bản tái lập của hactt13 (`/mnt/ssd-storage/hactt13/UQ_action_chunking/AAC_reproduce/flowbased_aac`): phương trình 6 (vết Jacobian Hutchinson tại τ = 0.9, K = 40 probe, 7 chiều action) và phương trình 8 (bước nhảy của trung bình tiền tố), cộng cận dưới chuyển động ξ của AAC (α = 3).
 - `duac.py test` so bằng số với cả code AAC chính thức lẫn bản DUAC của hactt13 (mục 3).
 
+
+**Kết quả để chia sẻ:** báo cáo Track A [docs/REPORT_trackA.md](docs/REPORT_trackA.md), phân tích nguyên nhân [docs/track_a/DIAGNOSIS.md](docs/track_a/DIAGNOSIS.md), dữ liệu nhẹ (CSV theo từng episode, thống kê) trong [results/](results/README.md). `outputs/` (5.4 GB) chỉ có trên server.
+
 ---
 
 ## 1. Cấu trúc

@@ -1,0 +1,50 @@
+{
+  "arm": "duac",
+  "suite": "libero_10_env",
+  "total_episodes": 500,
+  "total_successes": 346,
+  "success_rate": 0.692,
+  "mean_h": 8.5864,
+  "tasks": {
+    "0": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "1": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "2": {
+      "episodes": 50,
+      "success_rate": 0.44
+    },
+    "3": {
+      "episodes": 50,
+      "success_rate": 0.28
+    },
+    "4": {
+      "episodes": 50,
+      "success_rate": 1.0
+    },
+    "5": {
+      "episodes": 50,
+      "success_rate": 0.78
+    },
+    "6": {
+      "episodes": 50,
+      "success_rate": 0.88
+    },
+    "7": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "8": {
+      "episodes": 50,
+      "success_rate": 0.18
+    },
+    "9": {
+      "episodes": 50,
+      "success_rate": 0.4
+    }
+  }
+}
