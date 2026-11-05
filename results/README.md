@@ -1,9 +1,9 @@
 # Kết quả O-LONG (bản nhẹ, để chia sẻ)
 
-Đây là bản rút gọn của `outputs/`. Bản đầy đủ khoảng 5.4 GB nằm trên server (xem phần cuối). Báo cáo và hình nằm trong `docs/`:
+Đây là bản rút gọn của `outputs/`. Bản đầy đủ khoảng 5.4 GB nằm trên server (xem phần cuối). Báo cáo và hình (cũng có bản sao trong `docs/`):
 
-- **Báo cáo Track A:** [docs/REPORT_trackA.md](../docs/REPORT_trackA.md)
-- **Phân tích nguyên nhân (8 biểu đồ):** [docs/track_a/DIAGNOSIS.md](../docs/track_a/DIAGNOSIS.md)
+- **Báo cáo Track A:** [REPORT.md](REPORT.md)
+- **Phân tích nguyên nhân (8 biểu đồ):** [track_a/analysis/DIAGNOSIS.md](track_a/analysis/DIAGNOSIS.md)
 - **Bảng thống kê T1–T3 và tiêu chí mục 5:** [track_a/analysis/track_a_results.md](track_a/analysis/track_a_results.md)
 
 ## Nội dung
@@ -13,6 +13,7 @@
 | `track_a/<suite>/<arm>/subgoals.csv` | Mỗi dòng 1 goal predicate × 1 episode: `predicate`, `first_true_step` (để trống nếu predicate chưa bao giờ đúng) |
 | `track_a/<suite>/<arm>/summary.json`, `args.json` | Success, mean h, success theo task; tham số của run |
 | `track_a/analysis/track_a_results.{md,json}` | T1 (Wilson CI), T2 (McNemar exact, bootstrap theo cụm task × trial 5.000 lần, Holm), T3 (theo task, bỏ task tốt nhất), kết luận theo mục 5 |
+| `track_a/analysis/DIAGNOSIS.md`, `figures/F1–F8.png` | Phân tích nguyên nhân và 8 biểu đồ |
 | `track_a/analysis/diagnosis.json` | Số liệu đứng sau các hình F1–F8 (h_unc/ξ, profile U, h quanh sự kiện, AUROC, các cặp khác kết quả) |
 | `calibration/` | Bước 1: Fixed-10, 10 trial/task, trên các suite ứng viên; Bước 0.5: DUAC clean. Có `calibration_summary.txt` |
 
