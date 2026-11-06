@@ -1,0 +1,10 @@
+{
+  "arm": "fixed_25",
+  "episodes": 20,
+  "success_rate": 0.25,
+  "mean_h": 25.0,
+  "tasks": {
+    "StackBowlsCabinet": 0.25
+  },
+  "synthetic_dry_run": false
+}

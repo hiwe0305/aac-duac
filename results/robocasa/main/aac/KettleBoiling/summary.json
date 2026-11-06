@@ -1,0 +1,10 @@
+{
+  "arm": "aac",
+  "episodes": 20,
+  "success_rate": 0.1,
+  "mean_h": 25.112,
+  "tasks": {
+    "KettleBoiling": 0.1
+  },
+  "synthetic_dry_run": false
+}

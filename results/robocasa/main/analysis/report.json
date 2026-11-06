@@ -1,0 +1,409 @@
+{
+ "run": "outputs/robocasa/main",
+ "tasks": [
+  "KettleBoiling",
+  "LoadDishwasher",
+  "PreSoakPan",
+  "ScrubCuttingBoard",
+  "StackBowlsCabinet"
+ ],
+ "n_per_arm": 100,
+ "success": {
+  "fixed_10": {
+   "k": 11,
+   "n": 100,
+   "rate": 0.11,
+   "wilson": [
+    0.06254131955225124,
+    0.18631463027903025
+   ]
+  },
+  "fixed_25": {
+   "k": 23,
+   "n": 100,
+   "rate": 0.23,
+   "wilson": [
+    0.15843154746876406,
+    0.321545648568277
+   ]
+  },
+  "fixed_50": {
+   "k": 25,
+   "n": 100,
+   "rate": 0.25,
+   "wilson": [
+    0.17545094003724265,
+    0.3430464637007583
+   ]
+  },
+  "duac": {
+   "k": 20,
+   "n": 100,
+   "rate": 0.2,
+   "wilson": [
+    0.1333659225590988,
+    0.28883096192650237
+   ]
+  },
+  "aac": {
+   "k": 15,
+   "n": 100,
+   "rate": 0.15,
+   "wilson": [
+    0.09305903191162297,
+    0.23283733332157835
+   ]
+  }
+ },
+ "per_task": {
+  "KettleBoiling": {
+   "fixed_10": 4,
+   "fixed_25": 3,
+   "fixed_50": 3,
+   "duac": 0,
+   "aac": 2
+  },
+  "LoadDishwasher": {
+   "fixed_10": 1,
+   "fixed_25": 4,
+   "fixed_50": 3,
+   "duac": 2,
+   "aac": 1
+  },
+  "PreSoakPan": {
+   "fixed_10": 2,
+   "fixed_25": 5,
+   "fixed_50": 4,
+   "duac": 7,
+   "aac": 8
+  },
+  "ScrubCuttingBoard": {
+   "fixed_10": 0,
+   "fixed_25": 6,
+   "fixed_50": 7,
+   "duac": 2,
+   "aac": 0
+  },
+  "StackBowlsCabinet": {
+   "fixed_10": 4,
+   "fixed_25": 5,
+   "fixed_50": 8,
+   "duac": 9,
+   "aac": 4
+  }
+ },
+ "best_fixed": "fixed_50",
+ "oracle_fixed_per_task": {
+  "KettleBoiling": "fixed_10",
+  "LoadDishwasher": "fixed_25",
+  "PreSoakPan": "fixed_25",
+  "ScrubCuttingBoard": "fixed_50",
+  "StackBowlsCabinet": "fixed_50"
+ },
+ "oracle_fixed_rate": 0.28,
+ "paired": [
+  {
+   "adaptive": "duac",
+   "fixed": "fixed_10",
+   "diff_pp": 9.000000000000002,
+   "ci95_pp": [
+    -1.0,
+    18.0
+   ],
+   "adaptive_only": 18,
+   "fixed_only": 9,
+   "p_mcnemar": 0.12207812070846558,
+   "p_holm": 0.6103906035423279
+  },
+  {
+   "adaptive": "duac",
+   "fixed": "fixed_25",
+   "diff_pp": -3.0,
+   "ci95_pp": [
+    -13.0,
+    7.000000000000001
+   ],
+   "adaptive_only": 14,
+   "fixed_only": 17,
+   "p_mcnemar": 0.720100131817162,
+   "p_holm": 1.0
+  },
+  {
+   "adaptive": "duac",
+   "fixed": "fixed_50",
+   "diff_pp": -4.999999999999999,
+   "ci95_pp": [
+    -15.0,
+    5.0
+   ],
+   "adaptive_only": 10,
+   "fixed_only": 15,
+   "p_mcnemar": 0.42435622215270996,
+   "p_holm": 1.0
+  },
+  {
+   "adaptive": "aac",
+   "fixed": "fixed_10",
+   "diff_pp": 3.9999999999999996,
+   "ci95_pp": [
+    -4.0,
+    12.0
+   ],
+   "adaptive_only": 12,
+   "fixed_only": 8,
+   "p_mcnemar": 0.5034446716308594,
+   "p_holm": 1.0
+  },
+  {
+   "adaptive": "aac",
+   "fixed": "fixed_25",
+   "diff_pp": -8.000000000000002,
+   "ci95_pp": [
+    -18.02499999999999,
+    2.0
+   ],
+   "adaptive_only": 11,
+   "fixed_only": 19,
+   "p_mcnemar": 0.20048842206597328,
+   "p_holm": 0.8019536882638931
+  },
+  {
+   "adaptive": "aac",
+   "fixed": "fixed_50",
+   "diff_pp": -10.0,
+   "ci95_pp": [
+    -20.0,
+    0.0
+   ],
+   "adaptive_only": 10,
+   "fixed_only": 20,
+   "p_mcnemar": 0.09873714670538902,
+   "p_holm": 0.5924228802323341
+  }
+ ],
+ "verdict": {
+  "duac": "INCONCLUSIVE",
+  "aac": "INCONCLUSIVE"
+ },
+ "efficiency": {
+  "fixed_10": {
+   "decisions_per_episode": 176.65,
+   "end_step_success_mean": 1600.4545454545455,
+   "wall_min_mean": 5.9855166666666655,
+   "infer_ms": 229.08878460232097,
+   "decisions_total": 17665
+  },
+  "fixed_25": {
+   "decisions_per_episode": 67.44,
+   "end_step_success_mean": 1293.7391304347825,
+   "wall_min_mean": 5.32035,
+   "infer_ms": 228.45443950177935,
+   "decisions_total": 6744
+  },
+  "fixed_50": {
+   "decisions_per_episode": 33.17,
+   "end_step_success_mean": 1199.6,
+   "wall_min_mean": 4.87215,
+   "infer_ms": 228.59119987940912,
+   "decisions_total": 3317
+  },
+  "duac": {
+   "decisions_per_episode": 56.38,
+   "end_step_success_mean": 1562.35,
+   "wall_min_mean": 5.1580666666666675,
+   "infer_ms": 229.44586910251863,
+   "decisions_total": 5638
+  },
+  "aac": {
+   "decisions_per_episode": 83.96,
+   "end_step_success_mean": 1608.9333333333334,
+   "wall_min_mean": 5.60865,
+   "infer_ms": 289.91161981896136,
+   "decisions_total": 8396
+  }
+ },
+ "horizon_duac": {
+  "h_mean": 30.41273501241575,
+  "h_median": 27.0,
+  "h_unc_mean": 23.49059950336999,
+  "h_unc_median": 17.0,
+  "xi_mean": 18.54682511528911,
+  "frac_xi_binds": 0.49148634267470737,
+  "frac_h_unc_binds": 0.5085136573252926,
+  "frac_h_unc_edge_ge_48": 0.27314650585313943,
+  "frac_h_unc_le_3": 0.10322809506917346,
+  "frac_h_eq_50": 0.3338063142958496,
+  "h_unc_top": [
+   [
+    49,
+    1503
+   ],
+   [
+    2,
+    389
+   ],
+   [
+    5,
+    259
+   ],
+   [
+    7,
+    238
+   ],
+   [
+    6,
+    216
+   ],
+   [
+    4,
+    210
+   ]
+  ]
+ },
+ "horizon_aac": {
+  "h_mean": 20.612553596950928,
+  "h_median": 16.0,
+  "h_unc_mean": 10.828608861362554,
+  "h_unc_median": 6.0,
+  "xi_mean": 16.83527870414483,
+  "frac_xi_binds": 0.7198666031443545,
+  "frac_h_unc_binds": 0.28013339685564553,
+  "frac_h_unc_edge_ge_48": 0.025369223439733208,
+  "frac_h_unc_le_3": 0.3607670319199619,
+  "frac_h_eq_50": 0.0717008099094807,
+  "h_unc_top": [
+   [
+    2,
+    2422
+   ],
+   [
+    3,
+    607
+   ],
+   [
+    4,
+    513
+   ],
+   [
+    5,
+    467
+   ],
+   [
+    6,
+    400
+   ],
+   [
+    7,
+    359
+   ]
+  ]
+ },
+ "duac_U_profile": {
+  "mean": [
+   0.019482848426151472,
+   0.012555554124251847,
+   0.011029818821456637,
+   0.01065476851531162,
+   0.010617421699003983,
+   0.010789156530631635,
+   0.01081564148116467,
+   0.01086255077957447,
+   0.010877462058912936,
+   0.011005785804850095,
+   0.011208024123681758,
+   0.011287299743725662,
+   0.011330490914329899,
+   0.011417201502479851,
+   0.011368451573165447,
+   0.011412539912182993,
+   0.01149124576937804,
+   0.011545775039952588,
+   0.011596100551163488,
+   0.011626777309351985,
+   0.011683284717127202,
+   0.011745801829599632,
+   0.011758975201278136,
+   0.011764906372378148,
+   0.011737621738518616,
+   0.011752373857930966,
+   0.011772631953411886,
+   0.011789736032860832,
+   0.011906132616556108,
+   0.0119031161106047,
+   0.011912206506345112,
+   0.011955698552630054,
+   0.011970636091198375,
+   0.011986833834840912,
+   0.011999451106343116,
+   0.011960973609147003,
+   0.012035128931211116,
+   0.012113920982322912,
+   0.012164187762216316,
+   0.012189473451335907,
+   0.01223597853709583,
+   0.012308421979704283,
+   0.01234755510625552,
+   0.012386359280497816,
+   0.012480362538691009,
+   0.012626220662542932,
+   0.012898921316095992,
+   0.013585009394924455,
+   0.015725283486242136,
+   0.024310106880770805
+  ],
+  "frac_U_last_gt_U_49": 0.9613338063142959,
+  "frac_negative_U": 0.03199006739978716
+ },
+ "lag1_autocorr": {
+  "duac_h_unc": 0.04173573999047095,
+  "aac_h_entropy": 0.07109543748655148
+ },
+ "gripper": {
+  "duac": {
+   "frac_decisions_toggle": 0.11156438453352252,
+   "h_mean_toggle": 37.15421303656598,
+   "h_mean_no_toggle": 29.566180874426035,
+   "xi_binds_toggle": 0.40381558028616854,
+   "xi_binds_no_toggle": 0.5024955080854462
+  },
+  "aac": {
+   "frac_decisions_toggle": 0.07265364459266317,
+   "h_mean_toggle": 33.47868852459016,
+   "h_mean_no_toggle": 19.60454662214231,
+   "xi_binds_toggle": 0.6262295081967213,
+   "xi_binds_no_toggle": 0.7272026714615978
+  }
+ },
+ "auroc_fail": {
+  "duac": {
+   "all_tasks": 0.490625,
+   "per_task": {
+    "KettleBoiling": NaN,
+    "LoadDishwasher": 0.1111111111111111,
+    "PreSoakPan": 0.6483516483516484,
+    "ScrubCuttingBoard": 0.6111111111111112,
+    "StackBowlsCabinet": 0.7070707070707071
+   }
+  },
+  "aac": {
+   "all_tasks": 0.4752941176470588,
+   "per_task": {
+    "KettleBoiling": 0.6944444444444444,
+    "LoadDishwasher": 0.2631578947368421,
+    "PreSoakPan": 0.4270833333333333,
+    "ScrubCuttingBoard": NaN,
+    "StackBowlsCabinet": 0.90625
+   }
+  }
+ },
+ "h_vs_success": {
+  "duac": {
+   "mean_h_success": 30.139699999999998,
+   "mean_h_failure": 30.937324999999998
+  },
+  "aac": {
+   "mean_h_success": 20.032066666666665,
+   "mean_h_failure": 22.176964705882355
+  }
+ }
+}

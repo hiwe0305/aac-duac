@@ -1,0 +1,13 @@
+2026-11-06 04:49:49 server 8120 ready
+2026-11-06 04:49:49 START port=8120 --tasks PreSoakPan --trials 20 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/PreSoakPan
+2026-11-06 04:49:49 START port=8120 --tasks ScrubCuttingBoard --trials 20 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/ScrubCuttingBoard
+2026-11-06 04:49:49 START port=8120 --tasks StackBowlsCabinet --trials 20 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/StackBowlsCabinet
+2026-11-06 04:49:49 START port=8120 --tasks KettleBoiling --trials 20 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/KettleBoiling
+2026-11-06 04:49:49 START port=8120 --tasks LoadDishwasher --trials 20 --port 8120 --obj-registries objaverse,lightwheel,aigen --aac-selector gaussian_bernoulli --state-bank --save-videos --output-dir outputs/robocasa/main/aac/LoadDishwasher
+2026-11-06 06:11:58 END rc=0 outputs/robocasa/main/aac/ScrubCuttingBoard
+2026-11-06 06:23:40 END rc=0 outputs/robocasa/main/aac/KettleBoiling
+2026-11-06 06:42:02 END rc=0 outputs/robocasa/main/aac/LoadDishwasher
+2026-11-06 06:57:12 END rc=0 outputs/robocasa/main/aac/StackBowlsCabinet
+2026-11-06 07:15:41 END rc=0 outputs/robocasa/main/aac/PreSoakPan
+2026-11-06 07:15:41 all jobs finished
+ALL MAIN DONE 2026-11-06 07:15:48

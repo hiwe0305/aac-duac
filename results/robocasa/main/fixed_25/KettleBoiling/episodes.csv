@@ -1,0 +1,21 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+KettleBoiling,0,0,fixed_25,0,1500,1500,60,25.0,227.6,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,1,1,fixed_25,1,1163,1500,47,25.0,229.0,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,2,2,fixed_25,0,1500,1500,60,25.0,298.8,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,3,3,fixed_25,0,1500,1500,60,25.0,352.3,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,4,4,fixed_25,0,1500,1500,60,25.0,212.6,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,5,5,fixed_25,0,1500,1500,60,25.0,208.8,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,6,6,fixed_25,1,723,1500,29,25.0,122.8,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,7,7,fixed_25,0,1500,1500,60,25.0,334.4,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,8,8,fixed_25,0,1500,1500,60,25.0,238.2,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,9,9,fixed_25,0,1500,1500,60,25.0,270.5,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,10,10,fixed_25,0,1500,1500,60,25.0,284.4,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,11,11,fixed_25,1,1465,1500,59,25.0,251.1,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,12,12,fixed_25,0,1500,1500,60,25.0,253.4,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,13,13,fixed_25,0,1500,1500,60,25.0,357.7,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,14,14,fixed_25,0,1500,1500,60,25.0,241.4,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,15,15,fixed_25,0,1500,1500,60,25.0,273.4,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,16,16,fixed_25,0,1500,1500,60,25.0,247.2,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,17,17,fixed_25,0,1500,1500,60,25.0,234.6,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,18,18,fixed_25,0,1500,1500,60,25.0,373.0,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,19,19,fixed_25,0,1500,1500,60,25.0,225.2,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.

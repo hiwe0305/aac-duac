@@ -1,0 +1,21 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+StackBowlsCabinet,0,0,aac,0,2100,2100,90,23.489,378.9,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,1,1,aac,0,2100,2100,113,18.611,415.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,2,2,aac,0,2100,2100,105,20.114,393.5,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,3,3,aac,0,2100,2100,76,27.803,512.2,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,4,4,aac,1,1326,2100,61,21.754,217.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,5,5,aac,0,2100,2100,83,25.434,315.2,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,6,6,aac,0,2100,2100,112,18.938,417.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,7,7,aac,0,2100,2100,114,18.447,530.2,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,8,8,aac,0,2100,2100,89,23.798,486.9,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,9,9,aac,0,2100,2100,94,22.851,424.5,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,10,10,aac,0,2100,2100,101,20.921,373.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,11,11,aac,0,2100,2100,97,21.68,386.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,12,12,aac,0,2100,2100,91,23.176,409.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,13,13,aac,1,2002,2100,105,19.086,470.7,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,14,14,aac,0,2100,2100,73,29.178,336.7,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,15,15,aac,0,2100,2100,78,26.962,377.5,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,16,16,aac,0,2100,2100,101,20.931,355.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,17,17,aac,1,1226,2100,57,21.702,198.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,18,18,aac,0,2100,2100,89,24.067,470.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,19,19,aac,1,1209,2100,59,20.627,166.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.

@@ -4,6 +4,7 @@
 
 - **Báo cáo Track A:** [REPORT.md](REPORT.md)
 - **Phân tích nguyên nhân (8 biểu đồ):** [track_a/analysis/DIAGNOSIS.md](track_a/analysis/DIAGNOSIS.md)
+- **Báo cáo RoboCasa (5 task × 20 trial × 5 arm):** [robocasa/main/REPORT.md](robocasa/main/REPORT.md)
 - **RoboCasa smoke:** [robocasa/smoke/SUMMARY.md](robocasa/smoke/SUMMARY.md)
 - **Bảng thống kê T1–T3 và tiêu chí mục 5:** [track_a/analysis/track_a_results.md](track_a/analysis/track_a_results.md)
 
@@ -16,6 +17,7 @@
 | `track_a/analysis/track_a_results.{md,json}` | T1 (Wilson CI), T2 (McNemar exact, bootstrap theo cụm task × trial 5.000 lần, Holm), T3 (theo task, bỏ task tốt nhất), kết luận theo mục 5 |
 | `track_a/analysis/DIAGNOSIS.md`, `figures/F1–F8.png` | Phân tích nguyên nhân và 8 biểu đồ |
 | `track_a/analysis/diagnosis.json` | Số liệu đứng sau các hình F1–F8 (h_unc/ξ, profile U, h quanh sự kiện, AUROC, các cặp khác kết quả) |
+| `robocasa/main/` | RoboCasa365 chính: `REPORT.md`, `analysis/{report.json, figures/R1–R8}`, và `<arm>/<task>/{episodes,decisions}.csv`. Không có `algo_log.jsonl`, state bank, video |
 | `robocasa/smoke/` | RoboCasa365 smoke (16 task composite × 2 trial × 5 arm): `SUMMARY.md`, và `<arm>/<task>/{episodes,decisions}.csv`, `summary.json`, `args.json`. Không có `algo_log.jsonl` (193 MB), state bank, video |
 | `robocasa/smoke_atomic/` | Kiểm tra nhanh trên task atomic sau khi sửa thứ tự state/action |
 | `calibration/` | Bước 1: Fixed-10, 10 trial/task, trên các suite ứng viên; Bước 0.5: DUAC clean. Có `calibration_summary.txt` |
@@ -34,7 +36,7 @@ print("DUAC thắng / Fixed-10 thắng:", sum(duac[k] > f10[k] for k in duac), s
 ```
 
 ## Dữ liệu lớn (không có trên GitHub)
-Nằm trên server 3, ở `/mnt/ceph-hot-storage/hieudd/o_long/aac-duac/` (là `outputs/` trong repo):
+Nằm trên server 3, ở `/mnt/ceph-cold-storage/hieudd/o_long/aac-duac/` (là `outputs/` trong repo):
 | Dữ liệu | Dung lượng |
 |---|---|
 | `A/<suite>/<arm>/decisions.csv`: mỗi decision (h, h_unc, ξ, profile U hoặc entropy, infer_ms) | 240 MB |

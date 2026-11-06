@@ -1,0 +1,21 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+PreSoakPan,0,0,aac,1,1881,2400,99,19.03,397.1,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,1,1,aac,0,2400,2400,118,20.441,472.2,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,2,2,aac,0,2400,2400,134,17.978,528.0,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,3,3,aac,0,2400,2400,123,19.634,733.7,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,4,4,aac,1,2095,2400,98,21.378,317.4,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,5,5,aac,0,2400,2400,137,17.569,618.2,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,6,6,aac,1,1923,2400,105,18.371,321.4,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,7,7,aac,0,2400,2400,116,20.819,610.0,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,8,8,aac,1,1660,2400,99,16.788,354.1,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,9,9,aac,0,2400,2400,121,19.942,427.5,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,10,10,aac,0,2400,2400,117,20.709,417.9,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,11,11,aac,1,1612,2400,86,19.116,352.1,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,12,12,aac,0,2400,2400,122,19.869,420.3,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,13,13,aac,1,1718,2400,96,17.917,315.2,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,14,14,aac,0,2400,2400,126,19.103,404.2,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,15,15,aac,0,2400,2400,131,18.588,502.0,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,16,16,aac,1,1946,2400,110,17.709,342.0,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,17,17,aac,0,2400,2400,153,15.699,333.7,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,18,18,aac,1,1976,2400,99,20.263,566.9,Pick the pan and sponge and place them into the sink. Then turn on the water.
+PreSoakPan,19,19,aac,0,2400,2400,120,20.208,311.0,Pick the pan and sponge and place them into the sink. Then turn on the water.

@@ -33,7 +33,7 @@ Repo này chạy thực nghiệm **O-LONG** ([docs/task3010.md](docs/task3010.md
 | `manifest.json` | Manifest của Track A (suite, arm, protocol, tiêu chí mục 5, các deviation, sha256 code) |
 | `external/` | `openpi`, `LIBERO`, `LIBERO-PRO`, `aac-libero`, `robocasa365`, `robosuite` (không commit) |
 | `flowbased_aac/flowbased_aac/robocasa/` | π0.5 RoboCasa: policy AAC/DUAC (PyTorch), server, evaluator, self-test |
-| `outputs/` → `/mnt/ceph-hot-storage/hieudd/o_long/aac-duac` | Mọi output (hot storage, không ghi vào cold storage) |
+| `outputs/` → `/mnt/ceph-cold-storage/hieudd/o_long/aac-duac` | Mọi output (ceph-cold, thư mục riêng của hieudd) |
 | `checkpoints/` | Symlink sang ceph-cold (chỉ đọc) |
 
 ---
@@ -87,7 +87,7 @@ ln -sfn openpi-assets/checkpoints/pi05_libero checkpoints/openpi/pi05_libero
 # OpenPI không nhận symlink cho tokenizer: phải là file thật (4 MB)
 cp $COLD/openpi/big_vision/paligemma_tokenizer.model checkpoints/openpi/big_vision/
 
-mkdir -p /mnt/ceph-hot-storage/hieudd/o_long/aac-duac && ln -sfn /mnt/ceph-hot-storage/hieudd/o_long/aac-duac outputs
+mkdir -p /mnt/ceph-cold-storage/hieudd/o_long/aac-duac && ln -sfn /mnt/ceph-cold-storage/hieudd/o_long/aac-duac outputs
 
 source adaptive_action_chunking/server141.env       # MUJOCO_GL=egl, không chiếm trước GPU, PYTHONPATH
 .venv-libero/bin/python tools/download_libero.py --suite libero_10     # ghi .libero/config.yaml
@@ -194,10 +194,10 @@ Toàn bộ pipeline nằm trong repo này: env riêng, server riêng, evaluator 
 ### 7.1 Thành phần
 | Thành phần | Vị trí |
 |---|---|
-| Checkpoint `lerobot/pi05_robocasa` (revision `3206f645`; chunk 50, 3 camera 256×256, state 16, action 12), tải từ Hugging Face, đã kiểm sha256 | `/mnt/ceph-hot-storage/hieudd/checkpoints/lerobot/pi05_robocasa` ← `checkpoints/lerobot/pi05_robocasa` |
+| Checkpoint `lerobot/pi05_robocasa` (revision `3206f645`; chunk 50, 3 camera 256×256, state 16, action 12), tải từ Hugging Face, đã kiểm sha256 | `/mnt/ceph-cold-storage/hieudd/checkpoints/lerobot/pi05_robocasa` ← `checkpoints/lerobot/pi05_robocasa` |
 | Env `.venv-robocasa` (Python 3.12 qua `uv`): lerobot 0.6.1, torch 2.7.1+cu128, robosuite 1.5.2, robocasa 1.0.1, mujoco 3.3.1 | `tools/setup_robocasa_env.sh`, `tools/requirements-robocasa.txt` |
 | RoboCasa365 và robosuite, clone từ GitHub chính thức | `external/robocasa365` (commit `3443cdf`), `external/robosuite` (`5ce6643f`) |
-| Asset (textures, fixtures, objects lightwheel / objaverse / aigen) | `/mnt/ceph-hot-storage/hieudd/robocasa365_assets/`, symlink từ `external/robocasa365/robocasa/models/assets/` |
+| Asset (textures, fixtures, objects lightwheel / objaverse / aigen) | `/mnt/ceph-cold-storage/hieudd/robocasa365_assets/`, symlink từ `external/robocasa365/robocasa/models/assets/` |
 | Policy (AAC N sample + DUAC Hutchinson bằng PyTorch) | [pi05_torch.py](flowbased_aac/flowbased_aac/robocasa/pi05_torch.py) |
 | Server (giao thức websocket/msgpack của OpenPI) | [serve.py](flowbased_aac/flowbased_aac/robocasa/serve.py) |
 | Evaluator (env wrapper chính thức `lerobot.envs.robocasa.RoboCasaEnv`) | [eval_robocasa.py](flowbased_aac/flowbased_aac/robocasa/eval_robocasa.py) |
@@ -263,6 +263,8 @@ tail -f outputs/robocasa/main/logs/runner_duac.txt          # sau đó là runne
 - Đổi số client song song bằng `CONC=8 setsid nohup bash tools/run_robocasa_main.sh ...` (mặc định 10; 24 CPU).
 - Dừng: `pkill -f "[r]un_robocasa_main.sh"; pkill -f "[r]un_robocasa_jobs.sh"; pkill -f "[e]val_robocasa.py"; pkill -f "robocasa/[s]erve.py"`.
 - Khi xong, `outputs/robocasa/main/SUMMARY.md` được sinh tự động bởi `analysis/robocasa_summary.py` (success + Wilson CI, so sánh ghép cặp theo (task, trial), thống kê h, h_unc, ξ).
+
+**Kết quả (2026-11-06):** Fixed-50 25%, Fixed-25 23%, DUAC 20%, AAC 15%, Fixed-10 11%. Không so sánh nào có ý nghĩa thống kê. Xem [results/robocasa/main/REPORT.md](results/robocasa/main/REPORT.md).
 
 Còn lại: ablation không có ξ để tách đóng góp của phần bất định; ghi track này vào `manifest.json`.
 

@@ -1,0 +1,10 @@
+{
+  "arm": "aac",
+  "episodes": 20,
+  "success_rate": 0.4,
+  "mean_h": 19.057,
+  "tasks": {
+    "PreSoakPan": 0.4
+  },
+  "synthetic_dry_run": false
+}

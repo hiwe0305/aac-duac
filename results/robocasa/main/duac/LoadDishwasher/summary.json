@@ -1,0 +1,10 @@
+{
+  "arm": "duac",
+  "episodes": 20,
+  "success_rate": 0.1,
+  "mean_h": 28.164,
+  "tasks": {
+    "LoadDishwasher": 0.1
+  },
+  "synthetic_dry_run": false
+}

@@ -1,0 +1,10 @@
+{
+  "arm": "aac",
+  "episodes": 20,
+  "success_rate": 0.05,
+  "mean_h": 17.191,
+  "tasks": {
+    "LoadDishwasher": 0.05
+  },
+  "synthetic_dry_run": false
+}

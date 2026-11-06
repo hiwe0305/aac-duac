@@ -1,0 +1,10 @@
+{
+  "arm": "fixed_50",
+  "episodes": 20,
+  "success_rate": 0.2,
+  "mean_h": 50.0,
+  "tasks": {
+    "PreSoakPan": 0.2
+  },
+  "synthetic_dry_run": false
+}

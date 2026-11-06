@@ -1,0 +1,21 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+StackBowlsCabinet,0,0,fixed_10,0,2100,2100,210,10.0,374.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,1,1,fixed_10,1,1705,2100,171,10.0,346.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,2,2,fixed_10,0,2100,2100,210,10.0,432.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,3,3,fixed_10,0,2100,2100,210,10.0,529.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,4,4,fixed_10,0,2100,2100,210,10.0,358.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,5,5,fixed_10,0,2100,2100,210,10.0,340.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,6,6,fixed_10,0,2100,2100,210,10.0,406.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,7,7,fixed_10,0,2100,2100,210,10.0,537.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,8,8,fixed_10,0,2100,2100,210,10.0,506.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,9,9,fixed_10,1,1469,2100,147,10.0,298.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,10,10,fixed_10,0,2100,2100,210,10.0,367.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,11,11,fixed_10,1,1775,2100,178,10.0,338.6,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,12,12,fixed_10,1,1739,2100,174,10.0,347.7,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,13,13,fixed_10,0,2100,2100,210,10.0,514.6,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,14,14,fixed_10,0,2100,2100,210,10.0,374.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,15,15,fixed_10,0,2100,2100,210,10.0,422.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,16,16,fixed_10,0,2100,2100,210,10.0,419.7,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,17,17,fixed_10,0,2100,2100,210,10.0,398.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,18,18,fixed_10,0,2100,2100,210,10.0,529.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,19,19,fixed_10,0,2100,2100,210,10.0,330.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.

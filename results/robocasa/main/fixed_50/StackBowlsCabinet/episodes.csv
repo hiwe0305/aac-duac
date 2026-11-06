@@ -1,0 +1,21 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+StackBowlsCabinet,0,0,fixed_50,0,2100,2100,42,50.0,318.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,1,1,fixed_50,0,2100,2100,42,50.0,361.2,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,2,2,fixed_50,0,2100,2100,42,50.0,356.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,3,3,fixed_50,0,2100,2100,42,50.0,474.5,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,4,4,fixed_50,0,2100,2100,42,50.0,307.7,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,5,5,fixed_50,1,956,2100,20,50.0,137.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,6,6,fixed_50,0,2100,2100,42,50.0,373.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,7,7,fixed_50,1,2071,2100,42,50.0,455.2,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,8,8,fixed_50,0,2100,2100,42,50.0,474.2,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,9,9,fixed_50,1,899,2100,18,50.0,165.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,10,10,fixed_50,1,2016,2100,41,50.0,301.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,11,11,fixed_50,1,798,2100,16,50.0,135.4,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,12,12,fixed_50,0,2100,2100,42,50.0,393.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,13,13,fixed_50,1,1125,2100,23,50.0,248.0,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,14,14,fixed_50,0,2100,2100,42,50.0,313.3,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,15,15,fixed_50,1,1494,2100,30,50.0,269.8,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,16,16,fixed_50,1,1726,2100,35,50.0,310.5,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,17,17,fixed_50,0,2100,2100,42,50.0,321.6,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,18,18,fixed_50,0,2100,2100,42,50.0,475.1,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.
+StackBowlsCabinet,19,19,fixed_50,0,2100,2100,42,50.0,287.9,Pick up the bowls on the counter and stack them on top of one another in the open cabinet. Place the smaller bowl on top of the larger bowl.

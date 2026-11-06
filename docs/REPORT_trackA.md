@@ -1,7 +1,7 @@
 # O-LONG, Track A: AAC và DUAC trên LIBERO-10 với π0.5
 
 **Phạm vi:** Track A của [docs/task3010.md](task3010.md): LIBERO-10 với `pi05_libero`, 3 suite × 6 arm × 500 episode = 9.000 episode, chạy xong ngày 2026-11-04 lúc 09:10.
-**Code và số liệu:** repo `aac-duac`, output ở `/mnt/ceph-hot-storage/hieudd/o_long/aac-duac/A/`. Bảng thống kê được sinh bằng `analysis/track_a_results.py` (kết quả ở `A/analysis/track_a_results.{md,json}`).
+**Code và số liệu:** repo `aac-duac`, output ở `/mnt/ceph-cold-storage/hieudd/o_long/aac-duac/A/`. Bảng thống kê được sinh bằng `analysis/track_a_results.py` (kết quả ở `A/analysis/track_a_results.{md,json}`).
 
 > **Phân tích nguyên nhân chi tiết (8 biểu đồ, có bằng chứng định lượng):** [A/analysis/DIAGNOSIS.md](track_a/DIAGNOSIS.md)
 

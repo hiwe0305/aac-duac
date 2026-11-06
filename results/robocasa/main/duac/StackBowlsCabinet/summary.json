@@ -1,0 +1,10 @@
+{
+  "arm": "duac",
+  "episodes": 20,
+  "success_rate": 0.45,
+  "mean_h": 32.06,
+  "tasks": {
+    "StackBowlsCabinet": 0.45
+  },
+  "synthetic_dry_run": false
+}

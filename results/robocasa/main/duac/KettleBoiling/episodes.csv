@@ -1,0 +1,21 @@
+task,trial,seed,arm,success,end_step,max_steps,n_decisions,mean_h,wall_s,instruction
+KettleBoiling,0,0,duac,0,1500,1500,54,28.389,230.3,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,1,1,duac,0,1500,1500,66,22.803,273.2,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,2,2,duac,0,1500,1500,49,31.082,307.1,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,3,3,duac,0,1500,1500,52,29.404,353.1,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,4,4,duac,0,1500,1500,54,27.944,226.1,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,5,5,duac,0,1500,1500,44,34.205,206.8,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,6,6,duac,0,1500,1500,58,26.19,243.6,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,7,7,duac,0,1500,1500,45,34.111,342.2,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,8,8,duac,0,1500,1500,55,27.473,250.5,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,9,9,duac,0,1500,1500,49,31.184,268.0,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,10,10,duac,0,1500,1500,53,28.585,284.0,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,11,11,duac,0,1500,1500,50,30.86,249.3,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,12,12,duac,0,1500,1500,45,33.978,259.5,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,13,13,duac,0,1500,1500,48,31.396,346.9,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,14,14,duac,0,1500,1500,56,26.911,236.5,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,15,15,duac,0,1500,1500,47,32.128,260.3,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,16,16,duac,0,1500,1500,47,31.936,239.8,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,17,17,duac,0,1500,1500,47,32.489,227.4,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,18,18,duac,0,1500,1500,53,29.208,369.0,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
+KettleBoiling,19,19,duac,0,1500,1500,40,37.75,216.8,Pick the kettle from the counter and place it on a stove burner. Then turn the burner on.
