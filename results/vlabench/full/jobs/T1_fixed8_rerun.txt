@@ -1,0 +1,1 @@
+--track T1 --tasks select_chemistry_tube --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_chemistry_tube

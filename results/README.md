@@ -5,6 +5,7 @@
 - **Báo cáo Track A:** [REPORT.md](REPORT.md)
 - **Phân tích nguyên nhân (8 biểu đồ):** [track_a/analysis/DIAGNOSIS.md](track_a/analysis/DIAGNOSIS.md)
 - **Báo cáo RoboCasa (5 task × 20 trial × 5 arm):** [robocasa/main/REPORT.md](robocasa/main/REPORT.md)
+- **Báo cáo VLABench (5 track × 10 task × 50 episode × 5 arm):** [vlabench/full/REPORT.md](vlabench/full/REPORT.md)
 - **RoboCasa smoke:** [robocasa/smoke/SUMMARY.md](robocasa/smoke/SUMMARY.md)
 - **Bảng thống kê T1–T3 và tiêu chí mục 5:** [track_a/analysis/track_a_results.md](track_a/analysis/track_a_results.md)
 

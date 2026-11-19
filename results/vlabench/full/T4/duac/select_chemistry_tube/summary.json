@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.2,
+  "success_rate_excl_errors": 0.2041,
+  "progress_score": 0.51,
+  "mean_h": 9.145,
+  "tasks": {
+    "select_chemistry_tube": 0.2
+  },
+  "synthetic_dry_run": false
+}

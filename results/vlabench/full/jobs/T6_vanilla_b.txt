@@ -1,0 +1,11 @@
+# T6, vanilla server, generated 2026-11-18 21:20:15
+--track T6 --tasks add_condiment --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/add_condiment
+--track T6 --tasks insert_flower --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/insert_flower
+--track T6 --tasks select_book --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_book
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_chemistry_tube
+--track T6 --tasks select_drink --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_drink
+--track T6 --tasks select_fruit --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_fruit
+--track T6 --tasks select_mahjong --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_mahjong
+--track T6 --tasks select_painting --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_painting
+--track T6 --tasks select_poker --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_poker
+--track T6 --tasks select_toy --episodes 50 --port 8800 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_toy

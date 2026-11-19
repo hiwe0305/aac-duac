@@ -1,0 +1,14 @@
+{
+  "arm": "vanilla",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.18,
+  "success_rate_excl_errors": 0.18,
+  "progress_score": 0.42,
+  "mean_h": 5.0,
+  "tasks": {
+    "select_fruit": 0.18
+  },
+  "synthetic_dry_run": false
+}

@@ -1,0 +1,516 @@
+{
+ "track": "track_2_cross_category",
+ "arms": [
+  "vanilla",
+  "fixed_8",
+  "fixed_10",
+  "duac",
+  "aac"
+ ],
+ "tasks": [
+  "add_condiment",
+  "insert_flower",
+  "select_book",
+  "select_chemistry_tube",
+  "select_drink",
+  "select_fruit",
+  "select_mahjong",
+  "select_painting",
+  "select_poker",
+  "select_toy"
+ ],
+ "n_matched": 460,
+ "n_per_task": {
+  "add_condiment": 50,
+  "insert_flower": 10,
+  "select_book": 50,
+  "select_chemistry_tube": 50,
+  "select_drink": 50,
+  "select_fruit": 50,
+  "select_mahjong": 50,
+  "select_painting": 50,
+  "select_poker": 50,
+  "select_toy": 50
+ },
+ "errors": {
+  "vanilla": 10,
+  "fixed_8": 11,
+  "fixed_10": 9,
+  "duac": 13,
+  "aac": 10
+ },
+ "success": {
+  "vanilla": {
+   "k": 95,
+   "n": 460,
+   "rate": 0.20652173913043478,
+   "wilson": [
+    0.17203209996677893,
+    0.24587263302827803
+   ],
+   "progress": 0.319925652173913,
+   "intention": 0.4891304347826087
+  },
+  "fixed_8": {
+   "k": 122,
+   "n": 460,
+   "rate": 0.26521739130434785,
+   "wilson": [
+    0.22694025369607793,
+    0.30738353269996765
+   ],
+   "progress": 0.37463586956521744,
+   "intention": 0.5065217391304347
+  },
+  "fixed_10": {
+   "k": 99,
+   "n": 460,
+   "rate": 0.21521739130434783,
+   "wilson": [
+    0.18010058549703567,
+    0.25505141466853815
+   ],
+   "progress": 0.34492586956521737,
+   "intention": 0.5043478260869565
+  },
+  "duac": {
+   "k": 100,
+   "n": 460,
+   "rate": 0.21739130434782608,
+   "wilson": [
+    0.18212156720250497,
+    0.257342249755698
+   ],
+   "progress": 0.3228252173913043,
+   "intention": 0.45217391304347826
+  },
+  "aac": {
+   "k": 100,
+   "n": 460,
+   "rate": 0.21739130434782608,
+   "wilson": [
+    0.18212156720250497,
+    0.257342249755698
+   ],
+   "progress": 0.32826000000000005,
+   "intention": 0.5065217391304347
+  }
+ },
+ "per_task": {
+  "add_condiment": {
+   "vanilla": 0,
+   "fixed_8": 4,
+   "fixed_10": 1,
+   "duac": 1,
+   "aac": 2
+  },
+  "insert_flower": {
+   "vanilla": 3,
+   "fixed_8": 5,
+   "fixed_10": 2,
+   "duac": 2,
+   "aac": 4
+  },
+  "select_book": {
+   "vanilla": 5,
+   "fixed_8": 3,
+   "fixed_10": 3,
+   "duac": 3,
+   "aac": 1
+  },
+  "select_chemistry_tube": {
+   "vanilla": 5,
+   "fixed_8": 9,
+   "fixed_10": 7,
+   "duac": 7,
+   "aac": 3
+  },
+  "select_drink": {
+   "vanilla": 4,
+   "fixed_8": 10,
+   "fixed_10": 5,
+   "duac": 4,
+   "aac": 3
+  },
+  "select_fruit": {
+   "vanilla": 19,
+   "fixed_8": 22,
+   "fixed_10": 23,
+   "duac": 27,
+   "aac": 26
+  },
+  "select_mahjong": {
+   "vanilla": 12,
+   "fixed_8": 13,
+   "fixed_10": 6,
+   "duac": 11,
+   "aac": 12
+  },
+  "select_painting": {
+   "vanilla": 16,
+   "fixed_8": 17,
+   "fixed_10": 18,
+   "duac": 12,
+   "aac": 10
+  },
+  "select_poker": {
+   "vanilla": 17,
+   "fixed_8": 26,
+   "fixed_10": 24,
+   "duac": 22,
+   "aac": 25
+  },
+  "select_toy": {
+   "vanilla": 14,
+   "fixed_8": 13,
+   "fixed_10": 10,
+   "duac": 11,
+   "aac": 14
+  }
+ },
+ "reference": {
+  "add_condiment": 0.06,
+  "insert_flower": 0.04,
+  "select_book": 0.02,
+  "select_chemistry_tube": 0.16,
+  "select_drink": 0.1,
+  "select_fruit": 0.36,
+  "select_mahjong": 0.27,
+  "select_painting": 0.32,
+  "select_poker": 0.5,
+  "select_toy": 0.24
+ },
+ "best_fixed": "fixed_8",
+ "oracle_fixed_per_task": {
+  "add_condiment": "fixed_8",
+  "insert_flower": "fixed_8",
+  "select_book": "vanilla",
+  "select_chemistry_tube": "fixed_8",
+  "select_drink": "fixed_8",
+  "select_fruit": "fixed_10",
+  "select_mahjong": "fixed_8",
+  "select_painting": "fixed_10",
+  "select_poker": "fixed_8",
+  "select_toy": "vanilla"
+ },
+ "oracle_fixed_rate": 0.27608695652173915,
+ "paired": [
+  {
+   "adaptive": "duac",
+   "fixed": "vanilla",
+   "diff_pp": 1.0869565217391297,
+   "ci95_pp": [
+    -3.6956521739130435,
+    5.6521739130434785
+   ],
+   "adaptive_only": 61,
+   "fixed_only": 56,
+   "p_mcnemar": 0.7117032769279404,
+   "p_holm": 1.0
+  },
+  {
+   "adaptive": "duac",
+   "fixed": "fixed_8",
+   "diff_pp": -4.7826086956521765,
+   "ci95_pp": [
+    -9.130434782608695,
+    -0.43478260869565216
+   ],
+   "adaptive_only": 45,
+   "fixed_only": 67,
+   "p_mcnemar": 0.04673506819395985,
+   "p_holm": 0.28041040916375914
+  },
+  {
+   "adaptive": "duac",
+   "fixed": "fixed_10",
+   "diff_pp": 0.21739130434782483,
+   "ci95_pp": [
+    -3.91304347826087,
+    4.565217391304348
+   ],
+   "adaptive_only": 51,
+   "fixed_only": 50,
+   "p_mcnemar": 1.0,
+   "p_holm": 1.0
+  },
+  {
+   "adaptive": "aac",
+   "fixed": "vanilla",
+   "diff_pp": 1.0869565217391297,
+   "ci95_pp": [
+    -3.260869565217391,
+    5.434782608695652
+   ],
+   "adaptive_only": 56,
+   "fixed_only": 51,
+   "p_mcnemar": 0.6991749840078736,
+   "p_holm": 1.0
+  },
+  {
+   "adaptive": "aac",
+   "fixed": "fixed_8",
+   "diff_pp": -4.7826086956521765,
+   "ci95_pp": [
+    -9.347826086956522,
+    0.0
+   ],
+   "adaptive_only": 50,
+   "fixed_only": 72,
+   "p_mcnemar": 0.05682268892317514,
+   "p_holm": 0.2841134446158757
+  },
+  {
+   "adaptive": "aac",
+   "fixed": "fixed_10",
+   "diff_pp": 0.21739130434782483,
+   "ci95_pp": [
+    -4.130434782608695,
+    4.565217391304348
+   ],
+   "adaptive_only": 54,
+   "fixed_only": 53,
+   "p_mcnemar": 1.0,
+   "p_holm": 1.0
+  }
+ ],
+ "verdict": {
+  "duac": "NOT WORK (worse)",
+  "aac": "INCONCLUSIVE"
+ },
+ "efficiency": {
+  "vanilla": {
+   "decisions_per_episode": 35.415217391304346,
+   "steps_to_success_mean": 112.67368421052632,
+   "h_mean": 5.0,
+   "h_sd": 0.0,
+   "infer_ms_median": 71.37,
+   "roundtrip_ms_median": 289.69,
+   "wall_s_mean": 27.073695652173914
+  },
+  "fixed_8": {
+   "decisions_per_episode": 21.82608695652174,
+   "steps_to_success_mean": 111.25409836065573,
+   "h_mean": 8.0,
+   "h_sd": 0.0,
+   "infer_ms_median": 117.37,
+   "roundtrip_ms_median": 213.7,
+   "wall_s_mean": 22.53173913043478
+  },
+  "fixed_10": {
+   "decisions_per_episode": 17.76304347826087,
+   "steps_to_success_mean": 105.57575757575758,
+   "h_mean": 10.0,
+   "h_sd": 0.0,
+   "infer_ms_median": 118.88,
+   "roundtrip_ms_median": 265.23,
+   "wall_s_mean": 22.234347826086957
+  },
+  "duac": {
+   "decisions_per_episode": 19.030434782608694,
+   "steps_to_success_mean": 112.46,
+   "h_mean": 9.410669408270506,
+   "h_sd": 1.4470568192424262,
+   "infer_ms_median": 115.56,
+   "roundtrip_ms_median": 231.51,
+   "wall_s_mean": 21.525
+  },
+  "aac": {
+   "decisions_per_episode": 20.46086956521739,
+   "steps_to_success_mean": 115.92,
+   "h_mean": 8.794836379090523,
+   "h_sd": 2.336739518552098,
+   "infer_ms_median": 156.03,
+   "roundtrip_ms_median": 235.32,
+   "wall_s_mean": 22.085434782608694
+  }
+ },
+ "horizon_duac": {
+  "h_mean": 9.410669408270506,
+  "h_median": 10.0,
+  "h_unc_mean": 6.400274160383825,
+  "h_unc_median": 8.0,
+  "xi_mean": 8.75462645647704,
+  "frac_xi_eq_H": 0.7354352296093215,
+  "frac_xi_binds": 0.8106008681745488,
+  "frac_h_unc_binds": 0.18939913182545123,
+  "frac_h_unc_edge": 0.48446424491660955,
+  "frac_h_unc_le_2": 0.2055060543751428,
+  "frac_h_eq_H": 0.7354352296093215,
+  "h_unc_top": [
+   [
+    9,
+    4241
+   ],
+   [
+    2,
+    1799
+   ],
+   [
+    3,
+    609
+   ],
+   [
+    4,
+    501
+   ],
+   [
+    8,
+    463
+   ]
+  ],
+  "h_mean_per_task": {
+   "add_condiment": 9.490863264020163,
+   "insert_flower": 9.398104265402843,
+   "select_book": 9.312737642585551,
+   "select_chemistry_tube": 8.878119001919385,
+   "select_drink": 9.525554484088717,
+   "select_fruit": 9.421276595744681,
+   "select_mahjong": 9.276974416017797,
+   "select_painting": 9.744510978043913,
+   "select_poker": 9.748953974895397,
+   "select_toy": 9.604766633565045
+  }
+ },
+ "horizon_aac": {
+  "h_mean": 8.794836379090523,
+  "h_median": 10.0,
+  "h_unc_mean": 3.1109222269443264,
+  "h_unc_median": 2.0,
+  "xi_mean": 8.564492137696558,
+  "frac_xi_eq_H": 0.7080322991925202,
+  "frac_xi_binds": 0.8844028899277518,
+  "frac_h_unc_binds": 0.1155971100722482,
+  "frac_h_unc_edge": 0.06842328941776456,
+  "frac_h_unc_le_2": 0.6929451763705907,
+  "frac_h_eq_H": 0.7080322991925202,
+  "h_unc_top": [
+   [
+    2,
+    6522
+   ],
+   [
+    3,
+    783
+   ],
+   [
+    9,
+    644
+   ],
+   [
+    4,
+    483
+   ],
+   [
+    5,
+    311
+   ]
+  ],
+  "h_mean_per_task": {
+   "add_condiment": 8.845422116527942,
+   "insert_flower": 9.46116504854369,
+   "select_book": 7.915814319433517,
+   "select_chemistry_tube": 8.07457627118644,
+   "select_drink": 8.937106918238994,
+   "select_fruit": 8.597249508840864,
+   "select_mahjong": 9.008333333333333,
+   "select_painting": 9.829268292682928,
+   "select_poker": 9.760504201680673,
+   "select_toy": 9.400394477317555
+  }
+ },
+ "duac_U_profile": {
+  "mean": [
+   0.014580719031390044,
+   0.010920027841234282,
+   0.009845441903958104,
+   0.009353001704345438,
+   0.009035045636860133,
+   0.009119867200872246,
+   0.009447765832486528,
+   0.010200782466415004,
+   0.01187086310789668,
+   0.0175802537395002
+  ],
+  "frac_U_last_gt_prev": 0.8792551976239433,
+  "frac_negative_U": 0.014587617089330592
+ },
+ "aac_entropy_profile": {
+  "mean": [
+   -7.021828925522325,
+   -5.843848091856625,
+   -4.985311976675137,
+   -4.355383500150752,
+   -3.8480090557154205,
+   -3.455958295648784,
+   -3.1249104976799438,
+   -2.833196733457006,
+   -2.5527733430816526,
+   -2.2289456557995866
+  ]
+ },
+ "lag1_autocorr": {
+  "duac": 0.14244956242180223,
+  "aac": 0.1469171790027434
+ },
+ "gripper": {
+  "duac": {
+   "frac_decisions_toggle": 0.1109207219556774,
+   "h_mean_toggle": 9.618949536560248,
+   "h_mean_no_toggle": 9.384684568932288,
+   "xi_binds_toggle": 0.8218331616889805,
+   "xi_binds_no_toggle": 0.8091995374534241
+  },
+  "aac": {
+   "frac_decisions_toggle": 0.10433489162770931,
+   "h_mean_toggle": 9.371690427698574,
+   "h_mean_no_toggle": 8.727639383155397,
+   "xi_binds_toggle": 0.9439918533604889,
+   "xi_binds_no_toggle": 0.8774614472123369
+  }
+ },
+ "auroc_fail": {
+  "duac": {
+   "pooled": 0.70075,
+   "within_task_mean": 0.6051400320334369,
+   "per_task": {
+    "add_condiment": 0.6326530612244898,
+    "insert_flower": 0.5625,
+    "select_book": 0.5177304964539007,
+    "select_chemistry_tube": 0.5182724252491694,
+    "select_drink": 0.4673913043478261,
+    "select_fruit": 0.6135265700483091,
+    "select_mahjong": 0.4568764568764569,
+    "select_painting": 0.6973684210526315,
+    "select_poker": 0.8181818181818182,
+    "select_toy": 0.7668997668997669
+   }
+  },
+  "aac": {
+   "pooled": 0.8306111111111111,
+   "within_task_mean": 0.777812350235928,
+   "per_task": {
+    "add_condiment": 0.6979166666666666,
+    "insert_flower": 0.875,
+    "select_book": 0.5714285714285714,
+    "select_chemistry_tube": 0.8368794326241135,
+    "select_drink": 0.7304964539007093,
+    "select_fruit": 0.7996794871794872,
+    "select_mahjong": 0.8728070175438597,
+    "select_painting": 0.7225,
+    "select_poker": 0.7984,
+    "select_toy": 0.873015873015873
+   }
+  }
+ },
+ "h_vs_success": {
+  "duac": {
+   "mean_h_success": 9.75238,
+   "mean_h_failure": 9.405058333333333
+  },
+  "aac": {
+   "mean_h_success": 9.75813,
+   "mean_h_failure": 8.883286111111111
+  }
+ }
+}

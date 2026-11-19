@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 4,
+  "success_rate": 0.08,
+  "success_rate_excl_errors": 0.087,
+  "progress_score": 0.07,
+  "mean_h": 8.968,
+  "tasks": {
+    "select_unique_type_mahjong": 0.08
+  },
+  "synthetic_dry_run": false
+}

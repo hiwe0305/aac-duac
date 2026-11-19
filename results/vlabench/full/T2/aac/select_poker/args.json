@@ -1,0 +1,27 @@
+{
+  "track": "T2",
+  "tasks": "select_poker",
+  "episodes": 50,
+  "episode_ids": null,
+  "seed": 0,
+  "max_steps": null,
+  "host": "127.0.0.1",
+  "port": 8720,
+  "vanilla": false,
+  "fixed_horizon": null,
+  "random_horizon_from": null,
+  "aac_selector": "gaussian_bernoulli",
+  "alpha": 3.0,
+  "xi_units": "libero",
+  "tau": 0.9,
+  "num_probes": 40,
+  "state_bank": true,
+  "save_videos": true,
+  "video_episodes": 2,
+  "synthetic_dry_run": false,
+  "arm": "aac",
+  "track_resolved": "track_2_cross_category",
+  "tasks_resolved": [
+    "select_poker"
+  ]
+}

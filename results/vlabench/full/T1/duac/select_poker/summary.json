@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.5,
+  "success_rate_excl_errors": 0.5,
+  "progress_score": 0.5067,
+  "mean_h": 9.819,
+  "tasks": {
+    "select_poker": 0.5
+  },
+  "synthetic_dry_run": false
+}

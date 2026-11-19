@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_6_unseen_texture,select_mahjong,0,0,vanilla,1,1.0,1.0,105,200,21,5.0,0.0,5,5,1202.1,1611.5,5308.5,233.5,42.8,4030.3,19.5,6912.0,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,1,1,vanilla,1,1.0,1.0,111,200,23,5.0,0.0,5,5,1348.6,1874.0,3036.9,287.7,48.5,4657.3,14.8,6912.0,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,2,2,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2677.7,3617.9,9068.8,609.9,77.2,9437.9,26.5,6912.0,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,3,3,vanilla,0,0.0,0.0,122,200,24,5.0,0.0,5,5,1895.2,2424.6,6100.2,366.7,41.9,4772.4,18.7,6912.0,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,4,4,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2567.8,3483.7,7513.1,505.8,83.7,9616.0,25.5,6912.0,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,5,5,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2495.8,3330.5,7085.2,514.7,74.7,7468.3,22.4,6912.0,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,6,6,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3070.2,4100.4,8380.4,623.0,80.8,9436.0,27.4,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,7,7,vanilla,0,0.0,0.0,138,200,27,5.0,0.0,5,5,1559.9,2185.7,4489.6,370.6,56.0,5406.3,17.9,6912.0,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 7 man
+track_6_unseen_texture,select_mahjong,8,8,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2520.5,3403.7,7683.8,511.2,90.4,7654.4,22.7,6912.0,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,9,9,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2013.7,2752.4,3713.5,363.7,73.7,18482.5,39.7,6912.0,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,10,10,vanilla,1,1.0,1.0,112,200,23,5.0,0.0,5,5,1175.7,1567.7,3355.2,246.3,41.8,4361.7,14.5,6912.0,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,11,11,vanilla,1,1.0,1.0,111,200,23,5.0,0.0,5,5,1293.6,2356.9,3530.8,564.1,78.4,12424.3,24.6,6912.0,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,12,12,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2963.2,4399.8,9272.5,761.3,124.1,11805.0,29.8,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,13,13,vanilla,0,0.0,0.0,161,200,32,5.0,0.0,5,5,2977.6,3950.6,6039.0,555.1,74.4,6735.5,26.0,6912.0,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,14,14,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3710.8,5183.8,9298.1,952.4,104.2,10502.3,34.5,6912.0,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,15,15,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3292.9,4733.2,6362.1,790.7,112.3,13695.5,30.6,6912.0,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,16,16,vanilla,1,1.0,1.0,98,200,20,5.0,0.0,5,5,1975.1,2739.2,5617.8,443.0,50.1,5433.0,19.5,6912.0,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,17,17,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4052.5,5533.2,10150.1,875.1,122.5,12140.7,32.7,6912.0,,Pick up the mahjong of 5 pin
+track_6_unseen_texture,select_mahjong,18,18,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3473.0,4737.5,10499.7,933.8,131.1,14916.8,36.5,6912.0,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,19,19,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,4105.2,5593.3,11388.2,1239.0,113.0,11124.5,35.3,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,20,20,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4153.2,5695.3,10795.6,1150.8,104.5,10914.7,32.8,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,21,21,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,4719.7,6298.1,13667.7,1018.2,106.0,9240.6,35.6,6912.0,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,22,22,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3881.1,5455.6,11504.0,987.7,122.1,12046.9,34.4,6912.0,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,23,23,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3400.9,4741.1,10156.1,842.0,107.1,10175.9,30.7,6912.0,,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,24,24,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3709.2,5122.0,8611.5,897.9,128.1,13294.7,31.7,6912.0,,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,25,25,vanilla,1,1.0,1.0,104,200,21,5.0,0.0,5,5,1801.1,2646.1,3652.4,528.6,71.4,7783.0,20.1,6912.0,,Pick up the mahjong of 4 sou
+track_6_unseen_texture,select_mahjong,26,26,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4195.9,5546.2,11634.6,992.6,103.8,10729.9,32.3,6912.0,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,27,27,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3609.6,4976.5,9439.4,816.1,119.7,12080.2,31.9,6912.0,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,28,28,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3712.0,4984.1,10384.0,754.5,89.0,8657.6,29.9,6912.0,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,29,29,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3783.3,5251.2,9880.3,814.3,92.8,10092.3,31.3,6912.0,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,30,30,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3646.7,5196.7,9761.8,930.8,112.8,10814.0,31.9,6912.0,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,31,31,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3394.9,4746.2,8540.3,771.5,113.8,12288.8,32.8,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,32,32,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4387.0,5710.5,7533.2,770.0,114.0,12122.0,29.9,6912.0,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,33,33,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3979.2,5442.1,9406.2,1016.9,104.1,11551.2,31.1,6912.0,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,34,34,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4081.6,5409.7,8725.3,764.6,94.8,12250.7,33.2,6912.0,,Pick up the mahjong of 5 pin
+track_6_unseen_texture,select_mahjong,35,35,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4068.5,5413.3,5802.4,667.3,108.8,8802.5,24.3,6912.0,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,36,36,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3722.0,5012.4,5919.6,746.7,114.8,11569.3,26.9,6912.0,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,37,37,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4500.4,5915.3,6518.8,805.5,109.3,9434.3,24.8,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,38,38,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3829.0,5128.6,5424.9,649.8,101.7,9988.6,25.2,6912.0,,Pick up the mahjong of 7 pin
+track_6_unseen_texture,select_mahjong,39,39,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,4171.4,5528.2,6421.2,699.2,97.0,8939.0,24.7,6912.0,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,40,40,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,4026.5,5283.2,5662.1,578.3,85.1,8012.6,23.1,6912.0,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,41,41,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3942.1,5141.7,5310.8,550.3,81.4,7562.6,23.5,6912.0,,Pick up the mahjong of 7 pin
+track_6_unseen_texture,select_mahjong,42,42,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3628.1,4877.7,5948.9,689.0,106.3,10875.5,26.0,6912.0,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,43,43,vanilla,1,1.0,1.0,93,200,19,5.0,0.0,5,5,1567.0,2249.9,2799.7,323.3,67.4,5757.1,16.5,6912.0,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,44,44,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4038.7,5357.2,6095.0,652.7,101.0,8787.3,24.3,6912.0,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,45,45,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4115.5,5326.1,5723.1,721.8,85.5,8277.7,24.7,6912.0,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,46,46,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4070.5,5323.6,6179.1,562.8,83.8,9410.9,25.2,6912.0,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,47,47,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3546.2,4813.3,5043.6,572.9,107.4,8625.9,25.7,6912.0,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,48,48,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3972.9,5320.7,5795.0,640.1,92.9,9566.6,24.8,6912.0,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,49,49,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3827.3,5094.2,5529.8,668.5,109.0,10166.9,24.4,6912.0,,Pick up the mahjong of 9 pin

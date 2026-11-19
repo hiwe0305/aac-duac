@@ -1,0 +1,14 @@
+{
+  "arm": "vanilla",
+  "track": "track_2_cross_category",
+  "episodes": 10,
+  "errors": 0,
+  "success_rate": 0.3,
+  "success_rate_excl_errors": 0.3,
+  "progress_score": 0.6,
+  "mean_h": 5.0,
+  "tasks": {
+    "insert_flower": 0.3
+  },
+  "synthetic_dry_run": false
+}

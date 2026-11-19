@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 3,
+  "success_rate": 0.16,
+  "success_rate_excl_errors": 0.1702,
+  "progress_score": 0.23,
+  "mean_h": 9.276,
+  "tasks": {
+    "select_mahjong": 0.16
+  },
+  "synthetic_dry_run": false
+}

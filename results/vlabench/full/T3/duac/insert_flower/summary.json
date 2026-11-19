@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.04,
+  "success_rate_excl_errors": 0.04,
+  "progress_score": 0.51,
+  "mean_h": 9.681,
+  "tasks": {
+    "insert_flower": 0.04
+  },
+  "synthetic_dry_run": false
+}

@@ -7,6 +7,7 @@ Repo này chạy thực nghiệm **O-LONG** ([docs/task3010.md](docs/task3010.md
 | A | LIBERO-10 clean + 2 suite nhiễu LIBERO-PRO | π0.5 `pi05_libero` (OpenPI JAX, H = 10) | Đang chạy chính (mục 4) |
 | RoboCasa365 | composite (horizon trung vị 2.250 bước) | π0.5 `lerobot/pi05_robocasa` (PyTorch, chunk 50) | AAC/DUAC đã viết và kiểm; chờ GPU để smoke test (mục 7) |
 | BEHAVIOR-1K | 50 task việc nhà dài | π0.5 `openpi-comet` (JAX, chunk 32) | Chưa cài (mục 8) |
+| VLABench | 10 primitive task, track T1/T2/T3/T4/T6 | π0.5 `VLABench/pi05-primitive-10task` (OpenPI JAX, H = 10) | Xong: 5 track × 10 task × 50 ep × 5 arm; AAC/DUAC không thắng fixed tốt nhất (mục 9) |
 
 **Nguồn thuật toán**
 - **AAC:** gọi thẳng code chính thức [Adaptive-Action-Chunking/libero](https://github.com/Adaptive-Action-Chunking/libero) (clone ở `external/aac-libero`), qua [aac_official.py](flowbased_aac/flowbased_aac/aac_official.py). Server lấy N = 20 chunk; action chạy là sample 0, đúng như client gốc.
@@ -289,3 +290,22 @@ Còn lại: ablation không có ξ để tách đóng góp của phần bất đ
 5. Chi phí: theo một model card cộng đồng, episode thất bại có thể mất khoảng 30 phút. Phải đo ở smoke test trước khi lên kế hoạch số trial.
 
 Theo mục 2.7 của task, mỗi benchmark thêm vào là một track riêng và phải ghi vào `manifest.json` trước khi chạy chính.
+
+---
+
+## 9. VLABench với `VLABench/pi05-primitive-10task`
+
+Chi tiết ở [docs/VLABENCH_INTEGRATION.md](docs/VLABENCH_INTEGRATION.md) (checkpoint, quy ước, cài đặt, kiểm tra, hạn chế) và [docs/VLABENCH_EXPERIMENT_PROTOCOL.md](docs/VLABENCH_EXPERIMENT_PROTOCOL.md) (arm, giai đoạn A–D). Code ở `flowbased_aac/flowbased_aac/vlabench/`. Code AAC/DUAC dùng nguyên, không sửa file cũ nào.
+- Checkpoint (OpenPI JAX, chỉ `params` + `assets`, 12 GB): `/mnt/ceph-cold-storage/hieudd/checkpoints/vlabench/pi05-primitive-10task`, symlink từ `checkpoints/vlabench/`. Asset mô phỏng: `/mnt/ceph-cold-storage/hieudd/vlabench/assets`.
+- Env mô phỏng `.venv-vlabench` (Python 3.10). Server dùng `.venv-openpi` có sẵn. Cổng: 8700 vanilla, 8710 duac (cả Fixed-k, Random-h), 8720 aac.
+```bash
+.venv-vlabench/bin/python flowbased_aac/flowbased_aac/vlabench/selftest.py
+bash tools/make_vlabench_jobs.sh pilot     # main | robust T2|T3|T4|T6
+setsid nohup bash tools/run_vlabench_jobs.sh jobs/vlabench_pilot.txt outputs/vlabench/pilot/logs 10 > outputs/vlabench/pilot/runner.txt 2>&1 &
+.venv-vlabench/bin/python analysis/vlabench_summary.py outputs/vlabench/pilot --baseline vanilla
+```
+**Kết quả chạy đầy đủ (2026-11-19):** [results/vlabench/full/REPORT.md](results/vlabench/full/REPORT.md). Success gộp 5 track: vanilla 22.7%, Fixed-8 25.9%, Fixed-10 25.9%, DUAC 24.3%, AAC 25.4%. So với Fixed-10 (ghép cặp, 2.460 cặp): DUAC −1.5 pp [−3.6, +0.6], AAC −0.5 pp [−2.5, +1.6]. ξ = H ở khoảng 70% decision.
+```bash
+setsid nohup bash tools/run_vlabench_full.sh > outputs/vlabench/full/runner.txt 2>&1 &   # chạy lại toàn bộ (resume được)
+```
+

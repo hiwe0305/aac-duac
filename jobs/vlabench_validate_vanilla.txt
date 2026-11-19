@@ -1,0 +1,11 @@
+# VLABench vanilla validation: T1, 10 tasks x episodes 0-19, official execution horizon 5 (vanilla server)
+--track T1 --tasks add_condiment --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/add_condiment
+--track T1 --tasks insert_flower --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/insert_flower
+--track T1 --tasks select_book --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_book
+--track T1 --tasks select_chemistry_tube --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_chemistry_tube
+--track T1 --tasks select_drink --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_drink
+--track T1 --tasks select_fruit --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_fruit
+--track T1 --tasks select_mahjong --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_mahjong
+--track T1 --tasks select_painting --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_painting
+--track T1 --tasks select_poker --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_poker
+--track T1 --tasks select_toy --episodes 20 --port 8700 --vanilla --output-dir outputs/vlabench/validate/vanilla/select_toy

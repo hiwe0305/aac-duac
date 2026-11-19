@@ -1,0 +1,11 @@
+# T2, vanilla server, generated 2026-11-19 00:00:28
+--track T2 --tasks add_condiment --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/add_condiment
+--track T2 --tasks insert_flower --episodes 10 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/insert_flower
+--track T2 --tasks select_book --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_book
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_chemistry_tube
+--track T2 --tasks select_drink --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_drink
+--track T2 --tasks select_fruit --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_fruit
+--track T2 --tasks select_mahjong --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_mahjong
+--track T2 --tasks select_painting --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_painting
+--track T2 --tasks select_poker --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_poker
+--track T2 --tasks select_toy --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_toy

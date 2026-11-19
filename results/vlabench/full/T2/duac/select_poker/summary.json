@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.44,
+  "success_rate_excl_errors": 0.44,
+  "progress_score": 0.4733,
+  "mean_h": 9.792,
+  "tasks": {
+    "select_poker": 0.44
+  },
+  "synthetic_dry_run": false
+}

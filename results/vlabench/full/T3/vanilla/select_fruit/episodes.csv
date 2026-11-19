@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_3_common_sense,select_fruit,0,0,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3055.4,4327.1,15201.7,589.3,94.1,6107.2,32.2,6808.4,, I want a fruit that can be easily peeled by hand.
+track_3_common_sense,select_fruit,1,1,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,2763.1,3875.5,13823.0,673.9,102.9,9636.3,32.4,6808.4,, I need a fruit that is often eaten as a snack during sports for instant energy.
+track_3_common_sense,select_fruit,2,2,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2850.2,4066.1,13246.1,650.6,127.4,8343.3,29.1,6808.4,, I want a fruit that is known for its high potassium content.
+track_3_common_sense,select_fruit,3,3,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2665.9,3873.8,15893.2,716.7,109.8,7693.8,34.4,6808.4,, Please fetch a fruit that is commonly used in desserts for its mild and sweet flavor.
+track_3_common_sense,select_fruit,4,4,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2766.2,4009.4,11887.7,711.7,117.9,7361.5,28.6,6808.4,, I want a fruit that is round and has a vibrant orange color.
+track_3_common_sense,select_fruit,5,5,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2694.2,3749.9,15354.0,649.7,101.4,9163.7,33.6,6808.4,, I want a fruit that is known for its smooth and juicy texture.
+track_3_common_sense,select_fruit,6,6,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2891.2,3995.4,17988.6,650.9,81.2,6525.6,34.4,6808.4,, I need the fruit that has a distinct bell shape.
+track_3_common_sense,select_fruit,7,7,vanilla,1,1.0,1.0,151,200,31,5.0,0.0,5,5,2377.6,3189.5,13354.6,534.9,73.3,4587.5,25.9,6808.4,, I need a citrus fruit to make fresh juice.
+track_3_common_sense,select_fruit,8,8,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3060.6,4108.1,17926.6,745.8,117.4,7091.2,34.9,6808.4,," I want a fruit that can be green, red, or yellow when ripe."
+track_3_common_sense,select_fruit,9,9,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3067.6,4339.7,11397.5,711.2,109.2,7450.8,28.4,6808.4,, I want a fruit that is the easiest to peel without any tools.
+track_3_common_sense,select_fruit,10,10,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3237.2,4315.6,19195.5,809.7,115.1,9179.3,37.0,6808.4,, I need a fruit with segments that can be easily separated.
+track_3_common_sense,select_fruit,11,11,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,2411.9,3395.9,12945.4,805.9,94.5,8200.1,30.0,6808.4,, I want a fruit that is commonly used in making pies.
+track_3_common_sense,select_fruit,12,12,vanilla,1,1.0,1.0,156,200,32,5.0,0.0,5,5,1885.8,2698.1,10182.0,2337.7,82.7,6146.8,27.4,6808.4,, I want a fruit that is commonly used to make pies.
+track_3_common_sense,select_fruit,13,13,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2560.3,3562.9,16815.6,616.8,81.5,6131.9,30.8,6808.4,, I want a fruit that can be made into a cider popular during the fall season.
+track_3_common_sense,select_fruit,14,14,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2830.1,3735.3,18631.2,562.7,82.0,5441.8,33.3,6808.4,, I want a fruit that symbolizes knowledge and education.
+track_3_common_sense,select_fruit,15,15,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2246.8,3356.9,11953.8,588.7,116.2,7883.4,29.9,6808.4,, I want a fruit that is commonly associated with the story of Isaac Newton discovering gravity.
+track_3_common_sense,select_fruit,16,16,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2312.8,3184.0,15965.8,612.3,94.1,6632.9,30.3,6808.4,, I desire a fruit that can be poached in wine for a subtle dessert.
+track_3_common_sense,select_fruit,17,17,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2648.5,3649.7,14384.1,686.8,97.7,6304.3,29.7,6808.4,, Retrieve a fruit that is often associated with the story of Isaac Newton discovering gravity.
+track_3_common_sense,select_fruit,18,18,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,2080.6,2911.3,9574.1,479.8,88.7,6607.8,24.9,6808.4,, I need a fruit that curves naturally.
+track_3_common_sense,select_fruit,19,19,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2019.6,2780.0,12234.7,391.2,74.8,5608.9,28.3,6808.4,, Grab a fruit that is known for being a natural energy booster due to its sugar and fiber content.
+track_3_common_sense,select_fruit,20,20,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2054.9,2813.3,10563.1,528.7,96.9,7323.7,26.6,6808.4,, I am looking for a fruit that can be peeled by hand and enjoyed fresh.
+track_3_common_sense,select_fruit,21,21,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2072.1,2977.5,7711.6,545.2,86.1,6358.3,21.0,6808.4,," I want a fruit that can be eaten fresh, baked, or made into cider."
+track_3_common_sense,select_fruit,22,22,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2079.0,2904.9,9908.3,2268.9,80.5,5462.8,25.5,6808.4,, I want a fruit that is often consumed for its immune-boosting properties.
+track_3_common_sense,select_fruit,23,23,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,2125.9,3396.5,9831.6,4278.1,132.7,12224.8,37.8,6808.4,, I need a fruit that is often used in baking breads and muffins.
+track_3_common_sense,select_fruit,24,24,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3752.0,5149.1,21005.7,3655.1,112.3,9625.8,43.4,6808.4,, I need a fruit that is typically yellow when ripe.
+track_3_common_sense,select_fruit,25,25,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3562.4,4955.6,19859.0,834.9,125.4,10774.7,43.7,6808.4,, I request a fruit that can be made into a popular pie for holidays.
+track_3_common_sense,select_fruit,26,26,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3998.7,5227.0,29220.4,881.9,93.2,7095.9,48.7,6808.4,, I require a fruit that is often juiced for breakfast.
+track_3_common_sense,select_fruit,27,27,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3914.3,5324.0,21964.7,816.2,99.4,8475.4,40.9,6808.4,," I want a fruit that can be green, yellow, or red when ripe."
+track_3_common_sense,select_fruit,28,28,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3855.6,5022.4,22600.1,742.5,95.6,5657.0,35.5,6808.4,, I want a fruit that is commonly associated with boosting the immune system.
+track_3_common_sense,select_fruit,29,29,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3476.2,4825.5,18728.6,852.7,102.3,9790.6,39.6,6808.4,, I require a fruit often used for making vinegar and can aid in digestion.
+track_3_common_sense,select_fruit,30,30,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,4072.8,5514.9,22101.5,4100.4,116.3,7690.1,50.1,6808.4,, I want a fruit that is a good source of Vitamin C and K.
+track_3_common_sense,select_fruit,31,31,vanilla,1,1.0,1.0,141,200,29,5.0,0.0,5,5,3155.5,4232.9,13761.4,959.6,98.7,5882.4,28.0,6808.4,, Select the fruit that ripens off the tree after it’s picked.
+track_3_common_sense,select_fruit,32,32,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,4340.0,5649.0,24978.7,708.2,109.8,5889.7,40.7,6808.4,," I want a fruit that comes in varieties like Fuji, Gala, and Honeycrisp."
+track_3_common_sense,select_fruit,33,33,vanilla,1,1.0,1.0,159,200,32,5.0,0.0,5,5,2882.9,4044.9,14018.6,586.9,96.0,5989.9,26.6,6808.4,, I need a fruit that has a bright orange color and is typically larger than a lemon.
+track_3_common_sense,select_fruit,34,34,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,4233.9,5610.6,21085.2,783.3,105.8,6979.1,38.5,6808.4,," I need a fruit that can be used as both, eaten raw or cooked in pastries."
+track_3_common_sense,select_fruit,35,35,vanilla,1,1.0,1.0,166,200,34,5.0,0.0,5,5,3808.9,4895.3,18578.9,664.1,81.7,4752.1,32.6,6808.4,, I want a fruit that is known for its soft and grainy texture.
+track_3_common_sense,select_fruit,36,36,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3931.1,5031.6,27528.1,672.9,77.5,4762.1,44.5,6808.4,, Fetch me a fruit that is elongated and curved.
+track_3_common_sense,select_fruit,37,37,vanilla,1,1.0,1.0,179,200,36,5.0,0.0,5,5,3091.5,4320.5,15150.3,629.1,97.7,6533.5,31.7,6808.4,, I want a fruit that is typically grown in subtropical climates.
+track_3_common_sense,select_fruit,38,38,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3745.4,4932.2,13814.9,4042.5,99.0,8106.4,41.6,6808.4,, I want a fruit that is commonly used in smoothies for its creamy texture.
+track_3_common_sense,select_fruit,39,39,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,3895.4,5164.5,17383.0,738.0,93.3,8504.1,33.7,6808.4,, I desire a fruit high in potassium for muscle recovery.
+track_3_common_sense,select_fruit,40,40,vanilla,1,1.0,1.0,172,200,35,5.0,0.0,5,5,3086.7,4270.5,6847.5,681.6,110.7,6663.9,23.1,6808.4,," I am looking for a citrus fruit with a refreshing, tangy taste."
+track_3_common_sense,select_fruit,41,41,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,4297.4,5570.8,15436.2,779.9,78.9,7112.4,32.0,6808.4,, I need a fruit to make a classic American pie.
+track_3_common_sense,select_fruit,42,42,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3530.7,4919.0,10914.0,783.7,109.7,8776.6,31.4,6808.4,, I want a fruit that is known for keeping doctors away when eaten daily.
+track_3_common_sense,select_fruit,43,43,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3746.9,5031.8,10942.6,760.4,85.4,7317.5,25.5,6808.4,, I want a fruit that symbolizes knowledge and education.
+track_3_common_sense,select_fruit,44,44,vanilla,0,0.0,0.0,200,200,40,5.0,0.0,5,5,4088.9,5325.5,12817.3,5919.2,81.2,9265.6,40.5,6808.4,, I want a fruit that can be used to make fresh juice with high vitamin C content.
+track_3_common_sense,select_fruit,45,45,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,4122.5,5466.4,11458.3,821.7,82.8,7224.0,27.7,6808.4,, I want a fruit that has a bright orange color and a citrus aroma.
+track_3_common_sense,select_fruit,46,46,vanilla,0,0.0,1.0,200,200,40,5.0,0.0,5,5,3942.1,5108.3,15165.0,731.1,79.8,5336.9,32.0,6808.4,, I want a fruit that is recognized as a natural remedy for relieving heartburn due to its antacid properties.
+track_3_common_sense,select_fruit,47,47,vanilla,0,0.5,1.0,200,200,40,5.0,0.0,5,5,3806.2,5044.3,12816.8,3346.3,92.1,6793.6,36.8,6808.4,, I want a fruit that turns yellow when ripe.
+track_3_common_sense,select_fruit,48,48,vanilla,1,1.0,1.0,134,200,27,5.0,0.0,5,5,2614.2,3379.1,5858.3,2224.5,61.0,4750.1,23.6,6808.4,, Grasp the fruit known for being segmented inside.
+track_3_common_sense,select_fruit,49,49,vanilla,1,1.0,1.0,136,200,28,5.0,0.0,5,5,2701.6,3513.9,5750.6,526.6,62.2,4633.0,19.4,6808.4,, Select a fruit that is commonly poached in red wine.

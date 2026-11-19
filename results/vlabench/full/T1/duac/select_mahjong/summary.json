@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 4,
+  "success_rate": 0.24,
+  "success_rate_excl_errors": 0.2609,
+  "progress_score": 0.34,
+  "mean_h": 9.457,
+  "tasks": {
+    "select_mahjong": 0.24
+  },
+  "synthetic_dry_run": false
+}

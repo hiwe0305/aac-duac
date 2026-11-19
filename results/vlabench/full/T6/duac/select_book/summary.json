@@ -1,0 +1,14 @@
+{
+  "arm": "duac",
+  "track": "track_6_unseen_texture",
+  "episodes": 50,
+  "errors": 4,
+  "success_rate": 0.52,
+  "success_rate_excl_errors": 0.5652,
+  "progress_score": 0.66,
+  "mean_h": 9.166,
+  "tasks": {
+    "select_book": 0.52
+  },
+  "synthetic_dry_run": false
+}

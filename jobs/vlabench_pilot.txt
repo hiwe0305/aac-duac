@@ -1,0 +1,16 @@
+# VLABench pilot, track T1, episodes 0..9, arms: vanilla duac aac
+--track T1 --tasks select_fruit --episodes 10 --port 8700 --vanilla --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/vanilla/select_fruit
+--track T1 --tasks add_condiment --episodes 10 --port 8700 --vanilla --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/vanilla/add_condiment
+--track T1 --tasks insert_flower --episodes 10 --port 8700 --vanilla --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/vanilla/insert_flower
+--track T1 --tasks select_book --episodes 10 --port 8700 --vanilla --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/vanilla/select_book
+--track T1 --tasks select_chemistry_tube --episodes 10 --port 8700 --vanilla --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/vanilla/select_chemistry_tube
+--track T1 --tasks select_fruit --episodes 10 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/duac/select_fruit
+--track T1 --tasks add_condiment --episodes 10 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/duac/add_condiment
+--track T1 --tasks insert_flower --episodes 10 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/duac/insert_flower
+--track T1 --tasks select_book --episodes 10 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/duac/select_book
+--track T1 --tasks select_chemistry_tube --episodes 10 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/duac/select_chemistry_tube
+--track T1 --tasks select_fruit --episodes 10 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/aac/select_fruit
+--track T1 --tasks add_condiment --episodes 10 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/aac/add_condiment
+--track T1 --tasks insert_flower --episodes 10 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/aac/insert_flower
+--track T1 --tasks select_book --episodes 10 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/aac/select_book
+--track T1 --tasks select_chemistry_tube --episodes 10 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/pilot/aac/select_chemistry_tube

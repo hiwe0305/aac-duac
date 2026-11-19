@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_6_unseen_texture,select_book,0,0,duac,1,1.0,1.0,116,200,13,9.615,0.836,7,10,1533.2,1818.3,5229.3,300.4,36.6,5560.4,33.3,6953.3,,Please take the book contract_law_in_japan
+track_6_unseen_texture,select_book,1,1,duac,1,1.0,1.0,94,200,10,9.5,0.671,8,10,849.2,1324.6,1728.6,283.8,70.1,5726.8,18.1,6953.3,,Please take the book biopolymer_composites_in_electronics
+track_6_unseen_texture,select_book,2,2,duac,1,1.0,1.0,84,200,10,9.2,1.077,7,10,1219.5,1374.5,3876.4,167.3,24.0,2263.7,16.6,6953.3,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,3,3,duac,1,1.0,1.0,88,200,10,9.7,0.458,9,10,1079.8,1360.1,3686.8,168.0,27.8,2599.8,16.9,6953.3,,Please take the book contract_law_in_japan
+track_6_unseen_texture,select_book,4,4,duac,1,1.0,1.0,72,200,8,9.625,0.484,9,10,897.0,1076.8,1460.0,172.6,20.7,2602.1,14.0,6953.3,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,5,5,duac,0,0.0,0.0,167,200,19,8.737,1.915,3,10,2028.0,2407.5,5330.0,466.1,52.3,7282.0,24.7,6953.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,6,6,duac,0,0.5,1.0,200,200,23,9.0,1.474,3,10,2249.5,2889.0,5807.1,449.1,76.2,11289.6,26.7,6953.3,,Please take the book biopolymer_composites_in_electronics
+track_6_unseen_texture,select_book,7,7,duac,1,1.0,1.0,109,200,12,9.583,0.64,8,10,1380.7,1592.5,2610.4,198.0,34.1,3523.8,13.5,6953.3,,Please take the book critical_infrastructure_protection_in_homeland_security
+track_6_unseen_texture,select_book,8,8,duac,1,1.0,1.0,84,200,9,9.333,0.943,7,10,1004.3,1156.7,2875.2,171.3,38.2,2792.2,15.9,6953.3,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,9,9,duac,0,0.0,0.0,200,200,25,8.2,1.6,4,10,2912.3,3481.0,7819.2,533.3,96.7,10133.3,28.2,6953.3,,Please take the book electron_transport_in_quantum_dots
+track_6_unseen_texture,select_book,10,10,duac,1,1.0,1.0,87,200,11,8.727,2.004,3,10,1201.0,1594.8,3037.6,238.4,39.7,3726.7,18.2,6953.3,,Please take the book electron_transport_in_quantum_dots
+track_6_unseen_texture,select_book,11,11,duac,1,1.0,1.0,85,200,10,9.3,1.487,5,10,1373.6,1508.9,3746.5,229.7,39.8,2466.6,13.0,6953.3,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,12,12,duac,0,0.5,1.0,200,200,22,9.136,0.868,7,10,2242.7,2801.3,4444.4,478.7,72.1,9475.3,22.0,6953.3,,Please take the book cloud_computing
+track_6_unseen_texture,select_book,13,13,duac,0,0.5,0.0,200,200,23,9.0,1.588,4,10,3204.7,3556.1,7008.5,503.2,70.9,6194.0,23.6,6953.3,,Please take the book critical_infrastructure_protection_in_homeland_security
+track_6_unseen_texture,select_book,14,14,duac,0,0.5,1.0,200,200,24,8.417,1.778,4,10,3166.3,3846.1,7067.9,623.5,101.1,8278.0,26.6,6953.3,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,15,15,duac,0,0.5,1.0,200,200,26,7.885,2.391,2,10,2864.9,3563.8,6011.7,675.0,126.8,12390.1,28.1,6953.3,,Please take the book data_visualization
+track_6_unseen_texture,select_book,16,16,duac,1,1.0,1.0,155,200,17,9.294,1.362,5,10,2249.8,2617.1,4601.1,354.4,55.4,5959.8,19.4,6953.3,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,17,17,duac,1,1.0,1.0,80,200,9,9.556,0.685,8,10,1155.5,1331.6,2439.9,163.6,27.7,2588.0,13.6,6953.3,,Please take the book the_story_of_american_freedom
+track_6_unseen_texture,select_book,18,18,duac,1,1.0,1.0,109,200,12,9.75,0.433,9,10,1485.1,1913.0,2949.1,294.4,62.0,3758.3,16.5,6953.3,,Please take the book the_story_of_american_freedom
+track_6_unseen_texture,select_book,19,19,duac,1,1.0,1.0,68,200,8,9.625,0.484,9,10,1001.5,1150.2,2416.2,151.8,29.4,2220.3,14.6,6953.3,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,20,20,duac,0,0.5,1.0,200,200,22,9.227,1.594,4,10,2790.5,3255.5,6041.2,536.7,73.0,7632.4,25.7,6953.3,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,21,21,duac,1,1.0,1.0,60,200,7,9.714,0.452,9,10,606.9,910.4,1477.4,167.2,48.9,2420.9,14.9,6953.3,,Please take the book cybersecurity
+track_6_unseen_texture,select_book,22,22,duac,1,1.0,1.0,100,200,11,9.818,0.386,9,10,1425.4,1613.3,2420.6,236.2,26.9,3152.6,17.4,6953.3,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,23,23,duac,0,0.5,0.0,200,200,21,9.857,0.35,9,10,2549.0,3270.6,4492.2,588.3,89.9,9815.6,26.3,6953.3,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,24,24,duac,1,1.0,1.0,81,200,9,9.444,0.956,7,10,1284.4,1430.9,3625.0,182.0,30.9,2558.2,15.0,6953.3,,Please take the book landmark_cases_in_property_law
+track_6_unseen_texture,select_book,25,25,duac,0,0.0,0.0,200,200,21,9.762,0.426,9,10,2534.8,2923.8,5263.7,529.0,75.1,8467.7,24.3,6953.3,,Please take the book engineering_biopolymers
+track_6_unseen_texture,select_book,26,26,duac,0,0.0,1.0,200,200,24,8.583,1.037,6,10,3090.2,3591.5,5933.1,593.9,84.5,11875.1,27.6,6953.3,,Please take the book cloud_computing
+track_6_unseen_texture,select_book,27,27,duac,0,0.0,0.0,78,200,8,9.375,0.484,9,10,1062.9,1221.1,2233.2,152.3,28.3,2899.8,15.8,6953.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book one_hundred_years_of_solitude
+track_6_unseen_texture,select_book,28,28,duac,0,0.5,1.0,200,200,22,9.091,1.756,3,10,2548.5,3032.7,7390.7,525.3,71.0,9595.4,28.9,6953.3,,Please take the book electron_transport_in_quantum_dots
+track_6_unseen_texture,select_book,29,29,duac,0,0.5,1.0,200,200,21,9.524,0.587,8,10,1974.1,2567.5,4227.6,512.5,63.7,9999.8,24.3,6953.3,,Please take the book critical_infrastructure_protection_in_homeland_security
+track_6_unseen_texture,select_book,30,30,duac,1,1.0,1.0,88,200,11,8.364,1.872,4,10,1212.3,1455.1,1938.9,223.2,41.4,3097.0,12.9,6953.3,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,31,31,duac,1,1.0,1.0,107,200,12,9.583,0.64,8,10,1234.7,1606.3,3587.6,239.7,42.9,3773.8,17.1,6953.3,,Please take the book a_tale_of_two_cities
+track_6_unseen_texture,select_book,32,32,duac,1,1.0,1.0,48,200,6,9.167,0.687,8,10,608.5,785.4,1128.9,132.1,17.2,1950.3,12.5,6953.3,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,33,33,duac,1,1.0,1.0,164,200,19,8.737,1.551,4,10,2416.6,2793.7,7882.8,346.1,72.1,6635.3,24.6,6953.3,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,34,34,duac,0,0.5,1.0,200,200,25,8.2,2.433,2,10,3278.4,3852.0,9833.7,635.8,96.7,7341.9,28.9,6953.3,,Please take the book cybersecurity
+track_6_unseen_texture,select_book,35,35,duac,1,1.0,1.0,77,200,9,9.556,0.685,8,10,1066.1,1351.4,1946.4,206.5,18.5,2621.5,14.5,6953.3,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,36,36,duac,0,0.5,1.0,200,200,23,8.739,1.421,5,10,2640.7,3296.8,5207.2,503.1,97.8,10088.5,26.6,6953.3,,Please take the book data_visualization
+track_6_unseen_texture,select_book,37,37,duac,1,1.0,1.0,89,200,10,9.6,0.917,7,10,1210.0,1414.4,2570.6,195.9,39.8,2924.8,13.9,6953.3,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,38,38,duac,1,1.0,1.0,78,200,9,9.556,0.685,8,10,1189.6,1312.3,3592.3,183.0,21.4,1848.2,18.0,6953.3,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,39,39,duac,0,0.5,1.0,200,200,21,9.571,0.904,7,10,2400.3,3168.8,4544.3,526.5,87.8,9338.3,23.7,6953.3,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,40,40,duac,0,0.0,0.0,200,200,22,9.227,0.849,7,10,2583.6,2988.0,6777.0,510.9,71.8,7801.3,25.8,6953.3,,Please take the book flash_mx_bible
+track_6_unseen_texture,select_book,41,41,duac,1,1.0,1.0,88,200,10,9.5,0.671,8,10,1554.4,1852.6,3374.1,318.8,30.3,3022.9,17.7,6953.3,,Please take the book one_hundred_years_of_solitude
+track_6_unseen_texture,select_book,42,42,duac,0,0.0,0.0,200,200,24,8.542,1.632,3,10,3294.4,3876.1,7466.9,635.0,90.9,8599.2,24.6,6953.3,,Please take the book landmark_cases_in_property_law
+track_6_unseen_texture,select_book,43,43,duac,1,1.0,1.0,81,200,9,9.667,0.471,9,10,1143.5,1425.7,3351.4,271.5,38.8,3006.0,19.5,6953.3,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,44,44,duac,0,0.0,0.0,200,200,26,8.0,2.019,3,10,3212.2,3930.5,6868.1,702.1,129.3,9027.7,24.0,6953.3,,Please take the book flash_mx_bible
+track_6_unseen_texture,select_book,45,45,duac,0,0.0,0.0,115,200,14,7.571,2.47,3,10,1828.9,2160.5,3978.4,310.0,41.5,4600.5,20.7,6953.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book a_tale_of_two_cities
+track_6_unseen_texture,select_book,46,46,duac,1,1.0,1.0,79,200,9,9.667,0.471,9,10,1226.1,1503.0,2357.0,198.6,31.9,2869.9,15.8,6953.3,,Please take the book a_tale_of_two_cities
+track_6_unseen_texture,select_book,47,47,duac,0,0.5,1.0,200,200,22,9.182,1.23,6,10,2612.2,3198.1,6218.6,522.5,101.5,11177.2,28.6,6953.3,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,48,48,duac,0,0.5,0.0,200,200,23,8.957,1.546,4,10,2683.3,3194.8,6842.0,694.1,82.6,9629.7,26.0,6953.3,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,49,49,duac,0,0.0,0.0,62,200,6,9.333,0.745,8,10,723.6,881.4,1195.6,109.6,40.5,2388.8,15.1,6953.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book one_hundred_years_of_solitude

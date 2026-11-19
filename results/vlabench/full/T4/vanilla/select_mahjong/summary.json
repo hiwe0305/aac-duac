@@ -1,0 +1,14 @@
+{
+  "arm": "vanilla",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 5,
+  "success_rate": 0.12,
+  "success_rate_excl_errors": 0.1333,
+  "progress_score": 0.2,
+  "mean_h": 5.0,
+  "tasks": {
+    "select_mahjong": 0.12
+  },
+  "synthetic_dry_run": false
+}

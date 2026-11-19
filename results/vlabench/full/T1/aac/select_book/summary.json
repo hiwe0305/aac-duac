@@ -1,0 +1,14 @@
+{
+  "arm": "aac",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 2,
+  "success_rate": 0.5,
+  "success_rate_excl_errors": 0.5208,
+  "progress_score": 0.62,
+  "mean_h": 8.409,
+  "tasks": {
+    "select_book": 0.5
+  },
+  "synthetic_dry_run": false
+}

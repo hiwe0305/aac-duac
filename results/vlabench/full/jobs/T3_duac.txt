@@ -1,0 +1,31 @@
+# T3, duac server, generated 2026-11-19 04:01:41
+--track T3 --tasks add_condiment --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/add_condiment
+--track T3 --tasks insert_flower --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/insert_flower
+--track T3 --tasks select_book --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_book
+--track T3 --tasks select_book --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_book
+--track T3 --tasks select_book --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_book
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_chemistry_tube
+--track T3 --tasks select_drink --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_drink
+--track T3 --tasks select_fruit --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_fruit
+--track T3 --tasks select_mahjong --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_mahjong
+--track T3 --tasks select_painting --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_painting
+--track T3 --tasks select_poker --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_poker
+--track T3 --tasks select_toy --episodes 50 --port 8710 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8710 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_toy

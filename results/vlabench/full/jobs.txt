@@ -1,0 +1,251 @@
+# generated 2026-11-18 20:50:32: N=50 tracks=[T1 T2 T3 T4 T6] arms=[vanilla fixed_8 fixed_10 duac aac]
+--track T1 --tasks add_condiment --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/add_condiment
+--track T1 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/add_condiment
+--track T1 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/add_condiment
+--track T1 --tasks add_condiment --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/add_condiment
+--track T1 --tasks add_condiment --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/add_condiment
+--track T1 --tasks insert_flower --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/insert_flower
+--track T1 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/insert_flower
+--track T1 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/insert_flower
+--track T1 --tasks insert_flower --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/insert_flower
+--track T1 --tasks insert_flower --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/insert_flower
+--track T1 --tasks select_book --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_book
+--track T1 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_book
+--track T1 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_book
+--track T1 --tasks select_book --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_book
+--track T1 --tasks select_book --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_book
+--track T1 --tasks select_chemistry_tube --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_chemistry_tube
+--track T1 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_chemistry_tube
+--track T1 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_chemistry_tube
+--track T1 --tasks select_chemistry_tube --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_chemistry_tube
+--track T1 --tasks select_chemistry_tube --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_chemistry_tube
+--track T1 --tasks select_drink --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_drink
+--track T1 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_drink
+--track T1 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_drink
+--track T1 --tasks select_drink --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_drink
+--track T1 --tasks select_drink --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_drink
+--track T1 --tasks select_fruit --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_fruit
+--track T1 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_fruit
+--track T1 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_fruit
+--track T1 --tasks select_fruit --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_fruit
+--track T1 --tasks select_fruit --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_fruit
+--track T1 --tasks select_mahjong --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_mahjong
+--track T1 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_mahjong
+--track T1 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_mahjong
+--track T1 --tasks select_mahjong --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_mahjong
+--track T1 --tasks select_mahjong --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_mahjong
+--track T1 --tasks select_painting --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_painting
+--track T1 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_painting
+--track T1 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_painting
+--track T1 --tasks select_painting --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_painting
+--track T1 --tasks select_painting --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_painting
+--track T1 --tasks select_poker --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_poker
+--track T1 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_poker
+--track T1 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_poker
+--track T1 --tasks select_poker --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_poker
+--track T1 --tasks select_poker --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_poker
+--track T1 --tasks select_toy --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T1/vanilla/select_toy
+--track T1 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T1/fixed_8/select_toy
+--track T1 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T1/fixed_10/select_toy
+--track T1 --tasks select_toy --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/duac/select_toy
+--track T1 --tasks select_toy --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T1/aac/select_toy
+--track T2 --tasks add_condiment --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/add_condiment
+--track T2 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/add_condiment
+--track T2 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/add_condiment
+--track T2 --tasks add_condiment --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/add_condiment
+--track T2 --tasks add_condiment --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/add_condiment
+--track T2 --tasks insert_flower --episodes 10 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/insert_flower
+--track T2 --tasks insert_flower --episodes 10 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/insert_flower
+--track T2 --tasks insert_flower --episodes 10 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/insert_flower
+--track T2 --tasks insert_flower --episodes 10 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/insert_flower
+--track T2 --tasks insert_flower --episodes 10 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/insert_flower
+--track T2 --tasks select_book --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_book
+--track T2 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_book
+--track T2 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_book
+--track T2 --tasks select_book --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_book
+--track T2 --tasks select_book --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_book
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_chemistry_tube
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_chemistry_tube
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_chemistry_tube
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_chemistry_tube
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_chemistry_tube
+--track T2 --tasks select_drink --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_drink
+--track T2 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_drink
+--track T2 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_drink
+--track T2 --tasks select_drink --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_drink
+--track T2 --tasks select_drink --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_drink
+--track T2 --tasks select_fruit --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_fruit
+--track T2 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_fruit
+--track T2 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_fruit
+--track T2 --tasks select_fruit --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_fruit
+--track T2 --tasks select_fruit --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_fruit
+--track T2 --tasks select_mahjong --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_mahjong
+--track T2 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_mahjong
+--track T2 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_mahjong
+--track T2 --tasks select_mahjong --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_mahjong
+--track T2 --tasks select_mahjong --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_mahjong
+--track T2 --tasks select_painting --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_painting
+--track T2 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_painting
+--track T2 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_painting
+--track T2 --tasks select_painting --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_painting
+--track T2 --tasks select_painting --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_painting
+--track T2 --tasks select_poker --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_poker
+--track T2 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_poker
+--track T2 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_poker
+--track T2 --tasks select_poker --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_poker
+--track T2 --tasks select_poker --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_poker
+--track T2 --tasks select_toy --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T2/vanilla/select_toy
+--track T2 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T2/fixed_8/select_toy
+--track T2 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T2/fixed_10/select_toy
+--track T2 --tasks select_toy --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/duac/select_toy
+--track T2 --tasks select_toy --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T2/aac/select_toy
+--track T3 --tasks add_condiment --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/add_condiment
+--track T3 --tasks insert_flower --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/insert_flower
+--track T3 --tasks select_book --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_book
+--track T3 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_book
+--track T3 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_book
+--track T3 --tasks select_book --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_book
+--track T3 --tasks select_book --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_book
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_chemistry_tube
+--track T3 --tasks select_drink --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_drink
+--track T3 --tasks select_fruit --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_fruit
+--track T3 --tasks select_mahjong --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_mahjong
+--track T3 --tasks select_painting --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_painting
+--track T3 --tasks select_poker --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_poker
+--track T3 --tasks select_toy --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T3/vanilla/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T3/fixed_8/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T3/fixed_10/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/duac/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/aac/select_toy
+--track T4 --tasks add_condiment --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/add_condiment
+--track T4 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/add_condiment
+--track T4 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/add_condiment
+--track T4 --tasks add_condiment --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/add_condiment
+--track T4 --tasks add_condiment --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/add_condiment
+--track T4 --tasks insert_flower --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/insert_flower
+--track T4 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/insert_flower
+--track T4 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/insert_flower
+--track T4 --tasks insert_flower --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/insert_flower
+--track T4 --tasks insert_flower --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/insert_flower
+--track T4 --tasks select_book --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_book
+--track T4 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_book
+--track T4 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_book
+--track T4 --tasks select_book --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_book
+--track T4 --tasks select_book --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_book
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_chemistry_tube
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_chemistry_tube
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_chemistry_tube
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_chemistry_tube
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_chemistry_tube
+--track T4 --tasks select_drink --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_drink
+--track T4 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_drink
+--track T4 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_drink
+--track T4 --tasks select_drink --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_drink
+--track T4 --tasks select_drink --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_drink
+--track T4 --tasks select_fruit --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_fruit
+--track T4 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_fruit
+--track T4 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_fruit
+--track T4 --tasks select_fruit --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_fruit
+--track T4 --tasks select_fruit --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_fruit
+--track T4 --tasks select_mahjong --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_mahjong
+--track T4 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_mahjong
+--track T4 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_mahjong
+--track T4 --tasks select_mahjong --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_mahjong
+--track T4 --tasks select_mahjong --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_mahjong
+--track T4 --tasks select_painting --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_painting
+--track T4 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_painting
+--track T4 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_painting
+--track T4 --tasks select_painting --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_painting
+--track T4 --tasks select_painting --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_painting
+--track T4 --tasks select_poker --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_poker
+--track T4 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_poker
+--track T4 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_poker
+--track T4 --tasks select_poker --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_poker
+--track T4 --tasks select_poker --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_poker
+--track T4 --tasks select_toy --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T4/vanilla/select_toy
+--track T4 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T4/fixed_8/select_toy
+--track T4 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T4/fixed_10/select_toy
+--track T4 --tasks select_toy --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/duac/select_toy
+--track T4 --tasks select_toy --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_toy
+--track T6 --tasks add_condiment --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/add_condiment
+--track T6 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/add_condiment
+--track T6 --tasks add_condiment --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/add_condiment
+--track T6 --tasks add_condiment --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/add_condiment
+--track T6 --tasks add_condiment --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/add_condiment
+--track T6 --tasks insert_flower --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/insert_flower
+--track T6 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/insert_flower
+--track T6 --tasks insert_flower --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/insert_flower
+--track T6 --tasks insert_flower --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/insert_flower
+--track T6 --tasks insert_flower --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/insert_flower
+--track T6 --tasks select_book --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_book
+--track T6 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_book
+--track T6 --tasks select_book --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_book
+--track T6 --tasks select_book --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_book
+--track T6 --tasks select_book --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_book
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_chemistry_tube
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_chemistry_tube
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_chemistry_tube
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_chemistry_tube
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_chemistry_tube
+--track T6 --tasks select_drink --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_drink
+--track T6 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_drink
+--track T6 --tasks select_drink --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_drink
+--track T6 --tasks select_drink --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_drink
+--track T6 --tasks select_drink --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_drink
+--track T6 --tasks select_fruit --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_fruit
+--track T6 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_fruit
+--track T6 --tasks select_fruit --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_fruit
+--track T6 --tasks select_fruit --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_fruit
+--track T6 --tasks select_fruit --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_fruit
+--track T6 --tasks select_mahjong --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_mahjong
+--track T6 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_mahjong
+--track T6 --tasks select_mahjong --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_mahjong
+--track T6 --tasks select_mahjong --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_mahjong
+--track T6 --tasks select_mahjong --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_mahjong
+--track T6 --tasks select_painting --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_painting
+--track T6 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_painting
+--track T6 --tasks select_painting --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_painting
+--track T6 --tasks select_painting --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_painting
+--track T6 --tasks select_painting --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_painting
+--track T6 --tasks select_poker --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_poker
+--track T6 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_poker
+--track T6 --tasks select_poker --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_poker
+--track T6 --tasks select_poker --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_poker
+--track T6 --tasks select_poker --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_poker
+--track T6 --tasks select_toy --episodes 50 --port 8700 --vanilla --output-dir outputs/vlabench/full/T6/vanilla/select_toy
+--track T6 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 8 --output-dir outputs/vlabench/full/T6/fixed_8/select_toy
+--track T6 --tasks select_toy --episodes 50 --port 8711 --fixed-horizon 10 --output-dir outputs/vlabench/full/T6/fixed_10/select_toy
+--track T6 --tasks select_toy --episodes 50 --port 8710 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/duac/select_toy
+--track T6 --tasks select_toy --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T6/aac/select_toy

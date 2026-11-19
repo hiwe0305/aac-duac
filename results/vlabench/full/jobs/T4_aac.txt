@@ -1,0 +1,11 @@
+# T4, aac server, generated 2026-11-19 05:35:11
+--track T4 --tasks add_condiment --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/add_condiment
+--track T4 --tasks insert_flower --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/insert_flower
+--track T4 --tasks select_book --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_book
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_chemistry_tube
+--track T4 --tasks select_drink --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_drink
+--track T4 --tasks select_fruit --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_fruit
+--track T4 --tasks select_mahjong --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_mahjong
+--track T4 --tasks select_painting --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_painting
+--track T4 --tasks select_poker --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_poker
+--track T4 --tasks select_toy --episodes 50 --port 8720 --aac-selector gaussian_bernoulli --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T4/aac/select_toy

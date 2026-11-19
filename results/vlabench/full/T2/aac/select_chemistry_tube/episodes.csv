@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_2_cross_category,select_chemistry_tube,0,0,aac,0,0.5,0.0,200,200,22,9.318,1.489,4,10,3391.8,3545.3,16877.9,345.0,442.6,9447.6,45.4,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,1,1,aac,0,0.0,0.0,200,200,23,8.696,1.943,5,10,3717.9,3900.0,11184.7,455.4,268.1,9405.1,32.8,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,2,2,aac,0,0.5,0.0,200,200,23,8.957,1.944,3,10,3523.3,3723.8,12858.1,473.2,271.2,6341.0,30.3,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,3,3,aac,0,0.0,0.0,88,200,10,8.7,2.052,3,10,1667.5,1759.0,3442.9,224.7,144.9,3002.3,19.0,6957.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,4,4,aac,0,0.0,0.0,200,200,24,8.542,2.582,2,10,3745.4,3941.6,11486.1,430.9,399.9,8896.8,27.0,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,5,5,aac,0,0.0,0.0,200,200,24,8.458,2.291,2,10,3618.3,3793.5,13164.4,514.9,262.1,6213.4,28.6,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,6,6,aac,0,0.0,0.0,200,200,26,7.962,2.889,2,10,3726.6,3913.7,14335.7,490.0,306.8,7555.0,31.8,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,7,7,aac,0,0.0,0.0,200,200,23,9.087,1.613,5,10,3489.9,3648.7,13778.6,453.3,266.1,6635.2,30.9,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,8,8,aac,0,0.0,0.0,200,200,23,8.826,1.903,3,10,3563.6,3745.3,10663.3,400.6,427.1,9470.3,30.6,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,9,9,aac,0,0.0,0.0,139,200,15,8.933,1.982,3,10,2461.1,2585.6,5644.7,258.2,189.2,5115.7,20.1,6957.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,10,10,aac,0,0.0,0.0,200,200,23,8.783,2.225,3,10,3608.9,3755.4,10417.2,449.4,312.9,6471.2,27.0,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,11,11,aac,0,0.5,0.0,200,200,24,8.583,2.235,3,10,3715.3,3915.4,6321.6,454.5,279.9,9246.8,23.9,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,12,12,aac,0,0.0,0.0,200,200,24,8.583,2.465,3,10,3620.4,3836.0,9085.3,497.7,369.3,8939.9,26.3,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,13,13,aac,0,0.0,0.0,200,200,30,6.8,3.198,2,10,4423.1,4660.0,12741.6,498.3,290.9,7453.3,28.6,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,14,14,aac,0,0.0,0.0,200,200,26,8.0,2.587,2,10,3862.6,4079.7,8794.1,484.2,403.1,11307.0,28.6,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,15,15,aac,1,1.0,0.0,83,200,9,9.556,0.685,8,10,1350.2,1406.7,2557.2,166.3,120.7,3202.5,13.1,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,16,16,aac,0,0.0,0.0,200,200,27,7.519,3.096,2,10,3907.4,4175.3,8279.1,648.6,376.2,7909.0,24.1,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,17,17,aac,0,0.0,0.0,200,200,22,9.364,1.772,2,10,3374.1,3546.4,8795.3,544.2,363.8,8607.5,26.7,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,18,18,aac,0,0.0,0.0,200,200,26,7.769,3.029,2,10,4241.4,4422.3,12839.5,531.8,464.8,7955.7,29.9,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,19,19,aac,0,0.0,0.0,200,200,32,6.438,3.071,2,10,5267.6,5500.3,17428.2,666.2,445.7,8150.2,35.4,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,20,20,aac,0,0.5,1.0,200,200,27,7.407,2.884,2,10,4137.0,4397.0,10124.0,449.5,479.7,9663.4,28.6,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,21,21,aac,0,0.5,0.0,200,200,28,7.286,3.149,2,10,4311.5,4548.4,10194.1,548.7,410.5,9843.8,27.9,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,22,22,aac,0,0.0,0.0,115,200,12,9.167,1.344,6,10,1980.5,2049.9,4650.1,274.0,125.0,4355.7,16.6,6957.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,23,23,aac,0,0.0,0.0,200,200,26,7.769,2.454,3,10,4133.0,4298.3,12663.2,534.4,303.2,8688.8,31.4,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,24,24,aac,0,0.5,0.0,200,200,25,8.16,2.444,2,10,3941.1,4085.9,10109.3,413.1,257.3,9539.6,27.9,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,25,25,aac,0,0.0,0.0,200,200,25,8.0,2.482,3,10,3956.5,4142.9,10538.9,476.0,315.5,8548.6,28.8,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,26,26,aac,1,1.0,0.0,86,200,10,9.5,0.806,8,10,1612.2,1655.0,7064.0,168.0,93.2,2269.6,18.6,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,27,27,aac,0,0.0,0.0,200,200,26,7.692,3.086,2,10,3975.9,4290.3,7974.8,473.9,423.1,7565.1,24.7,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,28,28,aac,0,0.0,0.0,200,200,29,7.103,3.294,2,10,4359.2,4591.0,10492.4,505.9,375.4,10270.3,28.4,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,29,29,aac,0,0.0,0.0,200,200,23,8.783,2.042,3,10,3271.1,3478.0,8931.3,485.7,327.5,8405.9,25.4,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,30,30,aac,0,0.0,0.0,158,200,18,8.611,2.085,4,10,2566.8,2671.9,4878.2,282.5,229.4,5033.2,17.1,6957.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,31,31,aac,0,0.5,0.0,200,200,27,7.407,3.034,2,10,3926.1,4103.0,8559.6,494.6,384.1,9174.6,25.5,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,32,32,aac,0,0.0,0.0,200,200,26,7.962,3.006,2,10,4026.7,4246.4,8058.4,491.8,323.4,9195.3,24.3,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,33,33,aac,0,0.0,0.0,200,200,32,6.25,3.172,2,10,4915.5,5152.2,11013.3,546.1,379.9,10177.4,28.7,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,34,34,aac,0,0.0,0.0,200,200,26,8.0,2.353,3,10,4187.9,4370.6,9033.6,493.0,328.7,7863.2,24.3,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,35,35,aac,0,0.0,0.0,200,200,25,8.32,2.31,3,10,3384.3,3599.9,5314.0,408.1,316.8,8367.3,20.8,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,36,36,aac,0,0.0,0.0,200,200,25,8.36,2.575,2,10,3643.0,3840.3,7537.2,473.8,351.1,6748.8,21.5,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,37,37,aac,0,0.0,0.0,200,200,25,8.16,2.767,2,10,3898.5,4065.7,8693.4,458.5,298.2,6159.7,22.7,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,38,38,aac,0,0.5,0.0,200,200,27,7.704,2.839,2,10,4701.5,4900.0,10200.3,727.3,282.6,7425.3,26.9,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,39,39,aac,0,0.0,0.0,200,200,29,7.069,3.028,2,10,4378.6,4588.7,11272.8,488.7,308.1,7184.2,27.2,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,40,40,aac,0,0.0,0.0,200,200,26,7.808,3.101,2,10,4064.5,4245.1,10390.7,457.1,314.4,7691.0,27.7,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,41,41,aac,0,0.5,0.0,200,200,25,8.0,2.449,2,10,3792.4,3964.4,7529.3,460.0,331.2,8768.1,23.9,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,42,42,aac,0,0.0,0.0,200,200,26,7.692,2.756,2,10,3805.3,3985.5,9505.8,488.4,338.5,6670.9,25.1,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,43,43,aac,0,0.0,0.0,200,200,26,8.0,2.815,2,10,3514.6,3730.5,5913.6,421.0,346.4,7773.5,22.5,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,44,44,aac,1,1.0,0.0,75,200,9,9.222,1.133,7,10,1429.1,1480.5,4197.1,175.1,117.6,3086.7,14.5,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,45,45,aac,0,0.0,0.0,200,200,24,8.458,2.327,3,10,3863.1,4014.9,5246.7,378.7,258.8,6628.8,20.8,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,46,46,aac,0,0.5,0.0,200,200,23,8.957,2.095,2,10,4229.4,4382.2,6815.3,443.1,215.6,6354.1,21.4,6957.6,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,47,47,aac,0,0.0,0.0,200,200,25,8.04,2.72,2,10,4051.8,4255.5,5119.7,355.4,269.7,7297.1,20.1,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,48,48,aac,0,0.0,0.0,200,200,24,8.542,2.516,2,10,3465.7,3624.2,4458.1,366.7,238.7,6254.9,17.8,6957.6,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,49,49,aac,0,0.0,0.0,200,200,25,8.16,2.894,2,10,4216.5,4353.1,5319.8,350.7,271.3,5243.4,17.0,6957.6,,Take out the K2CrO4 solution
