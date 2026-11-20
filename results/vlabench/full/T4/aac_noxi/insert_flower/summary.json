@@ -1,0 +1,14 @@
+{
+  "arm": "aac_noxi",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.08,
+  "success_rate_excl_errors": 0.0816,
+  "progress_score": 0.48,
+  "mean_h": 2.889,
+  "tasks": {
+    "insert_flower": 0.08
+  },
+  "synthetic_dry_run": false
+}

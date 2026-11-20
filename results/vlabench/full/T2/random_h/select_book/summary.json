@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.02,
+  "success_rate_excl_errors": 0.0204,
+  "progress_score": 0.05,
+  "mean_h": 5.734,
+  "tasks": {
+    "select_book": 0.02
+  },
+  "synthetic_dry_run": false
+}

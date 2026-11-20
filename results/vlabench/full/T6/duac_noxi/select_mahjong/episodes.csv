@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_6_unseen_texture,select_mahjong,0,0,duac_noxi,0,0.0,1.0,200,200,33,6.061,2.923,2,9,4267.0,4631.0,24346.5,548.7,70.0,7966.4,47.3,6857.3,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,1,1,duac_noxi,0,0.5,1.0,200,200,37,5.541,2.928,2,9,4692.0,5073.3,19694.1,645.9,80.9,8227.4,36.1,6857.3,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,2,2,duac_noxi,0,0.5,1.0,200,200,28,7.321,2.45,2,9,3660.0,3982.3,14760.9,531.4,62.4,9225.0,31.0,6857.3,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,3,3,duac_noxi,0,0.0,1.0,200,200,34,5.941,2.656,2,9,4354.9,4722.8,18027.9,664.6,75.7,8430.2,34.6,6857.3,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,4,4,duac_noxi,0,0.0,1.0,200,200,28,7.393,2.512,2,9,3570.2,3854.2,14316.2,555.1,56.4,8993.1,31.4,6857.3,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,5,5,duac_noxi,1,1.0,1.0,108,200,17,6.588,2.702,2,9,2155.4,2365.9,8080.5,313.9,38.6,4703.0,19.7,6857.3,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,6,6,duac_noxi,0,0.0,0.0,200,200,34,6.088,2.964,2,9,4540.2,4912.1,18434.0,600.7,66.1,8974.7,34.9,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,7,7,duac_noxi,0,0.0,0.0,50,200,6,7.833,2.609,2,9,754.7,814.7,2602.0,102.1,12.1,1920.9,12.4,6857.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 7 man
+track_6_unseen_texture,select_mahjong,8,8,duac_noxi,1,1.0,1.0,96,200,14,7.429,2.638,2,9,1789.4,1964.2,8337.7,252.9,28.8,3796.6,19.7,6857.3,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,9,9,duac_noxi,1,0.5,0.0,38,200,5,7.6,2.332,3,9,610.1,658.3,2601.6,94.9,10.1,1428.2,11.4,6857.3,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,10,10,duac_noxi,0,0.0,1.0,200,200,37,5.459,2.974,2,9,4844.5,5303.1,19704.5,648.0,80.7,8163.1,35.1,6857.3,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,11,11,duac_noxi,1,1.0,1.0,103,200,19,5.842,3.167,2,9,2563.1,2789.2,9804.7,376.3,44.0,4247.7,22.8,6857.3,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,12,12,duac_noxi,1,1.0,1.0,77,200,16,5.125,3.219,2,9,2054.0,2321.2,7509.3,299.8,44.8,3584.2,18.2,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,13,13,duac_noxi,0,0.0,0.0,100,200,20,4.95,3.186,2,9,2578.0,2769.0,12634.5,362.4,44.8,3881.0,26.3,6857.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,14,14,duac_noxi,0,0.5,1.0,200,200,38,5.342,3.156,2,9,4959.2,5308.9,22455.8,709.2,83.8,7457.9,37.3,6857.3,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,15,15,duac_noxi,0,0.5,1.0,200,200,31,6.548,3.15,2,9,3842.7,4282.8,15231.2,601.3,67.1,9093.2,33.2,6857.3,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,16,16,duac_noxi,0,0.0,1.0,200,200,33,6.061,3.074,2,9,4231.3,4654.9,16826.2,730.6,87.3,8660.3,32.9,6857.3,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,17,17,duac_noxi,0,0.5,1.0,200,200,35,5.943,2.947,2,9,4492.4,4921.4,16480.2,736.6,85.8,9401.3,34.2,6857.3,,Pick up the mahjong of 5 pin
+track_6_unseen_texture,select_mahjong,18,18,duac_noxi,1,1.0,1.0,78,200,13,6.462,3.225,2,9,1657.1,1769.5,8458.5,232.6,25.1,3001.7,18.8,6857.3,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,19,19,duac_noxi,0,0.0,0.0,200,200,34,6.088,3.109,2,9,4429.0,4782.8,17647.8,723.2,82.1,8179.1,35.8,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,20,20,duac_noxi,0,0.0,1.0,200,200,33,6.182,2.989,2,9,4211.3,4594.4,15097.9,636.1,66.9,7513.2,29.3,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,21,21,duac_noxi,0,0.5,1.0,200,200,32,6.469,2.883,2,9,4061.4,4432.6,17096.1,630.3,74.3,9839.2,34.4,6857.3,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,22,22,duac_noxi,0,0.0,0.0,200,200,42,4.786,2.899,2,9,5377.5,5962.7,21694.2,909.4,112.6,8806.8,39.1,6857.3,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,23,23,duac_noxi,1,1.0,1.0,86,200,14,6.571,3.064,2,9,1858.3,2005.8,6167.8,269.0,26.6,3273.8,16.4,6857.3,,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,24,24,duac_noxi,0,0.0,0.0,107,200,19,5.368,2.924,2,9,2446.8,2646.4,9175.7,354.5,43.7,4266.2,20.5,6857.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,25,25,duac_noxi,0,0.0,1.0,200,200,36,5.639,2.907,2,9,4988.8,5383.2,22928.8,728.5,78.6,7510.8,41.4,6857.3,,Pick up the mahjong of 4 sou
+track_6_unseen_texture,select_mahjong,26,26,duac_noxi,0,0.0,1.0,200,200,35,5.8,3.142,2,9,4569.3,4954.4,19233.1,777.5,74.1,7637.9,34.8,6857.3,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,27,27,duac_noxi,0,0.5,1.0,200,200,36,5.639,3.029,2,9,4628.7,5125.4,16969.6,742.6,94.4,9345.0,33.3,6857.3,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,28,28,duac_noxi,1,1.0,1.0,111,200,21,5.667,3.256,2,9,2762.9,3006.5,12835.8,398.9,46.5,4214.4,24.8,6857.3,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,29,29,duac_noxi,0,0.0,0.0,200,200,33,6.152,3.006,2,9,4354.3,4731.4,15825.4,666.7,65.1,7973.9,30.8,6857.3,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,30,30,duac_noxi,0,0.0,1.0,200,200,30,6.8,2.613,2,9,4001.9,4467.0,14735.6,598.3,65.4,9634.6,31.3,6857.3,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,31,31,duac_noxi,0,0.0,0.0,200,200,29,7.103,2.771,2,9,3971.7,4283.4,13822.4,517.2,55.7,8550.6,30.6,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,32,32,duac_noxi,1,1.0,1.0,124,200,19,6.684,2.957,2,9,2587.9,2776.5,8284.4,365.5,42.3,4552.2,19.6,6857.3,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,33,33,duac_noxi,0,0.0,0.0,200,200,30,6.833,2.721,2,9,3869.6,4226.1,11719.2,632.9,64.3,7776.5,26.5,6857.3,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,34,34,duac_noxi,0,0.0,1.0,200,200,31,6.548,3.078,2,9,4085.4,4378.6,13393.5,515.7,56.7,8849.8,29.7,6857.3,,Pick up the mahjong of 5 pin
+track_6_unseen_texture,select_mahjong,35,35,duac_noxi,0,0.0,1.0,200,200,37,5.622,3.017,2,9,4752.8,5114.8,17575.8,655.3,85.7,7410.8,32.2,6857.3,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,36,36,duac_noxi,0,0.5,1.0,200,200,29,7.0,2.613,2,9,3933.8,4282.9,11051.6,517.9,58.7,8004.6,26.1,6857.3,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,37,37,duac_noxi,0,0.0,1.0,200,200,32,6.312,2.615,2,9,4129.5,4478.7,11134.5,542.6,57.1,7353.7,25.0,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,38,38,duac_noxi,0,0.0,1.0,200,200,29,7.0,2.792,2,9,3746.1,4064.8,9686.7,528.6,55.9,9480.4,26.4,6857.3,,Pick up the mahjong of 7 pin
+track_6_unseen_texture,select_mahjong,39,39,duac_noxi,0,0.0,0.0,86,200,15,5.667,2.821,2,9,1947.6,2105.8,6564.9,290.8,35.6,2993.3,16.4,6857.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,40,40,duac_noxi,0,0.0,1.0,200,200,32,6.406,2.827,2,9,4047.3,4362.3,14942.5,581.6,61.5,6945.6,29.2,6857.3,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,41,41,duac_noxi,0,0.0,0.0,153,200,27,5.667,3.091,2,9,3661.1,3944.8,12237.4,543.8,58.1,5801.0,26.0,6857.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 7 pin
+track_6_unseen_texture,select_mahjong,42,42,duac_noxi,0,0.0,0.0,200,200,34,5.882,2.752,2,9,4385.1,4707.3,12221.2,568.6,70.4,8788.6,29.3,6857.3,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,43,43,duac_noxi,0,0.0,1.0,200,200,33,6.091,3.069,2,9,4195.9,4519.2,9810.9,579.7,70.5,7704.9,24.7,6857.3,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,44,44,duac_noxi,0,0.0,0.0,200,200,35,5.943,2.976,2,9,4466.7,4792.2,9679.7,628.5,68.5,7251.8,24.1,6857.3,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,45,45,duac_noxi,1,1.0,1.0,102,200,20,5.15,2.851,2,9,2548.9,2718.5,7027.0,351.7,33.6,3517.7,17.8,6857.3,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,46,46,duac_noxi,1,1.0,1.0,136,200,26,5.423,2.79,2,9,3376.2,3633.3,4935.6,396.1,45.9,4896.7,16.6,6857.3,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,47,47,duac_noxi,0,0.0,1.0,200,200,26,8.0,2.166,2,9,3429.5,3724.9,4478.3,371.3,49.1,8563.0,19.3,6857.3,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,48,48,duac_noxi,0,0.0,0.0,140,200,26,5.115,3.004,2,9,3583.7,3848.3,5405.6,473.7,49.5,5440.3,19.2,6857.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,49,49,duac_noxi,0,0.0,0.0,200,200,26,7.923,2.252,2,9,3315.7,3540.2,4979.3,390.4,46.7,7269.8,19.0,6857.3,,Pick up the mahjong of 9 pin

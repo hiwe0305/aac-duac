@@ -1,0 +1,14 @@
+{
+  "arm": "duac_noxi",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.16,
+  "success_rate_excl_errors": 0.1633,
+  "progress_score": 0.31,
+  "mean_h": 6.598,
+  "tasks": {
+    "select_drink": 0.16
+  },
+  "synthetic_dry_run": false
+}

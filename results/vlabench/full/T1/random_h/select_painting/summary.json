@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.4,
+  "success_rate_excl_errors": 0.4,
+  "progress_score": 0.4,
+  "mean_h": 6.832,
+  "tasks": {
+    "select_painting": 0.4
+  },
+  "synthetic_dry_run": false
+}

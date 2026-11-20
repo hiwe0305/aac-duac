@@ -232,6 +232,8 @@ def open_env(env_factory, task, episode_config, seed: int, attempts: int = 5):
 
 
 def arm_name(args, server_mode: str) -> str:
+    if args.no_xi:  # ablation: h = h_unc only (validated in run())
+        return "aac_noxi" if args.aac_selector else "duac_noxi"
     if args.aac_selector:
         return "aac" if args.aac_selector == "gaussian_bernoulli" else f"aac_{args.aac_selector}"
     if args.random_horizon_from:
@@ -268,13 +270,24 @@ def run(args) -> Dict[str, Any]:
     else:
         from openpi_client import websocket_client_policy
 
-        client = websocket_client_policy.WebsocketClientPolicy(host=args.host, port=args.port)
+        for attempt in range(30):  # a busy server can miss the websocket handshake deadline; retry before giving up
+            try:
+                client = websocket_client_policy.WebsocketClientPolicy(host=args.host, port=args.port)
+                break
+            except TimeoutError as exc:
+                if attempt == 29:
+                    raise ServerError(f"handshake failed 30 times: {exc}") from exc
+                print(f"[connect] handshake timeout, retry {attempt + 1}", flush=True)
+                time.sleep(5 + random.random() * 5)
         env_factory = VLABenchEnv
         track_cfg = load_track(track)
     server = dict(client.get_server_metadata() or {})
     mode = str(server.get("mode", "?"))
     if mode not in required_mode(args).split("|"):
         raise ValueError(f"arm needs a server in mode {required_mode(args)}, but port {args.port} serves mode={mode!r}")
+    if args.no_xi and (args.fixed_horizon or args.random_horizon_from or args.vanilla
+                       or (args.aac_selector and args.aac_selector != "gaussian_bernoulli")):
+        raise ValueError("--no-xi applies to the duac and aac (gaussian_bernoulli) arms only")
     arm = arm_name(args, mode)
     horizon_cap = int(server.get("action_horizon", common.ACTION_HORIZON))
     if args.fixed_horizon and not 1 <= args.fixed_horizon <= horizon_cap:
@@ -361,6 +374,8 @@ def run(args) -> Dict[str, Any]:
                                          move_th=args.alpha)
                         chunk = samples[0]
                         h, h_unc, xi, u = d["h_selected"], d["h_unc"], d["xi"], d["u_step"]
+                        if args.no_xi:  # ablation: entropy elbow alone (official components; xi still logged)
+                            h = h_unc
                         detail = {"algorithm": "aac", **d["detail"]}
                         n_samples = samples.shape[0]
                     else:
@@ -370,7 +385,7 @@ def run(args) -> Dict[str, Any]:
                         if "u_step" in reply:
                             res = select_duac_horizon(np.asarray(reply["u_step"]).tolist(), conv, cfg, rng=rng)
                             h_unc, xi, u = res.h_unc, res.xi, res.u_step
-                            h = res.h_selected
+                            h = res.h_unc if args.no_xi else res.h_selected  # ablation: eq. 8 alone
                             detail = {"algorithm": "duac", "tau": args.tau, "num_probes": args.num_probes, "U": res.u_step,
                                       "divergence": np.asarray(reply["duac_divergence"]).tolist(),
                                       "U_prefix_mean": res.u_prefix, "U_prefix_diff": res.u_diff, "h_unc": h_unc,
@@ -506,6 +521,9 @@ def build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--aac-selector", default=None, help="gaussian_bernoulli (AAC, needs --mode aac server)")
     ap.add_argument("--alpha", "--move-th", dest="alpha", type=float, default=3.0)
     ap.add_argument("--xi-units", choices=["libero", "raw"], default="libero")
+    ap.add_argument("--no-xi", action="store_true",
+                    help="ablation: execute h = h_unc (DUAC eq. 8 / AAC entropy elbow) without the AAC motion bound xi; "
+                         "xi is still computed and logged. Arms duac_noxi / aac_noxi")
     ap.add_argument("--tau", type=float, default=0.9, help="logged; the server applies tau")
     ap.add_argument("--num-probes", type=int, default=40, help="logged; the server applies K")
     ap.add_argument("--state-bank", action=argparse.BooleanOptionalAction, default=False)

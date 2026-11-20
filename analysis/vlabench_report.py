@@ -29,9 +29,15 @@ from robocasa_report import auroc, holm, mcnemar_exact, strat_bootstrap, wilson 
 from flowbased_aac.vlabench.common import REFERENCE_SR, TRACK_TASK_ALIASES, resolve_track  # noqa: E402
 
 FIXED_ORDER = ["vanilla", "fixed_8", "fixed_10"]
-ADAPT_ORDER = ["duac", "aac"]
+ADAPT_ORDER = ["duac", "aac", "duac_noxi", "aac_noxi", "random_h"]  # *_noxi: ablation h = h_unc (no xi); random_h: h ~ duac_noxi
+MAIN_ARMS = ("duac", "aac")  # Holm family of the main comparisons; ablation / control arms form a second family
+
+
+def duac_family(a):  # arms whose algo log carries DUAC fields (U, h_unc); random_h runs on the DUAC server
+    return a.startswith("duac") or a == "random_h"
+ABLATION = [("duac_noxi", "duac"), ("aac_noxi", "aac"), ("duac_noxi", "random_h")]
 H_OF = {"vanilla": 5, "fixed_8": 8, "fixed_10": 10}
-COL = {"vanilla": "#9db4d6", "fixed_8": "#5b84c4", "fixed_10": "#1f4e9c", "duac": "#d9534f", "aac": "#e8a33d"}
+COL = {"vanilla": "#9db4d6", "fixed_8": "#5b84c4", "fixed_10": "#1f4e9c", "duac": "#d9534f", "aac": "#e8a33d", "duac_noxi": "#f2a29f", "aac_noxi": "#f5cf8e", "random_h": "#8e7cc3"}
 ROOT = Path(__file__).resolve().parents[1]
 plt.rcParams.update({"figure.dpi": 130, "font.size": 9, "axes.spines.top": False, "axes.spines.right": False})
 
@@ -105,9 +111,23 @@ def analyze_track(run, tr):
             comps.append({"adaptive": a, "fixed": f, "diff_pp": 100 * float(S[a].mean() - S[f].mean()),
                           "ci95_pp": [100 * lo, 100 * hi], "adaptive_only": b, "fixed_only": c, "p_mcnemar": mcnemar_exact(b, c)})
             ps.append(comps[-1]["p_mcnemar"])
-    for c_, p in zip(comps, holm(ps)):
-        c_["p_holm"] = p
+    for fam in (False, True):
+        idx = [i for i, c_ in enumerate(comps) if (c_["adaptive"] not in MAIN_ARMS) == fam]
+        for i, p in zip(idx, holm([ps[i] for i in idx])):
+            comps[i]["p_holm"] = p
     rep["paired"] = comps
+    # ablation: h = h_unc (no xi) vs the full method, matched episodes
+    abl, aps = [], []
+    for a, full in ABLATION:
+        if a in arms and full in arms:
+            b = int(((S[a] == 1) & (S[full] == 0)).sum()); c = int(((S[a] == 0) & (S[full] == 1)).sum())
+            lo, hi = strat_bootstrap(S[a], S[full], T)
+            abl.append({"ablation": a, "full": full, "diff_pp": 100 * float(S[a].mean() - S[full].mean()), "ci95_pp": [100 * lo, 100 * hi],
+                        "ablation_only": b, "full_only": c, "p_mcnemar": mcnemar_exact(b, c)})
+            aps.append(abl[-1]["p_mcnemar"])
+    for c_, p in zip(abl, holm(aps)):
+        c_["p_holm"] = p
+    rep["ablation"] = abl
     rep["verdict"] = {}
     for a in ADAPT:
         if FIXED:
@@ -136,7 +156,7 @@ def analyze_track(run, tr):
         if not L:
             continue
         h = np.array([x["h_executed"] for x in L]); xi = np.array([x["xi"] for x in L])
-        hu = np.array([x["h_unc"] if a == "duac" else x["h_entropy"] for x in L]); Hc = len(L[0]["U" if a == "duac" else "H_total"])
+        hu = np.array([x["h_unc"] if duac_family(a) else x["h_entropy"] for x in L]); Hc = len(L[0]["U" if duac_family(a) else "H_total"])
         HH[a] = (h, hu, xi, Hc)
         rep[f"horizon_{a}"] = {"h_mean": float(h.mean()), "h_median": float(np.median(h)), "h_unc_mean": float(hu.mean()),
                                "h_unc_median": float(np.median(hu)), "xi_mean": float(xi.mean()),
@@ -161,7 +181,7 @@ def analyze_track(run, tr):
         for v in by.values():
             v = [z for _, z in sorted(v)]; xs += v[:-1]; ys += v[1:]
         return float(np.corrcoef(xs, ys)[0, 1]) if len(xs) > 2 and np.std(xs) > 0 and np.std(ys) > 0 else None
-    rep["lag1_autocorr"] = {a: lag1(a, "h_unc" if a == "duac" else "h_entropy") for a in ADAPT if logs.get(a)}
+    rep["lag1_autocorr"] = {a: lag1(a, "h_unc" if duac_family(a) else "h_entropy") for a in ADAPT if logs.get(a)}
     rep["gripper"] = {}
     for a in ADAPT:
         R = dec[a]
@@ -174,7 +194,7 @@ def analyze_track(run, tr):
                              "xi_binds_toggle": float((xi[g == 1] > hu[g == 1]).mean()) if g.any() else None,
                              "xi_binds_no_toggle": float((xi[g == 0] > hu[g == 0]).mean())}
     rep["auroc_fail"] = {}
-    for a, field in (("duac", "U"), ("aac", "H_total")):
+    for a, field in [(x, "U" if duac_family(x) else "H_total") for x in ADAPT]:
         if not logs.get(a):
             continue
         by = defaultdict(list)
@@ -218,7 +238,7 @@ def analyze_track(run, tr):
         fig, axs = plt.subplots(1, len(HH), figsize=(5 * len(HH), 3.4), sharey=True); axs = np.atleast_1d(axs)
         for ax, (a, (h, hu, xi, Hc)) in zip(axs, HH.items()):
             bins = np.arange(0.5, Hc + 1.5)
-            ax.hist(hu, bins, alpha=.55, color="#888", density=True, label="h_unc" if a == "duac" else "h_entropy")
+            ax.hist(hu, bins, alpha=.55, color="#888", density=True, label="h_unc" if duac_family(a) else "h_entropy")
             ax.hist(xi, bins, alpha=.55, color="#2a9d8f", density=True, label="ξ (chuyển động)")
             ax.hist(h, bins, histtype="step", lw=1.5, color=COL[a], density=True, label="h thực thi")
             ax.set_title(f"R3. {a.upper()}: ξ > h_unc ở {rep[f'horizon_{a}']['frac_xi_binds']:.0%}", fontsize=8); ax.set_xlabel("h"); ax.legend(frameon=False, fontsize=7)
@@ -252,7 +272,7 @@ def analyze_track(run, tr):
     if HH:
         fig, axs = plt.subplots(1, len(HH), figsize=(5 * len(HH), 3.2)); axs = np.atleast_1d(axs)
         for ax, a in zip(axs, HH):
-            field = "h_unc" if a == "duac" else "h_entropy"
+            field = "h_unc" if duac_family(a) else "h_entropy"
             k0 = sorted({(x["task"], x["episode"]) for x in logs[a]})[0]
             L = sorted([x for x in logs[a] if (x["task"], x["episode"]) == k0], key=lambda x: x["decision_id"])
             ax.plot([x["sim_step"] for x in L], [x[field] for x in L], ".-", color="#888", lw=.8, label=field)
@@ -301,6 +321,14 @@ def md_track(tr, rep, latency):
         L.append("\nKết luận so với fixed tốt nhất (" + rep.get("best_fixed", "–") + "): " +
                  ", ".join(f"**{a.upper()}: {v}**" for a, v in rep["verdict"].items()) + ".\n")
         L.append(f"![R5]({tr}/analysis/figures/R5_paired.png) ![R2]({tr}/analysis/figures/R2_success_vs_mean_h.png)\n")
+    if rep.get("ablation"):
+        L += [f"**Ablation bỏ ξ (h = h_unc) so với bản đầy đủ, và so với Random-h cùng phân phối h:**\n",
+              "| so sánh | chênh lệch | CI 95% | chỉ arm 1 thành công | chỉ arm 2 thành công | p McNemar | p Holm |",
+              "|---|---|---|---|---|---|---|"]
+        for c in rep["ablation"]:
+            L.append(f"| {c['ablation']} vs {c['full']} | {c['diff_pp']:+.1f} pp | [{c['ci95_pp'][0]:+.1f}, {c['ci95_pp'][1]:+.1f}] | "
+                     f"{c['ablation_only']} | {c['full_only']} | {c['p_mcnemar']:.3f} | {c['p_holm']:.3f} |")
+        L.append("")
     L += [f"### {tr}.3 Horizon và chi phí\n",
           "| arm | h̄ ± sd | decision/episode | bước tới khi thành công | gọi model (ms, đo sạch) | policy ms / action (ước tính) | thời gian/episode |",
           "|---|---|---|---|---|---|---|"]
@@ -368,7 +396,7 @@ def main(argv=None):
         for j, tr in enumerate(reps):
             for c in reps[tr]["paired"]:
                 if c["adaptive"] == a and c["fixed"] == "vanilla":
-                    off = -0.1 if a == "duac" else 0.1
+                    off = {"duac": -0.2, "aac": -0.1, "duac_noxi": 0.0, "aac_noxi": 0.1, "random_h": 0.2}[a]
                     ax.errorbar(j + off, c["diff_pp"], yerr=[[c["diff_pp"] - c["ci95_pp"][0]], [c["ci95_pp"][1] - c["diff_pp"]]],
                                 color=COL[a], marker="s", capsize=3, label=a.upper() if j == 0 else None)
     ax.axhline(0, color="k", lw=.6); ax.set_xticks(range(len(reps)), list(reps)); ax.set_ylabel("Δ success vs vanilla (pp)")
@@ -391,9 +419,11 @@ def main(argv=None):
         L.append(f"| {tr} | {pct(np.mean(list(REFERENCE_SR[r['track']].values())))} | " + " | ".join(
             f"{pct(r['success'][a]['rate'])} ({r['success'][a]['k']}/{r['success'][a]['n']})" if a in r["arms"] else "–" for a in arms) + " |")
     L.append("| **gộp** | | " + " | ".join(f"**{pct(k / n)}** [{100 * wilson(k, n)[0]:.0f}–{100 * wilson(k, n)[1]:.0f}]" if n else "–" for a, (k, n) in tot.items()) + " |")
-    L += ["\nKết luận so với fixed tốt nhất của từng track:\n", "| track | fixed tốt nhất | " + " | ".join(a.upper() for a in ADAPT_ORDER) + " |", "|---|---|---|---|"]
+    ADP = [a for a in ADAPT_ORDER if a in arms]
+    L += ["\nKết luận so với fixed tốt nhất của từng track:\n", "| track | fixed tốt nhất | " + " | ".join(a.upper() for a in ADP) + " |",
+          "|---|---|" + "---|" * len(ADP)]
     for tr, r in reps.items():
-        L.append(f"| {tr} | {r.get('best_fixed', '–')} | " + " | ".join(r["verdict"].get(a, "–") for a in ADAPT_ORDER) + " |")
+        L.append(f"| {tr} | {r.get('best_fixed', '–')} | " + " | ".join(r["verdict"].get(a, "–") for a in ADP) + " |")
     # pooled paired comparison over all tracks (strata = track x task)
     if all("_paired_data" in r for r in reps.values()):
         common = [a for a in arms if all(a in r["arms"] for r in reps.values())]
@@ -407,18 +437,41 @@ def main(argv=None):
                 pooled.append({"adaptive": a, "fixed": f, "diff_pp": 100 * float(SS[a].mean() - SS[f].mean()), "ci95_pp": [100 * lo, 100 * hi],
                                "adaptive_only": b_, "fixed_only": c_, "p_mcnemar": mcnemar_exact(b_, c_), "n": len(TT)})
                 ps.append(pooled[-1]["p_mcnemar"])
-        for c_, p in zip(pooled, holm(ps)):
+        for fam in (False, True):
+            idx = [i for i, c_ in enumerate(pooled) if (c_["adaptive"] not in MAIN_ARMS) == fam]
+            for i, p in zip(idx, holm([ps[i] for i in idx])):
+                pooled[i]["p_holm"] = p
+        pooled_abl, aps = [], []
+        for a, full in ABLATION:
+            if a in common and full in common:
+                b_ = int(((SS[a] == 1) & (SS[full] == 0)).sum()); c_ = int(((SS[a] == 0) & (SS[full] == 1)).sum())
+                lo, hi = strat_bootstrap(SS[a], SS[full], TT)
+                pooled_abl.append({"ablation": a, "full": full, "diff_pp": 100 * float(SS[a].mean() - SS[full].mean()),
+                                   "ci95_pp": [100 * lo, 100 * hi], "ablation_only": b_, "full_only": c_, "p_mcnemar": mcnemar_exact(b_, c_)})
+                aps.append(pooled_abl[-1]["p_mcnemar"])
+        for c_, p in zip(pooled_abl, holm(aps)):
             c_["p_holm"] = p
         L += [f"\n### Gộp cả {len(reps)} track: so sánh ghép cặp ({len(TT)} cặp/arm; bootstrap phân tầng theo track × task)\n",
               "| so sánh | chênh lệch | CI 95% | chỉ adaptive thành công | chỉ fixed thành công | p McNemar | p Holm |", "|---|---|---|---|---|---|---|"]
         for c in pooled:
             L.append(f"| {c['adaptive']} vs {c['fixed']} | {c['diff_pp']:+.1f} pp | [{c['ci95_pp'][0]:+.1f}, {c['ci95_pp'][1]:+.1f}] | "
                      f"{c['adaptive_only']} | {c['fixed_only']} | {c['p_mcnemar']:.3f} | {c['p_holm']:.3f} |")
+        if pooled_abl:
+            L += [f"\n### Ablation bỏ ξ và đối chứng Random-h, gộp cả {len(reps)} track\n",
+                  "| so sánh | chênh lệch | CI 95% | chỉ arm 1 thành công | chỉ arm 2 thành công | p McNemar | p Holm |",
+                  "|---|---|---|---|---|---|---|"]
+            for c in pooled_abl:
+                L.append(f"| {c['ablation']} vs {c['full']} | {c['diff_pp']:+.1f} pp | [{c['ci95_pp'][0]:+.1f}, {c['ci95_pp'][1]:+.1f}] | "
+                         f"{c['ablation_only']} | {c['full_only']} | {c['p_mcnemar']:.3f} | {c['p_holm']:.3f} |")
+            hs = {a: [(r["efficiency"][a]["h_mean"], r["efficiency"][a]["decisions_per_episode"]) for r in reps.values() if a in r["arms"]]
+                  for a in [x for x in ADAPT_ORDER if x in common]}
+            L.append("\nh̄ / decision mỗi episode (trung bình các track): " + ", ".join(
+                f"{a} {np.mean([h for h, _ in v]):.2f} / {np.mean([d for _, d in v]):.1f}" for a, v in hs.items()) + "\n")
         for r in reps.values():
             r.pop("_paired_data", None)
-        reps_pooled = pooled
+        reps_pooled = {"vs_fixed": pooled, "ablation": pooled_abl}
     else:
-        reps_pooled = []
+        reps_pooled = {}
     L.append("\n![X1](figures/X1_success_per_track.png) ![X2](figures/X2_paired_vs_vanilla.png)\n")
     if latency:
         L += ["**Chi phí một lần gọi model** (`check_policy.py`, trung vị 20 lần sau warm-up): " +

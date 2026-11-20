@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 4,
+  "success_rate": 0.42,
+  "success_rate_excl_errors": 0.4565,
+  "progress_score": 0.54,
+  "mean_h": 6.569,
+  "tasks": {
+    "select_book": 0.42
+  },
+  "synthetic_dry_run": false
+}

@@ -1,0 +1,14 @@
+{
+  "arm": "duac_noxi",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.76,
+  "success_rate_excl_errors": 0.76,
+  "progress_score": 0.7667,
+  "mean_h": 5.866,
+  "tasks": {
+    "select_poker": 0.76
+  },
+  "synthetic_dry_run": false
+}

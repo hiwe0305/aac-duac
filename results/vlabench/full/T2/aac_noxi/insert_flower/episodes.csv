@@ -1,0 +1,11 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_2_cross_category,insert_flower,0,0,aac_noxi,0,0.5,1.0,200,200,79,2.532,1.59,2,9,13383.3,13795.9,95757.5,1863.0,860.4,6582.5,116.7,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,1,1,aac_noxi,1,1.0,1.0,176,200,70,2.514,1.538,2,9,12371.9,12714.4,76760.4,1611.6,649.2,4975.5,91.9,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,2,2,aac_noxi,0,0.5,1.0,200,200,81,2.481,1.54,2,9,14417.4,14799.9,83739.5,1895.8,738.7,5577.3,98.2,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,3,3,aac_noxi,1,1.0,1.0,163,200,63,2.587,1.62,2,9,10116.8,10436.2,60523.4,1542.0,599.4,4890.3,76.8,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,4,4,aac_noxi,0,0.5,1.0,200,200,81,2.506,1.557,2,9,12968.1,13362.3,79550.6,1640.5,733.3,6011.8,95.6,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,5,5,aac_noxi,0,0.5,1.0,200,200,79,2.57,1.548,2,9,12631.6,13032.0,76486.2,1654.3,745.2,4998.0,90.0,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,6,6,aac_noxi,0,0.5,1.0,200,200,75,2.667,1.828,2,9,11905.2,12296.2,71166.1,1586.8,777.0,5684.6,86.0,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,7,7,aac_noxi,0,0.5,1.0,200,200,71,2.887,2.198,2,9,11566.2,11945.6,68904.9,1739.6,638.6,5732.8,85.0,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,8,8,aac_noxi,0,0.5,1.0,200,200,66,3.045,2.106,2,9,10873.6,11227.3,64051.8,1782.9,724.8,7179.5,80.2,7017.9,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,9,9,aac_noxi,1,1.0,1.0,200,200,72,2.792,1.893,2,9,11483.6,11852.9,67967.4,2452.3,768.0,7384.8,92.0,7017.9,,Insert the peony into the vase_unseen.

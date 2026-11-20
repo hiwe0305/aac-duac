@@ -1,0 +1,11 @@
+# T6, aac server, generated 2026-11-19 14:58:19
+--track T6 --tasks add_condiment --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/add_condiment
+--track T6 --tasks insert_flower --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/insert_flower
+--track T6 --tasks select_book --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_book
+--track T6 --tasks select_chemistry_tube --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_chemistry_tube
+--track T6 --tasks select_drink --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_drink
+--track T6 --tasks select_fruit --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_fruit
+--track T6 --tasks select_mahjong --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_mahjong
+--track T6 --tasks select_painting --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_painting
+--track T6 --tasks select_poker --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_poker
+--track T6 --tasks select_toy --episodes 50 --port 8820 --aac-selector gaussian_bernoulli --no-xi --state-bank --output-dir outputs/vlabench/full/T6/aac_noxi/select_toy

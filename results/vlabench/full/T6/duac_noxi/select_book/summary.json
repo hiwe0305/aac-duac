@@ -1,0 +1,14 @@
+{
+  "arm": "duac_noxi",
+  "track": "track_6_unseen_texture",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.38,
+  "success_rate_excl_errors": 0.3878,
+  "progress_score": 0.52,
+  "mean_h": 6.065,
+  "tasks": {
+    "select_book": 0.38
+  },
+  "synthetic_dry_run": false
+}

@@ -1,0 +1,11 @@
+# T4, duac server, generated 2026-11-19 12:07:15
+--track T4 --tasks add_condiment --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/add_condiment
+--track T4 --tasks insert_flower --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/insert_flower
+--track T4 --tasks select_book --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_book
+--track T4 --tasks select_chemistry_tube --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_chemistry_tube
+--track T4 --tasks select_drink --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_drink
+--track T4 --tasks select_fruit --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_fruit
+--track T4 --tasks select_mahjong --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_mahjong
+--track T4 --tasks select_painting --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_painting
+--track T4 --tasks select_poker --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_poker
+--track T4 --tasks select_toy --episodes 50 --port 8710 --no-xi --state-bank --output-dir outputs/vlabench/full/T4/duac_noxi/select_toy

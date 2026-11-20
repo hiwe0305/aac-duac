@@ -1,0 +1,14 @@
+{
+  "arm": "aac_noxi",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 5,
+  "success_rate": 0.26,
+  "success_rate_excl_errors": 0.2889,
+  "progress_score": 0.29,
+  "mean_h": 2.909,
+  "tasks": {
+    "select_mahjong": 0.26
+  },
+  "synthetic_dry_run": false
+}

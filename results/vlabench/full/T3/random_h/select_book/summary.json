@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 4,
+  "success_rate": 0.46,
+  "success_rate_excl_errors": 0.5,
+  "progress_score": 0.55,
+  "mean_h": 6.472,
+  "tasks": {
+    "select_book": 0.46
+  },
+  "synthetic_dry_run": false
+}

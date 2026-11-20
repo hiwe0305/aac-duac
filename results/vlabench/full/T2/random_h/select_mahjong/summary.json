@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 5,
+  "success_rate": 0.2,
+  "success_rate_excl_errors": 0.2222,
+  "progress_score": 0.24,
+  "mean_h": 5.864,
+  "tasks": {
+    "select_mahjong": 0.2
+  },
+  "synthetic_dry_run": false
+}

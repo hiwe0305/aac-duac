@@ -1,0 +1,28 @@
+{
+  "track": "T1",
+  "tasks": "select_mahjong",
+  "episodes": 50,
+  "episode_ids": null,
+  "seed": 0,
+  "max_steps": null,
+  "host": "127.0.0.1",
+  "port": 8710,
+  "vanilla": false,
+  "fixed_horizon": null,
+  "random_horizon_from": "outputs/vlabench/full/T1/duac_noxi/select_mahjong/decisions.csv",
+  "aac_selector": null,
+  "alpha": 3.0,
+  "xi_units": "libero",
+  "no_xi": false,
+  "tau": 0.9,
+  "num_probes": 40,
+  "state_bank": false,
+  "save_videos": false,
+  "video_episodes": 2,
+  "synthetic_dry_run": false,
+  "arm": "random_h",
+  "track_resolved": "track_1_in_distribution",
+  "tasks_resolved": [
+    "select_mahjong"
+  ]
+}

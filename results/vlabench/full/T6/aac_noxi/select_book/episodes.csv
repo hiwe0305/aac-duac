@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_6_unseen_texture,select_book,0,0,aac_noxi,0,0.5,1.0,200,200,62,3.355,2.444,2,9,5330.7,5633.2,32019.0,691.8,701.0,4778.2,49.4,6956.2,,Please take the book contract_law_in_japan
+track_6_unseen_texture,select_book,1,1,aac_noxi,0,0.0,1.0,200,200,75,2.693,1.681,2,9,6490.8,6815.7,32830.0,825.4,672.5,5154.3,45.4,6956.2,,Please take the book biopolymer_composites_in_electronics
+track_6_unseen_texture,select_book,2,2,aac_noxi,0,0.0,0.0,191,200,72,2.653,1.835,2,9,6105.7,6394.1,32780.6,797.3,545.6,5175.3,45.9,6956.2,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,3,3,aac_noxi,0,0.5,1.0,200,200,75,2.68,1.634,2,9,7362.3,7683.5,39690.5,904.1,647.0,4579.0,51.6,6956.2,,Please take the book contract_law_in_japan
+track_6_unseen_texture,select_book,4,4,aac_noxi,1,1.0,1.0,101,200,34,3.0,2.249,2,9,3563.1,3727.7,15802.1,452.9,285.1,2188.9,24.0,6956.2,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,5,5,aac_noxi,0,0.5,1.0,200,200,65,3.092,2.154,2,9,7204.3,7516.1,38075.9,869.9,595.4,4784.4,49.7,6956.2,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,6,6,aac_noxi,0,0.5,1.0,200,200,73,2.74,1.544,2,9,7284.7,7601.4,41265.2,867.4,550.8,5207.3,54.0,6956.2,,Please take the book biopolymer_composites_in_electronics
+track_6_unseen_texture,select_book,7,7,aac_noxi,0,0.5,1.0,200,200,75,2.68,1.683,2,9,8126.2,8468.2,46998.5,1002.8,589.5,4768.1,58.8,6956.2,,Please take the book critical_infrastructure_protection_in_homeland_security
+track_6_unseen_texture,select_book,8,8,aac_noxi,0,0.5,1.0,200,200,86,2.337,0.935,2,9,7745.5,8304.9,34775.5,1059.8,837.4,6643.2,49.7,6956.2,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,9,9,aac_noxi,1,1.0,1.0,82,200,30,2.733,1.896,2,9,2704.9,2835.1,13518.5,451.4,276.2,1782.3,21.0,6956.2,,Please take the book electron_transport_in_quantum_dots
+track_6_unseen_texture,select_book,10,10,aac_noxi,1,1.0,1.0,93,200,40,2.35,1.333,2,9,3481.5,3633.1,22016.9,450.5,299.5,1779.2,30.5,6956.2,,Please take the book electron_transport_in_quantum_dots
+track_6_unseen_texture,select_book,11,11,aac_noxi,0,0.0,1.0,200,200,86,2.326,1.298,2,9,7994.1,8377.5,39355.2,1154.0,711.4,4607.7,52.7,6956.2,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,12,12,aac_noxi,1,0.5,1.0,196,200,76,2.592,1.583,2,9,6831.8,7149.8,33124.5,939.8,617.9,4814.8,45.2,6956.2,,Please take the book cloud_computing
+track_6_unseen_texture,select_book,13,13,aac_noxi,0,0.0,1.0,200,200,73,2.74,1.783,2,9,6454.3,6787.3,32515.8,836.7,567.7,4808.9,44.1,6956.2,,Please take the book critical_infrastructure_protection_in_homeland_security
+track_6_unseen_texture,select_book,14,14,aac_noxi,0,0.5,1.0,200,200,68,2.971,2.135,2,9,5858.9,6157.2,29249.0,787.2,549.3,5410.9,41.8,6956.2,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,15,15,aac_noxi,0,0.5,1.0,200,200,72,2.778,1.995,2,9,7120.4,7430.0,40257.8,864.2,577.9,4287.0,51.1,6956.2,,Please take the book data_visualization
+track_6_unseen_texture,select_book,16,16,aac_noxi,0,0.0,0.0,200,200,74,2.716,1.842,2,9,7626.0,7940.5,40795.0,906.7,587.7,4920.7,52.5,6956.2,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,17,17,aac_noxi,0,0.5,1.0,200,200,83,2.41,1.406,2,9,8733.5,9078.5,47351.2,1085.3,679.3,4540.4,59.1,6956.2,,Please take the book the_story_of_american_freedom
+track_6_unseen_texture,select_book,18,18,aac_noxi,0,0.0,1.0,200,200,83,2.434,1.381,2,9,8034.8,8385.6,43649.4,1039.7,604.4,4477.7,56.0,6956.2,,Please take the book the_story_of_american_freedom
+track_6_unseen_texture,select_book,19,19,aac_noxi,1,1.0,1.0,71,200,28,2.536,1.679,2,9,2380.6,2484.4,14103.1,305.0,205.7,1439.7,21.0,6956.2,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,20,20,aac_noxi,0,0.0,0.0,200,200,82,2.439,1.432,2,9,7113.5,7493.3,35559.0,971.4,727.0,4829.1,48.2,6956.2,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,21,21,aac_noxi,0,0.5,1.0,200,200,64,3.141,1.488,2,9,5948.3,6442.2,18390.4,983.9,980.6,5692.6,36.4,6956.2,,Please take the book cybersecurity
+track_6_unseen_texture,select_book,22,22,aac_noxi,1,1.0,1.0,168,200,62,2.79,2.072,2,9,5343.0,5624.5,26434.6,690.1,540.0,4605.9,39.7,6956.2,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,23,23,aac_noxi,0,0.5,1.0,200,200,85,2.353,1.253,2,9,7267.6,7614.5,38129.4,934.8,704.4,3964.0,49.4,6956.2,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,24,24,aac_noxi,0,0.0,0.0,200,200,82,2.451,1.416,2,9,7396.2,7754.8,34754.8,936.1,666.3,4223.9,45.7,6956.2,,Please take the book landmark_cases_in_property_law
+track_6_unseen_texture,select_book,25,25,aac_noxi,0,0.0,0.0,200,200,79,2.532,1.291,2,9,7497.4,7861.8,36082.6,932.0,606.8,4999.5,47.8,6956.2,,Please take the book engineering_biopolymers
+track_6_unseen_texture,select_book,26,26,aac_noxi,1,1.0,1.0,76,200,29,2.724,1.817,2,9,3414.8,3561.2,17632.4,374.1,259.1,1599.3,25.8,6956.2,,Please take the book cloud_computing
+track_6_unseen_texture,select_book,27,27,aac_noxi,1,1.0,1.0,106,200,36,2.972,2.034,2,9,4280.6,4425.0,22048.1,561.9,288.0,2272.0,30.3,6956.2,,Please take the book one_hundred_years_of_solitude
+track_6_unseen_texture,select_book,28,28,aac_noxi,1,1.0,1.0,115,200,45,2.667,1.751,2,9,5145.7,5333.8,30334.1,642.4,358.1,2403.4,39.1,6956.2,,Please take the book electron_transport_in_quantum_dots
+track_6_unseen_texture,select_book,29,29,aac_noxi,1,1.0,1.0,142,200,59,2.407,1.29,2,9,6542.9,6806.1,35673.2,781.3,476.7,3184.5,45.1,6956.2,,Please take the book critical_infrastructure_protection_in_homeland_security
+track_6_unseen_texture,select_book,30,30,aac_noxi,0,0.0,0.0,187,200,78,2.397,1.462,2,9,7929.1,8298.4,42235.5,992.6,625.3,5417.1,55.3,6956.2,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,31,31,aac_noxi,1,1.0,1.0,101,200,38,2.763,1.953,2,9,3827.8,3987.1,20962.2,505.1,323.1,2335.1,29.2,6956.2,,Please take the book a_tale_of_two_cities
+track_6_unseen_texture,select_book,32,32,aac_noxi,0,0.0,0.0,200,200,78,2.577,1.532,2,9,9292.1,9710.6,49864.2,1143.0,728.9,4943.2,62.7,6956.2,,Please take the book the_life_of_samuel_johnson
+track_6_unseen_texture,select_book,33,33,aac_noxi,0,0.0,0.0,171,200,63,2.698,1.687,2,9,7465.9,7751.2,40146.9,973.6,553.2,4045.2,52.1,6956.2,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,34,34,aac_noxi,0,0.0,0.0,200,200,82,2.451,1.28,2,9,8692.5,9045.1,49454.0,1098.1,666.0,4672.0,61.4,6956.2,,Please take the book cybersecurity
+track_6_unseen_texture,select_book,35,35,aac_noxi,1,1.0,1.0,78,200,32,2.469,1.695,2,9,3475.3,3625.5,17088.0,452.5,288.7,1684.0,24.5,6956.2,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,36,36,aac_noxi,0,0.0,0.0,200,200,78,2.577,1.532,2,9,9266.3,9591.5,52078.7,1049.2,574.4,4988.5,63.9,6956.2,,Please take the book data_visualization
+track_6_unseen_texture,select_book,37,37,aac_noxi,0,0.5,1.0,200,200,70,2.871,1.941,2,9,7801.7,8142.0,39544.8,999.5,572.3,5073.9,51.4,6956.2,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,38,38,aac_noxi,0,0.5,1.0,200,200,75,2.693,1.657,2,9,7236.3,7643.6,34418.0,1024.5,838.3,6167.4,47.8,6956.2,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,39,39,aac_noxi,0,0.0,1.0,200,200,78,2.564,1.606,2,9,6854.5,7237.2,34487.5,878.0,622.0,4678.8,45.9,6956.2,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,40,40,aac_noxi,0,0.0,0.0,200,200,86,2.326,0.982,2,9,7375.0,7752.9,38430.1,1016.1,718.8,4571.0,49.9,6956.2,,Please take the book flash_mx_bible
+track_6_unseen_texture,select_book,41,41,aac_noxi,0,0.5,1.0,200,200,79,2.532,1.448,2,9,7793.0,8398.3,30733.3,1163.5,1028.9,6406.2,44.8,6956.2,,Please take the book one_hundred_years_of_solitude
+track_6_unseen_texture,select_book,42,42,aac_noxi,0,0.0,0.0,200,200,76,2.645,1.519,2,9,7315.8,7698.4,36072.4,1066.8,663.3,5134.8,50.0,6956.2,,Please take the book landmark_cases_in_property_law
+track_6_unseen_texture,select_book,43,43,aac_noxi,0,0.0,0.0,200,200,75,2.733,1.879,2,9,6776.0,7241.6,28361.5,948.4,777.0,6255.6,42.2,6956.2,,Please take the book cotton_the_fabric_that_made_the_modern_world
+track_6_unseen_texture,select_book,44,44,aac_noxi,0,0.0,1.0,200,200,70,2.871,1.804,2,9,6015.6,6310.4,30257.0,799.1,560.7,5301.2,42.6,6956.2,,Please take the book flash_mx_bible
+track_6_unseen_texture,select_book,45,45,aac_noxi,1,1.0,1.0,105,200,34,3.088,2.267,2,9,4088.8,4245.0,19411.3,483.1,283.1,2028.5,27.8,6956.2,,Please take the book a_tale_of_two_cities
+track_6_unseen_texture,select_book,46,46,aac_noxi,0,0.0,0.0,200,200,69,2.899,1.92,2,9,6995.6,7294.4,34434.1,908.4,585.1,5375.9,46.2,6956.2,,Please take the book a_tale_of_two_cities
+track_6_unseen_texture,select_book,47,47,aac_noxi,1,1.0,1.0,90,200,35,2.6,1.418,2,8,3734.9,3883.9,21236.8,437.9,301.7,1959.5,28.9,6956.2,,Please take the book foundamentals_of_molecular_biology
+track_6_unseen_texture,select_book,48,48,aac_noxi,1,1.0,1.0,83,200,29,2.862,2.046,2,9,3743.5,3884.7,17203.1,469.7,272.1,2193.1,25.4,6956.2,,Please take the book steve_jobs
+track_6_unseen_texture,select_book,49,49,aac_noxi,0,0.5,1.0,200,200,73,2.74,1.688,2,9,8041.0,8359.0,44518.2,946.7,618.4,4904.7,56.6,6956.2,,Please take the book one_hundred_years_of_solitude

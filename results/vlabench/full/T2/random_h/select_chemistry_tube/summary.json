@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.06,
+  "success_rate_excl_errors": 0.0612,
+  "progress_score": 0.11,
+  "mean_h": 5.536,
+  "tasks": {
+    "select_chemistry_tube": 0.06
+  },
+  "synthetic_dry_run": false
+}

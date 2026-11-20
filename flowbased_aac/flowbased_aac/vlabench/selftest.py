@@ -118,6 +118,17 @@ def main() -> int:
             eps = ev.read_rows(tmp / name / "episodes.csv")
             assert all(int(r["end_step"]) <= int(r["max_steps"]) for r in eps)
             assert len(list((tmp / name / "state_bank").glob("*.npz"))) == 4
+        for name, extra in (("duac_noxi", ["--no-xi"]), ("aac_noxi", ["--no-xi", "--aac-selector", "gaussian_bernoulli"])):
+            summary = ev.run(ev.build_parser().parse_args(base + extra + ["--output-dir", str(tmp / name)]))
+            dec = ev.read_rows(tmp / name / "decisions.csv")
+            assert summary["arm"] == name and dec and all(int(r["h_executed"]) == int(r["h_unc"]) for r in dec), name
+            assert all(int(r["h_method"]) == min(int(r["prediction_horizon"]), max(int(r["h_unc"]), int(r["move_lower_bound"]))) for r in dec)
+        try:
+            ev.run(ev.build_parser().parse_args(base + ["--no-xi", "--fixed-horizon", "4", "--output-dir", str(tmp / "bad2")]))
+            raise AssertionError("--no-xi with a fixed arm must fail")
+        except ValueError:
+            pass
+        print("[PASS] ablation --no-xi: duac_noxi / aac_noxi execute h = h_unc, full proposal max(h_unc, xi) still logged")
         summary = ev.run(ev.build_parser().parse_args(base + ["--random-horizon-from", str(tmp / "duac" / "decisions.csv"),
                                                               "--output-dir", str(tmp / "random_h")]))
         assert summary["arm"] == "random_h"

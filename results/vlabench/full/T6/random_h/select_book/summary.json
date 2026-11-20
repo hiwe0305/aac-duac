@@ -1,0 +1,14 @@
+{
+  "arm": "random_h",
+  "track": "track_6_unseen_texture",
+  "episodes": 50,
+  "errors": 6,
+  "success_rate": 0.5,
+  "success_rate_excl_errors": 0.5682,
+  "progress_score": 0.59,
+  "mean_h": 6.207,
+  "tasks": {
+    "select_book": 0.5
+  },
+  "synthetic_dry_run": false
+}

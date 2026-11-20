@@ -1,0 +1,11 @@
+# T2, duac server, generated 2026-11-19 22:25:49
+--track T2 --tasks add_condiment --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/add_condiment/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/add_condiment
+--track T2 --tasks insert_flower --episodes 10 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/insert_flower/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/insert_flower
+--track T2 --tasks select_book --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_book/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_book
+--track T2 --tasks select_chemistry_tube --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_chemistry_tube/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_chemistry_tube
+--track T2 --tasks select_drink --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_drink/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_drink
+--track T2 --tasks select_fruit --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_fruit/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_fruit
+--track T2 --tasks select_mahjong --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_mahjong/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_mahjong
+--track T2 --tasks select_painting --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_painting/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_painting
+--track T2 --tasks select_poker --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_poker/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_poker
+--track T2 --tasks select_toy --episodes 50 --port 8710 --random-horizon-from outputs/vlabench/full/T2/duac_noxi/select_toy/decisions.csv --output-dir outputs/vlabench/full/T2/random_h/select_toy

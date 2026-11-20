@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_3_common_sense,select_drink,0,0,aac_noxi,0,0.5,1.0,200,200,75,2.667,1.517,2,9,11822.6,12222.1,73356.6,1353.2,824.7,4695.3,88.5,6983.5,, I want a refreshing beverage with natural fruit sugars.
+track_3_common_sense,select_drink,1,1,aac_noxi,0,0.5,1.0,200,200,76,2.632,1.685,2,9,12448.7,12857.5,71251.8,1396.6,742.9,4703.6,84.9,6983.5,, I need a caffeinated beverage to jumpstart my morning routine.
+track_3_common_sense,select_drink,2,2,aac_noxi,0,0.0,1.0,200,200,64,3.156,2.34,2,9,10327.4,10655.9,61867.6,1199.8,658.4,5462.7,76.9,6983.5,," I want a dark, caffeinated drink to energize my afternoon."
+track_3_common_sense,select_drink,3,3,aac_noxi,0,0.0,0.0,200,200,73,2.74,1.895,2,9,11486.5,11897.2,70927.9,1351.2,757.1,5072.7,84.4,6983.5,, I desire a cold drink that can quench my thirst on a hot day.
+track_3_common_sense,select_drink,4,4,aac_noxi,0,0.5,1.0,200,200,79,2.544,1.69,2,9,12654.7,13106.1,77082.5,1467.3,800.3,4910.8,93.9,6983.5,, I want an energy-packed beverage that comes in a distinctive black can with a colorful logo.
+track_3_common_sense,select_drink,5,5,aac_noxi,0,0.5,1.0,200,200,72,2.778,1.909,2,9,11406.8,11884.3,62562.5,1415.7,866.9,5487.1,75.7,6983.5,, I want the drink that contains caffeine for a quick pick-me-up.
+track_3_common_sense,select_drink,6,6,aac_noxi,0,0.0,1.0,200,200,59,3.407,2.256,2,9,9245.4,9580.8,54345.5,1100.6,669.8,4645.7,66.9,6983.5,, I need a powerful drink that can help increase my alertness and focus.
+track_3_common_sense,select_drink,7,7,aac_noxi,0,0.5,1.0,200,200,66,3.121,2.326,2,9,10712.2,11086.5,65219.3,1203.6,627.3,5439.9,77.8,6983.5,, Locate the invigorating drink that can uplift my spirits.
+track_3_common_sense,select_drink,8,8,aac_noxi,0,0.5,1.0,200,200,61,3.279,2.348,2,9,9569.3,9976.9,49809.2,1169.7,759.7,6856.9,64.8,6983.5,, I need a refreshing drink full of vitamins.
+track_3_common_sense,select_drink,9,9,aac_noxi,0,0.0,0.0,200,200,76,2.645,1.691,2,9,12399.8,12941.0,65350.3,1684.2,991.3,6025.6,79.9,6983.5,, I prefer a beverage that contains natural sugars.
+track_3_common_sense,select_drink,10,10,aac_noxi,0,0.0,1.0,200,200,63,3.222,2.004,2,9,10890.3,11208.0,66853.9,1179.3,563.8,4190.5,78.1,6983.5,," I want a refreshing, carbonated soft drink."
+track_3_common_sense,select_drink,11,11,aac_noxi,0,0.0,1.0,200,200,61,3.311,2.399,2,9,10115.3,10471.8,60402.2,1250.1,621.4,4760.1,72.2,6983.5,, Pick up a jumpstart to help me stay awake during long working hours.
+track_3_common_sense,select_drink,12,12,aac_noxi,0,0.0,1.0,200,200,75,2.693,1.766,2,9,12471.8,12833.0,75754.2,1443.8,707.1,5246.5,88.8,6983.5,, I want an energy drink that provides a quick boost.
+track_3_common_sense,select_drink,13,13,aac_noxi,0,0.5,1.0,200,200,63,3.175,2.028,2,9,9887.1,10211.1,57942.1,1166.8,617.6,4541.1,69.8,6983.5,, I need a drink that's high in vitamin C and energizing.
+track_3_common_sense,select_drink,14,14,aac_noxi,0,0.0,1.0,200,200,69,2.971,2.085,2,9,10966.3,11319.7,65532.9,1326.8,690.9,4864.2,77.9,6983.5,, I need a caffeine-infused beverage to energize me.
+track_3_common_sense,select_drink,15,15,aac_noxi,0,0.0,1.0,200,200,62,3.226,2.338,2,9,9227.1,9608.3,54402.0,1043.4,572.7,4495.8,66.0,6983.5,, I want an energy drink that boosts focus and alertness.
+track_3_common_sense,select_drink,16,16,aac_noxi,0,0.0,1.0,200,200,61,3.295,2.342,2,9,7860.9,8147.5,49130.9,978.0,547.9,4321.9,60.3,6983.5,, I desire a hydrating liquid that comes in a variety of flavors.
+track_3_common_sense,select_drink,17,17,aac_noxi,0,0.0,1.0,200,200,58,3.552,2.686,2,9,7657.2,7936.5,42758.2,997.9,500.3,4901.8,54.5,6983.5,, I want a natural drink from pressed fruits for a healthy refreshment.
+track_3_common_sense,select_drink,18,18,aac_noxi,0,0.5,1.0,200,200,67,3.0,1.796,2,9,7542.9,7856.3,43146.2,928.2,561.3,4575.2,54.9,6983.5,, I seek a beverage that can help me stay focused and awake.
+track_3_common_sense,select_drink,19,19,aac_noxi,0,0.0,1.0,200,200,65,3.092,2.028,2,9,6946.5,7212.2,38717.3,804.8,504.9,5259.6,51.1,6983.5,, Provide me with a flavorful drink rich in vitamin C.
+track_3_common_sense,select_drink,20,20,aac_noxi,0,0.0,1.0,200,200,68,3.015,1.952,2,9,6700.4,6981.5,37943.5,815.1,474.9,4183.3,48.6,6983.5,, I need a fruity drink that can hydrate and energize me.
+track_3_common_sense,select_drink,21,21,aac_noxi,0,0.5,1.0,200,200,70,2.857,1.838,2,9,7235.5,7530.0,39792.4,874.1,540.2,4358.7,50.2,6983.5,, I need an invigorating drink to jolt me awake for early meetings.
+track_3_common_sense,select_drink,22,22,aac_noxi,0,0.5,1.0,200,200,72,2.778,1.618,2,9,8043.4,8364.1,37251.4,929.3,617.1,4743.9,48.5,6983.5,, I seek an energizing drink that can boost my immune system.
+track_3_common_sense,select_drink,23,23,aac_noxi,0,0.0,1.0,200,200,77,2.636,1.75,2,9,8218.3,8552.0,44341.5,903.8,566.5,4285.2,55.4,6983.5,," Please get a dark, sugary soda that goes well with fast food."
+track_3_common_sense,select_drink,24,24,aac_noxi,0,0.0,1.0,200,200,68,2.956,2.032,2,9,7187.3,7483.6,39472.3,861.8,571.6,4305.8,50.1,6983.5,, I want a carbonated soft drink with a refreshing taste.
+track_3_common_sense,select_drink,25,25,aac_noxi,0,0.0,1.0,200,200,70,2.857,2.051,2,9,7131.8,7428.2,38488.9,917.0,608.1,4256.9,49.7,6983.5,, I require a sweet and fruity drink that is hydrating.
+track_3_common_sense,select_drink,26,26,aac_noxi,0,0.0,1.0,200,200,52,3.846,2.817,2,9,5489.6,5716.0,29022.1,646.3,362.5,4665.0,39.9,6983.5,, I desire a carbonated beverage with a distinct caramel flavor.
+track_3_common_sense,select_drink,27,27,aac_noxi,1,0.5,1.0,77,200,32,2.406,1.343,2,9,2983.5,3117.9,15426.5,400.3,275.9,1745.4,23.0,6983.5,, I want a naturally sweet beverage for a quick boost.
+track_3_common_sense,select_drink,28,28,aac_noxi,0,0.0,1.0,200,200,65,3.123,2.222,2,9,5628.4,5903.2,24548.3,726.6,493.4,4151.8,104.9,6983.5,, I need an energizing drink to boost my alertness.
+track_3_common_sense,select_drink,29,29,aac_noxi,0,0.0,1.0,200,200,60,3.35,2.379,2,9,5708.4,6090.5,24595.4,808.4,873.2,11577.5,42.8,6983.5,, I need a sweet and hydrating drink for a hot day.
+track_3_common_sense,select_drink,30,30,aac_noxi,0,0.0,1.0,200,200,72,2.792,1.855,2,9,8302.8,8608.2,47525.0,1033.6,598.0,4729.4,59.1,6983.5,, I'm looking for a sweet and tangy drink to energize my day.
+track_3_common_sense,select_drink,31,31,aac_noxi,0,0.5,1.0,200,200,69,2.913,2.069,2,9,8128.0,8439.5,47492.1,1073.9,594.0,4335.1,59.4,6983.5,, Grab the drink that aids in quick energy revival.
+track_3_common_sense,select_drink,32,32,aac_noxi,0,0.0,1.0,200,200,69,2.913,2.005,2,9,7890.7,8200.0,45747.8,948.5,596.2,4628.6,56.8,6983.5,, I want a carbonated drink with a caramel color.
+track_3_common_sense,select_drink,33,33,aac_noxi,0,0.0,1.0,200,200,55,3.691,2.536,2,9,6568.4,6808.2,35458.7,741.9,413.1,4956.2,46.6,6983.5,, I need an energy drink that will revitalize and boost my alertness.
+track_3_common_sense,select_drink,34,34,aac_noxi,0,0.5,1.0,200,200,66,3.106,2.271,2,9,7511.3,7804.4,42463.3,1014.8,574.9,4542.3,53.5,6983.5,, I need a drink that rapidly increases my energy levels.
+track_3_common_sense,select_drink,35,35,aac_noxi,0,0.5,1.0,200,200,78,2.667,1.802,2,9,9696.8,10029.3,52946.1,1096.5,631.2,4215.0,64.1,6983.5,, I need a caffeinated beverage to kick start my morning.
+track_3_common_sense,select_drink,36,36,aac_noxi,0,0.0,0.0,200,200,69,2.899,2.114,2,9,7777.8,8083.0,46759.0,991.3,560.9,3995.4,57.6,6983.5,, I want an energizing drink that can boost my alertness swiftly.
+track_3_common_sense,select_drink,37,37,aac_noxi,1,1.0,1.0,108,200,42,2.595,1.677,2,9,4892.1,5075.5,28793.2,608.9,359.1,2296.4,37.7,6983.5,, I need a drink that will boost my alertness and performance with its unique energy blend.
+track_3_common_sense,select_drink,38,38,aac_noxi,0,0.0,1.0,200,200,69,2.899,1.95,2,9,8398.3,8725.2,44974.7,925.4,628.6,4518.5,55.9,6983.5,," Bring me a dark, sweet soda that pairs well with a meal."
+track_3_common_sense,select_drink,39,39,aac_noxi,0,0.5,1.0,200,200,71,2.831,1.831,2,9,7934.6,8253.1,45049.3,987.5,610.3,4266.9,56.2,6983.5,, I need a beverage that provides a quick pick-me-up.
+track_3_common_sense,select_drink,40,40,aac_noxi,0,0.0,0.0,200,200,63,3.19,2.03,2,9,7844.6,8127.2,42540.1,995.3,523.3,4442.1,54.2,6983.5,, I need a colorful drink that provides a variety of antioxidants.
+track_3_common_sense,select_drink,41,41,aac_noxi,0,0.0,1.0,200,200,70,2.871,1.949,2,9,9291.2,9630.1,50014.7,1078.5,682.7,5783.4,62.8,6983.5,, Please fetch a cold and bubbling pop that is perfect for quenching thirst.
+track_3_common_sense,select_drink,42,42,aac_noxi,0,0.5,1.0,200,200,61,3.311,2.513,2,9,6390.3,6687.2,37509.2,827.5,483.2,4266.7,48.5,6983.5,, I need an energy drink to boost my alertness.
+track_3_common_sense,select_drink,43,43,aac_noxi,0,0.5,1.0,200,200,54,3.778,2.82,2,9,5958.6,6217.9,33113.0,757.2,460.8,5253.6,44.8,6983.5,, I want a drink that comes in a distinctive curved bottle or can.
+track_3_common_sense,select_drink,44,44,aac_noxi,0,0.0,0.0,200,200,66,3.03,2.243,2,9,8245.2,8554.8,45070.5,943.3,550.9,4485.7,56.8,6983.5,, I need an energizing drink to boost mental alertness.
+track_3_common_sense,select_drink,45,45,aac_noxi,1,1.0,1.0,107,200,41,2.634,1.831,2,9,4702.6,4885.7,26517.6,564.2,341.6,2140.0,35.3,6983.5,, I need a fresh juice that provides a quick energy boost.
+track_3_common_sense,select_drink,46,46,aac_noxi,0,0.0,0.0,200,200,66,3.03,1.93,2,9,7673.6,7973.1,38894.2,910.5,571.5,4873.3,50.5,6983.5,, I want a refreshing soda that is usually served chilled.
+track_3_common_sense,select_drink,47,47,aac_noxi,0,0.5,1.0,200,200,72,2.778,1.974,2,9,6746.9,7058.4,36120.7,926.2,627.1,5049.9,48.0,6983.5,, I want a refreshing beverage full of vitamin C.
+track_3_common_sense,select_drink,48,48,aac_noxi,0,0.0,1.0,200,200,65,3.154,2.309,2,9,6838.1,7153.7,32856.9,834.8,545.7,4756.3,43.9,6983.5,, Please provide a drink that helps improve my focus during workouts.
+track_3_common_sense,select_drink,49,49,aac_noxi,0,0.0,1.0,200,200,68,2.941,2.021,2,9,6883.1,7175.5,37428.2,776.6,509.9,4270.1,48.0,6983.5,, I want a refreshing beverage packed with vitamins.
