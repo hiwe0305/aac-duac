@@ -1,0 +1,50 @@
+{
+  "arm": "medoid_h10",
+  "suite": "libero_10_env",
+  "total_episodes": 500,
+  "total_successes": 350,
+  "success_rate": 0.7,
+  "mean_h": 10.0,
+  "tasks": {
+    "0": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "1": {
+      "episodes": 50,
+      "success_rate": 0.98
+    },
+    "2": {
+      "episodes": 50,
+      "success_rate": 0.28
+    },
+    "3": {
+      "episodes": 50,
+      "success_rate": 0.24
+    },
+    "4": {
+      "episodes": 50,
+      "success_rate": 0.96
+    },
+    "5": {
+      "episodes": 50,
+      "success_rate": 0.78
+    },
+    "6": {
+      "episodes": 50,
+      "success_rate": 0.92
+    },
+    "7": {
+      "episodes": 50,
+      "success_rate": 0.96
+    },
+    "8": {
+      "episodes": 50,
+      "success_rate": 0.28
+    },
+    "9": {
+      "episodes": 50,
+      "success_rate": 0.62
+    }
+  }
+}

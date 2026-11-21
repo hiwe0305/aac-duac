@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_1_in_distribution,select_chemistry_tube,0,0,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2453.5,2645.4,5735.2,297.2,66.7,8655.5,26.0,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,1,1,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2312.7,2472.3,7154.8,258.8,55.6,9611.1,24.1,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,2,2,sample0_h8,1,1.0,0.0,84,200,11,8.0,0.0,8,8,1005.4,1064.9,5331.6,107.1,22.5,2116.3,13.9,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,3,3,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2251.0,2398.7,8681.3,273.9,64.1,6819.3,22.7,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,4,4,sample0_h8,1,1.0,0.0,74,200,10,8.0,0.0,8,8,961.8,1034.7,1897.8,152.2,31.9,2711.3,10.8,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,5,5,sample0_h8,1,1.0,0.0,78,200,10,8.0,0.0,8,8,990.8,1040.1,4691.9,117.4,22.4,2650.9,14.2,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,6,6,sample0_h8,1,1.0,0.0,73,200,10,8.0,0.0,8,8,1275.6,1382.0,2388.2,264.8,31.4,2752.3,12.7,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,7,7,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2495.3,2637.6,9794.9,490.3,59.7,7197.6,24.5,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,8,8,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2175.7,2306.6,11123.8,257.6,56.0,5779.1,25.4,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,9,9,sample0_h8,1,1.0,0.0,73,200,10,8.0,0.0,8,8,864.7,910.9,4552.4,117.4,21.7,2589.2,14.8,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,10,10,sample0_h8,1,1.0,0.0,82,200,11,8.0,0.0,8,8,992.3,1087.0,2800.9,171.0,24.8,2806.8,11.1,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,11,11,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2205.8,2332.3,10744.9,266.1,65.6,6425.5,25.1,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,12,12,sample0_h8,0,0.0,0.0,137,200,17,8.0,0.0,8,8,1531.3,1621.0,6376.9,196.0,41.7,4629.4,19.5,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,13,13,sample0_h8,0,0.0,0.0,147,200,18,8.0,0.0,8,8,1589.7,1702.6,5628.7,232.7,34.8,5673.8,17.2,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,14,14,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2210.8,2358.7,7896.0,302.5,54.9,8728.9,25.0,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,15,15,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2271.0,2408.5,9402.6,276.7,70.4,6157.3,21.9,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,16,16,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2276.1,2410.4,9505.3,357.7,64.0,6941.7,24.5,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,17,17,sample0_h8,1,1.0,0.0,65,200,9,8.0,0.0,8,8,773.7,812.4,4254.4,98.6,18.3,1986.1,15.1,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,18,18,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2280.1,2456.2,6190.2,291.8,71.7,9507.9,21.9,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,19,19,sample0_h8,1,1.0,0.0,89,200,12,8.0,0.0,8,8,1235.9,1290.1,6713.0,126.8,21.6,2367.8,15.0,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,20,20,sample0_h8,1,1.0,0.0,66,200,9,8.0,0.0,8,8,861.7,926.3,1428.1,101.0,18.6,2710.1,10.4,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,21,21,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2253.4,2391.3,11525.4,287.1,53.8,6176.7,24.6,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,22,22,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2215.1,2354.8,8987.1,260.0,59.6,8633.5,24.7,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,23,23,sample0_h8,1,1.0,0.0,79,200,10,8.0,0.0,8,8,928.5,976.8,2779.4,91.9,23.5,1909.6,12.0,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,24,24,sample0_h8,1,1.0,0.0,74,200,10,8.0,0.0,8,8,1002.5,1116.7,1825.9,209.9,24.9,4338.2,12.8,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,25,25,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2205.5,2345.4,11950.7,261.3,61.3,5759.4,24.5,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,26,26,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2142.1,2262.4,12925.4,265.1,51.9,7921.6,29.9,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,27,27,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2144.4,2254.2,13075.7,258.4,50.5,6446.6,29.4,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,28,28,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2286.7,2407.1,12476.6,270.9,51.3,5790.0,26.8,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,29,29,sample0_h8,0,0.0,0.0,148,200,18,8.0,0.0,8,8,1628.8,1742.0,6090.2,220.6,49.2,4454.0,18.9,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,30,30,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2220.2,2365.7,9613.1,285.1,61.4,6914.5,24.9,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,31,31,sample0_h8,0,0.0,0.0,156,200,19,8.0,0.0,8,8,1688.7,1786.0,6891.4,266.2,41.4,5337.5,20.7,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,32,32,sample0_h8,1,1.0,0.0,71,200,9,8.0,0.0,8,8,856.5,929.6,2130.3,118.0,18.3,2437.7,11.6,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,33,33,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2334.6,2465.8,13159.3,263.4,58.3,5356.8,24.6,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,34,34,sample0_h8,1,1.0,0.0,81,200,11,8.0,0.0,8,8,1014.3,1082.7,3374.0,145.6,27.3,2863.1,14.9,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,35,35,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2263.3,2413.7,8473.7,280.6,60.8,5873.4,20.4,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,36,36,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2241.9,2393.5,5980.6,283.7,86.8,7171.8,19.7,7021.3,,Take out the CuSO4 solution
+track_1_in_distribution,select_chemistry_tube,37,37,sample0_h8,1,1.0,0.0,90,200,12,8.0,0.0,8,8,1074.5,1154.9,6181.7,102.4,26.0,2064.4,14.8,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,38,38,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2226.0,2381.6,8688.9,281.7,53.8,6735.3,22.5,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,39,39,sample0_h8,1,1.0,0.0,78,200,10,8.0,0.0,8,8,875.6,920.5,4502.3,96.4,18.9,2362.6,13.3,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,40,40,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2297.7,2463.9,5151.2,325.4,66.3,7297.2,18.6,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,41,41,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2206.6,2322.2,11335.6,292.6,52.6,6667.0,26.1,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,42,42,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2366.7,2532.2,10510.9,278.9,54.1,7456.5,25.9,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,43,43,sample0_h8,1,1.0,0.0,73,200,10,8.0,0.0,8,8,938.6,988.7,2772.3,109.2,23.2,2314.7,12.0,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,44,44,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2329.2,2512.5,6958.0,312.8,50.8,8944.7,23.1,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,45,45,sample0_h8,1,1.0,0.0,65,200,9,8.0,0.0,8,8,792.3,848.5,1866.4,92.1,24.9,1819.9,9.9,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,46,46,sample0_h8,1,1.0,0.0,80,200,10,8.0,0.0,8,8,924.6,1012.9,2561.5,134.6,27.2,2856.6,10.9,7021.3,,Take out the CuCl2 solution
+track_1_in_distribution,select_chemistry_tube,47,47,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2149.6,2276.8,10985.7,248.7,49.1,7177.4,27.5,7021.3,,Take out the KMnO4 solution
+track_1_in_distribution,select_chemistry_tube,48,48,sample0_h8,0,0.5,0.0,200,200,25,8.0,0.0,8,8,2172.4,2311.5,7811.0,294.2,66.9,8828.3,24.1,7021.3,,Take out the FeCl3 solution
+track_1_in_distribution,select_chemistry_tube,49,49,sample0_h8,1,1.0,0.0,75,200,10,8.0,0.0,8,8,927.6,1009.6,3464.2,103.7,23.7,1980.1,11.5,7021.3,,Take out the CuSO4 solution

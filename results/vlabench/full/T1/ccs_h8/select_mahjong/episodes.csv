@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_1_in_distribution,select_mahjong,0,0,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2169.1,2288.9,10783.6,244.0,167.1,8944.0,38.2,7021.3,,Pick up the mahjong of 6 sou
+track_1_in_distribution,select_mahjong,1,1,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2213.4,2362.0,10578.5,264.2,148.3,8892.0,31.3,7021.3,,Pick up the mahjong of 1 pin
+track_1_in_distribution,select_mahjong,2,2,ccs_h8,1,1.0,1.0,71,200,9,8.0,0.0,8,8,827.3,898.4,1627.1,95.2,62.3,3171.8,12.0,7021.3,,Pick up the mahjong of 1 pin
+track_1_in_distribution,select_mahjong,3,3,ccs_h8,1,1.0,1.0,92,200,12,8.0,0.0,8,8,1035.2,1090.0,4745.6,123.8,87.4,3688.9,16.9,7021.3,,Pick up the mahjong of 6 sou
+track_1_in_distribution,select_mahjong,4,4,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2270.7,2432.7,6278.8,311.1,166.9,8499.4,22.6,7021.3,,Pick up the mahjong of 1 pin
+track_1_in_distribution,select_mahjong,5,5,ccs_h8,1,1.0,1.0,101,200,13,8.0,0.0,8,8,1103.0,1163.9,7373.1,118.8,78.2,3540.2,19.5,7021.3,,Pick up the mahjong of 1 pin
+track_1_in_distribution,select_mahjong,6,6,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2226.5,2383.0,7419.4,314.6,183.3,11933.2,26.5,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,7,7,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2269.6,2415.4,8282.5,272.8,245.0,11829.1,28.5,7021.3,,Pick up the mahjong of 7 man
+track_1_in_distribution,select_mahjong,8,8,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2331.6,2500.7,4756.9,300.0,203.8,9568.1,22.1,7021.3,,Pick up the mahjong of 8 sou
+track_1_in_distribution,select_mahjong,9,9,ccs_h8,0,0.0,0.0,135,200,16,8.0,0.0,8,8,1395.9,1489.3,4251.6,147.7,101.1,5321.3,18.4,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 9 man
+track_1_in_distribution,select_mahjong,10,10,ccs_h8,1,1.0,1.0,134,200,17,8.0,0.0,8,8,1595.2,1718.3,5432.1,261.0,165.4,5991.7,19.3,7021.3,,Pick up the mahjong of 9 pin
+track_1_in_distribution,select_mahjong,11,11,ccs_h8,1,1.0,1.0,88,200,11,8.0,0.0,8,8,1031.6,1095.5,2017.0,105.5,72.2,3466.6,12.4,7021.3,,Pick up the mahjong of 8 sou
+track_1_in_distribution,select_mahjong,12,12,ccs_h8,1,1.0,1.0,85,200,11,8.0,0.0,8,8,1000.7,1064.1,1672.3,116.3,82.2,3724.4,12.4,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,13,13,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2363.7,2550.6,8453.3,325.2,188.0,8288.9,24.5,7021.3,,Pick up the mahjong of 2 sou
+track_1_in_distribution,select_mahjong,14,14,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2456.8,2626.0,10542.5,293.1,165.2,7621.8,29.4,7021.3,,Pick up the mahjong of 3 pin
+track_1_in_distribution,select_mahjong,15,15,ccs_h8,1,1.0,1.0,107,200,14,8.0,0.0,8,8,1245.7,1322.4,5259.9,139.9,119.3,4602.9,18.3,7021.3,,Pick up the mahjong of 3 pin
+track_1_in_distribution,select_mahjong,16,16,ccs_h8,1,1.0,1.0,67,200,9,8.0,0.0,8,8,881.2,965.7,1202.6,99.7,81.7,4031.7,12.3,7021.3,,Pick up the mahjong of 1 man
+track_1_in_distribution,select_mahjong,17,17,ccs_h8,1,1.0,1.0,99,200,13,8.0,0.0,8,8,1118.2,1182.6,4476.3,146.7,113.3,4636.1,17.2,7021.3,,Pick up the mahjong of 5 pin
+track_1_in_distribution,select_mahjong,18,18,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2204.4,2350.2,9614.2,328.4,172.0,8893.4,27.7,7021.3,,Pick up the mahjong of 3 pin
+track_1_in_distribution,select_mahjong,19,19,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2449.8,2655.6,7182.0,342.7,193.8,9501.5,24.5,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,20,20,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2294.4,2476.9,7103.1,288.9,270.0,8685.7,23.3,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,21,21,ccs_h8,1,1.0,1.0,105,200,14,8.0,0.0,8,8,1285.3,1395.0,2728.4,162.7,134.3,6173.7,15.3,7021.3,,Pick up the mahjong of 9 pin
+track_1_in_distribution,select_mahjong,22,22,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2113.9,2223.5,9833.0,251.8,149.0,6828.1,24.5,7021.3,,Pick up the mahjong of 9 man
+track_1_in_distribution,select_mahjong,23,23,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2161.9,2289.5,10873.8,284.4,181.3,7255.1,28.6,7021.3,,Pick up the mahjong of 2 sou
+track_1_in_distribution,select_mahjong,24,24,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2357.7,2529.8,7213.2,250.2,189.0,8882.3,23.8,7021.3,,Pick up the mahjong of 2 sou
+track_1_in_distribution,select_mahjong,25,25,ccs_h8,1,1.0,1.0,122,200,16,8.0,0.0,8,8,1467.6,1567.8,4625.1,183.5,110.9,4846.4,16.1,7021.3,,Pick up the mahjong of 4 sou
+track_1_in_distribution,select_mahjong,26,26,ccs_h8,1,1.0,1.0,102,200,13,8.0,0.0,8,8,1151.4,1212.4,5713.3,103.9,96.6,3822.4,18.6,7021.3,,Pick up the mahjong of 3 pin
+track_1_in_distribution,select_mahjong,27,27,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2271.9,2407.4,9929.6,300.0,210.5,8380.2,25.6,7021.3,,Pick up the mahjong of 9 man
+track_1_in_distribution,select_mahjong,28,28,ccs_h8,1,1.0,1.0,78,200,10,8.0,0.0,8,8,895.5,949.3,2998.4,104.6,68.3,2901.8,12.8,7021.3,,Pick up the mahjong of 9 pin
+track_1_in_distribution,select_mahjong,29,29,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2733.9,2884.1,9863.1,351.4,181.0,8462.6,26.9,7021.3,,Pick up the mahjong of 3 man
+track_1_in_distribution,select_mahjong,30,30,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2301.3,2501.3,4850.2,285.9,183.2,9433.2,21.3,7021.3,,Pick up the mahjong of 1 man
+track_1_in_distribution,select_mahjong,31,31,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2311.0,2435.5,11059.0,250.1,170.2,7837.8,27.9,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,32,32,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2251.3,2416.7,9065.5,331.4,169.4,8469.7,26.0,7021.3,,Pick up the mahjong of 8 sou
+track_1_in_distribution,select_mahjong,33,33,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2277.3,2455.2,7057.7,284.9,217.4,8731.0,24.7,7021.3,,Pick up the mahjong of 9 pin
+track_1_in_distribution,select_mahjong,34,34,ccs_h8,1,1.0,1.0,98,200,13,8.0,0.0,8,8,1182.1,1262.4,2444.9,149.4,122.7,4587.2,14.5,7021.3,,Pick up the mahjong of 5 pin
+track_1_in_distribution,select_mahjong,35,35,ccs_h8,0,0.0,0.0,129,200,16,8.0,0.0,8,8,1458.4,1535.9,5627.7,190.5,117.2,5039.3,20.1,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 8 sou
+track_1_in_distribution,select_mahjong,36,36,ccs_h8,1,1.0,1.0,91,200,12,8.0,0.0,8,8,1110.5,1196.2,1792.7,126.0,126.3,4712.0,13.8,7021.3,,Pick up the mahjong of 1 pin
+track_1_in_distribution,select_mahjong,37,37,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2149.7,2274.0,7488.9,261.4,169.2,7642.2,22.6,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,38,38,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2155.6,2285.2,10869.1,264.9,139.2,6795.5,27.4,7021.3,,Pick up the mahjong of 7 pin
+track_1_in_distribution,select_mahjong,39,39,ccs_h8,1,1.0,1.0,68,200,9,8.0,0.0,8,8,894.6,977.7,3012.9,109.3,70.6,2449.4,14.1,7021.3,,Pick up the mahjong of 9 pin
+track_1_in_distribution,select_mahjong,40,40,ccs_h8,0,0.0,0.0,116,200,14,8.0,0.0,8,8,1349.6,1414.8,5636.0,206.2,82.8,4163.0,17.7,7021.3,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 3 man
+track_1_in_distribution,select_mahjong,41,41,ccs_h8,1,1.0,1.0,73,200,10,8.0,0.0,8,8,1032.8,1094.5,2793.5,138.8,85.8,2719.7,14.4,7021.3,,Pick up the mahjong of 7 pin
+track_1_in_distribution,select_mahjong,42,42,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2347.7,2512.9,4869.6,281.3,215.5,10693.9,23.2,7021.3,,Pick up the mahjong of 3 man
+track_1_in_distribution,select_mahjong,43,43,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2234.5,2383.1,7357.7,320.9,201.5,10009.9,25.6,7021.3,,Pick up the mahjong of 6 sou
+track_1_in_distribution,select_mahjong,44,44,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2278.6,2499.5,6469.8,295.0,207.7,9734.6,22.5,7021.3,,Pick up the mahjong of 3 man
+track_1_in_distribution,select_mahjong,45,45,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2374.7,2541.2,8352.3,289.8,169.3,8083.2,24.9,7021.3,,Pick up the mahjong of 1 pin
+track_1_in_distribution,select_mahjong,46,46,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2277.3,2419.5,7028.7,267.1,207.3,8177.0,22.8,7021.3,,Pick up the mahjong of 3 pin
+track_1_in_distribution,select_mahjong,47,47,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2272.0,2426.1,6160.1,309.9,212.6,9161.4,22.6,7021.3,,Pick up the mahjong of 5 man
+track_1_in_distribution,select_mahjong,48,48,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2312.0,2481.6,4830.3,300.0,174.9,9236.6,22.5,7021.3,,Pick up the mahjong of 1 man
+track_1_in_distribution,select_mahjong,49,49,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2428.8,2596.2,8563.8,370.0,210.8,9752.2,26.6,7021.3,,Pick up the mahjong of 9 pin

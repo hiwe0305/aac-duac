@@ -9,9 +9,11 @@ layout the analysis expects. Episodes are fixed by (task, trial, env seed 7), so
   stage 1: 2 DUAC servers  -> duac, fixed_5, fixed_8, fixed_10
   stage 2: 1 DUAC server   -> random_h (needs the merged DUAC decisions of the same suite)
            1 AAC server    -> aac (N = 20)
+  stage select: 1 AAC server  -> chunk selection among the 20 samples at a fixed h (flowbased_aac/ccs.py):
+           medoid_h8, sample0_h8 (control: the chunk AAC executes), medoid_h10 (SELECT_ARMS / --arms)
 Re-running the script resumes: completed episodes of all shards are kept, only missing trials are queued.
 
-    python tools/schedule_track_a.py [--clients 14] [--stage 1|2|all]
+    python tools/schedule_track_a.py [--clients 14] [--stage 1|2|all|select] [--arms medoid_h8,sample0_h8]
 """
 
 from __future__ import annotations
@@ -34,7 +36,20 @@ SUITES = ["libero_10", "libero_10_object", "libero_10_env"]
 TASKS = list(range(10))
 TRIALS = 50
 STAGE1 = ["duac", "fixed_5", "fixed_8", "fixed_10"]
+SELECT_ARMS = ["medoid_h8", "sample0_h8", "medoid_h10"]
 COST = {"fixed_5": 2.0, "fixed_8": 1.25, "fixed_10": 1.0, "duac": 1.2, "random_h": 1.2, "aac": 1.6}
+
+
+def is_select(arm: str) -> bool:  # <select>_h<k>, e.g. medoid_h8
+    return "_h" in arm and arm.rsplit("_h", 1)[1].isdigit()
+
+
+def kind_of(arm: str) -> str:
+    return "aac" if arm == "aac" or is_select(arm) else "duac"
+
+
+def cost_of(arm: str) -> float:
+    return COST.get(arm, 1.6 * 10 / int(arm.rsplit("_h", 1)[1]) if is_select(arm) else 1.6)
 SUITE_COST = {"libero_10": 1.0, "libero_10_object": 1.4, "libero_10_env": 1.3}
 PY_OPENPI = ROOT / ".venv-openpi" / "bin" / "python"
 PY_LIBERO = ROOT / ".venv-libero" / "bin" / "python"
@@ -104,7 +119,7 @@ def units_for(arms: List[str]) -> List[dict]:
                     k += 1
                 units.append({"suite": suite, "arm": arm, "task": task, "trials": missing,
                               "dir": arm_dir / "shards" / f"t{task:02d}_p{k}",
-                              "cost": len(missing) * COST[arm] * SUITE_COST[suite]})
+                              "cost": len(missing) * cost_of(arm) * SUITE_COST[suite]})
     return sorted(units, key=lambda u: -u["cost"])
 
 
@@ -114,6 +129,10 @@ def command(u: dict, port: int) -> List[str]:
     if u["arm"] == "aac":
         return [str(PY_LIBERO), "adaptive_action_chunking/aac.py", "eval-liberopro", "--backbone", "pi05",
                 "--selector", "gaussian_bernoulli", "--move_th", "3", "--videos", *common, *ids, "--out_dir", str(u["dir"])]
+    if is_select(u["arm"]):
+        sel, k = u["arm"].rsplit("_h", 1)
+        return [str(PY_LIBERO), "flowbased_aac/duac.py", "eval-liberopro", *common, *ids, "--fixed-horizon", k,
+                "--select", sel, "--save-videos", "--output-dir", str(u["dir"])]
     arm_args = {"duac": [], "fixed_5": ["--fixed-horizon", "5"], "fixed_8": ["--fixed-horizon", "8"],
                 "fixed_10": ["--fixed-horizon", "10"],
                 "random_h": ["--random-horizon-from", str(OUT / u["suite"] / "duac" / "decisions.csv")]}[u["arm"]]
@@ -135,9 +154,14 @@ def start_server(kind: str, port: int) -> subprocess.Popen:
     return proc
 
 
-def run_queue(units: List[dict], ports: Dict[str, List[int]], clients: Dict[str, int]) -> None:
-    """ports/clients per server kind ('duac' or 'aac'); every unit runs on a server of its kind."""
-    pending = {k: [u for u in units if ("aac" if u["arm"] == "aac" else "duac") == k] for k in ports}
+def run_queue(units: List[dict], ports: Dict[str, List[int]], clients: Dict[str, int],
+              warmup_s: float = 0.0, stagger_s: float = 0.0) -> None:
+    """ports/clients per server kind ('duac' or 'aac'); every unit runs on a server of its kind.
+
+    warmup_s: after the first client of a kind starts, wait this long (the server compiles on its first request; many
+    clients connecting during compilation time out in the websocket handshake). stagger_s: pause between launches."""
+    warmed: Set[str] = set()
+    pending = {k: [u for u in units if kind_of(u["arm"]) == k] for k in ports}
     running: List[Tuple[subprocess.Popen, dict, str, int]] = []
     env = dict(os.environ, OMP_NUM_THREADS="2")
     load = {p: 0 for ps in ports.values() for p in ps}
@@ -154,6 +178,10 @@ def run_queue(units: List[dict], ports: Dict[str, List[int]], clients: Dict[str,
                 proc = subprocess.Popen(command(u, port), cwd=ROOT, stdout=logf, stderr=subprocess.STDOUT, env=env)
                 running.append((proc, u, kind, port))
                 log(f"START {name} trials={compact(u['trials'])} port={port}")
+                if kind not in warmed:
+                    warmed.add(kind); time.sleep(warmup_s)
+                else:
+                    time.sleep(stagger_s)
         time.sleep(5)
         for item in list(running):
             proc, u, kind, port = item
@@ -236,7 +264,8 @@ def merge_all(arms: List[str]) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--clients", type=int, default=14)
-    ap.add_argument("--stage", choices=["1", "2", "all"], default="all")
+    ap.add_argument("--stage", choices=["1", "2", "all", "select"], default="all")
+    ap.add_argument("--arms", default=",".join(SELECT_ARMS), help="arms of --stage select")
     args = ap.parse_args()
     LOGS.mkdir(parents=True, exist_ok=True)
     if args.stage in ("1", "all"):
@@ -268,6 +297,23 @@ def main() -> int:
                 for s in servers:
                     s.wait()
         merge_all(["random_h", "aac"])
+    if args.stage == "select":
+        arms = args.arms.split(",")
+        assert all(is_select(a) for a in arms), arms
+        for attempt in range(3):  # failed units (e.g. a dropped connection) are re-queued with their missing trials
+            units = units_for(arms)
+            log(f"stage select {arms} attempt {attempt}: {len(units)} units, {sum(len(u['trials']) for u in units)} episodes")
+            if not units:
+                break
+            servers = [start_server("aac", 8015)]  # one N=20 server takes ~24 GB of the 32 GB GPU
+            try:
+                run_queue(units, {"aac": [8015]}, {"aac": args.clients}, warmup_s=120, stagger_s=8)
+            finally:
+                for s in servers:
+                    s.terminate()
+                for s in servers:
+                    s.wait()
+        merge_all(arms)
     log("done")
     return 0
 

@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_3_common_sense,select_unique_type_mahjong,0,0,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2278.3,2441.8,8538.8,237.1,59.5,10079.7,28.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,1,1,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2305.3,2479.7,8827.0,286.7,72.7,10242.0,26.7,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,2,2,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2350.3,2529.0,8704.4,304.3,64.3,10330.1,26.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,3,3,sample0_h8,0,0.0,0.0,80,200,10,8.0,0.0,8,8,915.6,962.5,5569.5,87.4,20.5,2941.3,15.5,6936.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,4,4,sample0_h8,1,1.0,1.0,41,200,6,8.0,0.0,8,8,530.0,573.4,2137.1,66.5,11.0,1467.7,12.2,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,5,5,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2292.3,2436.5,8398.1,323.4,63.9,9476.0,24.6,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,6,6,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2296.1,2451.4,10228.7,336.6,55.2,9563.2,27.7,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,7,7,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2280.3,2422.0,8919.5,264.4,62.4,7868.4,25.0,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,8,8,sample0_h8,1,1.0,1.0,102,200,13,8.0,0.0,8,8,1247.3,1362.9,2958.2,211.3,27.4,4641.7,14.5,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,9,9,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2190.6,2344.7,9383.7,335.1,64.8,8416.4,25.1,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,10,10,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2200.2,2319.1,10040.6,256.1,47.3,8028.3,25.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,11,11,sample0_h8,0,0.0,0.0,81,200,10,8.0,0.0,8,8,915.0,962.9,4790.5,98.3,19.8,2968.4,16.1,6936.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,12,12,sample0_h8,1,1.0,1.0,104,200,13,8.0,0.0,8,8,1221.3,1292.9,5229.2,161.8,23.3,3709.2,17.5,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,13,13,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2306.7,2486.4,6611.8,311.6,59.5,8137.9,21.2,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,14,14,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2320.8,2473.6,9428.4,263.7,52.4,7812.2,24.9,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,15,15,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2416.8,2548.5,8788.9,342.9,63.8,8752.3,26.4,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,16,16,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2221.6,2358.8,8811.9,291.4,65.4,9360.7,28.1,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,17,17,sample0_h8,0,0.0,0.0,124,200,15,8.0,0.0,8,8,1544.5,1691.3,2624.8,176.6,44.7,7527.3,17.8,6936.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,18,18,sample0_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2542.7,2701.7,11798.1,374.6,54.0,8116.8,27.9,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,19,19,sample0_h8,1,1.0,1.0,93,200,12,8.0,0.0,8,8,1137.6,1221.2,3929.3,128.4,25.5,3931.1,15.2,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,20,20,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2226.5,2386.5,9177.0,402.8,58.6,10239.6,27.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,21,21,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2424.7,2550.5,12348.8,261.5,49.3,7611.2,28.5,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,22,22,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2413.0,2549.3,11961.7,363.1,54.5,8153.5,30.1,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,23,23,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2375.3,2524.2,9337.0,298.1,56.4,8457.4,26.0,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,24,24,sample0_h8,0,0.0,0.0,170,200,21,8.0,0.0,8,8,1923.9,2042.9,6470.7,232.2,43.8,7473.0,23.3,6936.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,25,25,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2350.0,2521.8,6765.0,372.9,78.0,9677.0,25.0,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,26,26,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2371.7,2566.4,8819.1,261.0,47.7,9794.0,26.1,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,27,27,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2434.5,2620.6,8761.9,307.9,59.0,8918.5,26.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,28,28,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2318.9,2481.2,7762.1,298.4,68.5,8307.8,23.7,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,29,29,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2397.5,2554.5,8633.9,401.2,59.6,9181.6,25.8,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,30,30,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2277.4,2430.8,7116.4,355.1,58.4,8976.2,24.6,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,31,31,sample0_h8,1,0.5,1.0,28,200,4,8.0,0.0,8,8,350.2,367.2,1780.7,46.2,7.1,1076.8,9.2,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,32,32,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2314.1,2468.9,8621.7,315.4,74.1,9479.2,26.1,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,33,33,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2278.1,2455.5,9238.2,280.5,49.3,9796.8,27.7,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,34,34,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2238.4,2372.0,9052.2,315.6,63.4,8252.0,25.1,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,35,35,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2437.8,2578.1,10907.9,281.1,56.5,8305.9,28.0,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,36,36,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2184.9,2306.5,10565.0,286.2,53.7,8497.8,27.7,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,37,37,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2283.5,2438.6,10389.4,292.4,52.1,8966.3,28.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,38,38,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2308.2,2449.0,9745.9,329.8,56.6,9535.0,28.8,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,39,39,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2241.8,2402.8,7794.3,304.9,58.6,10215.1,25.8,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,40,40,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2254.7,2412.6,6131.7,262.4,55.2,9277.4,22.3,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,41,41,sample0_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2346.2,2533.7,6300.8,348.3,76.4,9996.9,23.8,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,42,42,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2193.1,2331.8,7365.2,274.9,55.9,8411.7,22.9,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,43,43,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2255.0,2417.7,6796.0,280.5,67.7,9852.2,24.0,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,44,44,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2328.3,2483.8,6469.2,322.0,61.7,8727.2,22.7,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,45,45,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2220.0,2351.3,6440.7,292.2,53.9,7831.0,21.2,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,46,46,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2232.0,2362.5,6634.7,285.1,61.5,7542.2,21.4,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,47,47,sample0_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2188.5,2315.9,7038.7,270.3,47.0,9701.9,25.0,6936.8,,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,48,48,sample0_h8,0,0.0,0.0,186,200,23,8.0,0.0,8,8,2031.7,2157.4,5665.6,263.3,49.4,7339.1,21.0,6936.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Put the unique type mahjong on the placemat
+track_3_common_sense,select_unique_type_mahjong,49,49,sample0_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2195.5,2348.5,4989.5,302.9,52.8,7155.0,19.6,6936.8,,Put the unique type mahjong on the placemat

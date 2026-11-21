@@ -241,6 +241,7 @@ def cmd_eval(args: argparse.Namespace) -> int:
         tau=args.tau,
         num_probes=args.num_probes,
         fixed_horizon=args.fixed_horizon,
+        select=args.select,
         random_horizon_from=Path(args.random_horizon_from) if args.random_horizon_from else None,
         state_bank=args.state_bank,
         save_videos=args.save_videos,
@@ -300,6 +301,8 @@ def build_parser() -> argparse.ArgumentParser:
         e.add_argument("--num-probes", type=int, default=40, help="logged in args.json")
         e.add_argument("--fixed-horizon", type=int, default=None)
         e.add_argument("--random-horizon-from", default=None)
+        e.add_argument("--select", choices=["sample0", "ccs", "medoid", "coherent", "gripvote"], default=None,
+                       help="needs an aac.py serve-pi05 (N samples) server and --fixed-horizon; arm <select>_h<k>")
         e.add_argument("--state-bank", action=argparse.BooleanOptionalAction, default=False)
         e.add_argument("--save-videos", action=argparse.BooleanOptionalAction, default=False)
         e.add_argument("--video-trials", type=int, default=2, help="record videos for trials 0..N-1 of each task")

@@ -232,6 +232,8 @@ def open_env(env_factory, task, episode_config, seed: int, attempts: int = 5):
 
 
 def arm_name(args, server_mode: str) -> str:
+    if args.select:  # chunk selection among the N samples at a fixed horizon (sample0 = AAC's executed chunk)
+        return f"{args.select}_h{args.fixed_horizon}"
     if args.no_xi:  # ablation: h = h_unc only (validated in run())
         return "aac_noxi" if args.aac_selector else "duac_noxi"
     if args.aac_selector:
@@ -247,7 +249,7 @@ def arm_name(args, server_mode: str) -> str:
 
 
 def required_mode(args) -> str:
-    if args.aac_selector:
+    if args.aac_selector or args.select:
         return "aac"
     if args.vanilla:
         return "vanilla"
@@ -263,7 +265,7 @@ def run(args) -> Dict[str, Any]:
     out.mkdir(parents=True, exist_ok=True)
 
     if args.synthetic_dry_run:
-        mode = "aac" if args.aac_selector else ("vanilla" if args.vanilla else "duac")
+        mode = "aac" if (args.aac_selector or args.select) else ("vanilla" if args.vanilla else "duac")
         client = SyntheticClient(mode)
         env_factory = SyntheticEnv
         track_cfg = {t: [{}] * 50 for t in tasks}
@@ -288,6 +290,8 @@ def run(args) -> Dict[str, Any]:
     if args.no_xi and (args.fixed_horizon or args.random_horizon_from or args.vanilla
                        or (args.aac_selector and args.aac_selector != "gaussian_bernoulli")):
         raise ValueError("--no-xi applies to the duac and aac (gaussian_bernoulli) arms only")
+    if args.select and (not args.fixed_horizon or args.aac_selector or args.no_xi or args.random_horizon_from or args.vanilla):
+        raise ValueError("--select needs --fixed-horizon and excludes --aac-selector / --no-xi / --random-horizon-from / --vanilla")
     arm = arm_name(args, mode)
     horizon_cap = int(server.get("action_horizon", common.ACTION_HORIZON))
     if args.fixed_horizon and not 1 <= args.fixed_horizon <= horizon_cap:
@@ -318,6 +322,8 @@ def run(args) -> Dict[str, Any]:
 
     if args.aac_selector:
         from flowbased_aac.aac_official import aac_decision
+    if args.select:
+        from flowbased_aac.ccs import VARIANTS, select_chunk
     pool: Dict[str, List[int]] = {}
     if args.random_horizon_from:
         for r in read_rows(Path(args.random_horizon_from)):
@@ -348,6 +354,7 @@ def run(args) -> Dict[str, Any]:
             frames, step, hs, success, error, instruction = [], 0, [], False, "", ""
             tot = dict(infer=0.0, server=0.0, roundtrip=0.0, render=0.0, select=0.0, env=0.0)
             peak_gpu, progress, intention, env = 0.0, 0.0, 0.0, None
+            prev_chunk, prev_h, pick = None, 0, 0  # --select: previously executed chunk and its executed length
             try:
                 env = open_env(env_factory, task, track_cfg[task][ep], seed)
                 while step < max_steps and not success:
@@ -367,7 +374,21 @@ def run(args) -> Dict[str, Any]:
                     peak_gpu = max(peak_gpu, float(timing.get("peak_gpu_mb", 0.0)))
 
                     t = time.perf_counter()
-                    if args.aac_selector:
+                    if args.select:
+                        samples = np.asarray(reply["actions"], dtype=np.float64)
+                        h = args.fixed_horizon
+                        if args.select == "sample0":
+                            pick, sel = 0, {}
+                        else:
+                            res = select_chunk(samples, h, prev_chunk, prev_h, VARIANTS[args.select])
+                            pick, sel = res.index, res.as_log()
+                        chunk = samples[pick]
+                        conv = common.to_aac_frame(chunk, state, units=args.xi_units)
+                        m = action_magnitude_pi05(conv)
+                        xi, h_unc, u = find_first_idx(m, alpha=args.alpha, min_horizon=2), -1, []
+                        detail = {"algorithm": args.select, "pick": pick, **sel, "xi": xi}
+                        n_samples = samples.shape[0]
+                    elif args.aac_selector:
                         samples = np.asarray(reply["actions"], dtype=np.float64)
                         conv = common.to_aac_frame(samples, state, units=args.xi_units)
                         d = aac_decision(conv, np.asarray(reply["normalized_action"]), selector=args.aac_selector,
@@ -398,6 +419,7 @@ def run(args) -> Dict[str, Any]:
                     select_ms = 1000 * (time.perf_counter() - t)
                     h = int(max(1, min(int(h), len(chunk))))
                     h_method = min(len(chunk), max(h_unc, xi)) if h_unc >= 0 else h
+                    prev_chunk, prev_h = chunk, h
 
                     decision_step = step
                     t = time.perf_counter()
@@ -433,10 +455,13 @@ def run(args) -> Dict[str, Any]:
                         bank["decision_steps"].append(decision_step)
                         bank["states"].append(state)
                         bank["chunks"].append(chunk)
-                        bank["normalized_chunks"].append(np.asarray(reply["normalized_action"])[0] if args.aac_selector
+                        bank["normalized_chunks"].append(np.asarray(reply["normalized_action"])[pick] if args.select
+                                                         else np.asarray(reply["normalized_action"])[0] if args.aac_selector
                                                          else np.asarray(reply.get("normalized_action", np.zeros(1))))
                         bank["chunk_sizes"].append(h)
-                        if args.aac_selector:
+                        if args.select:
+                            bank.setdefault("picks", []).append(pick)
+                        if args.aac_selector or args.select:
                             bank["aac_samples"].append(np.asarray(reply["actions"], dtype=np.float32))
                         elif "u_step" in reply:
                             bank["duac_uncertainty"].append(np.asarray(reply["u_step"]))
@@ -524,6 +549,9 @@ def build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--no-xi", action="store_true",
                     help="ablation: execute h = h_unc (DUAC eq. 8 / AAC entropy elbow) without the AAC motion bound xi; "
                          "xi is still computed and logged. Arms duac_noxi / aac_noxi")
+    ap.add_argument("--select", choices=["sample0", "ccs", "medoid", "coherent", "gripvote"], default=None,
+                    help="chunk selection among the N samples of an aac server at --fixed-horizon h (flowbased_aac/ccs.py); "
+                         "sample0 = the chunk AAC executes (control). Arm <select>_h<h>")
     ap.add_argument("--tau", type=float, default=0.9, help="logged; the server applies tau")
     ap.add_argument("--num-probes", type=int, default=40, help="logged; the server applies K")
     ap.add_argument("--state-bank", action=argparse.BooleanOptionalAction, default=False)

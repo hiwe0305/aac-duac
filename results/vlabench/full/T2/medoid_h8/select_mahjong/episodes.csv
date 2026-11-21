@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_2_cross_category,select_mahjong,0,0,medoid_h8,0,0.0,0.0,123,200,15,8.0,0.0,8,8,1385.5,1484.0,3919.0,161.3,136.5,6304.6,21.1,7179.5,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,1,1,medoid_h8,0,0.0,0.0,120,200,15,8.0,0.0,8,8,1348.1,1423.7,5963.2,169.8,128.4,5504.8,21.1,7179.5,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,2,2,medoid_h8,1,1.0,1.0,105,200,14,8.0,0.0,8,8,1243.4,1316.3,6228.4,124.6,111.5,3830.8,18.1,7179.5,,Pick up the mahjong of 8 sou
+track_2_cross_category,select_mahjong,3,3,medoid_h8,1,1.0,1.0,89,200,12,8.0,0.0,8,8,1036.8,1096.9,4846.3,124.7,74.8,3288.6,15.5,7179.5,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,4,4,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2441.4,2612.6,7770.5,338.2,215.6,7743.6,23.4,7179.5,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,5,5,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2288.2,2468.2,7684.9,385.0,227.0,8704.9,24.0,7179.5,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,6,6,medoid_h8,1,0.5,1.0,85,200,11,8.0,0.0,8,8,1279.8,1356.1,5437.6,122.5,88.7,3057.3,16.4,7179.5,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,7,7,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2236.0,2384.1,10050.7,313.3,179.9,7327.7,26.2,7179.5,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,8,8,medoid_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2256.5,2407.9,8497.5,309.3,210.1,8008.2,25.6,7179.5,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,9,9,medoid_h8,1,0.5,1.0,99,200,13,8.0,0.0,8,8,1130.4,1192.6,5784.4,148.1,94.2,3775.2,17.8,7179.5,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,10,10,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2329.8,2527.6,6736.5,288.1,209.9,8949.6,23.6,7179.5,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,11,11,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2383.9,2534.6,6842.5,361.1,222.0,9095.7,23.9,7179.5,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,12,12,medoid_h8,1,1.0,1.0,89,200,12,8.0,0.0,8,8,1156.2,1227.7,3524.2,141.1,119.7,3708.7,14.3,7179.5,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,13,13,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2307.8,2465.6,10262.5,347.5,217.3,8340.3,27.3,7179.5,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,14,14,medoid_h8,1,1.0,1.0,89,200,12,8.0,0.0,8,8,1084.5,1155.8,4186.6,138.0,95.0,3435.7,15.7,7179.5,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,15,15,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2276.7,2433.8,6764.0,317.2,206.4,9821.2,25.5,7179.5,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,16,16,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2245.2,2377.9,8648.1,306.4,162.0,7562.0,25.8,7179.5,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,17,17,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2250.6,2402.7,7759.5,303.5,215.9,8448.8,25.7,7179.5,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,18,18,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2230.3,2370.9,8780.5,287.5,196.7,7748.7,25.8,7179.5,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,19,19,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2327.4,2466.7,8558.5,297.5,185.6,9174.4,27.1,7179.5,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,20,20,medoid_h8,1,1.0,1.0,65,200,9,8.0,0.0,8,8,848.0,916.4,1770.8,103.3,70.5,3235.2,12.7,7179.5,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,21,21,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2196.3,2336.7,8995.8,278.2,200.6,7945.2,25.8,7179.5,,Pick up the mahjong of 8 sou
+track_2_cross_category,select_mahjong,22,22,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2379.8,2542.9,9232.7,340.4,198.5,8746.1,27.3,7179.5,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,23,23,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2373.9,2535.8,6987.3,306.0,198.2,8449.7,25.4,7179.5,,Pick up the mahjong of 9 pin
+track_2_cross_category,select_mahjong,24,24,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2252.4,2398.7,7876.3,303.0,208.6,8547.1,23.6,7179.5,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,25,25,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2395.7,2591.7,8163.6,346.9,269.4,10719.8,27.4,7179.5,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,26,26,medoid_h8,1,1.0,1.0,82,200,11,8.0,0.0,8,8,1030.3,1102.6,4061.1,116.4,98.0,3421.7,14.4,7179.5,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,27,27,medoid_h8,1,1.0,1.0,103,200,13,8.0,0.0,8,8,1171.2,1248.7,5670.6,167.8,87.3,4121.2,18.9,7179.5,,Pick up the mahjong of 8 sou
+track_2_cross_category,select_mahjong,28,28,medoid_h8,1,1.0,1.0,101,200,13,8.0,0.0,8,8,1124.4,1187.0,6411.4,164.1,88.6,3782.0,19.2,7179.5,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,29,29,medoid_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2309.7,2463.0,9268.3,293.8,203.5,9130.8,28.5,7179.5,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,30,30,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2367.7,2575.0,8559.1,317.2,213.5,9119.2,26.0,7179.5,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,31,31,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2242.6,2420.0,9998.7,360.7,200.1,8758.4,28.1,7179.5,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,32,32,medoid_h8,1,1.0,1.0,92,200,12,8.0,0.0,8,8,1092.4,1160.1,5623.0,131.9,87.8,3547.5,17.3,7179.5,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,33,33,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2236.1,2370.3,5839.7,273.4,177.7,10428.6,24.5,7179.5,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,34,34,medoid_h8,1,1.0,1.0,97,200,13,8.0,0.0,8,8,1132.8,1209.8,4594.9,120.4,83.2,3555.3,15.7,7179.5,,Pick up the mahjong of 9 pin
+track_2_cross_category,select_mahjong,35,35,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2194.8,2318.5,6686.7,272.1,193.8,8481.4,23.7,7179.5,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,36,36,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2202.7,2320.9,4870.3,233.6,187.8,8111.8,20.3,7179.5,,Pick up the mahjong of 9 pin
+track_2_cross_category,select_mahjong,37,37,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2197.2,2314.1,4736.0,216.3,167.9,7459.4,18.7,7179.5,,Pick up the mahjong of 6 sou
+track_2_cross_category,select_mahjong,38,38,medoid_h8,0,0.0,0.0,101,200,12,8.0,0.0,8,8,1030.5,1086.8,1819.0,116.8,83.6,3398.8,12.4,7179.5,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,39,39,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2230.8,2352.3,3749.5,253.9,154.0,7478.0,18.9,7179.5,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,40,40,medoid_h8,1,1.0,1.0,87,200,11,8.0,0.0,8,8,934.9,979.6,2404.4,97.0,64.5,3063.3,12.5,7179.5,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,41,41,medoid_h8,1,1.0,1.0,98,200,13,8.0,0.0,8,8,1128.2,1189.5,1993.6,122.8,78.8,3768.6,12.9,7179.5,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,42,42,medoid_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2143.1,2266.5,4510.1,216.1,138.6,6534.8,17.9,7179.5,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,43,43,medoid_h8,1,1.0,1.0,113,200,15,8.0,0.0,8,8,1287.3,1355.0,2754.5,140.8,95.8,4172.8,14.1,7179.5,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,44,44,medoid_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2217.2,2340.0,3139.5,179.1,151.7,6643.9,16.4,7179.5,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,45,45,medoid_h8,1,1.0,1.0,99,200,13,8.0,0.0,8,8,1104.3,1158.1,1710.5,86.4,66.1,3244.0,11.5,7179.5,,Pick up the mahjong of 6 sou
+track_2_cross_category,select_mahjong,46,46,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2175.8,2286.0,2882.9,173.2,135.8,6891.0,15.9,7179.5,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,47,47,medoid_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2142.3,2244.1,3191.9,181.0,141.1,7067.0,16.5,7179.5,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,48,48,medoid_h8,1,1.0,1.0,91,200,12,8.0,0.0,8,8,1027.0,1075.1,1390.8,83.3,66.6,3257.6,10.8,7179.5,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,49,49,medoid_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2122.9,2234.8,3120.9,198.6,144.1,7133.0,17.0,7179.5,,Pick up the mahjong of 4 sou

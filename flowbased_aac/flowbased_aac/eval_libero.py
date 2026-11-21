@@ -5,6 +5,8 @@ Arms
   fixed_k   same server, h = k (DUAC's proposal is still logged as h_method)
   random_h  same server, h drawn from the h distribution of a DUAC run (``--random-horizon-from``)
   aac       multi-sample server (``aac.py serve-pi05``), official AAC selector, executes sample 0
+  <sel>_hK  same multi-sample server, fixed h = K, executes the chunk chosen by ``ccs.select_chunk`` (``--select``):
+            medoid / ccs / coherent / gripvote; sample0 = AAC's executed chunk at a fixed h (control)
 
 Protocol (reference evaluator of hactt13 / official OpenPI LIBERO example)
   OffScreenRenderEnv 256x256, env.seed(seed), init state = trial id, 10 dummy wait steps, then
@@ -68,7 +70,7 @@ SUBGOALS_CSV_COLUMNS = ["task_id", "trial_id", "arm", "predicate_idx", "predicat
 # Arguments that must match for a resumed run to remain one experiment.
 RESUME_CHECKED_ARGS = (
     "suite", "arm", "seed", "trials", "max_steps", "alpha", "tau", "num_probes", "fixed_horizon",
-    "random_horizon_from", "selector", "libero_variant", "trial_ids",
+    "random_horizon_from", "selector", "libero_variant", "trial_ids", "select",
 )
 
 PRO_LANGUAGE_VARIANT = re.compile(r"^libero_(spatial|object|goal|10)_(lan|object|swap|task|env)$")
@@ -321,6 +323,7 @@ def run_libero_evaluation(
     fixed_horizon: Optional[int] = None,
     random_horizon_from: Optional[Path] = None,
     aac_selector: Optional[str] = None,
+    select: Optional[str] = None,
     state_bank: bool = False,
     save_videos: bool = False,
     video_trials: int = 2,
@@ -337,7 +340,11 @@ def run_libero_evaluation(
 
     import numpy as np
 
-    if aac_selector is not None:
+    if select is not None:
+        if fixed_horizon is None or aac_selector is not None or random_horizon_from is not None:
+            raise ValueError("select needs fixed_horizon and excludes aac_selector / random_horizon_from")
+        arm = f"{select}_h{fixed_horizon}"
+    elif aac_selector is not None:
         arm = "aac" if aac_selector == "gaussian_bernoulli" else f"aac_{aac_selector}"
     elif fixed_horizon is not None:
         if fixed_horizon < 1:
@@ -359,7 +366,7 @@ def run_libero_evaluation(
         "max_steps": max_steps, "num_steps_wait": NUM_STEPS_WAIT, "alpha": alpha, "tau": tau,
         "num_probes": num_probes, "fixed_horizon": fixed_horizon,
         "random_horizon_from": str(random_horizon_from) if random_horizon_from else None,
-        "selector": aac_selector, "task_ids": task_ids, "trial_ids": trial_ids, "state_bank": state_bank,
+        "selector": aac_selector, "select": select, "task_ids": task_ids, "trial_ids": trial_ids, "state_bank": state_bank,
         "save_videos": save_videos, "video_trials": video_trials, "host": host, "port": port,
         "synthetic_dry_run": synthetic_dry_run,
     }
@@ -382,7 +389,7 @@ def run_libero_evaluation(
         if synthetic_dry_run:
             from .synthetic import SyntheticBackend
 
-            backend = SyntheticBackend(suite, multi_sample=aac_selector is not None)
+            backend = SyntheticBackend(suite, multi_sample=aac_selector is not None or select is not None)
         else:
             backend = LiberoBackend(suite, variant, host, port)
 
@@ -392,6 +399,8 @@ def run_libero_evaluation(
         random_pools, random_pool_all = load_random_horizon_pools(Path(random_horizon_from))
     if aac_selector is not None:
         from .aac_official import aac_decision
+    if select is not None:
+        from .ccs import VARIANTS, select_chunk
 
     task_suite = backend.task_suite
     t_list = task_ids if task_ids is not None else list(range(task_suite.n_tasks))
@@ -452,6 +461,7 @@ def run_libero_evaluation(
             want_video = save_videos and trial < video_trials
             active = 0
             decisions: List[int] = []
+            prev_chunk, prev_h, pick = None, 0, 0
 
             while active < max_steps and not done:
                 request = {
@@ -467,7 +477,20 @@ def run_libero_evaluation(
                 roundtrip_ms = (time.time() - sent) * 1000.0
                 infer_ms = (response.get("policy_timing") or {}).get("infer_ms", roundtrip_ms)
 
-                if aac_selector is not None:
+                if select is not None:
+                    samples = np.asarray(response["actions"])[:, :, :7]
+                    if select == "sample0":
+                        pick, sel = 0, {}
+                    else:
+                        res = select_chunk(samples, fixed_horizon, prev_chunk, prev_h, VARIANTS[select],
+                                           action_space="libero_delta")
+                        pick, sel = res.index, res.as_log()
+                    chunk = samples[pick]
+                    normalized_chunk = np.asarray(response["normalized_action"])[pick]
+                    h_exec, h_unc, xi = int(min(fixed_horizon, len(chunk))), -1, -1
+                    u_step, u_prefix, m_step = [], [], []
+                    detail = {"algorithm": select, "pick": pick, **sel}
+                elif aac_selector is not None:
                     d = aac_decision(response["actions"], response["normalized_action"],
                                      selector=aac_selector, move_th=alpha)
                     chunk, normalized_chunk = d["chunk"], d["normalized_chunk"]
@@ -500,7 +523,7 @@ def run_libero_evaluation(
 
                 row = {
                     "task_id": tid, "trial_id": trial, "decision_id": len(decisions), "sim_step": active,
-                    "h_executed": h_exec, "h_method": min(len(chunk), max(h_unc, xi)), "h_unc": h_unc,
+                    "h_executed": h_exec, "h_method": h_exec if select else min(len(chunk), max(h_unc, xi)), "h_unc": h_unc,
                     "move_lower_bound": xi, "infer_ms": round(float(infer_ms), 3),
                     "roundtrip_ms": round(roundtrip_ms, 3), "gripper_toggle": _has_gripper_toggle(chunk, h_exec),
                     "arm": arm, "suite": suite,
@@ -510,12 +533,13 @@ def run_libero_evaluation(
                     row[f"u_step_{j}"], row[f"u_prefix_{j}"], row[f"m_step_{j}"] = u, up, m
                 append("decisions.csv", DECISIONS_CSV_COLUMNS, row)
                 decisions.append(h_exec)
+                prev_chunk, prev_h = chunk, h_exec
                 if bank is not None:
                     bank["decision_steps"].append(NUM_STEPS_WAIT + active)
                     bank["chunks"].append(chunk)
                     bank["normalized_chunks"].append(normalized_chunk)
                     bank["chunk_sizes"].append(h_exec)
-                    if aac_selector is not None:  # all N samples, for offline re-analysis of AAC
+                    if aac_selector is not None or select is not None:  # all N samples, for offline re-analysis
                         bank["aac_samples"].append(np.asarray(response["actions"])[:, :, :7])
                         bank["aac_normalized_samples"].append(np.asarray(response["normalized_action"])[:, :, :7])
                     else:

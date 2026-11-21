@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_6_unseen_texture,select_mahjong,0,0,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2417.9,2567.0,7654.6,369.1,196.6,10389.1,30.0,7081.6,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,1,1,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2179.7,2295.4,10075.1,257.6,164.5,9712.8,30.7,7081.6,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,2,2,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2219.3,2346.0,9882.0,338.6,164.8,9115.1,28.6,7081.6,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,3,3,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2251.3,2392.6,6084.2,364.1,163.4,8505.3,23.1,7081.6,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,4,4,ccs_h8,1,1.0,1.0,97,200,13,8.0,0.0,8,8,1116.4,1175.8,5511.7,137.8,73.8,3595.5,17.7,7081.6,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,5,5,ccs_h8,1,1.0,1.0,89,200,12,8.0,0.0,8,8,1051.9,1119.0,5208.1,156.0,79.7,3323.4,17.8,7081.6,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,6,6,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2207.1,2365.8,8984.2,292.5,186.7,9877.1,26.8,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,7,7,ccs_h8,0,0.0,0.0,41,200,5,8.0,0.0,8,8,419.6,441.6,2310.1,50.0,35.6,1472.1,10.4,7081.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 7 man
+track_6_unseen_texture,select_mahjong,8,8,ccs_h8,1,1.0,1.0,113,200,15,8.0,0.0,8,8,1294.7,1358.2,7357.6,196.0,97.5,4381.6,21.5,7081.6,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,9,9,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2232.7,2368.9,6674.8,405.7,152.0,10159.5,24.6,7081.6,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,10,10,ccs_h8,1,1.0,1.0,100,200,13,8.0,0.0,8,8,1158.3,1232.5,5090.3,154.7,95.5,4197.5,16.4,7081.6,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,11,11,ccs_h8,1,1.0,1.0,112,200,14,8.0,0.0,8,8,1212.3,1273.2,5971.3,196.4,80.1,4379.0,18.6,7081.6,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,12,12,ccs_h8,1,1.0,1.0,62,200,8,8.0,0.0,8,8,752.7,817.9,1214.8,133.3,88.1,3377.2,12.5,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,13,13,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2283.7,2425.7,8891.8,425.6,166.5,10159.6,25.8,7081.6,,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,14,14,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2579.7,2786.2,7773.1,412.4,214.7,9166.2,24.4,7081.6,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,15,15,ccs_h8,1,1.0,1.0,71,200,9,8.0,0.0,8,8,861.7,911.4,3577.8,140.3,72.4,2840.9,14.6,7081.6,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,16,16,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2517.7,2706.7,5459.3,478.6,216.0,9439.2,23.0,7081.6,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,17,17,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2247.8,2395.7,6961.3,352.5,168.1,8067.8,23.0,7081.6,,Pick up the mahjong of 5 pin
+track_6_unseen_texture,select_mahjong,18,18,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2330.4,2462.4,10491.9,326.7,166.5,7789.1,28.3,7081.6,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,19,19,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2310.4,2476.0,9102.7,432.4,186.6,9052.8,25.7,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,20,20,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2482.7,2614.0,9594.2,334.7,181.1,7618.5,26.3,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,21,21,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2372.5,2563.4,7004.7,363.5,171.4,8284.0,24.0,7081.6,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,22,22,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2449.4,2637.6,7130.0,334.7,189.2,8897.4,24.4,7081.6,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,23,23,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2263.6,2423.9,8148.7,347.0,156.8,8303.4,25.3,7081.6,,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,24,24,ccs_h8,0,0.0,0.0,101,200,12,8.0,0.0,8,8,1101.2,1170.5,5130.7,225.9,85.8,4052.9,17.9,7081.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 2 sou
+track_6_unseen_texture,select_mahjong,25,25,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2418.2,2585.6,6836.3,334.7,206.4,8665.1,22.2,7081.6,,Pick up the mahjong of 4 sou
+track_6_unseen_texture,select_mahjong,26,26,ccs_h8,1,1.0,1.0,108,200,14,8.0,0.0,8,8,1241.5,1305.3,5928.0,178.2,81.4,3806.4,17.3,7081.6,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,27,27,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2329.8,2494.2,7826.4,395.3,195.9,9821.9,26.1,7081.6,,Pick up the mahjong of 9 man
+track_6_unseen_texture,select_mahjong,28,28,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2411.7,2591.8,6199.4,457.4,186.2,10843.4,24.1,7081.6,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,29,29,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2369.8,2571.3,7208.3,377.0,184.3,8865.9,23.5,7081.6,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,30,30,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2476.2,2692.9,6324.8,360.8,246.2,9452.8,23.7,7081.6,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,31,31,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2305.8,2470.0,7953.4,397.9,203.0,10681.5,25.8,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,32,32,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2352.1,2514.8,7946.1,353.9,211.6,7972.4,23.7,7081.6,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,33,33,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2532.4,2697.2,5691.5,547.3,203.5,8911.4,22.7,7081.6,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,34,34,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2316.9,2462.5,8283.0,403.8,202.7,11957.0,27.6,7081.6,,Pick up the mahjong of 5 pin
+track_6_unseen_texture,select_mahjong,35,35,ccs_h8,1,1.0,1.0,93,200,12,8.0,0.0,8,8,1094.6,1185.4,3084.0,174.3,97.2,4408.7,14.1,7081.6,,Pick up the mahjong of 8 sou
+track_6_unseen_texture,select_mahjong,36,36,ccs_h8,1,1.0,1.0,84,200,11,8.0,0.0,8,8,1071.9,1134.2,3575.6,176.9,102.2,3833.9,15.5,7081.6,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,37,37,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2322.4,2462.6,9536.4,328.0,206.1,8406.8,26.2,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,38,38,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2344.9,2494.4,8634.1,363.2,173.4,7954.6,25.5,7081.6,,Pick up the mahjong of 7 pin
+track_6_unseen_texture,select_mahjong,39,39,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2279.7,2422.6,8476.5,347.7,211.0,7417.9,24.6,7081.6,,Pick up the mahjong of 9 pin
+track_6_unseen_texture,select_mahjong,40,40,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2955.3,3126.3,12221.4,421.6,150.9,7585.8,29.1,7081.6,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,41,41,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2456.4,2625.4,8627.0,381.8,205.3,8740.2,25.2,7081.6,,Pick up the mahjong of 7 pin
+track_6_unseen_texture,select_mahjong,42,42,ccs_h8,0,0.0,0.0,188,200,23,8.0,0.0,8,8,2292.3,2439.0,7797.3,484.7,177.7,9083.9,27.2,7081.6,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,43,43,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2496.9,2665.6,6932.8,402.7,212.3,8408.4,24.1,7081.6,,Pick up the mahjong of 6 sou
+track_6_unseen_texture,select_mahjong,44,44,ccs_h8,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2414.2,2583.9,6311.5,379.8,180.0,8185.1,21.5,7081.6,,Pick up the mahjong of 3 man
+track_6_unseen_texture,select_mahjong,45,45,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2424.0,2568.5,11001.8,378.0,169.9,7711.9,27.6,7081.6,,Pick up the mahjong of 1 pin
+track_6_unseen_texture,select_mahjong,46,46,ccs_h8,1,1.0,1.0,93,200,12,8.0,0.0,8,8,1166.1,1227.4,4696.9,166.2,82.7,3793.9,17.8,7081.6,,Pick up the mahjong of 3 pin
+track_6_unseen_texture,select_mahjong,47,47,ccs_h8,1,1.0,1.0,92,200,12,8.0,0.0,8,8,1147.2,1247.4,3068.0,165.5,92.8,3716.0,15.9,7081.6,,Pick up the mahjong of 5 man
+track_6_unseen_texture,select_mahjong,48,48,ccs_h8,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2478.6,2662.9,8634.1,371.9,186.9,10647.6,27.8,7081.6,,Pick up the mahjong of 1 man
+track_6_unseen_texture,select_mahjong,49,49,ccs_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2296.1,2462.7,5236.6,405.2,229.9,9830.4,22.1,7081.6,,Pick up the mahjong of 9 pin

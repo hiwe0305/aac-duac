@@ -43,10 +43,13 @@ arm_args() {  # $1 arm, $2 track, $3 task
     aac_noxi)  echo "--port $((8720 + PORT_OFFSET)) --aac-selector gaussian_bernoulli --no-xi --state-bank" ;;
     # control: h ~ executed-h distribution of duac_noxi on the same track and task (needs those runs first)
     random_h)  echo "--port $((8710 + PORT_OFFSET)) --random-horizon-from $OUT/$2/${RANDOM_H_FROM:-duac_noxi}/$3/decisions.csv" ;;
+    # chunk selection among the AAC server's 20 samples at fixed h (flowbased_aac/ccs.py): <select>_h<k>, e.g. ccs_h8, sample0_h8
+    sample0_h*|ccs_h*|medoid_h*|coherent_h*|gripvote_h*)
+               echo "--port $((8720 + PORT_OFFSET)) --select ${1%_h*} --fixed-horizon ${1##*_h} --state-bank --save-videos --video-episodes 2" ;;
     *) echo "unknown arm $1" >&2; exit 2 ;;
   esac
 }
-server_of() { case $1 in vanilla) echo vanilla ;; aac|aac_*) echo aac ;; *) echo duac ;; esac; }
+server_of() { case $1 in vanilla) echo vanilla ;; aac|aac_*|*_h[0-9]*) echo aac ;; *) echo duac ;; esac; }
 
 # 2. sequential phases: track x server
 for tr in $TRACKS; do
