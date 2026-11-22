@@ -63,6 +63,9 @@ def build_parser() -> argparse.ArgumentParser:
                    default=str(WORKSPACE_ROOT / "checkpoints" / "openpi" / "openpi-assets" / "checkpoints" / "pi05_libero"))
     p.add_argument("--n_samples", "--n-samples", dest="n_samples", type=int, default=20)
     p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--n_anchor", "--n-anchor", dest="n_anchor", type=int, default=0,
+                   help="extra samples anchored to the client's anchor_noise (ccs.select_acs)")
+    p.add_argument("--anchor_sigma", "--anchor-sigma", dest="anchor_sigma", type=float, default=0.3)
     group = p.add_mutually_exclusive_group()
     group.add_argument("--no_seed_per_step", "--no-seed-per-step", dest="seed_per_step", action="store_false",
                        help="stateful RNG across calls (default, O-LONG protocol)")
@@ -120,7 +123,8 @@ def main(argv: Optional[List[str]] = None) -> int:
         from tools.serve_pi05_multisample import main as serve_main
 
         fwd = ["--host", args.host, "--port", str(args.port), "--config", args.config,
-               "--checkpoint_dir", args.checkpoint_dir, "--n_samples", str(args.n_samples), "--seed", str(args.seed)]
+               "--checkpoint_dir", args.checkpoint_dir, "--n_samples", str(args.n_samples), "--seed", str(args.seed),
+               "--n_anchor", str(args.n_anchor), "--anchor_sigma", str(args.anchor_sigma)]
         fwd.append("--seed_per_step" if args.seed_per_step else "--no_seed_per_step")
         return serve_main(fwd)
     summary = run_libero_evaluation(

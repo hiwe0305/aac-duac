@@ -1,0 +1,21 @@
+# T3, aac server, generated 2026-11-22 01:52:07
+--track T3 --tasks add_condiment --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/add_condiment
+--track T3 --tasks add_condiment --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/add_condiment
+--track T3 --tasks insert_flower --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/insert_flower
+--track T3 --tasks insert_flower --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/insert_flower
+--track T3 --tasks select_book --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_book
+--track T3 --tasks select_book --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_book
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_chemistry_tube
+--track T3 --tasks select_chemistry_tube --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_chemistry_tube
+--track T3 --tasks select_drink --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_drink
+--track T3 --tasks select_drink --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_drink
+--track T3 --tasks select_fruit --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_fruit
+--track T3 --tasks select_fruit --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_fruit
+--track T3 --tasks select_mahjong --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_mahjong
+--track T3 --tasks select_mahjong --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_mahjong
+--track T3 --tasks select_painting --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_painting
+--track T3 --tasks select_painting --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_painting
+--track T3 --tasks select_poker --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_poker
+--track T3 --tasks select_poker --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_poker
+--track T3 --tasks select_toy --episodes 50 --port 8720 --select egc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/egc_h8/select_toy
+--track T3 --tasks select_toy --episodes 50 --port 8720 --select xdc --fixed-horizon 8 --state-bank --save-videos --video-episodes 2 --output-dir outputs/vlabench/full/T3/xdc_h8/select_toy

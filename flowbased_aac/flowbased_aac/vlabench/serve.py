@@ -91,7 +91,8 @@ class TimedPolicy:
         return out
 
 
-def build_policy(mode: str, checkpoint, *, seed: int = 0, tau: float = 0.9, num_probes: int = 40, n_samples: int = 20):
+def build_policy(mode: str, checkpoint, *, seed: int = 0, tau: float = 0.9, num_probes: int = 40, n_samples: int = 20,
+                 n_anchor: int = 0, anchor_sigma: float = 0.3):
     base = load_base_policy(checkpoint, seed)
     meta = {"benchmark": "vlabench", "mode": mode, "checkpoint": str(Path(checkpoint).resolve()), "seed": seed,
             "action_horizon": int(base._model.action_horizon), "action_dim": 7}
@@ -106,8 +107,9 @@ def build_policy(mode: str, checkpoint, *, seed: int = 0, tau: float = 0.9, num_
     if mode == "aac":
         from serve_pi05_multisample import MultiSamplePi05Policy
 
-        meta.update(n_samples=n_samples)
-        return TimedPolicy(MultiSamplePi05Policy(base, n_samples, seed, seed_per_step=False), mode, meta)
+        meta.update(n_samples=n_samples, n_anchor=n_anchor, anchor_sigma=anchor_sigma)
+        return TimedPolicy(MultiSamplePi05Policy(base, n_samples, seed, seed_per_step=False, n_anchor=n_anchor,
+                                                 anchor_sigma=anchor_sigma), mode, meta)
     raise ValueError(f"unknown mode {mode!r}")
 
 
@@ -121,12 +123,14 @@ def main(argv=None) -> int:
     ap.add_argument("--tau", type=float, default=0.9)
     ap.add_argument("--num-probes", type=int, default=40)
     ap.add_argument("--n-samples", type=int, default=20)
+    ap.add_argument("--n-anchor", type=int, default=0, help="aac mode: extra anchored samples (ccs.select_acs)")
+    ap.add_argument("--anchor-sigma", type=float, default=0.3)
     args = ap.parse_args(argv)
 
     from openpi.serving import websocket_policy_server
 
     policy = build_policy(args.mode, args.checkpoint, seed=args.seed, tau=args.tau, num_probes=args.num_probes,
-                          n_samples=args.n_samples)
+                          n_samples=args.n_samples, n_anchor=args.n_anchor, anchor_sigma=args.anchor_sigma)
     print(f"[vlabench serve] mode={args.mode} on {args.host}:{args.port} server listening", flush=True)
     websocket_policy_server.WebsocketPolicyServer(policy=policy, host=args.host, port=args.port,
                                                   metadata=policy.metadata).serve_forever()

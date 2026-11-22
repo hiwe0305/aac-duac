@@ -151,6 +151,165 @@ def select_chunk(samples: np.ndarray, h: int, prev_chunk: Optional[np.ndarray] =
                      score=score.tolist(), overlap=overlap, gripper_majority=majority.tolist())
 
 
+@dataclass
+class ACSResult:
+    index: int            # index into the full sample array (fresh first, then anchored)
+    commit: bool          # True: continued the previous plan; False: switched to the global medoid
+    anchored: bool        # whether anchored samples were available at this decision
+    support: int          # fresh samples within r of the anchored continuation
+    peak: int             # largest number of fresh samples within r of any fresh sample (mass of the main mode)
+    radius: float         # r = median pairwise distance among fresh samples
+
+    def as_log(self) -> Dict[str, object]:
+        return {"acs_index": self.index, "acs_commit": self.commit, "acs_anchored": self.anchored,
+                "acs_support": self.support, "acs_peak": self.peak, "acs_radius": round(float(self.radius), 5)}
+
+
+def select_acs(samples: np.ndarray, n_fresh: int, anchored: bool, h: int, gamma: float = 0.5,
+               force_commit: bool = False, rot_weight: float = 0.05, action_space: str = "absolute") -> ACSResult:
+    """Anchored Commit-or-Switch.
+
+    samples: (n_fresh + n_anchor, H, 7). The first n_fresh start from fresh noise; the rest start from the previous
+    executed chunk's noise shifted by the executed length (sample n_fresh exactly, the others slightly perturbed), so
+    they are the previous plan re-generated under the new observation. Distances are on the executed prefix h.
+
+      r        = median pairwise distance among fresh samples (scale of this decision's spread)
+      peak     = max_j #{k fresh : d(f_j, f_k) <= r}          mass of the best-supported mode
+      support  = #{k fresh : d(anchor_0, f_k) <= r}            mass that still supports the previous plan
+      commit  <=> support >= gamma * peak   (or force_commit)
+      commit -> among {anchored} U {fresh within r of anchor_0}, the one with the smallest mean distance to the fresh
+                samples within r of anchor_0 (typical member of the continued mode)
+      switch -> medoid of the fresh samples
+    Without anchored samples (first decision) the fresh medoid is executed. Fresh samples estimate the mode masses
+    without bias; anchored samples only provide the continuation candidate.
+    """
+
+    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    h = int(max(1, min(h, samples.shape[1])))
+    traj = _integrate_libero(samples) if action_space == "libero_delta" else samples
+    rot_mode = "vector" if action_space == "libero_delta" else "euler"
+    pre = traj[:, :h]
+    F = pre[:n_fresh]
+    dff = _pose_distance(F[:, None], F[None, :], rot_weight, rot_mode)
+    off = dff[~np.eye(n_fresh, dtype=bool)]
+    r = float(np.median(off)) if off.size else 0.0
+    medoid = int(np.argmin(dff.sum(axis=1)))
+    peak = int((dff <= r).sum(axis=1).max())
+    n_anchor = samples.shape[0] - n_fresh
+    if not anchored or n_anchor <= 0:
+        return ACSResult(medoid, False, False, 0, peak, r)
+    A = pre[n_fresh:]
+    daf = _pose_distance(A[:, None], F[None, :], rot_weight, rot_mode)  # (n_anchor, n_fresh)
+    near = np.flatnonzero(daf[0] <= r)
+    support = int(near.size)
+    if not (force_commit or support >= gamma * peak):
+        return ACSResult(medoid, False, True, support, peak, r)
+    ref = near if near.size else np.arange(n_fresh)  # forced commit with no supporting fresh sample: use all
+    cand = [(float(daf[k, ref].mean()), n_fresh + k) for k in range(n_anchor)]
+    cand += [(float(dff[j, ref].mean()), int(j)) for j in near]
+    best = min(cand)[1]
+    return ACSResult(best, True, True, support, peak, r)
+
+
+@dataclass
+class EGCResult:
+    index: int
+    commit: bool     # True: stayed with the previous plan's mode; False: switched to the global medoid
+    support: int     # fresh samples whose overlap window agrees with the previous plan's unexecuted tail
+    peak: int        # largest agreement count around any sample (mass of the best-supported mode)
+    n_cont: int      # size of the continuation set used for the in-mode medoid
+    overlap: int
+    radius: float
+
+    def as_log(self) -> Dict[str, object]:
+        return {"egc_index": self.index, "egc_commit": self.commit, "egc_support": self.support, "egc_peak": self.peak,
+                "egc_n_cont": self.n_cont, "egc_overlap": self.overlap, "egc_radius": round(float(self.radius), 5)}
+
+
+def select_egc(samples: np.ndarray, h: int, prev_chunk: Optional[np.ndarray] = None, prev_h: int = 0,
+               gamma: float = 0.5, rot_weight: float = 0.05, action_space: str = "absolute") -> EGCResult:
+    """Evidence-Gated Commitment: stay in the previous plan's mode while the fresh samples still support it.
+
+    The previous plan is represented by its unexecuted tail, which covers the first L = H - h_prev steps of the new
+    chunk (same time steps). On that overlap window:
+      r_L      = median pairwise overlap distance among the N samples
+      peak     = max_j #{k : d_L(a_j, a_k) <= r_L}              mass of the best-supported mode
+      support  = #{k : d_L(a_k, tail) <= r_L}                    mass that still agrees with the previous plan
+      commit  <=> support >= gamma * peak
+      commit -> medoid (distance on the executed prefix h) of the continuation set {k : d_L(a_k, tail) <= r_L}
+      switch -> medoid of all N samples
+    With no previous chunk or no overlap the global medoid is executed. Unlike a soft coherence cost (BID backward
+    coherence, CCS) the previous plan is never followed against the evidence: once fewer than gamma x peak samples
+    agree with it, the policy switches; unlike the memoryless medoid it does not flip between two comparably supported
+    modes at every replan.
+    """
+
+    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    n, horizon, _ = samples.shape
+    h = int(max(1, min(h, horizon)))
+    if action_space == "libero_delta":
+        rot_mode = "vector"
+        traj = _integrate_libero(samples)
+        if prev_chunk is not None:
+            prev_chunk = np.asarray(prev_chunk, dtype=np.float64)[:, :7]
+            prev_chunk = np.concatenate([np.zeros((prev_h, 7)), _integrate_libero(prev_chunk[prev_h:])], axis=0)
+    else:
+        rot_mode = "euler"
+        traj = samples
+        if prev_chunk is not None:
+            prev_chunk = np.asarray(prev_chunk, dtype=np.float64)[:, :7]
+    pre = traj[:, :h]
+    dfull = _pose_distance(pre[:, None], pre[None, :], rot_weight, rot_mode)
+    medoid = int(np.argmin(dfull.sum(axis=1)))
+    L = int(max(0, min(horizon, prev_chunk.shape[0] - prev_h))) if prev_chunk is not None else 0
+    if L == 0:
+        return EGCResult(medoid, False, 0, 0, 0, 0, 0.0)
+    win = traj[:, :L]
+    dL = _pose_distance(win[:, None], win[None, :], rot_weight, rot_mode)
+    r = float(np.median(dL[~np.eye(n, dtype=bool)]))
+    peak = int((dL <= r).sum(axis=1).max())
+    dtail = _pose_distance(win, prev_chunk[prev_h:prev_h + L][None], rot_weight, rot_mode)
+    cont = np.flatnonzero(dtail <= r)
+    support = int(cont.size)
+    if support == 0 or support < gamma * peak:
+        return EGCResult(medoid, False, support, peak, 0, L, r)
+    best = int(cont[np.argmin(dfull[np.ix_(cont, cont)].sum(axis=1))])
+    return EGCResult(best, True, support, peak, support, L, r)
+
+
+def select_xdc(samples: np.ndarray, h: int, prev_samples: Optional[np.ndarray] = None, prev_h: int = 0,
+               lam: float = 1.0, rot_weight: float = 0.05, action_space: str = "absolute") -> Dict[str, object]:
+    """Cross-Decision Consensus: the sample most central w.r.t. the current samples AND the previous decision's samples.
+
+      C_j = mean_k d_h(a_j, a_k)                                  (current consensus, executed prefix h)
+      P_j = mean_m d_L(a_j[:L], b_m[h_prev : h_prev + L])          (agreement with the previous distribution on the
+                                                                    overlapping time steps, L = H - h_prev)
+      j*  = argmin_j  C_j / median(C) + lam * P_j / median(P)
+    A product of the two sample-based densities across time: transient, observation-driven flips of the policy's
+    distribution are damped by the previous distribution, while a persistent change is followed one decision later
+    (the previous distribution has moved by then). Unlike coherence with the single executed chunk (BID, CCS) it does
+    not lock onto one possibly atypical chunk. Without previous samples it is the medoid.
+    """
+
+    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    n, horizon, _ = samples.shape
+    h = int(max(1, min(h, horizon)))
+    delta = action_space == "libero_delta"
+    rot_mode = "vector" if delta else "euler"
+    traj = _integrate_libero(samples) if delta else samples
+    C = _pose_distance(traj[:, None, :h], traj[None, :, :h], rot_weight, rot_mode).mean(axis=1)
+    L = int(max(0, horizon - prev_h)) if prev_samples is not None else 0
+    if L == 0:
+        j = int(np.argmin(C))
+        return {"index": j, "xdc_overlap": 0}
+    prev = np.asarray(prev_samples, dtype=np.float64)[..., :7]
+    tails = _integrate_libero(prev[:, prev_h:prev_h + L]) if delta else prev[:, prev_h:prev_h + L]
+    P = _pose_distance(traj[:, None, :L], tails[None], rot_weight, rot_mode).mean(axis=1)
+    score = C / max(np.median(C), 1e-12) + lam * P / max(np.median(P), 1e-12)
+    j = int(np.argmin(score))
+    return {"index": j, "xdc_overlap": L, "xdc_medoid": int(np.argmin(C))}
+
+
 VARIANTS = {
     "ccs": CCSConfig(),
     "medoid": CCSConfig(lam=0.0, gripper_tol=None),
@@ -189,8 +348,49 @@ def _selftest() -> None:
     d2 = d.copy(); d2[3, :, 6] = -1.0
     rl2 = select_chunk(d2, 8, prev_chunk=prev_d, prev_h=8, cfg=CCSConfig(lam=10.0), action_space="libero_delta")
     assert rl2.index == 3 and rl2.overlap == 2, (rl2.index, rl2.overlap)
+    # ACS: 12 fresh samples go left (mode L), 8 go right (mode R); the anchored continuation follows R
+    rng2 = np.random.default_rng(1)
+    L = base.copy(); R = base.copy(); R[:, 1] = np.linspace(0, 0.06, 10)
+    fresh = np.concatenate([L[None] + rng2.normal(0, 0.002, (12, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0],
+                            R[None] + rng2.normal(0, 0.002, (8, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]])
+    anc = R[None] + rng2.normal(0, 0.002, (4, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
+    allS = np.concatenate([fresh, anc])
+    a1 = select_acs(allS, 20, True, 8)                     # R holds 8/12 of L's mass >= 0.5 -> commit to R
+    assert a1.commit and (a1.index >= 20 or a1.index >= 12), a1
+    a2 = select_acs(allS, 20, True, 8, gamma=0.9)          # stricter gate -> switch to the medoid (in L)
+    assert not a2.commit and a2.index < 12, a2
+    weak = np.concatenate([fresh[:12], fresh[:8] * 0 + L[None] + rng2.normal(0, 0.002, (8, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0], anc])
+    a3 = select_acs(weak, 20, True, 8)                     # nobody supports R any more -> switch
+    assert not a3.commit and a3.support == 0 and a3.index < 20, a3
+    a4 = select_acs(weak, 20, True, 8, force_commit=True)  # anchor-always ablation keeps R
+    assert a4.commit and a4.index >= 20, a4
+    assert select_acs(allS[:20], 20, False, 8).commit is False
+    # EGC: previous plan followed R (its unexecuted tail sits on R's first steps)
+    prevR = np.concatenate([np.zeros((8, 7)), R[:2]], axis=0); prevR[:8] = R[:8]
+    e1 = select_egc(fresh, 8, prevR, 8)                    # R has 8 vs L 12 samples: 8 >= 0.5 * 12 -> stay in R
+    assert e1.commit and e1.index >= 12, e1
+    e2 = select_egc(fresh, 8, prevR, 8, gamma=0.9)         # stricter gate -> switch to the global medoid (L)
+    assert not e2.commit and e2.index < 12, e2
+    allL = L[None] + rng2.normal(0, 0.002, (20, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
+    e3 = select_egc(allL, 8, prevR, 8)                     # R lost all support -> switch
+    assert not e3.commit and e3.support < 0.5 * e3.peak, e3
+    assert select_egc(fresh, 8).commit is False            # first decision -> medoid
+    dR = np.diff(np.concatenate([np.zeros((20, 1, 7)), fresh], axis=1), axis=1); dR[..., :3] /= LIBERO_POS_UNIT
+    dR[..., 3:6] = 0; dR[..., 6] = -1.0
+    pR = np.zeros((10, 7))  # executed 8 steps (irrelevant), then a tail that integrates to R[:2] from the current pose
+    pR[8:] = np.diff(np.concatenate([np.zeros((1, 7)), R[:2]], axis=0), axis=0); pR[:, :3] /= LIBERO_POS_UNIT
+    pR[:, 3:6] = 0; pR[:, 6] = -1.0
+    e4 = select_egc(dR, 8, pR, 8, action_space="libero_delta")
+    assert e4.commit and e4.index >= 12, e4
+    x0 = select_xdc(fresh, 8)
+    assert x0["index"] == int(np.argmin(_pose_distance(fresh[:, None, :8], fresh[None, :, :8], 0.05).mean(1)))
+    prevS = R[None] + rng2.normal(0, 0.002, (20, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]  # previous distribution was all R
+    prevS[:, 8:] = R[None, :2] + rng2.normal(0, 0.002, (20, 2, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
+    assert select_xdc(fresh, 8, prevS, 8, lam=5.0)["index"] >= 12  # strong temporal term keeps mode R
     print("[PASS] ccs: gripper vote drops minority, medoid avoids outlier, coherence follows previous plan, "
-          "identical samples -> 0, euler wrap safe; same behaviour on LIBERO delta actions")
+          "identical samples -> 0, euler wrap safe; same behaviour on LIBERO delta actions; "
+          "ACS commits when the anchored plan keeps support, switches when it loses it, force_commit keeps it; "
+          "EGC stays/switches by support; XDC = medoid without history, follows the previous distribution with it")
 
 
 if __name__ == "__main__":

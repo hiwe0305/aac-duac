@@ -27,10 +27,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from robocasa_report import holm, mcnemar_exact, strat_bootstrap, wilson  # noqa: E402
 
 TRACKS = ["T1", "T2", "T3", "T4", "T6"]
-NEW = ["ccs_h8", "sample0_h8", "medoid_h8"]
+NEW = ["ccs_h8", "sample0_h8", "medoid_h8", "egc_h8", "xdc_h8"]
 REF = ["vanilla", "fixed_8", "fixed_10", "aac", "duac"]
 PRIMARY = [("ccs_h8", "sample0_h8"), ("ccs_h8", "fixed_8"), ("ccs_h8", "fixed_10")]
 SECONDARY = [("medoid_h8", "sample0_h8"), ("ccs_h8", "medoid_h8"), ("sample0_h8", "fixed_8"),
+             ("egc_h8", "medoid_h8"), ("xdc_h8", "medoid_h8"), ("egc_h8", "fixed_8"), ("xdc_h8", "fixed_8"),
              ("ccs_h8", "aac"), ("ccs_h8", "duac"), ("ccs_h8", "vanilla")]
 
 
@@ -192,7 +193,7 @@ def main(run):
            "difference| of the target (mm/step^2). toggles = gripper switches per episode. intention = official VLABench "
            "intention score (did the robot go for the right object).", "",
            table(rows, ["arm", "episodes", "seam (cm)", "inside (cm)", "seam / inside", "accel", "gripper toggles", "intention"]), ""]
-    diag = {a: ccs_diagnostics(run, a) for a in ("ccs_h8", "medoid_h8") if a in arms}
+    diag = {a: ccs_diagnostics(run, a) for a in ("ccs_h8", "medoid_h8", "egc_h8", "xdc_h8") if a in arms}
     rep["selection"] = diag
     rows = [[a, d["decisions"], f"{100 * d['pick_not_0']:.1f}%", f"{100 * d['gripper_vote_dropped_any']:.1f}%",
              f"{d['mean_kept']:.1f}", f"{100 * d['overlap_2']:.1f}%"] for a, d in diag.items() if d]

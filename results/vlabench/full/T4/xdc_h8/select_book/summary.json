@@ -1,0 +1,14 @@
+{
+  "arm": "xdc_h8",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.52,
+  "success_rate_excl_errors": 0.5306,
+  "progress_score": 0.59,
+  "mean_h": 8.0,
+  "tasks": {
+    "select_book": 0.52
+  },
+  "synthetic_dry_run": false
+}

@@ -2,7 +2,7 @@
 
 - **Người thực hiện:** Hiếu · **Ngày:** 2026-11-21 · **Repo:** `aac-duac` (server 3)
 - **Trạng thái:**
-  - VLABench: đã chạy xong (2.460 episode ghép cặp mỗi arm).
+  - VLABench: đã chạy xong (2.460 episode ghép cặp mỗi arm), kể cả 3 mở rộng ACS / EGC / XDC (mục 6.3).
   - LIBERO-10 (Track A): đã chạy xong (1.500 episode ghép cặp mỗi arm).
 - **Một câu:** π0.5 đã sinh sẵn 20 action chunk ở mỗi bước (như AAC làm), nhưng AAC chỉ dùng chúng để chọn số bước chạy rồi chạy chunk số 0. Nếu chạy **chunk nằm giữa đám đông (medoid)** với h cố định:
   - Trên VLABench, success tăng từ 25.9% lên **36.8%** (+10.9 pp so với fixed horizon tốt nhất, p < 10⁻²⁰).
@@ -373,6 +373,36 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
   - Vì vậy cơ chế "giảm nhảy mode" có ít việc để làm trên LIBERO.
 - Ngoài ra, LIBERO có success cơ sở cao hơn nhiều (70–95% so với khoảng 25%), nên còn ít thất bại do thực thi để cứu.
 
+### 6.3 Mở rộng nhắm vào việc đổi kế hoạch giữa các chunk (VLABench, 2026-11-22)
+
+**Động cơ.** Gọi *độ lệch kế hoạch* là khoảng cách giữa 2 bước đầu của chunk mới và 2 bước chưa chạy của chunk trước, tại cùng thời điểm.
+
+| Arm | Decision có độ lệch > 2 cm | AUROC dự đoán thất bại của episode | Success |
+|---|---|---|---|
+| sample0_h8 | 40% | 0.87 | 26% |
+| medoid_h8 | 20% | 0.72 | 35% |
+| ccs_h8 | 15% | 0.68 | 35% |
+
+Độ lệch này dự đoán thất bại rất tốt. Medoid giảm nó một nửa. Câu hỏi đặt ra: xử lý phần còn lại có tăng thêm success không?
+
+**Ba ý tưởng đã thử:**
+
+| Ý tưởng | Cơ chế | Kết quả |
+|---|---|---|
+| **ACS** (Anchored Commit-or-Switch) | Thêm 4 mẫu sinh từ noise của chunk vừa chạy, dịch theo thời gian (server `--n-anchor`), làm ứng viên "tiếp tục kế hoạch". Giữ kế hoạch nếu đủ mẫu mới ủng hộ | **Giả định sai, dừng ở smoke test.** Trên 126 decision, mẫu neo lệch kế hoạch cũ 0.85 cm, mẫu mới trung vị 0.80 cm; mẫu neo tốt hơn chỉ 52% số lần. Với π0.5, cùng noise không giữ được mode dưới quan sát mới (khớp hạn chế mà PAINT nêu: action expert trộn mạnh giữa các vị trí trong chunk) |
+| **EGC** (Evidence-Gated Commitment) | Đếm số mẫu mới khớp với phần chưa chạy của kế hoạch cũ (bán kính = trung vị khoảng cách giữa các mẫu). Nếu ≥ 0.5 × mode đông nhất thì giữ, chạy medoid của nhóm đó; nếu không thì chạy medoid toàn cục | 37.2%, so với medoid **+0.4 pp [−1.5, +2.3]**, không khác. Giữ kế hoạch ở 31% decision |
+| **XDC** (Cross-Decision Consensus) | Chọn mẫu ở trung tâm của cả 20 mẫu hiện tại và 20 mẫu của decision trước (trên đoạn chồng nhau), λ = 1 | 36.3%, so với medoid **−0.4 pp [−2.4, +1.5]**, không khác |
+
+**Chẩn đoán vì sao không hơn được.** Offline trên 7.780 decision của medoid_h8:
+- Ở các decision còn lệch > 2 cm, **54% không có mẫu nào trong 20 mẫu khớp kế hoạch cũ** (mẫu gần nhất vẫn lệch > 2 cm). Cả phân phối của policy đã dịch theo quan sát mới.
+- Chỉ khoảng 21% trong số đó (tức khoảng 4% tổng decision) có sẵn một mẫu tiếp nối để chọn.
+
+**Kết luận.**
+- Medoid đã lấy gần hết phần lợi đến từ *nhiễu lấy mẫu*.
+- Phần đổi kế hoạch còn lại chủ yếu do *policy đổi ý theo quan sát*, nằm ngoài tầm của mọi phương pháp chỉ chọn trong N mẫu của cùng một quan sát.
+- Bước tiếp theo, nếu muốn vượt medoid, phải tác động vào cách policy phản ứng với quan sát (mục 9).
+- Cả EGC và XDC đều giảm thêm bước nhảy ở chỗ nối chunk (1.30 và 1.27 cm, so với 1.38 cm của medoid) mà success không tăng. Điều này cho thấy, vượt quá mức của medoid, độ mượt không còn là nút thắt.
+
 ---
 
 ## 7. So sánh với các phương pháp liên quan
@@ -393,7 +423,30 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
   1. So sánh trực tiếp "chọn h" với "chọn chunk" trên **cùng N mẫu, cùng chi phí, cùng checkpoint**, có đối chứng sample 0. Ở đây chọn h cho 0 pp, chọn chunk cho +11 pp.
   2. Cơ chế được đo: giảm bước nhảy ở chỗ nối chunk, intention không đổi.
   3. Kiểm trên nhiều benchmark với kiểm định ghép cặp và tiêu chí đặt trước.
-- Các công trình best-of-N cho VLA gần đây (ví dụ VLA-ATTC, KeyStone) cần được đọc kỹ trước khi viết phần related work. Proposal này chưa đọc toàn văn các bài đó.
+- Các công trình best-of-N cho VLA gần đây (ví dụ VLA-ATTC, KeyStone) chưa được đọc toàn văn.
+
+**Các công trình liên quan đã đọc (2026-11-22, qua arXiv HTML):**
+
+| Công trình | Quyết định | Cần train? | Có xét tính nhất quán qua thời gian? | Khác với đề xuất này |
+|---|---|---|---|---|
+| CTP, Conditional Trajectory Peaks (arXiv 2610.06104) | Mode nào trong K mode dự đoán; truyền belief qua các lần replan, có cổng nhả mode | **Có**: head riêng gắn lên π0.5 | Có (belief và cổng nhả) | Gọi tên đúng vấn đề "cross-chunk mode stitching". EGC là bản không cần train của ý tưởng giữ-hay-đổi, nhưng không hơn medoid trên VLABench |
+| PAINT (arXiv 2606.19774) | Noise ban đầu cho chunk mới, bằng cách đảo ngược phần đã chạy | Không (khoảng 3 lần số bước flow) | Có, cho một chunk | Không có mode hay nhiều mẫu. Kết quả ACS ở đây cho thấy noise dịch theo thời gian không giữ được mode trên π0.5 |
+| WarmPrior (arXiv 2605.13959) | Phân phối noise lấy chunk trước làm tâm | **Có** | Ngầm | Cùng mục tiêu chống mode switching, nhưng cần train |
+| RTC (Black et al., NeurIPS 2025) | Inpainting phần chunk đã khoá, khi chạy bất đồng bộ | Không | Có | Bổ sung, có thể kết hợp |
+| BID (ICLR 2025) | Mẫu tốt nhất theo backward coherence + forward contrast | Không, cần thêm checkpoint yếu | Có (một chunk trước) | CCS/XDC gần với backward coherence; không hơn medoid ở đây |
+| MG-Select (ICLR 2026) | Best-of-N theo KL khi che bớt điều kiện | Không (bản mạnh hơn cần fine-tune) | Không | Mỗi decision độc lập; tốn thêm forward pass |
+| RoboMonkey (arXiv 2506.17811) | Best-of-N với verifier VLM 7B; bỏ phiếu gripper để tạo đề xuất | **Có** | Không | Có bỏ phiếu, nhưng không dùng để chọn |
+| VGAS (arXiv 2602.07399) | Best-of-N với critic Q đã train | **Có** | Không | Cần dữ liệu và train |
+| ElevateHead (arXiv 2610.34031) | Chọn mode một lần rồi giữ suốt episode | **Có** | Có (giữ cứng) | Không phải VLA |
+
+**Vị trí novelty sau khi đọc:**
+1. Chọn theo đồng thuận (medoid) trên N mẫu của một VLA đóng băng chưa thấy ai báo cáo, nhưng là ý tưởng đơn giản.
+2. Đóng góp có giá trị hơn là **phép so sánh có kiểm soát và cơ chế được đo**:
+   - Trên cùng N mẫu, chọn h cho 0 pp, chọn chunk cho +11 pp.
+   - Độ lệch kế hoạch dự đoán thất bại (AUROC 0.87).
+   - Phần lệch còn lại là policy đổi ý theo quan sát.
+   - Lợi ích phụ thuộc giao diện điều khiển (đích tuyệt đối so với delta OSC).
+3. Ba mở rộng có tính mới hơn (ACS, EGC, XDC) **không vượt được medoid**. Đây là kết quả âm, cần báo cáo trung thực.
 
 ---
 
@@ -421,6 +474,7 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 
 | # | Việc | Mục đích | Chi phí ước tính |
 |---|---|---|---|
+| 0 | **Đổi đòn bẩy: làm ổn định cách policy phản ứng với quan sát.** Phần đổi kế hoạch còn lại là do policy đổi ý theo quan sát (mục 6.3). Ứng viên: đồng thuận qua K biến thể nhỏ của ảnh đầu vào (augment, mỗi biến thể N/K mẫu), rồi lấy medoid trên tập gộp | Vượt medoid; có tính mới hơn chọn mẫu đơn thuần | Mỗi lần gọi model đắt hơn khoảng 2–3 lần (K lần encode prefix) |
 | 1 | Kiểm giả thuyết giao diện điều khiển: trên VLABench, làm mượt đích tuyệt đối (ví dụ nội suy hoặc giới hạn tốc độ đích ở chỗ nối chunk) cho sample0_h8. Nếu sample0 + làm mượt đạt gần medoid, cơ chế là "nhảy đích"; nếu không, medoid còn tác dụng khác | Giải thích vì sao VLABench khác LIBERO | Khoảng 2.5 giờ GPU |
 | 1b | Chạy ccs_h8 đầy đủ trên LIBERO-10 | Xác nhận medoid > CCS trên benchmark thứ hai | Khoảng 2.5 giờ GPU |
 | 2 | Quét N ∈ {4, 8, 20} cho medoid trên VLABench | Đường cong chi phí và lợi ích | Khoảng 2.5 giờ GPU mỗi giá trị N |

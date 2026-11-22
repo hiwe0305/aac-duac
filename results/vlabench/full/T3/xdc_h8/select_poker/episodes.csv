@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_3_common_sense,select_nth_largest_poker,0,0,xdc_h8,0,0.6667,1.0,100,100,13,8.0,0.0,8,8,1170.4,1247.0,5177.4,133.6,114.4,3099.7,19.3,6930.1,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,1,1,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1118.6,1178.0,5700.4,123.7,103.7,2979.2,16.9,6930.1,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,2,2,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1158.9,1238.4,5731.5,150.2,123.4,2284.7,16.8,6930.1,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,3,3,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1144.4,1207.7,5243.5,141.2,97.1,2316.3,14.9,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,4,4,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1166.0,1259.5,4055.7,142.7,106.4,2385.4,13.4,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,5,5,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1280.5,1377.4,2553.0,135.9,148.9,2954.2,12.2,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,6,6,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1200.5,1280.1,4465.3,156.0,128.0,2489.1,14.7,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,7,7,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1435.6,1527.8,3170.4,179.4,130.5,2934.1,12.8,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,8,8,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1346.3,1409.8,7391.6,175.1,104.3,2219.9,16.2,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,9,9,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1433.8,1581.4,3049.1,189.2,130.0,3338.4,13.2,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,10,10,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1271.4,1336.8,5297.9,188.8,113.8,2202.1,15.0,6930.2,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,11,11,xdc_h8,1,1.0,1.0,82,100,11,8.0,0.0,8,8,1101.8,1174.5,3903.1,225.8,113.5,2469.7,13.3,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,12,12,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1428.0,1493.9,6853.4,174.8,103.3,2226.5,16.5,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,13,13,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1200.0,1295.8,5065.0,158.2,134.7,2528.7,13.6,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,14,14,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1110.5,1181.5,6172.0,135.6,116.2,2348.0,17.2,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,15,15,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1152.8,1231.6,5368.4,144.1,106.1,2380.7,14.5,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,16,16,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1142.9,1208.8,3733.8,197.9,115.7,2839.8,14.0,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,17,17,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1116.5,1182.8,5455.3,146.4,93.3,2409.3,15.4,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,18,18,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1146.4,1208.8,6503.8,135.1,102.5,2454.8,15.8,6930.2,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,19,19,xdc_h8,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1195.6,1282.4,3980.3,185.1,143.4,2624.4,15.2,6930.2,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,20,20,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1159.2,1226.2,6369.4,127.2,116.9,2215.2,15.2,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,21,21,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1443.6,1534.4,5628.9,195.6,113.8,2540.4,16.9,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,22,22,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1352.6,1442.3,6969.3,144.4,106.6,2219.8,17.5,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,23,23,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1196.2,1255.2,7890.5,122.0,91.1,2156.5,18.9,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,24,24,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1212.9,1274.2,6986.8,174.2,104.5,2281.0,18.0,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,25,25,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1289.5,1363.8,5215.9,177.5,124.6,2618.0,16.7,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,26,26,xdc_h8,1,1.0,1.0,82,100,11,8.0,0.0,8,8,1063.0,1128.6,3597.7,152.7,127.6,2456.0,14.9,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,27,27,xdc_h8,1,1.0,1.0,83,100,11,8.0,0.0,8,8,954.4,1001.4,6610.9,113.8,85.4,1746.1,14.8,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,28,28,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1230.2,1310.4,4285.5,124.7,144.6,2795.0,15.0,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,29,29,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1183.2,1248.9,5234.5,137.1,94.3,2121.6,13.3,6930.2,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,30,30,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1140.5,1210.8,6089.2,130.5,95.8,1976.7,14.3,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,31,31,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1175.7,1264.6,2813.8,138.2,108.6,2549.7,13.4,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,32,32,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1242.6,1316.1,5116.6,162.7,110.2,2521.3,13.6,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,33,33,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1283.6,1376.1,3130.7,203.5,167.5,3337.5,12.7,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,34,34,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1308.8,1404.4,4382.9,180.8,110.3,2316.5,15.1,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,35,35,xdc_h8,1,1.0,1.0,89,100,12,8.0,0.0,8,8,1038.0,1099.8,4345.0,135.6,103.0,2387.2,13.2,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,36,36,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1211.1,1297.5,3299.1,221.5,148.6,3213.2,14.4,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,37,37,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1208.9,1281.6,5342.2,137.2,123.7,2558.2,14.6,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,38,38,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1184.0,1270.7,4972.2,137.1,123.0,2503.5,14.0,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,39,39,xdc_h8,1,1.0,1.0,81,100,11,8.0,0.0,8,8,1063.1,1132.7,4155.1,132.8,110.1,1954.6,14.3,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,40,40,xdc_h8,1,1.0,1.0,89,100,12,8.0,0.0,8,8,1036.3,1092.4,6305.3,120.6,108.7,1881.1,13.9,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,41,41,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1188.7,1254.5,4065.7,147.0,144.5,2590.6,14.0,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,42,42,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1109.2,1168.3,4885.7,132.0,100.1,2218.3,14.0,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,43,43,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1453.6,1517.0,5412.1,242.6,111.5,2089.9,15.2,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,44,44,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1239.6,1358.8,3680.2,140.3,142.9,2557.0,12.5,6930.2,,Please pick the the 3rd largest poker
+track_3_common_sense,select_nth_largest_poker,45,45,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1107.3,1167.9,4864.2,152.9,107.7,2387.6,14.8,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,46,46,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1218.4,1287.1,2196.4,161.5,94.9,2678.9,11.9,6930.2,,Please pick the the smallest poker
+track_3_common_sense,select_nth_largest_poker,47,47,xdc_h8,1,1.0,1.0,81,100,11,8.0,0.0,8,8,948.7,1011.2,2757.9,113.2,102.3,1878.5,10.8,6930.2,,Please pick the the largest poker
+track_3_common_sense,select_nth_largest_poker,48,48,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1395.2,1452.7,6044.6,156.1,92.3,2028.8,16.0,6930.2,,Please pick the the 2nd largest poker
+track_3_common_sense,select_nth_largest_poker,49,49,xdc_h8,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1193.1,1271.1,2139.9,126.0,106.6,2272.8,11.2,6930.2,,Please pick the the 3rd largest poker

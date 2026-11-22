@@ -400,7 +400,7 @@ def run_libero_evaluation(
     if aac_selector is not None:
         from .aac_official import aac_decision
     if select is not None:
-        from .ccs import VARIANTS, select_chunk
+        from .ccs import VARIANTS, select_chunk, select_egc, select_xdc
 
     task_suite = backend.task_suite
     t_list = task_ids if task_ids is not None else list(range(task_suite.n_tasks))
@@ -462,6 +462,7 @@ def run_libero_evaluation(
             active = 0
             decisions: List[int] = []
             prev_chunk, prev_h, pick = None, 0, 0
+            prev_samples = None
 
             while active < max_steps and not done:
                 request = {
@@ -481,6 +482,13 @@ def run_libero_evaluation(
                     samples = np.asarray(response["actions"])[:, :, :7]
                     if select == "sample0":
                         pick, sel = 0, {}
+                    elif select == "egc":
+                        res = select_egc(samples, fixed_horizon, prev_chunk, prev_h, action_space="libero_delta")
+                        pick, sel = res.index, res.as_log()
+                    elif select == "xdc":
+                        sel = select_xdc(samples, fixed_horizon, prev_samples, prev_h, action_space="libero_delta")
+                        pick = int(sel.pop("index"))
+                        prev_samples = samples
                     else:
                         res = select_chunk(samples, fixed_horizon, prev_chunk, prev_h, VARIANTS[select],
                                            action_space="libero_delta")

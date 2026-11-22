@@ -290,6 +290,8 @@ def run(args) -> Dict[str, Any]:
     if args.no_xi and (args.fixed_horizon or args.random_horizon_from or args.vanilla
                        or (args.aac_selector and args.aac_selector != "gaussian_bernoulli")):
         raise ValueError("--no-xi applies to the duac and aac (gaussian_bernoulli) arms only")
+    if args.select in ("acs", "anchor") and int(server.get("n_anchor", 0)) <= 0:
+        raise ValueError(f"--select {args.select} needs an aac server with --n-anchor > 0 (port 87x30), got {server}")
     if args.select and (not args.fixed_horizon or args.aac_selector or args.no_xi or args.random_horizon_from or args.vanilla):
         raise ValueError("--select needs --fixed-horizon and excludes --aac-selector / --no-xi / --random-horizon-from / --vanilla")
     arm = arm_name(args, mode)
@@ -323,7 +325,7 @@ def run(args) -> Dict[str, Any]:
     if args.aac_selector:
         from flowbased_aac.aac_official import aac_decision
     if args.select:
-        from flowbased_aac.ccs import VARIANTS, select_chunk
+        from flowbased_aac.ccs import VARIANTS, select_acs, select_chunk, select_egc, select_xdc
     pool: Dict[str, List[int]] = {}
     if args.random_horizon_from:
         for r in read_rows(Path(args.random_horizon_from)):
@@ -355,6 +357,8 @@ def run(args) -> Dict[str, Any]:
             tot = dict(infer=0.0, server=0.0, roundtrip=0.0, render=0.0, select=0.0, env=0.0)
             peak_gpu, progress, intention, env = 0.0, 0.0, 0.0, None
             prev_chunk, prev_h, pick = None, 0, 0  # --select: previously executed chunk and its executed length
+            prev_noise = None  # --select acs/anchor: initial flow noise of the executed sample
+            prev_samples = None  # --select xdc: all samples of the previous decision
             try:
                 env = open_env(env_factory, task, track_cfg[task][ep], seed)
                 while step < max_steps and not success:
@@ -362,6 +366,10 @@ def run(args) -> Dict[str, Any]:
                     rgb, ee_state, instruction = env.observe()
                     render_ms = 1000 * (time.perf_counter() - t)
                     request = common.policy_request(rgb, ee_state, instruction)
+                    if args.select in ("acs", "anchor") and prev_noise is not None:  # previous plan, shifted in time
+                        anchor = np.full(prev_noise.shape, np.nan, np.float32)
+                        anchor[: len(prev_noise) - prev_h] = prev_noise[prev_h:]
+                        request["anchor_noise"] = anchor
                     state = request["observation/state"]
                     t = time.perf_counter()
                     try:
@@ -379,6 +387,18 @@ def run(args) -> Dict[str, Any]:
                         h = args.fixed_horizon
                         if args.select == "sample0":
                             pick, sel = 0, {}
+                        elif args.select == "egc":
+                            res = select_egc(samples, h, prev_chunk, prev_h)
+                            pick, sel = res.index, res.as_log()
+                        elif args.select == "xdc":
+                            sel = select_xdc(samples, h, prev_samples, prev_h)
+                            pick = int(sel.pop("index"))
+                            prev_samples = samples
+                        elif args.select in ("acs", "anchor"):
+                            res = select_acs(samples, int(reply["n_fresh"]), bool(reply["anchored"]), h,
+                                             force_commit=args.select == "anchor")
+                            pick, sel = res.index, res.as_log()
+                            prev_noise = np.asarray(reply["noise"])[pick].astype(np.float32)
                         else:
                             res = select_chunk(samples, h, prev_chunk, prev_h, VARIANTS[args.select])
                             pick, sel = res.index, res.as_log()
@@ -549,7 +569,7 @@ def build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--no-xi", action="store_true",
                     help="ablation: execute h = h_unc (DUAC eq. 8 / AAC entropy elbow) without the AAC motion bound xi; "
                          "xi is still computed and logged. Arms duac_noxi / aac_noxi")
-    ap.add_argument("--select", choices=["sample0", "ccs", "medoid", "coherent", "gripvote"], default=None,
+    ap.add_argument("--select", choices=["sample0", "ccs", "medoid", "coherent", "gripvote", "acs", "anchor", "egc", "xdc"], default=None,
                     help="chunk selection among the N samples of an aac server at --fixed-horizon h (flowbased_aac/ccs.py); "
                          "sample0 = the chunk AAC executes (control). Arm <select>_h<h>")
     ap.add_argument("--tau", type=float, default=0.9, help="logged; the server applies tau")

@@ -1,0 +1,14 @@
+{
+  "arm": "egc_h8",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.12,
+  "success_rate_excl_errors": 0.12,
+  "progress_score": 0.26,
+  "mean_h": 8.0,
+  "tasks": {
+    "select_drink": 0.12
+  },
+  "synthetic_dry_run": false
+}
