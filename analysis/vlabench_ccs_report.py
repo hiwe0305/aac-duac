@@ -27,13 +27,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from robocasa_report import holm, mcnemar_exact, strat_bootstrap, wilson  # noqa: E402
 
 TRACKS = ["T1", "T2", "T3", "T4", "T6"]
-NEW = ["ccs_h8", "sample0_h8", "medoid_h8", "egc_h8", "xdc_h8", "medoid_h5", "medoid_h10", "mcons_h10"]
+NEW = ["ccs_h8", "sample0_h8", "medoid_h8", "egc_h8", "xdc_h8", "medoid_h5", "medoid_h10", "mcons_h10",
+       "keystone_h8", "sample0_h8_rl", "medoid_h8_rl"]
 REF = ["vanilla", "fixed_8", "fixed_10", "aac", "duac"]
 PRIMARY = [("ccs_h8", "sample0_h8"), ("ccs_h8", "fixed_8"), ("ccs_h8", "fixed_10")]
 SECONDARY = [("medoid_h8", "sample0_h8"), ("ccs_h8", "medoid_h8"), ("sample0_h8", "fixed_8"),
              ("egc_h8", "medoid_h8"), ("xdc_h8", "medoid_h8"), ("egc_h8", "fixed_8"), ("xdc_h8", "fixed_8"),
              ("mcons_h10", "medoid_h10"), ("mcons_h10", "medoid_h8"), ("medoid_h5", "medoid_h8"), ("medoid_h10", "medoid_h8"),
              ("mcons_h10", "aac"),
+             ("medoid_h8", "keystone_h8"), ("keystone_h8", "sample0_h8"),                       # P0: prior work
+             ("sample0_h8_rl", "sample0_h8"), ("medoid_h8", "sample0_h8_rl"), ("medoid_h8_rl", "medoid_h8"),
+             ("medoid_h8_rl", "sample0_h8_rl"),                                                 # P0: 2x2 smoothing
              ("ccs_h8", "aac"), ("ccs_h8", "duac"), ("ccs_h8", "vanilla")]
 
 
