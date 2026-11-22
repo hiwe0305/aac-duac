@@ -1,0 +1,14 @@
+{
+  "arm": "medoid_h10",
+  "track": "track_6_unseen_texture",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.46,
+  "success_rate_excl_errors": 0.4694,
+  "progress_score": 0.58,
+  "mean_h": 10.0,
+  "tasks": {
+    "select_book": 0.46
+  },
+  "synthetic_dry_run": false
+}

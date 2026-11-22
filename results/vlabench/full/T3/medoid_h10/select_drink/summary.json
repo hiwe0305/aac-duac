@@ -1,0 +1,14 @@
+{
+  "arm": "medoid_h10",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.18,
+  "success_rate_excl_errors": 0.1837,
+  "progress_score": 0.34,
+  "mean_h": 10.0,
+  "tasks": {
+    "select_drink": 0.18
+  },
+  "synthetic_dry_run": false
+}

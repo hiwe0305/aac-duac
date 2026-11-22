@@ -1,0 +1,14 @@
+{
+  "arm": "medoid_h10",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 3,
+  "success_rate": 0.1,
+  "success_rate_excl_errors": 0.1064,
+  "progress_score": 0.17,
+  "mean_h": 10.0,
+  "tasks": {
+    "select_chemistry_tube": 0.1
+  },
+  "synthetic_dry_run": false
+}

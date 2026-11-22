@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_2_cross_category,select_mahjong,0,0,mcons_h10,0,0.0,1.0,200,200,32,6.312,3.737,2,10,3003.0,3214.3,11036.6,359.7,319.2,10281.5,31.3,6904.8,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,1,1,mcons_h10,0,0.0,0.0,169,200,20,8.05,2.819,2,10,2046.3,2155.7,12080.5,269.4,154.6,7575.5,28.2,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,2,2,mcons_h10,1,1.0,1.0,120,200,16,7.562,3.24,2,10,1510.2,1592.6,9660.1,167.5,138.0,4572.4,21.8,6904.8,,Pick up the mahjong of 8 sou
+track_2_cross_category,select_mahjong,3,3,mcons_h10,1,1.0,1.0,109,200,21,5.524,3.318,2,10,2464.3,2603.4,11400.2,299.1,199.0,5134.5,23.2,6904.8,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,4,4,mcons_h10,0,0.0,1.0,200,200,22,9.273,2.157,2,10,2347.6,2479.7,11535.5,298.8,169.0,6981.9,27.3,6904.8,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,5,5,mcons_h10,0,0.0,1.0,200,200,23,8.913,2.205,3,10,2161.4,2269.7,11767.2,269.8,182.9,7444.8,27.8,6904.8,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,6,6,mcons_h10,1,0.5,1.0,106,200,13,8.615,2.647,2,10,1214.7,1288.0,7127.3,142.5,101.3,3676.2,18.3,6904.8,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,7,7,mcons_h10,0,0.0,0.0,200,200,27,7.519,3.084,2,10,2592.0,2736.7,12749.1,435.4,253.9,7512.9,27.9,6904.8,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,8,8,mcons_h10,1,1.0,1.0,87,200,10,8.8,2.441,2,10,935.6,1008.5,3408.1,142.3,120.8,4634.9,14.4,6904.8,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,9,9,mcons_h10,0,0.0,1.0,200,200,23,9.0,2.085,2,10,2444.7,2599.0,9575.3,412.6,215.0,8183.3,27.3,6904.8,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,10,10,mcons_h10,1,1.0,1.0,74,200,10,8.0,3.0,2,10,1047.9,1123.5,5053.5,153.8,78.7,2930.7,16.2,6904.8,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,11,11,mcons_h10,0,0.0,0.0,171,200,24,6.875,3.257,2,10,2312.2,2436.8,12515.0,337.3,183.9,6112.9,27.7,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,12,12,mcons_h10,0,0.5,1.0,200,200,22,9.182,2.059,3,10,2036.8,2230.4,6877.5,290.3,289.9,9013.5,23.1,6904.8,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,13,13,mcons_h10,1,1.0,1.0,98,200,12,8.917,2.431,3,10,1229.8,1286.7,7283.0,132.9,99.3,3860.9,19.9,6904.8,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,14,14,mcons_h10,1,1.0,1.0,99,200,12,9.0,1.871,5,10,1128.1,1179.4,6882.0,168.9,77.4,3357.6,17.7,6904.8,,Pick up the mahjong of 4 sou
+track_2_cross_category,select_mahjong,15,15,mcons_h10,0,0.0,0.0,200,200,26,7.846,3.134,2,10,2405.0,2531.2,14373.1,323.7,212.1,7366.0,30.2,6904.8,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,16,16,mcons_h10,0,0.0,1.0,200,200,27,7.63,3.245,2,10,2759.9,2897.8,14035.1,345.6,206.1,7190.9,31.0,6904.8,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,17,17,mcons_h10,0,0.0,1.0,200,200,23,8.826,2.513,2,10,2467.7,2598.5,12627.5,318.4,186.3,8698.3,30.1,6904.8,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,18,18,mcons_h10,1,1.0,1.0,107,200,12,9.167,1.675,5,10,1202.5,1307.8,3177.6,128.3,103.7,4660.1,15.1,6904.8,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,19,19,mcons_h10,0,0.0,1.0,200,200,31,6.581,3.536,2,10,2894.1,3045.1,18087.8,423.3,249.3,8007.8,35.5,6904.8,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,20,20,mcons_h10,0,0.0,1.0,200,200,25,8.2,2.966,2,10,2639.5,2761.9,14120.1,311.2,234.7,7781.5,32.3,6904.8,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,21,21,mcons_h10,1,1.0,1.0,86,200,11,8.545,1.971,5,10,1110.0,1185.5,2937.8,139.3,113.9,3484.9,13.4,6904.8,,Pick up the mahjong of 8 sou
+track_2_cross_category,select_mahjong,22,22,mcons_h10,0,0.0,1.0,200,200,26,7.769,3.042,2,10,2406.7,2537.8,14824.8,284.7,216.7,9307.3,30.6,6904.8,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,23,23,mcons_h10,0,0.0,1.0,200,200,22,9.136,2.222,2,10,2077.0,2203.3,9478.8,283.5,214.3,7410.1,26.3,6904.8,,Pick up the mahjong of 9 pin
+track_2_cross_category,select_mahjong,24,24,mcons_h10,0,0.0,1.0,200,200,22,9.182,1.8,4,10,1965.4,2073.5,11206.0,264.0,162.2,7423.2,25.1,6904.8,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,25,25,mcons_h10,0,0.0,0.0,111,200,13,8.0,2.961,2,10,1245.9,1356.1,4072.5,188.5,140.7,4606.7,17.1,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,26,26,mcons_h10,1,1.0,1.0,89,200,12,7.5,3.175,2,10,1080.9,1163.2,7598.4,134.3,79.7,3087.5,17.5,6904.8,,Pick up the mahjong of 2 sou
+track_2_cross_category,select_mahjong,27,27,mcons_h10,0,0.0,1.0,200,200,27,7.444,3.381,2,10,2859.8,3025.9,14217.6,374.0,231.7,8373.1,32.1,6904.8,,Pick up the mahjong of 8 sou
+track_2_cross_category,select_mahjong,28,28,mcons_h10,1,1.0,1.0,112,200,15,7.533,3.052,3,10,1381.8,1489.9,5806.8,188.2,209.7,5437.8,20.0,6904.8,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,29,29,mcons_h10,0,0.0,1.0,200,200,27,7.704,3.137,2,10,2467.0,2638.8,10836.3,318.3,277.7,8755.3,26.8,6904.8,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,30,30,mcons_h10,0,0.0,0.0,200,200,29,7.172,3.415,2,10,2806.0,3081.5,10476.1,373.9,306.1,8991.9,26.3,6904.8,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,31,31,mcons_h10,0,0.0,0.0,200,200,36,5.556,3.476,2,10,3283.0,3493.1,17367.6,445.9,322.4,8536.9,33.1,6904.8,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,32,32,mcons_h10,1,1.0,1.0,97,200,12,8.083,2.597,2,10,1124.1,1211.4,4463.2,154.1,153.5,4644.7,16.4,6904.8,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,33,33,mcons_h10,1,1.0,1.0,88,200,11,8.364,2.057,5,10,945.9,992.8,5745.2,124.6,104.3,3354.0,19.1,6904.8,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,34,34,mcons_h10,1,1.0,1.0,98,200,12,8.25,2.203,5,10,1164.5,1262.4,4989.4,151.3,128.2,4323.1,17.1,6904.8,,Pick up the mahjong of 9 pin
+track_2_cross_category,select_mahjong,35,35,mcons_h10,0,0.0,1.0,200,200,26,7.923,3.125,2,10,2551.6,2821.5,11230.6,403.3,318.5,11720.9,33.9,6904.8,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,36,36,mcons_h10,1,1.0,1.0,136,200,22,6.182,3.171,2,10,2120.7,2345.0,11052.7,379.8,285.4,7071.3,30.2,6904.8,,Pick up the mahjong of 9 pin
+track_2_cross_category,select_mahjong,37,37,mcons_h10,0,0.0,0.0,116,200,14,8.0,2.928,2,10,1359.4,1478.1,7256.5,219.9,188.9,5599.4,24.9,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 6 sou
+track_2_cross_category,select_mahjong,38,38,mcons_h10,0,0.0,1.0,200,200,27,7.519,3.414,2,10,3051.2,3380.1,8943.4,479.5,436.7,11810.5,30.5,6904.8,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,39,39,mcons_h10,0,0.0,0.0,200,200,25,8.36,2.636,2,10,2393.3,2621.8,11371.0,433.4,313.2,9637.8,31.0,6904.8,,Pick up the mahjong of 7 pin
+track_2_cross_category,select_mahjong,40,40,mcons_h10,0,0.0,1.0,200,200,24,8.417,2.548,3,10,2689.2,2967.9,7725.3,452.0,366.6,12956.8,29.9,6904.8,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,41,41,mcons_h10,1,1.0,1.0,95,200,12,8.0,2.799,2,10,1294.4,1437.9,4431.9,203.0,151.7,4884.0,18.1,6904.8,,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,42,42,mcons_h10,0,0.0,0.0,200,200,21,9.524,1.5,4,10,2111.5,2341.2,7077.1,381.6,306.7,11390.3,28.5,6904.8,,Pick up the mahjong of 3 man
+track_2_cross_category,select_mahjong,43,43,mcons_h10,0,0.5,1.0,200,200,23,8.957,2.368,2,10,2181.5,2396.2,8239.2,338.0,283.3,10455.3,28.9,6904.8,,Pick up the mahjong of 1 pin
+track_2_cross_category,select_mahjong,44,44,mcons_h10,1,1.0,1.0,121,200,16,7.625,2.913,2,10,1495.1,1606.8,5828.9,194.4,153.9,4785.1,17.8,6904.8,,Pick up the mahjong of 9 man
+track_2_cross_category,select_mahjong,45,45,mcons_h10,0,0.5,1.0,200,200,43,4.814,2.912,2,10,4274.4,4528.8,17930.6,597.4,449.4,10112.0,37.6,6904.8,,Pick up the mahjong of 6 sou
+track_2_cross_category,select_mahjong,46,46,mcons_h10,0,0.0,1.0,200,200,37,5.568,3.499,2,10,3310.3,3537.0,14108.0,462.1,386.7,9190.3,31.8,6904.8,,Pick up the mahjong of 1 man
+track_2_cross_category,select_mahjong,47,47,mcons_h10,0,0.0,0.0,131,200,16,7.75,3.231,2,10,1420.7,1520.4,6470.8,168.1,131.8,4940.4,19.8,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Pick up the mahjong of 3 pin
+track_2_cross_category,select_mahjong,48,48,mcons_h10,1,1.0,1.0,103,200,13,8.385,2.676,3,10,1234.0,1324.8,3989.8,163.4,105.4,4383.8,16.3,6904.8,,Pick up the mahjong of 5 man
+track_2_cross_category,select_mahjong,49,49,mcons_h10,0,0.5,1.0,200,200,36,5.778,3.497,2,10,3278.5,3500.1,15015.3,437.1,301.0,9045.2,32.3,6904.8,,Pick up the mahjong of 4 sou

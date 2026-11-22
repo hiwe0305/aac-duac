@@ -1,0 +1,23 @@
+{
+  "server": {
+    "n_samples": 20,
+    "seed": 0,
+    "seed_per_step": false,
+    "benchmark": "vlabench",
+    "mode": "aac",
+    "checkpoint": "/mnt/ceph-cold-storage/hieudd/checkpoints/vlabench/pi05-primitive-10task",
+    "action_horizon": 10,
+    "action_dim": 7
+  },
+  "software": {
+    "python": "3.10.12",
+    "host": "data-infra-03-u",
+    "numpy": "1.25.0",
+    "mujoco": "3.2.2",
+    "scipy": "1.14.0",
+    "vlabench_commit": "cf588fe60c0c7282174fe979f5913170cfe69017",
+    "repo_commit": "8164ab67cd6397b8ad0389306ed71915fa59dd90",
+    "aac_libero_commit": "ff8c8e421f7805b5845a72d07fbd8f1171df74bf"
+  },
+  "started": "2026-11-22 09:07:53"
+}

@@ -1,0 +1,14 @@
+{
+  "arm": "mcons_h10",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.42,
+  "success_rate_excl_errors": 0.42,
+  "progress_score": 0.67,
+  "mean_h": 8.854,
+  "tasks": {
+    "select_chemistry_tube": 0.42
+  },
+  "synthetic_dry_run": false
+}

@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_2_cross_category,select_chemistry_tube,0,0,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1776.4,1869.1,10291.7,205.2,161.9,6638.3,25.4,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,1,1,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1714.0,1806.5,10852.2,187.2,133.9,7002.0,24.7,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,2,2,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1779.6,1927.2,6472.8,208.7,183.0,5441.3,17.7,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,3,3,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1716.4,1802.2,10676.3,209.5,142.2,4601.7,21.0,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,4,4,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1868.7,2005.5,5329.8,230.2,187.4,7069.9,18.7,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,5,5,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1701.7,1788.7,11034.3,212.6,131.0,4608.6,21.9,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,6,6,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1705.3,1800.2,9603.6,196.5,172.7,4864.8,21.4,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,7,7,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1893.6,1991.6,10694.1,249.8,159.4,4759.6,23.3,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,8,8,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1728.2,1833.1,10262.6,198.9,142.1,6336.9,22.5,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,9,9,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1812.2,1901.6,11922.3,234.7,158.1,5797.7,24.9,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,10,10,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1746.6,1861.3,9258.4,213.6,148.6,5468.3,20.5,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,11,11,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,1962.0,2066.3,9323.0,251.6,176.8,7122.0,22.5,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,12,12,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,2160.2,2249.1,12590.4,335.7,140.5,8158.1,27.8,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,13,13,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,2039.7,2155.0,10828.5,246.4,168.9,5525.5,21.9,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,14,14,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,2057.6,2142.9,12002.9,214.8,159.3,6441.9,25.8,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,15,15,medoid_h10,1,1.0,0.0,88,200,9,10.0,0.0,10,10,901.4,955.9,4018.2,106.9,115.5,2425.0,12.9,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,16,16,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1944.3,2036.0,12506.9,199.6,129.7,4469.7,23.9,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,17,17,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1751.2,1840.3,10972.4,243.6,160.0,5918.9,24.3,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,18,18,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1798.2,1884.9,12846.0,179.3,137.0,5740.7,26.9,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,19,19,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1727.4,1817.4,11526.3,254.0,166.2,5323.3,23.4,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,20,20,medoid_h10,1,1.0,0.0,75,200,8,10.0,0.0,10,10,805.1,838.1,4672.9,90.9,63.7,2112.0,12.9,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,21,21,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,2187.2,2331.8,9397.2,222.7,184.1,7138.0,23.3,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,22,22,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,2057.7,2150.5,11216.5,207.4,141.0,6029.8,23.7,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,23,23,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1832.3,1953.4,9368.4,214.2,165.0,6030.7,22.6,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,24,24,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,1772.3,1874.3,8849.0,187.4,152.7,6046.3,20.7,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,25,25,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1698.5,1799.0,11524.3,204.1,154.2,5605.0,23.5,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,26,26,medoid_h10,1,1.0,0.0,77,200,8,10.0,0.0,10,10,680.3,716.5,3918.4,85.4,68.8,1942.0,13.4,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,27,27,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1687.2,1770.9,11005.0,206.0,132.7,4401.1,21.5,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,28,28,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1728.8,1825.3,9397.2,202.7,148.2,5958.2,22.4,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,29,29,medoid_h10,0,0.0,0.0,131,200,13,10.0,0.0,10,10,1126.5,1181.4,7981.9,115.1,83.8,3408.3,19.2,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,30,30,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1796.5,1911.1,8595.8,261.0,145.0,4737.8,19.3,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,31,31,medoid_h10,1,1.0,0.0,65,200,7,10.0,0.0,10,10,682.5,723.7,2650.1,84.8,61.7,2528.7,12.7,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,32,32,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1749.2,1854.4,9352.7,208.4,178.3,5895.1,21.3,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,33,33,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1736.3,1825.4,9760.8,212.6,149.0,6325.1,21.9,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,34,34,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,1867.7,1983.4,8821.5,231.6,166.7,4971.4,20.0,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,35,35,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1774.3,1869.5,10661.8,189.4,151.9,5631.4,22.9,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,36,36,medoid_h10,0,0.0,0.0,51,200,5,10.0,0.0,10,10,421.0,442.7,2378.8,49.8,58.1,1571.4,10.1,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,37,37,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,1776.6,1876.1,9132.0,209.7,158.1,5382.7,22.8,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,38,38,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1817.5,1918.6,9020.2,277.4,172.1,5044.9,20.2,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,39,39,medoid_h10,0,0.0,0.0,158,200,15,10.0,0.0,10,10,1362.4,1444.2,6393.8,185.0,136.0,3747.8,16.9,6904.8,PhysicsError: Physics state is invalid. Warning(s) raised: mjWARN_BADQACC,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,40,40,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1776.2,1863.4,10892.4,179.1,147.6,6033.9,24.8,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,41,41,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,1781.0,1876.4,10403.5,216.0,175.3,4975.5,21.3,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,42,42,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1734.4,1838.4,9807.0,234.8,155.7,4987.0,20.8,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,43,43,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1762.0,1899.4,8663.0,226.8,162.8,5035.0,19.9,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,44,44,medoid_h10,1,1.0,0.0,83,200,9,10.0,0.0,10,10,765.4,805.0,4776.8,85.2,59.4,2353.1,12.8,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,45,45,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1781.7,1874.8,9665.8,211.6,143.3,5943.5,23.3,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,46,46,medoid_h10,0,0.5,0.0,200,200,20,10.0,0.0,10,10,1718.7,1812.4,11798.4,208.9,145.5,4970.9,22.5,6904.8,,Take out the K2CrO4 solution
+track_2_cross_category,select_chemistry_tube,47,47,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1989.2,2111.7,7911.7,267.7,173.2,6883.1,21.6,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,48,48,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1855.0,1942.9,11887.6,258.8,143.0,4909.2,23.6,6904.8,,Take out the I2 solution
+track_2_cross_category,select_chemistry_tube,49,49,medoid_h10,0,0.0,0.0,200,200,20,10.0,0.0,10,10,1981.7,2120.2,7633.4,243.2,220.9,5416.5,19.4,6904.8,,Take out the K2CrO4 solution

@@ -1,0 +1,14 @@
+{
+  "arm": "medoid_h5",
+  "track": "track_6_unseen_texture",
+  "episodes": 50,
+  "errors": 1,
+  "success_rate": 0.24,
+  "success_rate_excl_errors": 0.2449,
+  "progress_score": 0.29,
+  "mean_h": 5.0,
+  "tasks": {
+    "select_mahjong": 0.24
+  },
+  "synthetic_dry_run": false
+}

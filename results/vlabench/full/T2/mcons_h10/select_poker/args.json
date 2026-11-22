@@ -1,0 +1,29 @@
+{
+  "track": "T2",
+  "tasks": "select_poker",
+  "episodes": 50,
+  "episode_ids": null,
+  "seed": 0,
+  "max_steps": null,
+  "host": "127.0.0.1",
+  "port": 8720,
+  "vanilla": false,
+  "fixed_horizon": 10,
+  "random_horizon_from": null,
+  "aac_selector": null,
+  "alpha": 3.0,
+  "xi_units": "libero",
+  "no_xi": false,
+  "select": "mcons",
+  "tau": 0.9,
+  "num_probes": 40,
+  "state_bank": true,
+  "save_videos": true,
+  "video_episodes": 2,
+  "synthetic_dry_run": false,
+  "arm": "mcons_h10",
+  "track_resolved": "track_2_cross_category",
+  "tasks_resolved": [
+    "select_poker"
+  ]
+}

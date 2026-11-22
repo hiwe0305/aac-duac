@@ -2,7 +2,7 @@
 
 - **Người thực hiện:** Hiếu · **Ngày:** 2026-11-21 · **Repo:** `aac-duac` (server 3)
 - **Trạng thái:**
-  - VLABench: đã chạy xong (2.460 episode ghép cặp mỗi arm), kể cả 3 mở rộng ACS / EGC / XDC (mục 6.3).
+  - VLABench: đã chạy xong (2.460 episode ghép cặp mỗi arm), kể cả các mở rộng ACS / EGC / XDC (mục 6.3) và medoid + consensus horizon, cùng quét h cho medoid (mục 6.4).
   - LIBERO-10 (Track A): đã chạy xong (1.500 episode ghép cặp mỗi arm).
 - **Một câu:** π0.5 đã sinh sẵn 20 action chunk ở mỗi bước (như AAC làm), nhưng AAC chỉ dùng chúng để chọn số bước chạy rồi chạy chunk số 0. Nếu chạy **chunk nằm giữa đám đông (medoid)** với h cố định:
   - Trên VLABench, success tăng từ 25.9% lên **36.8%** (+10.9 pp so với fixed horizon tốt nhất, p < 10⁻²⁰).
@@ -403,6 +403,48 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 - Cả EGC và XDC đều giảm thêm bước nhảy ở chỗ nối chunk (1.30 và 1.27 cm, so với 1.38 cm của medoid) mà success không tăng. Điều này cho thấy, vượt quá mức của medoid, độ mượt không còn là nút thắt.
 
 ---
+
+### 6.4 Kết hợp uncertainty với chọn chunk: medoid + consensus horizon (VLABench, 2026-11-22)
+
+**Câu hỏi.**
+- Chọn h theo uncertainty (AAC/DUAC) thất bại vì hai lý do: uncertainty được đo trên một mẫu không được chạy, và replan dày làm robot đổi mode.
+- Nếu đo uncertainty **trên chính chunk được chọn (medoid)**, và medoid đã làm replan ít nhảy mode hơn, thì h thích nghi có phát huy được không?
+
+**Tín hiệu (`ccs.consensus_horizon`).**
+- k\* = số bước mà ít nhất 50% mẫu còn nằm trong 2 cm quanh medoid; h = max(2, k\*), tối đa 10.
+- Offline, tín hiệu này ổn định giữa hai decision liền nhau hơn hẳn DUAC (tương quan 0.33 so với khoảng 0.1) và không có hiệu ứng rìa chunk.
+- Tuy vậy, nó không báo trước được thất bại (AUROC khoảng 0.5).
+
+**Kết quả** (2.460 episode mỗi arm, ghép cặp):
+
+| Arm | Success | So sánh | Chênh (pp) | CI 95% | p Holm |
+|---|---|---|---|---|---|
+| medoid_h5 | 33.7% | vs medoid_h8 | **−3.1** | [−5.0, −1.1] | 0.025 |
+| medoid_h8 | **36.8%** | — | | | |
+| medoid_h10 | 35.2% | vs medoid_h8 | −1.6 | [−3.7, +0.4] | 0.76 |
+| **mcons_h10** (medoid + consensus horizon) | 36.0% | vs medoid_h10 | +0.9 | [−1.1, +2.8] | 1 |
+| | | vs medoid_h8 | −0.8 | [−2.8, +1.3] | 1 |
+
+**Đọc kết quả.**
+1. **Hiệu ứng của h và hiệu ứng của việc chọn chunk cộng dồn, không tương tác.**
+
+   | h | Fixed (1 mẫu) | Medoid | Chênh |
+   |---|---|---|---|
+   | 5 | 22.7% | 33.7% | +11.0 |
+   | 8 | 25.9% | 36.8% | +10.9 |
+   | 10 | 25.9% | 35.2% | +9.3 |
+
+   Medoid nâng cả đường cong lên khoảng +10 pp nhưng **không đổi hình dạng** của nó. h = 5 vẫn kém h = 8 một khoảng như cũ (−3.1 pp với medoid, −3.2 pp với một mẫu). Giả thuyết "medoid làm replan dày hết có hại" **bị bác bỏ**.
+2. **Uncertainty chọn h vẫn không giúp**, kể cả khi đo trên chunk được chạy. mcons ngang medoid với h cố định.
+3. Khi chạy thật, phân bố h của mcons lại dồn về hai đầu: 27% ở mức tối thiểu h = 2, 55% ở h = 10 (trung bình 7.0 theo decision). Offline thì chỉ khoảng 4% decision có k\* ≤ 2.
+   - Một khả năng: replan ngắn đưa robot vào những state mà các mẫu bất đồng ngay từ bước đầu, tạo vòng lặp h ngắn.
+   - Cần phân tích thêm nếu muốn đi tiếp hướng này.
+4. **Chất lượng chuyển động:** bước nhảy ở chỗ nối chunk 1.38 cm (bằng medoid_h8), gia tốc 4.98 so với 4.24. Replan nhiều hơn (23.8 so với 20.5 decision/episode) mà không được gì.
+
+**Kết luận.**
+- Trên VLABench, uncertainty dùng để chọn h không cải thiện được, kể cả khi kết hợp với chọn chunk.
+- Hai đòn bẩy này độc lập với nhau. Cấu hình tốt nhất vẫn là **medoid với h cố định = 8**.
+- Kết quả này củng cố kết luận của O-LONG (mục 1.3): dư địa của việc chọn h nhỏ và tín hiệu uncertainty không chỉ ra đúng lúc cần replan. Nó còn loại trừ cách giải thích rằng thất bại của AAC/DUAC chỉ do chạy mẫu ngẫu nhiên.
 
 ## 7. So sánh với các phương pháp liên quan
 

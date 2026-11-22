@@ -1,0 +1,14 @@
+{
+  "arm": "mcons_h10",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 5,
+  "success_rate": 0.36,
+  "success_rate_excl_errors": 0.4,
+  "progress_score": 0.39,
+  "mean_h": 7.857,
+  "tasks": {
+    "select_mahjong": 0.36
+  },
+  "synthetic_dry_run": false
+}

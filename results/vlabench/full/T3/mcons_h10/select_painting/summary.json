@@ -1,0 +1,14 @@
+{
+  "arm": "mcons_h10",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.2,
+  "success_rate_excl_errors": 0.2,
+  "progress_score": 0.2,
+  "mean_h": 8.46,
+  "tasks": {
+    "select_painting": 0.2
+  },
+  "synthetic_dry_run": false
+}

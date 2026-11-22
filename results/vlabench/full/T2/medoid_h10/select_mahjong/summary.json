@@ -1,0 +1,14 @@
+{
+  "arm": "medoid_h10",
+  "track": "track_2_cross_category",
+  "episodes": 50,
+  "errors": 4,
+  "success_rate": 0.34,
+  "success_rate_excl_errors": 0.3696,
+  "progress_score": 0.4,
+  "mean_h": 10.0,
+  "tasks": {
+    "select_mahjong": 0.34
+  },
+  "synthetic_dry_run": false
+}

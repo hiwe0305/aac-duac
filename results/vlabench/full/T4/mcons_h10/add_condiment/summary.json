@@ -1,0 +1,14 @@
+{
+  "arm": "mcons_h10",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.12,
+  "success_rate_excl_errors": 0.12,
+  "progress_score": 0.3533,
+  "mean_h": 5.91,
+  "tasks": {
+    "add_condiment": 0.12
+  },
+  "synthetic_dry_run": false
+}

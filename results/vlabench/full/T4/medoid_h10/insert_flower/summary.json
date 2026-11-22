@@ -1,0 +1,14 @@
+{
+  "arm": "medoid_h10",
+  "track": "track_4_semantic_instruction",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.06,
+  "success_rate_excl_errors": 0.06,
+  "progress_score": 0.49,
+  "mean_h": 10.0,
+  "tasks": {
+    "insert_flower": 0.06
+  },
+  "synthetic_dry_run": false
+}
