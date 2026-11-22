@@ -152,66 +152,6 @@ def select_chunk(samples: np.ndarray, h: int, prev_chunk: Optional[np.ndarray] =
 
 
 @dataclass
-class ACSResult:
-    index: int            # index into the full sample array (fresh first, then anchored)
-    commit: bool          # True: continued the previous plan; False: switched to the global medoid
-    anchored: bool        # whether anchored samples were available at this decision
-    support: int          # fresh samples within r of the anchored continuation
-    peak: int             # largest number of fresh samples within r of any fresh sample (mass of the main mode)
-    radius: float         # r = median pairwise distance among fresh samples
-
-    def as_log(self) -> Dict[str, object]:
-        return {"acs_index": self.index, "acs_commit": self.commit, "acs_anchored": self.anchored,
-                "acs_support": self.support, "acs_peak": self.peak, "acs_radius": round(float(self.radius), 5)}
-
-
-def select_acs(samples: np.ndarray, n_fresh: int, anchored: bool, h: int, gamma: float = 0.5,
-               force_commit: bool = False, rot_weight: float = 0.05, action_space: str = "absolute") -> ACSResult:
-    """Anchored Commit-or-Switch.
-
-    samples: (n_fresh + n_anchor, H, 7). The first n_fresh start from fresh noise; the rest start from the previous
-    executed chunk's noise shifted by the executed length (sample n_fresh exactly, the others slightly perturbed), so
-    they are the previous plan re-generated under the new observation. Distances are on the executed prefix h.
-
-      r        = median pairwise distance among fresh samples (scale of this decision's spread)
-      peak     = max_j #{k fresh : d(f_j, f_k) <= r}          mass of the best-supported mode
-      support  = #{k fresh : d(anchor_0, f_k) <= r}            mass that still supports the previous plan
-      commit  <=> support >= gamma * peak   (or force_commit)
-      commit -> among {anchored} U {fresh within r of anchor_0}, the one with the smallest mean distance to the fresh
-                samples within r of anchor_0 (typical member of the continued mode)
-      switch -> medoid of the fresh samples
-    Without anchored samples (first decision) the fresh medoid is executed. Fresh samples estimate the mode masses
-    without bias; anchored samples only provide the continuation candidate.
-    """
-
-    samples = np.asarray(samples, dtype=np.float64)[..., :7]
-    h = int(max(1, min(h, samples.shape[1])))
-    traj = _integrate_libero(samples) if action_space == "libero_delta" else samples
-    rot_mode = "vector" if action_space == "libero_delta" else "euler"
-    pre = traj[:, :h]
-    F = pre[:n_fresh]
-    dff = _pose_distance(F[:, None], F[None, :], rot_weight, rot_mode)
-    off = dff[~np.eye(n_fresh, dtype=bool)]
-    r = float(np.median(off)) if off.size else 0.0
-    medoid = int(np.argmin(dff.sum(axis=1)))
-    peak = int((dff <= r).sum(axis=1).max())
-    n_anchor = samples.shape[0] - n_fresh
-    if not anchored or n_anchor <= 0:
-        return ACSResult(medoid, False, False, 0, peak, r)
-    A = pre[n_fresh:]
-    daf = _pose_distance(A[:, None], F[None, :], rot_weight, rot_mode)  # (n_anchor, n_fresh)
-    near = np.flatnonzero(daf[0] <= r)
-    support = int(near.size)
-    if not (force_commit or support >= gamma * peak):
-        return ACSResult(medoid, False, True, support, peak, r)
-    ref = near if near.size else np.arange(n_fresh)  # forced commit with no supporting fresh sample: use all
-    cand = [(float(daf[k, ref].mean()), n_fresh + k) for k in range(n_anchor)]
-    cand += [(float(dff[j, ref].mean()), int(j)) for j in near]
-    best = min(cand)[1]
-    return ACSResult(best, True, True, support, peak, r)
-
-
-@dataclass
 class EGCResult:
     index: int
     commit: bool     # True: stayed with the previous plan's mode; False: switched to the global medoid
@@ -310,11 +250,27 @@ def select_xdc(samples: np.ndarray, h: int, prev_samples: Optional[np.ndarray] =
     return {"index": j, "xdc_overlap": L, "xdc_medoid": int(np.argmin(C))}
 
 
+def consensus_horizon(samples: np.ndarray, index: int, radius: float = 0.02, quorum: float = 0.5,
+                      min_h: int = 2, action_space: str = "absolute") -> int:
+    """How many steps of the chosen chunk the samples still agree on (uncertainty of the executed chunk itself).
+
+    agree_k = fraction of the N samples whose end-effector position at step k is within ``radius`` (m) of the chosen
+    chunk's; k* = the last step before agree_k first drops below ``quorum``; returns max(min_h, k*). Unlike AAC's
+    marginal entropy over all samples or DUAC's divergence of one random sample, it measures agreement with the chunk
+    that will actually be executed.
+    """
+
+    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    traj = _integrate_libero(samples) if action_space == "libero_delta" else samples
+    d = np.linalg.norm(traj[:, :, :3] - traj[index][None, :, :3], axis=-1)  # (N, H)
+    low = (d <= radius).mean(axis=0) < quorum
+    k = int(np.argmax(low)) if low.any() else samples.shape[1]
+    return int(max(min_h, min(k, samples.shape[1])))
+
+
 VARIANTS = {
     "ccs": CCSConfig(),
     "medoid": CCSConfig(lam=0.0, gripper_tol=None),
-    "coherent": CCSConfig(lam=1.0, gripper_tol=None, use_consensus=False),
-    "gripvote": CCSConfig(lam=0.0, use_consensus=False),
 }
 
 
@@ -348,23 +304,11 @@ def _selftest() -> None:
     d2 = d.copy(); d2[3, :, 6] = -1.0
     rl2 = select_chunk(d2, 8, prev_chunk=prev_d, prev_h=8, cfg=CCSConfig(lam=10.0), action_space="libero_delta")
     assert rl2.index == 3 and rl2.overlap == 2, (rl2.index, rl2.overlap)
-    # ACS: 12 fresh samples go left (mode L), 8 go right (mode R); the anchored continuation follows R
+    # two modes: 12 samples go along x (L), 8 are offset in +y from the first step on (R)
     rng2 = np.random.default_rng(1)
-    L = base.copy(); R = base.copy(); R[:, 1] = np.linspace(0, 0.06, 10)
+    L = base.copy(); R = base.copy(); R[:, 1] = np.linspace(0.02, 0.06, 10)
     fresh = np.concatenate([L[None] + rng2.normal(0, 0.002, (12, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0],
                             R[None] + rng2.normal(0, 0.002, (8, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]])
-    anc = R[None] + rng2.normal(0, 0.002, (4, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
-    allS = np.concatenate([fresh, anc])
-    a1 = select_acs(allS, 20, True, 8)                     # R holds 8/12 of L's mass >= 0.5 -> commit to R
-    assert a1.commit and (a1.index >= 20 or a1.index >= 12), a1
-    a2 = select_acs(allS, 20, True, 8, gamma=0.9)          # stricter gate -> switch to the medoid (in L)
-    assert not a2.commit and a2.index < 12, a2
-    weak = np.concatenate([fresh[:12], fresh[:8] * 0 + L[None] + rng2.normal(0, 0.002, (8, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0], anc])
-    a3 = select_acs(weak, 20, True, 8)                     # nobody supports R any more -> switch
-    assert not a3.commit and a3.support == 0 and a3.index < 20, a3
-    a4 = select_acs(weak, 20, True, 8, force_commit=True)  # anchor-always ablation keeps R
-    assert a4.commit and a4.index >= 20, a4
-    assert select_acs(allS[:20], 20, False, 8).commit is False
     # EGC: previous plan followed R (its unexecuted tail sits on R's first steps)
     prevR = np.concatenate([np.zeros((8, 7)), R[:2]], axis=0); prevR[:8] = R[:8]
     e1 = select_egc(fresh, 8, prevR, 8)                    # R has 8 vs L 12 samples: 8 >= 0.5 * 12 -> stay in R
@@ -387,10 +331,14 @@ def _selftest() -> None:
     prevS = R[None] + rng2.normal(0, 0.002, (20, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]  # previous distribution was all R
     prevS[:, 8:] = R[None, :2] + rng2.normal(0, 0.002, (20, 2, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
     assert select_xdc(fresh, 8, prevS, 8, lam=5.0)["index"] >= 12  # strong temporal term keeps mode R
+    split = np.repeat(base[None], 20, 0); split[12:, 5:, 1] += 0.05  # 12 samples agree all along, 8 leave at step 6
+    assert consensus_horizon(split, 0) == 10                        # 12/20 >= 0.5 agree on every step
+    split[4:12, 5:, 1] += 0.05                                      # now only 4/20 agree after step 5
+    assert consensus_horizon(split, 0) == 5 and consensus_horizon(split, 0, quorum=0.1) == 10
     print("[PASS] ccs: gripper vote drops minority, medoid avoids outlier, coherence follows previous plan, "
           "identical samples -> 0, euler wrap safe; same behaviour on LIBERO delta actions; "
-          "ACS commits when the anchored plan keeps support, switches when it loses it, force_commit keeps it; "
-          "EGC stays/switches by support; XDC = medoid without history, follows the previous distribution with it")
+          "EGC stays/switches by support; XDC = medoid without history, follows the previous distribution with it; "
+          "consensus horizon stops where the majority leaves the chosen chunk")
 
 
 if __name__ == "__main__":

@@ -21,12 +21,11 @@ mkdir -p "$LOGS"
 PIDS=()
 cleanup() { for p in "${PIDS[@]}"; do kill "$p" 2>/dev/null; done; }
 trap cleanup EXIT
-mode_of() { case $(( $1 % 100 )) in 0) echo vanilla ;; 10|11) echo duac ;; 20) echo aac ;; 30) echo anchor ;; *) echo "" ;; esac; }  # 30: aac + 4 anchored samples  # 87xx, 88xx, ...
+mode_of() { case $(( $1 % 100 )) in 0) echo vanilla ;; 10|11) echo duac ;; 20) echo aac ;; *) echo "" ;; esac; }  # 87xx, 88xx, ...
 for port in $(grep -v '^#' "$JOBS" | grep -oE -- '--port +[0-9]+' | awk '{print $2}' | sort -u); do
   if ss -ltn | grep -q ":$port "; then echo "$(date '+%F %T') server $port already listening"; continue; fi
   mode=$(mode_of "$port"); [[ -z $mode ]] && { echo "unknown port $port"; exit 2; }
-  if [[ $mode == anchor ]]; then srv_args=(--mode aac --n-anchor 4); else srv_args=(--mode "$mode"); fi
-  .venv-openpi/bin/python $SERVER "${srv_args[@]}" --port "$port" > "$LOGS/server_${mode}_$port.log" 2>&1 &
+  .venv-openpi/bin/python $SERVER --mode "$mode" --port "$port" > "$LOGS/server_${mode}_$port.log" 2>&1 &
   PIDS+=($!)
   until grep -q "server listening" "$LOGS/server_${mode}_$port.log"; do
     kill -0 "${PIDS[-1]}" 2>/dev/null || { echo "server $port died:"; tail -5 "$LOGS/server_${mode}_$port.log"; exit 1; }

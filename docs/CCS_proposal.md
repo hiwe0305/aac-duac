@@ -155,8 +155,7 @@ mỗi decision:
 |---|---|---|---|---|
 | `ccs_hK` | có (tol = 1) | có | 1 | Phương pháp đầy đủ |
 | `medoid_hK` | không | có | 0 | Ablation: chỉ đồng thuận |
-| `coherent_hK` | không | không | 1 | Ablation: chỉ liền mạch, gần BID backward coherence |
-| `gripvote_hK` | có | không | 0 | Ablation: chỉ bỏ phiếu gripper |
+| `egc_hK`, `xdc_hK` | — | — | — | Hai mở rộng nhắm vào việc đổi kế hoạch giữa các chunk (mục 6.3) |
 | `sample0_hK` | — | — | — | **Đối chứng:** chạy mẫu 0, tức chunk mà AAC chạy |
 
 ### 3.5 Chi phí
@@ -177,7 +176,7 @@ mỗi decision:
 | File | Nội dung |
 |---|---|
 | `flowbased_aac/flowbased_aac/ccs.py` | `select_chunk`, `VARIANTS`, self-test (`python -m flowbased_aac.ccs`) |
-| `flowbased_aac/flowbased_aac/vlabench/eval_vlabench.py` | `--select {sample0,ccs,medoid,coherent,gripvote} --fixed-horizon K` (server mode aac) |
+| `flowbased_aac/flowbased_aac/vlabench/eval_vlabench.py` | `--select {sample0,ccs,medoid,egc,xdc} --fixed-horizon K` (server mode aac) |
 | `flowbased_aac/flowbased_aac/eval_libero.py`, `flowbased_aac/duac.py` | Như trên cho LIBERO / LIBERO-PRO (`eval-liberopro --select ...`) |
 | `tools/run_vlabench_full.sh` | Arm `<select>_h<K>`, ví dụ `ARMS="ccs_h8 sample0_h8 medoid_h8"` |
 | `tools/schedule_track_a.py` | `--stage select --arms medoid_h8,sample0_h8,medoid_h10` |
@@ -389,7 +388,7 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 
 | Ý tưởng | Cơ chế | Kết quả |
 |---|---|---|
-| **ACS** (Anchored Commit-or-Switch) | Thêm 4 mẫu sinh từ noise của chunk vừa chạy, dịch theo thời gian (server `--n-anchor`), làm ứng viên "tiếp tục kế hoạch". Giữ kế hoạch nếu đủ mẫu mới ủng hộ | **Giả định sai, dừng ở smoke test.** Trên 126 decision, mẫu neo lệch kế hoạch cũ 0.85 cm, mẫu mới trung vị 0.80 cm; mẫu neo tốt hơn chỉ 52% số lần. Với π0.5, cùng noise không giữ được mode dưới quan sát mới (khớp hạn chế mà PAINT nêu: action expert trộn mạnh giữa các vị trí trong chunk) |
+| **ACS** (Anchored Commit-or-Switch) | Thêm 4 mẫu sinh từ noise của chunk vừa chạy, dịch theo thời gian, làm ứng viên "tiếp tục kế hoạch". Giữ kế hoạch nếu đủ mẫu mới ủng hộ | **Giả định sai, dừng ở smoke test; code đã gỡ** (còn trong lịch sử git, commit `5199838`). Trên 126 decision, mẫu neo lệch kế hoạch cũ 0.85 cm, mẫu mới trung vị 0.80 cm; mẫu neo tốt hơn chỉ 52% số lần. Với π0.5, cùng noise không giữ được mode dưới quan sát mới (khớp hạn chế mà PAINT nêu: action expert trộn mạnh giữa các vị trí trong chunk) |
 | **EGC** (Evidence-Gated Commitment) | Đếm số mẫu mới khớp với phần chưa chạy của kế hoạch cũ (bán kính = trung vị khoảng cách giữa các mẫu). Nếu ≥ 0.5 × mode đông nhất thì giữ, chạy medoid của nhóm đó; nếu không thì chạy medoid toàn cục | 37.2%, so với medoid **+0.4 pp [−1.5, +2.3]**, không khác. Giữ kế hoạch ở 31% decision |
 | **XDC** (Cross-Decision Consensus) | Chọn mẫu ở trung tâm của cả 20 mẫu hiện tại và 20 mẫu của decision trước (trên đoạn chồng nhau), λ = 1 | 36.3%, so với medoid **−0.4 pp [−2.4, +1.5]**, không khác |
 

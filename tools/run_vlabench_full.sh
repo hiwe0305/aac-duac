@@ -44,19 +44,16 @@ arm_args() {  # $1 arm, $2 track, $3 task
     # control: h ~ executed-h distribution of duac_noxi on the same track and task (needs those runs first)
     random_h)  echo "--port $((8710 + PORT_OFFSET)) --random-horizon-from $OUT/$2/${RANDOM_H_FROM:-duac_noxi}/$3/decisions.csv" ;;
     # chunk selection among the AAC server's 20 samples at fixed h (flowbased_aac/ccs.py): <select>_h<k>, e.g. ccs_h8, sample0_h8
-    # Anchored Commit-or-Switch (needs the anchor server, port 8730: aac + 4 anchored samples): acs_h8, anchor_h8
-    acs_h*|anchor_h*)
-               echo "--port $((8730 + PORT_OFFSET)) --select ${1%_h*} --fixed-horizon ${1##*_h} --state-bank --save-videos --video-episodes 2" ;;
-    sample0_h*|ccs_h*|medoid_h*|coherent_h*|gripvote_h*|egc_h*|xdc_h*)
+    sample0_h*|ccs_h*|medoid_h*|egc_h*|xdc_h*|mcons_h*)
                echo "--port $((8720 + PORT_OFFSET)) --select ${1%_h*} --fixed-horizon ${1##*_h} --state-bank --save-videos --video-episodes 2" ;;
     *) echo "unknown arm $1" >&2; exit 2 ;;
   esac
 }
-server_of() { case $1 in vanilla) echo vanilla ;; acs_h*|anchor_h*) echo anchor ;; aac|aac_*|*_h[0-9]*) echo aac ;; *) echo duac ;; esac; }
+server_of() { case $1 in vanilla) echo vanilla ;; aac|aac_*|*_h[0-9]*) echo aac ;; *) echo duac ;; esac; }
 
 # 2. sequential phases: track x server
 for tr in $TRACKS; do
-  for srv in vanilla duac aac anchor; do
+  for srv in vanilla duac aac; do
     J="$OUT/jobs/${tr}_${srv}${TAG}.txt"
     { echo "# $tr, $srv server, generated $(date '+%F %T')"
       for t in $TASKS; do

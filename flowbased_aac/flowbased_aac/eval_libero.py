@@ -6,7 +6,7 @@ Arms
   random_h  same server, h drawn from the h distribution of a DUAC run (``--random-horizon-from``)
   aac       multi-sample server (``aac.py serve-pi05``), official AAC selector, executes sample 0
   <sel>_hK  same multi-sample server, fixed h = K, executes the chunk chosen by ``ccs.select_chunk`` (``--select``):
-            medoid / ccs / coherent / gripvote; sample0 = AAC's executed chunk at a fixed h (control)
+            medoid / ccs / egc / xdc; sample0 = AAC's executed chunk at a fixed h (control)
 
 Protocol (reference evaluator of hactt13 / official OpenPI LIBERO example)
   OffScreenRenderEnv 256x256, env.seed(seed), init state = trial id, 10 dummy wait steps, then
@@ -400,7 +400,7 @@ def run_libero_evaluation(
     if aac_selector is not None:
         from .aac_official import aac_decision
     if select is not None:
-        from .ccs import VARIANTS, select_chunk, select_egc, select_xdc
+        from .ccs import VARIANTS, consensus_horizon, select_chunk, select_egc, select_xdc
 
     task_suite = backend.task_suite
     t_list = task_ids if task_ids is not None else list(range(task_suite.n_tasks))
@@ -482,6 +482,10 @@ def run_libero_evaluation(
                     samples = np.asarray(response["actions"])[:, :, :7]
                     if select == "sample0":
                         pick, sel = 0, {}
+                    elif select == "mcons":  # medoid + consensus horizon (fixed_horizon = cap)
+                        pick = select_chunk(samples, fixed_horizon, None, 0, VARIANTS["medoid"],
+                                            action_space="libero_delta").index
+                        sel = {"consensus_h": consensus_horizon(samples, pick, min_h=2, action_space="libero_delta")}
                     elif select == "egc":
                         res = select_egc(samples, fixed_horizon, prev_chunk, prev_h, action_space="libero_delta")
                         pick, sel = res.index, res.as_log()
@@ -495,7 +499,7 @@ def run_libero_evaluation(
                         pick, sel = res.index, res.as_log()
                     chunk = samples[pick]
                     normalized_chunk = np.asarray(response["normalized_action"])[pick]
-                    h_exec, h_unc, xi = int(min(fixed_horizon, len(chunk))), -1, -1
+                    h_exec, h_unc, xi = int(min(sel.get("consensus_h", fixed_horizon), len(chunk))), -1, -1
                     u_step, u_prefix, m_step = [], [], []
                     detail = {"algorithm": select, "pick": pick, **sel}
                 elif aac_selector is not None:

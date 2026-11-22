@@ -301,7 +301,7 @@ def build_parser() -> argparse.ArgumentParser:
         e.add_argument("--num-probes", type=int, default=40, help="logged in args.json")
         e.add_argument("--fixed-horizon", type=int, default=None)
         e.add_argument("--random-horizon-from", default=None)
-        e.add_argument("--select", choices=["sample0", "ccs", "medoid", "coherent", "gripvote", "egc", "xdc"], default=None,
+        e.add_argument("--select", choices=["sample0", "ccs", "medoid", "egc", "xdc", "mcons"], default=None,
                        help="needs an aac.py serve-pi05 (N samples) server and --fixed-horizon; arm <select>_h<k>")
         e.add_argument("--state-bank", action=argparse.BooleanOptionalAction, default=False)
         e.add_argument("--save-videos", action=argparse.BooleanOptionalAction, default=False)
