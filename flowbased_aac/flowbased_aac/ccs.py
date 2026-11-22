@@ -20,9 +20,11 @@ targets: position in metres plus ``rot_weight`` metres per radian of rotation (g
 Action spaces (``action_space``):
   "absolute"      VLABench: [target pos (m), target euler xyz (rad), gripper], open iff gripper >= 0.1
   "libero_delta"  LIBERO OSC: per-step [dpos, daxis-angle, gripper] in robosuite units (1.0 = 0.05 m / 0.5 rad),
-                  gripper -1 open / +1 close. Chunks are integrated into a trajectory relative to the current pose
-                  (cumulative sums, rotation as an accumulated rotation vector) before measuring distances; the
-                  previous chunk's tail is integrated from the same origin.
+                  gripper -1 open / +1 close. Chunks are integrated into a trajectory relative to the current pose:
+                  positions by cumulative sums, orientations by composing the rotations the way robosuite's OSC sets
+                  its goal (control_utils.set_goal_orientation: R_goal = Exp(delta) @ R_current, i.e. world-frame
+                  left multiplication), stored as rotation vectors; orientation distances are geodesic on SO(3).
+                  The previous chunk's tail is integrated from the same origin.
 """
 
 from __future__ import annotations
@@ -31,6 +33,8 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional
 
 import numpy as np
+from scipy.sparse import csr_matrix
+from scipy.sparse.csgraph import connected_components
 from scipy.spatial.transform import Rotation
 
 GRIPPER_OPEN_THRESHOLD = 0.1  # VLABench official client: fingers open iff gripper >= 0.1
@@ -61,35 +65,85 @@ class CCSResult:
                 "ccs_B": r(self.coherence), "ccs_score": r(self.score), "ccs_overlap": self.overlap}
 
 
-def _pose_distance(a: np.ndarray, b: np.ndarray, rot_weight: float, rot_mode: str = "euler") -> np.ndarray:
-    """Mean over steps of position L2 + rot_weight * rotation distance. a, b: (..., T, 7) broadcastable.
+ACTION_SPACES = ("absolute", "libero_delta")
+_ROT_MODE = {"absolute": "euler", "libero_delta": "rotvec"}
 
-    rot_mode "euler": geodesic angle between euler-xyz orientations; "vector": L2 between rotation vectors."""
+
+def _gripper_open(actions: np.ndarray, action_space: str) -> np.ndarray:
+    """Boolean open state per step: VLABench open iff >= 0.1; LIBERO -1 open / +1 close."""
+
+    g = np.asarray(actions)[..., 6]
+    return g < 0.0 if action_space == "libero_delta" else g >= GRIPPER_OPEN_THRESHOLD
+
+
+def _rotations(x: np.ndarray, rot_mode: str) -> Rotation:
+    x = np.ascontiguousarray(x).reshape(-1, 3)
+    return Rotation.from_euler("xyz", x) if rot_mode == "euler" else Rotation.from_rotvec(x)
+
+
+def _step_distance(a: np.ndarray, b: np.ndarray, rot_weight: float, rot_mode: str = "euler") -> np.ndarray:
+    """Per-step distance: position L2 (m) + rot_weight (m/rad) * geodesic angle between the two orientations.
+    a, b: (..., T, 7) broadcastable; rot_mode "euler" (euler xyz, wrap-safe) or "rotvec" (rotation vectors)."""
 
     a, b = np.broadcast_arrays(a, b)
-    pos = np.linalg.norm(a[..., :3] - b[..., :3], axis=-1)
-    if rot_weight > 0 and rot_mode == "vector":
-        pos = pos + rot_weight * np.linalg.norm(a[..., 3:6] - b[..., 3:6], axis=-1)
-    elif rot_weight > 0:
-        shape = a.shape[:-1]
-        ra = Rotation.from_euler("xyz", a[..., 3:6].reshape(-1, 3))
-        rb = Rotation.from_euler("xyz", b[..., 3:6].reshape(-1, 3))
-        ang = (ra.inv() * rb).magnitude().reshape(shape)
-        pos = pos + rot_weight * ang
-    return pos.mean(axis=-1)
+    d = np.linalg.norm(a[..., :3] - b[..., :3], axis=-1)
+    if rot_weight > 0:
+        if rot_mode not in ("euler", "rotvec"):
+            raise ValueError(f"unknown rot_mode {rot_mode!r}")
+        ang = (_rotations(a[..., 3:6], rot_mode).inv() * _rotations(b[..., 3:6], rot_mode)).magnitude()
+        d = d + rot_weight * ang.reshape(a.shape[:-1])
+    return d
+
+
+def _pose_distance(a: np.ndarray, b: np.ndarray, rot_weight: float, rot_mode: str = "euler") -> np.ndarray:
+    """Mean over steps of :func:`_step_distance`."""
+
+    return _step_distance(a, b, rot_weight, rot_mode).mean(axis=-1)
+
+
+Z_MIN_SD = 1e-6  # 1 micron: below this spread the candidates are treated as equivalent (no z-score amplification)
 
 
 def _z(x: np.ndarray) -> np.ndarray:
     sd = x.std()
-    return np.zeros_like(x) if sd < 1e-12 else (x - x.mean()) / sd
+    return np.zeros_like(x) if sd < Z_MIN_SD else (x - x.mean()) / sd
+
+
+def _validate(samples: np.ndarray, prev_h: int = 0, action_space: str = "absolute",
+              prev: Optional[np.ndarray] = None) -> np.ndarray:
+    s = np.asarray(samples, dtype=np.float64)
+    if s.ndim != 3 or s.shape[0] < 1 or s.shape[1] < 1 or s.shape[2] < 7:
+        raise ValueError(f"samples must be (N >= 1, H >= 1, >= 7), got {s.shape}")
+    if not np.all(np.isfinite(s[..., :7])):
+        raise ValueError("samples contain NaN or inf")
+    if action_space not in ACTION_SPACES:
+        raise ValueError(f"unknown action_space {action_space!r} (expected one of {ACTION_SPACES})")
+    if prev is not None:
+        p = np.asarray(prev, dtype=np.float64)
+        if p.shape[-1] < 7 or not np.all(np.isfinite(p[..., :7])):
+            raise ValueError(f"previous chunk/samples invalid: shape {p.shape} or non-finite values")
+        if not 0 <= int(prev_h) <= p.shape[-2]:
+            raise ValueError(f"prev_h={prev_h} outside [0, {p.shape[-2]}]")
+    return s[..., :7]
 
 
 def _integrate_libero(deltas: np.ndarray) -> np.ndarray:
-    """(..., T, 7) LIBERO deltas -> (..., T, 7) trajectory relative to the current pose (m, rad rotvec, gripper)."""
+    """(..., T, 7) LIBERO deltas -> (..., T, 7) trajectory relative to the current pose.
 
-    out = np.array(deltas, dtype=np.float64, copy=True)
-    out[..., :3] = np.cumsum(deltas[..., :3], axis=-2) * LIBERO_POS_UNIT
-    out[..., 3:6] = np.cumsum(deltas[..., 3:6], axis=-2) * LIBERO_ROT_UNIT
+    Position: cumulative sum x 0.05 m. Orientation: R_t = Exp(0.5 d_t) @ ... @ Exp(0.5 d_1) (robosuite OSC goal update),
+    stored as a rotation vector (angle <= pi). Gripper unchanged."""
+
+    d = np.asarray(deltas, dtype=np.float64)
+    out = np.array(d, copy=True)
+    out[..., :3] = np.cumsum(d[..., :3], axis=-2) * LIBERO_POS_UNIT
+    lead, T = d.shape[:-2], d.shape[-2]
+    rv = d[..., 3:6].reshape(-1, T, 3) * LIBERO_ROT_UNIT
+    acc = Rotation.identity(rv.shape[0])
+    comp = np.empty_like(rv)
+    for t in range(T):
+        acc = Rotation.from_rotvec(rv[:, t]) * acc  # world-frame left multiplication
+        comp[:, t] = acc.as_rotvec()
+    out[..., 3:6] = comp.reshape(*lead, T, 3)
     return out
 
 
@@ -97,30 +151,27 @@ def select_chunk(samples: np.ndarray, h: int, prev_chunk: Optional[np.ndarray] =
                  cfg: CCSConfig = CCSConfig(), action_space: str = "absolute") -> CCSResult:
     """samples: (N, H, 7) actions; prev_chunk: (H, 7) chunk whose first ``prev_h`` actions were executed."""
 
-    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    samples = _validate(samples, prev_h, action_space, prev_chunk)
     n, horizon, _ = samples.shape
     h = int(max(1, min(h, horizon)))
+    rot_mode = _ROT_MODE[action_space]
+    is_open = _gripper_open(samples[:, :h], action_space)
     if action_space == "libero_delta":
-        is_open = samples[:, :h, 6] < 0.0
-        rot_mode = "vector"
         if prev_chunk is not None:
             prev_chunk = np.asarray(prev_chunk, dtype=np.float64)[:, :7]
             tail = _integrate_libero(prev_chunk[prev_h:])
             prev_chunk = np.concatenate([np.zeros((prev_h, 7)), tail], axis=0)  # tail indexed from prev_h, origin = now
         samples = _integrate_libero(samples)
-    elif action_space == "absolute":
-        is_open = samples[:, :h, 6] >= GRIPPER_OPEN_THRESHOLD
-        rot_mode = "euler"
-    else:
-        raise ValueError(f"unknown action_space {action_space!r}")
     pre = samples[:, :h]
 
     grip = is_open.astype(int)  # (N, h)
-    majority = (grip.mean(axis=0) >= 0.5).astype(int)
+    frac = grip.mean(axis=0)
+    majority = (frac > 0.5).astype(int)
+    decided = frac != 0.5  # exact ties (e.g. 10/10) express no majority: those steps are not voted on
     if cfg.gripper_tol is None:
         kept = np.arange(n)
     else:
-        ham = np.abs(grip - majority[None]).sum(axis=1)
+        ham = (np.abs(grip - majority[None]) * decided[None]).sum(axis=1)
         kept = np.flatnonzero(ham <= cfg.gripper_tol)
         if kept.size == 0:  # per-step majority matches nobody: keep the closest ones
             kept = np.flatnonzero(ham == ham.min())
@@ -167,34 +218,41 @@ class EGCResult:
 
 
 def select_egc(samples: np.ndarray, h: int, prev_chunk: Optional[np.ndarray] = None, prev_h: int = 0,
-               gamma: float = 0.5, rot_weight: float = 0.05, action_space: str = "absolute") -> EGCResult:
+               gamma: float = 0.5, rot_weight: float = 0.05, action_space: str = "absolute",
+               knn_frac: float = 0.2, link_mult: float = 2.0) -> EGCResult:
     """Evidence-Gated Commitment: stay in the previous plan's mode while the fresh samples still support it.
 
     The previous plan is represented by its unexecuted tail, which covers the first L = H - h_prev steps of the new
     chunk (same time steps). On that overlap window:
-      r_L      = median pairwise overlap distance among the N samples
-      peak     = max_j #{k : d_L(a_j, a_k) <= r_L}              mass of the best-supported mode
-      support  = #{k : d_L(a_k, tail) <= r_L}                    mass that still agrees with the previous plan
+      s_L      = median over samples of the distance to their k-th nearest other sample, k = max(1, round(knn_frac
+                 (N - 1))) (= 4 for N = 20): a LOCAL (within-mode) scale.
+      modes    = connected components of the graph linking samples with d_L <= link_mult * s_L (single linkage):
+                 well-separated modes become separate components, a broad unimodal cloud stays one component.
+      peak     = size of the largest mode                          mass of the best-supported mode
+      support  = total size of the modes containing a sample within link_mult * s_L of the tail
+                                                                   mass that still agrees with the previous plan
       commit  <=> support >= gamma * peak
-      commit -> medoid (distance on the executed prefix h) of the continuation set {k : d_L(a_k, tail) <= r_L}
+      commit -> medoid (distance on the executed prefix h) of the samples in the tail's mode(s)
       switch -> medoid of all N samples
+    Mode masses are counted after clustering, not with a global radius: the median of all pairwise distances (first
+    version) approaches the distance between the modes when they are separated, since most pairs are cross-mode
+    (96 / 190 for a 12/8 split), and a bare local radius turns the counts into noisy local densities.
     With no previous chunk or no overlap the global medoid is executed. Unlike a soft coherence cost (BID backward
     coherence, CCS) the previous plan is never followed against the evidence: once fewer than gamma x peak samples
     agree with it, the policy switches; unlike the memoryless medoid it does not flip between two comparably supported
     modes at every replan.
     """
 
-    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    samples = _validate(samples, prev_h, action_space, prev_chunk)
     n, horizon, _ = samples.shape
     h = int(max(1, min(h, horizon)))
+    rot_mode = _ROT_MODE[action_space]
     if action_space == "libero_delta":
-        rot_mode = "vector"
         traj = _integrate_libero(samples)
         if prev_chunk is not None:
             prev_chunk = np.asarray(prev_chunk, dtype=np.float64)[:, :7]
             prev_chunk = np.concatenate([np.zeros((prev_h, 7)), _integrate_libero(prev_chunk[prev_h:])], axis=0)
     else:
-        rot_mode = "euler"
         traj = samples
         if prev_chunk is not None:
             prev_chunk = np.asarray(prev_chunk, dtype=np.float64)[:, :7]
@@ -202,14 +260,19 @@ def select_egc(samples: np.ndarray, h: int, prev_chunk: Optional[np.ndarray] = N
     dfull = _pose_distance(pre[:, None], pre[None, :], rot_weight, rot_mode)
     medoid = int(np.argmin(dfull.sum(axis=1)))
     L = int(max(0, min(horizon, prev_chunk.shape[0] - prev_h))) if prev_chunk is not None else 0
-    if L == 0:
+    if L == 0 or n < 2:
         return EGCResult(medoid, False, 0, 0, 0, 0, 0.0)
     win = traj[:, :L]
     dL = _pose_distance(win[:, None], win[None, :], rot_weight, rot_mode)
-    r = float(np.median(dL[~np.eye(n, dtype=bool)]))
-    peak = int((dL <= r).sum(axis=1).max())
+    k = int(max(1, min(n - 1, round(knn_frac * (n - 1)))))
+    knn = np.sort(dL + np.diag(np.full(n, np.inf)), axis=1)[:, k - 1]  # k-th nearest OTHER sample
+    r = float(link_mult * np.median(knn))
+    _, label = connected_components(csr_matrix(dL <= r), directed=False)
+    sizes = np.bincount(label)
+    peak = int(sizes.max())
     dtail = _pose_distance(win, prev_chunk[prev_h:prev_h + L][None], rot_weight, rot_mode)
-    cont = np.flatnonzero(dtail <= r)
+    tail_modes = np.unique(label[dtail <= r])
+    cont = np.flatnonzero(np.isin(label, tail_modes))
     support = int(cont.size)
     if support == 0 or support < gamma * peak:
         return EGCResult(medoid, False, support, peak, 0, L, r)
@@ -225,17 +288,18 @@ def select_xdc(samples: np.ndarray, h: int, prev_samples: Optional[np.ndarray] =
       P_j = mean_m d_L(a_j[:L], b_m[h_prev : h_prev + L])          (agreement with the previous distribution on the
                                                                     overlapping time steps, L = H - h_prev)
       j*  = argmin_j  C_j / median(C) + lam * P_j / median(P)
-    A product of the two sample-based densities across time: transient, observation-driven flips of the policy's
-    distribution are damped by the previous distribution, while a persistent change is followed one decision later
-    (the previous distribution has moved by then). Unlike coherence with the single executed chunk (BID, CCS) it does
-    not lock onto one possibly atypical chunk. Without previous samples it is the medoid.
+    A heuristic: a weighted sum of median-normalised mean distances (NOT a product of densities). Intended effect:
+    transient, observation-driven flips of the policy's distribution are damped by the previous distribution, while a
+    persistent change is followed one decision later (the previous distribution has moved by then). Unlike coherence
+    with the single executed chunk (BID, CCS) it does not lock onto one possibly atypical chunk. Without previous
+    samples it is the medoid.
     """
 
-    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    samples = _validate(samples, prev_h, action_space, prev_samples)
     n, horizon, _ = samples.shape
     h = int(max(1, min(h, horizon)))
     delta = action_space == "libero_delta"
-    rot_mode = "vector" if delta else "euler"
+    rot_mode = _ROT_MODE[action_space]
     traj = _integrate_libero(samples) if delta else samples
     C = _pose_distance(traj[:, None, :h], traj[None, :, :h], rot_weight, rot_mode).mean(axis=1)
     L = int(max(0, horizon - prev_h)) if prev_samples is not None else 0
@@ -250,22 +314,80 @@ def select_xdc(samples: np.ndarray, h: int, prev_samples: Optional[np.ndarray] =
     return {"index": j, "xdc_overlap": L, "xdc_medoid": int(np.argmin(C))}
 
 
-def consensus_horizon(samples: np.ndarray, index: int, radius: float = 0.02, quorum: float = 0.5,
-                      min_h: int = 2, action_space: str = "absolute") -> int:
-    """How many steps of the chosen chunk the samples still agree on (uncertainty of the executed chunk itself).
+def select_keystone(samples: np.ndarray, tau: float = 0.3, n_clusters: int = 2, max_iters: int = 10,
+                    executed_steps: Optional[int] = None) -> Dict[str, object]:
+    """KeyStone baseline (Dai et al., arXiv 2605.08638; repo dywsjtu/keystone, cluster_medoid_select defaults).
 
-    agree_k = fraction of the N samples whose end-effector position at step k is within ``radius`` (m) of the chosen
-    chunk's; k* = the last step before agree_k first drops below ``quorum``; returns max(min_h, k*). Unlike AAC's
-    marginal entropy over all samples or DUAC's divergence of one random sample, it measures agreement with the chunk
-    that will actually be executed.
+    Pass the policy's native output space (e.g. the server's ``normalized_action``), as KeyStone does: flattened L2
+    on absolute euler angles is wrong whenever samples straddle +-pi (63% of VLABench decisions).
+
+    x_i = flattened chunk (first ``executed_steps`` steps, all if None); Delta_ij = ||x_i - x_j||_2.
+    Global medoid m; spread s = ||mean(x) - x_m|| / (median_{i<j} Delta_ij + 1e-8). If s < tau return m (unimodal).
+    Otherwise k-means with C clusters (deterministic init = first C points, as in the repo; max 10 iterations, empty
+    cluster keeps its centroid) and return the medoid of the largest cluster.
     """
 
-    samples = np.asarray(samples, dtype=np.float64)[..., :7]
+    x = _validate(samples)
+    if executed_steps:
+        x = x[:, :executed_steps]
+    x = x.reshape(len(x), -1)
+    d = np.linalg.norm(x[:, None] - x[None], axis=-1)
+    m = int(np.argmin(d.sum(axis=1)))
+    med = float(np.median(d[np.triu_indices(len(x), 1)]))
+    s = float(np.linalg.norm(x.mean(axis=0) - x[m]) / (med + 1e-8))
+    if s < tau:
+        return {"index": m, "ks_spread": round(s, 4), "ks_clustered": False}
+    cent = x[:n_clusters].copy()
+    for _ in range(max_iters):
+        z = np.argmin(np.linalg.norm(x[:, None] - cent[None], axis=-1), axis=1)
+        new = np.array([x[z == c].mean(axis=0) if np.any(z == c) else cent[c] for c in range(n_clusters)])
+        if np.allclose(new, cent, atol=1e-6):
+            break
+        cent = new
+    z = np.argmin(np.linalg.norm(x[:, None] - cent[None], axis=-1), axis=1)
+    big = int(np.bincount(z, minlength=n_clusters).argmax())
+    members = np.flatnonzero(z == big)
+    i = int(members[np.argmin(d[np.ix_(members, members)].sum(axis=1))])
+    return {"index": i, "ks_spread": round(s, 4), "ks_clustered": True, "ks_cluster_size": int(members.size)}
+
+
+def rate_limit_position(target: np.ndarray, last_cmd: np.ndarray, max_step: float) -> np.ndarray:
+    """Clip the commanded position change per control step to ``max_step`` (m); orientation and gripper untouched."""
+
+    out = np.array(target, dtype=np.float64, copy=True)
+    dp = out[:3] - last_cmd[:3]
+    n = float(np.linalg.norm(dp))
+    if n > max_step:
+        out[:3] = last_cmd[:3] + dp * (max_step / n)
+    return out
+
+
+def consensus_horizon(samples: np.ndarray, index: int, radius: float = 0.02, quorum: float = 0.5,
+                      min_h: int = 2, rot_weight: float = 0.05, action_space: str = "absolute") -> int:
+    """How many steps of the chosen chunk the other samples still agree on (uncertainty of the executed chunk).
+
+    Sample j agrees with the chosen chunk c at step k iff (i) the full pose agrees: position distance + rot_weight x
+    geodesic orientation angle <= ``radius`` (m; 2 cm <-> 0.4 rad at 0.05 m/rad) and (ii) the gripper state (open /
+    closed) is the same. agree_k = fraction of the N - 1 OTHER samples (the chosen chunk is not counted) that agree at
+    step k; k* = the last step before agree_k first drops below ``quorum``; returns max(min_h, k*). Unlike AAC's marginal
+    entropy over all samples or DUAC's divergence of one random sample, it measures agreement with the chunk that will
+    actually be executed.
+    """
+
+    samples = _validate(samples, 0, action_space)
+    n, horizon, _ = samples.shape
+    if not 0 <= index < n:
+        raise ValueError(f"index {index} outside [0, {n})")
+    if n == 1:
+        return horizon
     traj = _integrate_libero(samples) if action_space == "libero_delta" else samples
-    d = np.linalg.norm(traj[:, :, :3] - traj[index][None, :, :3], axis=-1)  # (N, H)
-    low = (d <= radius).mean(axis=0) < quorum
-    k = int(np.argmax(low)) if low.any() else samples.shape[1]
-    return int(max(min_h, min(k, samples.shape[1])))
+    d = _step_distance(traj, traj[index][None], rot_weight, _ROT_MODE[action_space])  # (N, H)
+    g = _gripper_open(samples, action_space)
+    agree = (d <= radius) & (g == g[index][None])
+    others = np.arange(n) != index
+    low = agree[others].mean(axis=0) < quorum
+    k = int(np.argmax(low)) if low.any() else horizon
+    return int(max(min_h, min(k, horizon)))
 
 
 VARIANTS = {
@@ -309,22 +431,23 @@ def _selftest() -> None:
     L = base.copy(); R = base.copy(); R[:, 1] = np.linspace(0.02, 0.06, 10)
     fresh = np.concatenate([L[None] + rng2.normal(0, 0.002, (12, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0],
                             R[None] + rng2.normal(0, 0.002, (8, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]])
-    # EGC: previous plan followed R (its unexecuted tail sits on R's first steps)
-    prevR = np.concatenate([np.zeros((8, 7)), R[:2]], axis=0); prevR[:8] = R[:8]
-    e1 = select_egc(fresh, 8, prevR, 8)                    # R has 8 vs L 12 samples: 8 >= 0.5 * 12 -> stay in R
+    # EGC on two well-separated modes: 12 along x (mA), 8 offset by 6 cm in y (mB)
+    r12 = np.random.default_rng(3)
+    mA = base[None] + r12.normal(0, 3e-4, (12, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
+    mB = base[None] + r12.normal(0, 3e-4, (8, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]; mB[..., 1] += 0.06
+    two = np.concatenate([mA, mB]); prevB = np.concatenate([np.zeros((8, 7)), mB[0, :2]])
+    e1 = select_egc(two, 8, prevB, 8)                      # B keeps 8 vs A's 12 -> 8 >= 0.5 * peak -> stay in B
     assert e1.commit and e1.index >= 12, e1
-    e2 = select_egc(fresh, 8, prevR, 8, gamma=0.9)         # stricter gate -> switch to the global medoid (L)
+    e2 = select_egc(two, 8, prevB, 8, gamma=0.9)           # stricter gate -> switch to the global medoid (A)
     assert not e2.commit and e2.index < 12, e2
-    allL = L[None] + rng2.normal(0, 0.002, (20, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]
-    e3 = select_egc(allL, 8, prevR, 8)                     # R lost all support -> switch
-    assert not e3.commit and e3.support < 0.5 * e3.peak, e3
-    assert select_egc(fresh, 8).commit is False            # first decision -> medoid
-    dR = np.diff(np.concatenate([np.zeros((20, 1, 7)), fresh], axis=1), axis=1); dR[..., :3] /= LIBERO_POS_UNIT
-    dR[..., 3:6] = 0; dR[..., 6] = -1.0
-    pR = np.zeros((10, 7))  # executed 8 steps (irrelevant), then a tail that integrates to R[:2] from the current pose
-    pR[8:] = np.diff(np.concatenate([np.zeros((1, 7)), R[:2]], axis=0), axis=0); pR[:, :3] /= LIBERO_POS_UNIT
-    pR[:, 3:6] = 0; pR[:, 6] = -1.0
-    e4 = select_egc(dR, 8, pR, 8, action_space="libero_delta")
+    e3 = select_egc(np.concatenate([mA, mA[:8]]), 8, prevB, 8)  # B lost all support -> switch
+    assert not e3.commit and e3.support == 0, e3
+    assert select_egc(two, 8).commit is False              # first decision -> medoid
+    dB = np.diff(np.concatenate([np.zeros((20, 1, 7)), two], axis=1), axis=1); dB[..., :3] /= LIBERO_POS_UNIT
+    dB[..., 3:6] = 0; dB[..., 6] = -1.0
+    pB = np.zeros((10, 7)); pB[8:] = np.diff(np.concatenate([np.zeros((1, 7)), mB[0, :2]], axis=0), axis=0)
+    pB[:, :3] /= LIBERO_POS_UNIT; pB[:, 3:6] = 0; pB[:, 6] = -1.0
+    e4 = select_egc(dB, 8, pB, 8, action_space="libero_delta")
     assert e4.commit and e4.index >= 12, e4
     x0 = select_xdc(fresh, 8)
     assert x0["index"] == int(np.argmin(_pose_distance(fresh[:, None, :8], fresh[None, :, :8], 0.05).mean(1)))
@@ -335,10 +458,50 @@ def _selftest() -> None:
     assert consensus_horizon(split, 0) == 10                        # 12/20 >= 0.5 agree on every step
     split[4:12, 5:, 1] += 0.05                                      # now only 4/20 agree after step 5
     assert consensus_horizon(split, 0) == 5 and consensus_horizon(split, 0, quorum=0.1) == 10
+    ks = select_keystone(fresh)                                     # bimodal 12/8 -> clustered, medoid of mode L
+    assert ks["ks_clustered"] and ks["index"] < 12, ks
+    one = np.repeat(L[None], 3, 0); one[1, :, 1] += 0.01; one[2, :, 1] -= 0.01  # symmetric: medoid = mean -> guard
+    assert select_keystone(one)["ks_clustered"] is False and select_keystone(one)["index"] == 0
+    lc = np.zeros(7); tgt = np.zeros(7); tgt[0] = 0.05; tgt[6] = 1.0
+    rl = rate_limit_position(tgt, lc, 0.014)
+    assert abs(np.linalg.norm(rl[:3]) - 0.014) < 1e-9 and rl[6] == 1.0
+    assert np.allclose(rate_limit_position(tgt * 0.1, lc, 0.014), tgt * 0.1)
+    # --- review fixes (2026-11-22) ---
+    # EGC link radius is a within-mode scale (old median-of-all-pairs radius was ~6 cm here); masses = 8 vs 12
+    assert e1.radius < 0.005 and e1.support == 8 and e1.peak == 12, e1
+    broad = base[None] + r12.normal(0, 0.003, (20, 10, 7)) * np.r_[1, 1, 1, 0, 0, 0, 0]  # one broad mode
+    eb = select_egc(broad, 8, np.concatenate([np.zeros((8, 7)), broad[0, :2]]), 8)
+    assert eb.peak == 20 and eb.commit, eb                  # a broad unimodal cloud is a single mode
+    # SO(3) geodesic on rotation vectors: +-(pi - eps) about the same axis are the same orientation
+    va = np.zeros((1, 7)); vb = np.zeros((1, 7)); va[0, 3] = np.pi - 1e-4; vb[0, 3] = -(np.pi - 1e-4)
+    assert _pose_distance(va, vb, 0.05, "rotvec") < 1e-4
+    # LIBERO rotation composition follows robosuite: R_2 = Exp(0.5 d_2) @ Exp(0.5 d_1)
+    dd = np.zeros((1, 2, 7)); dd[0, 0, 3] = 1.0; dd[0, 1, 4] = 1.0
+    ref = (Rotation.from_rotvec([0, 0.5, 0]) * Rotation.from_rotvec([0.5, 0, 0])).as_rotvec()
+    assert np.allclose(_integrate_libero(dd)[0, 1, 3:6], ref)
+    # consensus horizon counts orientation and gripper, excludes the chosen chunk
+    cg = np.repeat(base[None], 20, 0); cg[10:, 4:, 6] = 0.0         # same path, 10 of 20 close the gripper at step 5
+    assert consensus_horizon(cg, 0) == 4                            # 9/19 others agree after step 4 < 0.5
+    cr = np.repeat(base[None], 4, 0); cr[1:, 6:, 3] += 1.0          # 3 others rotate by 1 rad (= 5 cm) from step 7
+    assert consensus_horizon(cr, 0) == 6                            # self not counted: 0/3 agree, not 1/4
+    # exact gripper ties are not voted on
+    tie = np.repeat(base[None], 20, 0); tie[10:, 3, 6] = 0.0
+    assert len(select_chunk(tie, 8).kept) == 20
+    for bad in (np.full((2, 3, 7), np.nan), np.zeros((2, 3, 5))):
+        try:
+            select_chunk(bad, 2); raise AssertionError("invalid input accepted")
+        except ValueError:
+            pass
+    try:
+        select_egc(np.zeros((2, 3, 7)), 2, action_space="delta"); raise AssertionError("bad action_space accepted")
+    except ValueError:
+        pass
     print("[PASS] ccs: gripper vote drops minority, medoid avoids outlier, coherence follows previous plan, "
           "identical samples -> 0, euler wrap safe; same behaviour on LIBERO delta actions; "
           "EGC stays/switches by support; XDC = medoid without history, follows the previous distribution with it; "
-          "consensus horizon stops where the majority leaves the chosen chunk")
+          "consensus horizon stops where the majority leaves the chosen chunk; KeyStone clusters bimodal sets; "
+          "rate limiter clips position only; review fixes: local EGC radius, SO(3) LIBERO metric, full-pose+gripper "
+          "consensus without self, gripper ties, input validation")
 
 
 if __name__ == "__main__":

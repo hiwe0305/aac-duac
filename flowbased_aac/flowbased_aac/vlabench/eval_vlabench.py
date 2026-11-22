@@ -233,7 +233,7 @@ def open_env(env_factory, task, episode_config, seed: int, attempts: int = 5):
 
 def arm_name(args, server_mode: str) -> str:
     if args.select:  # chunk selection among the N samples at a fixed horizon (sample0 = AAC's executed chunk)
-        return f"{args.select}_h{args.fixed_horizon}"
+        return f"{args.select}_h{args.fixed_horizon}" + ("_rl" if args.smooth_pos_max else "")
     if args.no_xi:  # ablation: h = h_unc only (validated in run())
         return "aac_noxi" if args.aac_selector else "duac_noxi"
     if args.aac_selector:
@@ -323,7 +323,8 @@ def run(args) -> Dict[str, Any]:
     if args.aac_selector:
         from flowbased_aac.aac_official import aac_decision
     if args.select:
-        from flowbased_aac.ccs import VARIANTS, consensus_horizon, select_chunk, select_egc, select_xdc
+        from flowbased_aac.ccs import (VARIANTS, consensus_horizon, rate_limit_position, select_chunk, select_egc,
+                                       select_keystone, select_xdc)
     pool: Dict[str, List[int]] = {}
     if args.random_horizon_from:
         for r in read_rows(Path(args.random_horizon_from)):
@@ -356,6 +357,7 @@ def run(args) -> Dict[str, Any]:
             peak_gpu, progress, intention, env = 0.0, 0.0, 0.0, None
             prev_chunk, prev_h, pick = None, 0, 0  # --select: previously executed chunk and its executed length
             prev_samples = None  # --select xdc: all samples of the previous decision
+            last_cmd = None  # --smooth-pos-max: last commanded target
             try:
                 env = open_env(env_factory, task, track_cfg[task][ep], seed)
                 while step < max_steps and not success:
@@ -380,6 +382,10 @@ def run(args) -> Dict[str, Any]:
                         h = args.fixed_horizon
                         if args.select == "sample0":
                             pick, sel = 0, {}
+                        elif args.select == "keystone":
+                            # KeyStone works in the policy's native output space (normalized deltas, no euler wrap)
+                            sel = select_keystone(np.asarray(reply["normalized_action"])[..., :7])
+                            pick = int(sel.pop("index"))
                         elif args.select == "mcons":  # medoid + consensus horizon (fixed_horizon = cap)
                             pick = select_chunk(samples, h, None, 0, VARIANTS["medoid"]).index
                             h = consensus_horizon(samples, pick, min_h=2)
@@ -436,6 +442,11 @@ def run(args) -> Dict[str, Any]:
                     decision_step = step
                     t = time.perf_counter()
                     for action in chunk[:h]:
+                        if args.smooth_pos_max:  # rate limiter on the commanded target position (P0 control)
+                            if last_cmd is None:
+                                last_cmd = np.asarray(state, dtype=np.float64)
+                            action = rate_limit_position(action, last_cmd, args.smooth_pos_max)
+                            last_cmd = action
                         success = env.step(action)
                         bank["executed_actions"].append(action)
                         step += 1
@@ -561,9 +572,12 @@ def build_parser() -> argparse.ArgumentParser:
     ap.add_argument("--no-xi", action="store_true",
                     help="ablation: execute h = h_unc (DUAC eq. 8 / AAC entropy elbow) without the AAC motion bound xi; "
                          "xi is still computed and logged. Arms duac_noxi / aac_noxi")
-    ap.add_argument("--select", choices=["sample0", "ccs", "medoid", "egc", "xdc", "mcons"], default=None,
+    ap.add_argument("--select", choices=["sample0", "ccs", "medoid", "egc", "xdc", "mcons", "keystone"], default=None,
                     help="chunk selection among the N samples of an aac server at --fixed-horizon h (flowbased_aac/ccs.py); "
                          "sample0 = the chunk AAC executes (control). Arm <select>_h<h>")
+    ap.add_argument("--smooth-pos-max", type=float, default=None,
+                    help="with --select: clip the commanded target position change per step to this many metres "
+                         "(orientation and gripper untouched); arm suffix _rl")
     ap.add_argument("--tau", type=float, default=0.9, help="logged; the server applies tau")
     ap.add_argument("--num-probes", type=int, default=40, help="logged; the server applies K")
     ap.add_argument("--state-bank", action=argparse.BooleanOptionalAction, default=False)

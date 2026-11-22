@@ -44,7 +44,10 @@ arm_args() {  # $1 arm, $2 track, $3 task
     # control: h ~ executed-h distribution of duac_noxi on the same track and task (needs those runs first)
     random_h)  echo "--port $((8710 + PORT_OFFSET)) --random-horizon-from $OUT/$2/${RANDOM_H_FROM:-duac_noxi}/$3/decisions.csv" ;;
     # chunk selection among the AAC server's 20 samples at fixed h (flowbased_aac/ccs.py): <select>_h<k>, e.g. ccs_h8, sample0_h8
-    sample0_h*|ccs_h*|medoid_h*|egc_h*|xdc_h*|mcons_h*)
+    # P0 control: position rate limiter (1.4 cm/step = p99 of inside-chunk changes of sample0_h8), arm suffix _rl
+    *_h[0-9]*_rl)
+               a=${1%_rl}; echo "--port $((8720 + PORT_OFFSET)) --select ${a%_h*} --fixed-horizon ${a##*_h} --smooth-pos-max 0.014 --state-bank --save-videos --video-episodes 2" ;;
+    sample0_h*|ccs_h*|medoid_h*|egc_h*|xdc_h*|mcons_h*|keystone_h*)
                echo "--port $((8720 + PORT_OFFSET)) --select ${1%_h*} --fixed-horizon ${1##*_h} --state-bank --save-videos --video-episodes 2" ;;
     *) echo "unknown arm $1" >&2; exit 2 ;;
   esac
