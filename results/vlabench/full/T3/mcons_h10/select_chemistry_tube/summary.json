@@ -6,7 +6,7 @@
   "success_rate": 0.54,
   "success_rate_excl_errors": 0.54,
   "progress_score": 0.75,
-  "mean_h": 8.022,
+  "mean_h": 6.459,
   "tasks": {
     "select_chemistry_tube": 0.54
   },

@@ -2,13 +2,13 @@
   "arm": "mcons_h10",
   "track": "track_4_semantic_instruction",
   "episodes": 50,
-  "errors": 1,
-  "success_rate": 0.32,
-  "success_rate_excl_errors": 0.3265,
-  "progress_score": 0.38,
-  "mean_h": 7.277,
+  "errors": 0,
+  "success_rate": 0.48,
+  "success_rate_excl_errors": 0.48,
+  "progress_score": 0.49,
+  "mean_h": 4.972,
   "tasks": {
-    "select_mahjong": 0.32
+    "select_mahjong": 0.48
   },
   "synthetic_dry_run": false
 }

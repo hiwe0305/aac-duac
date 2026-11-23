@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_2_cross_category,select_painting,0,0,medoid_h8_rl,1,1.0,1.0,70,100,9,8.0,0.0,8,8,773.4,819.8,4712.8,82.4,58.9,1557.8,14.6,6892.2,,Please select the painting of style academicism.
+track_2_cross_category,select_painting,1,1,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1155.0,1237.0,6413.4,189.6,125.0,2462.8,16.3,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,2,2,medoid_h8_rl,1,1.0,1.0,98,100,13,8.0,0.0,8,8,1225.2,1308.7,5423.3,156.7,97.0,1746.9,13.8,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,3,3,medoid_h8_rl,1,1.0,1.0,98,100,13,8.0,0.0,8,8,1164.3,1245.2,3660.7,154.5,114.5,2025.1,11.5,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,4,4,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1168.2,1244.0,6340.5,146.1,101.7,1740.1,14.5,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,5,5,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1112.7,1177.2,7765.7,140.1,89.0,1696.8,17.1,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,6,6,medoid_h8_rl,1,1.0,1.0,79,100,10,8.0,0.0,8,8,976.9,1041.7,3014.2,126.1,78.9,1535.2,12.2,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,7,7,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1123.7,1191.1,4800.1,154.4,98.2,1889.6,13.7,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,8,8,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1140.0,1207.8,5106.9,160.1,91.9,1907.4,13.8,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,9,9,medoid_h8_rl,1,1.0,1.0,70,100,9,8.0,0.0,8,8,786.1,842.2,4112.1,104.1,57.9,1264.3,11.9,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,10,10,medoid_h8_rl,1,1.0,1.0,90,100,12,8.0,0.0,8,8,1283.6,1386.1,3924.4,161.9,115.8,2039.6,13.0,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,11,11,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1202.4,1265.4,6951.1,127.5,79.5,1692.1,16.0,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,12,12,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1278.5,1361.2,5447.1,193.6,134.4,2448.7,13.9,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,13,13,medoid_h8_rl,1,1.0,1.0,92,100,12,8.0,0.0,8,8,1016.6,1073.4,5918.1,125.6,87.2,1788.0,14.7,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,14,14,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1139.5,1216.6,6834.0,151.5,112.4,1972.1,14.6,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,15,15,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1139.5,1196.9,6945.4,132.0,89.8,1559.3,15.9,6892.2,,Please select the painting of style academicism.
+track_2_cross_category,select_painting,16,16,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1195.2,1274.3,4498.3,167.4,115.2,1995.4,12.3,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,17,17,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1187.7,1264.8,3905.1,175.1,122.6,2461.9,12.1,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,18,18,medoid_h8_rl,1,1.0,1.0,90,100,12,8.0,0.0,8,8,1021.7,1078.1,6136.4,128.0,86.9,1538.1,14.5,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,19,19,medoid_h8_rl,1,1.0,1.0,78,100,10,8.0,0.0,8,8,880.9,933.4,4824.6,102.3,77.2,1379.9,13.0,6892.2,,Please select the painting of style academicism.
+track_2_cross_category,select_painting,20,20,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1118.5,1181.2,6993.7,137.0,72.1,1535.4,16.2,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,21,21,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1305.9,1378.2,6168.5,146.0,86.7,1801.2,16.3,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,22,22,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1276.2,1335.0,8065.3,134.0,86.5,1657.9,15.9,6892.2,,Please select the painting of style impressionism.
+track_2_cross_category,select_painting,23,23,medoid_h8_rl,1,1.0,1.0,95,100,12,8.0,0.0,8,8,1037.9,1096.8,5979.3,128.7,66.2,1478.4,14.7,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,24,24,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1144.3,1216.5,5804.4,149.2,99.5,1869.4,15.1,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,25,25,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1107.5,1164.3,8079.6,140.7,70.9,1635.3,16.2,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,26,26,medoid_h8_rl,1,1.0,1.0,84,100,11,8.0,0.0,8,8,949.5,1003.1,4829.1,124.2,78.3,1517.3,13.0,6892.2,,Please select the painting of style impressionism.
+track_2_cross_category,select_painting,27,27,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1187.4,1273.0,6267.1,146.1,97.6,1743.0,14.9,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,28,28,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1177.8,1260.5,5844.2,154.2,91.4,1693.4,13.7,6892.2,,Please select the painting of style impressionism.
+track_2_cross_category,select_painting,29,29,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1137.3,1212.0,5787.4,135.6,86.5,1745.8,15.0,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,30,30,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1214.8,1300.6,4275.8,186.8,126.8,2017.7,12.4,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,31,31,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1136.7,1208.1,5364.6,132.5,104.9,1790.3,13.7,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,32,32,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1129.4,1206.6,4336.2,175.8,113.3,2148.6,12.6,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,33,33,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1130.0,1197.9,6613.4,144.5,94.0,1943.6,15.3,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,34,34,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1148.6,1213.3,5831.0,136.5,102.8,1876.0,15.1,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,35,35,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1201.7,1279.8,2609.4,217.8,119.4,2469.1,13.1,6892.2,,Please select the painting of style art nouveau.
+track_2_cross_category,select_painting,36,36,medoid_h8_rl,1,1.0,1.0,94,100,12,8.0,0.0,8,8,1073.9,1142.8,5369.6,131.3,79.9,1658.8,13.8,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,37,37,medoid_h8_rl,1,1.0,1.0,85,100,11,8.0,0.0,8,8,993.1,1046.4,5731.8,132.6,75.3,1433.7,14.2,6892.2,,Please select the painting of style impressionism.
+track_2_cross_category,select_painting,38,38,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1475.2,1541.4,5785.3,148.6,102.1,1846.9,14.1,6892.2,,Please select the painting of style impressionism.
+track_2_cross_category,select_painting,39,39,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1191.4,1258.2,6208.2,171.2,86.7,1588.1,14.2,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,40,40,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1172.5,1239.1,5584.6,148.2,114.6,1921.7,14.0,6892.2,,Please select the painting of style cubism.
+track_2_cross_category,select_painting,41,41,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1214.1,1324.5,2318.8,205.9,121.6,2128.5,11.3,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,42,42,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1163.0,1263.8,5635.7,134.1,99.4,1741.4,13.5,6892.2,,Please select the painting of style impressionism.
+track_2_cross_category,select_painting,43,43,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1145.3,1219.4,5288.2,147.2,86.0,1717.1,13.2,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,44,44,medoid_h8_rl,0,0.0,0.0,100,100,13,8.0,0.0,8,8,1220.5,1311.9,4957.3,154.1,86.7,1729.2,13.5,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,45,45,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1288.5,1404.1,3533.8,205.9,125.3,2151.3,12.7,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,46,46,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1131.5,1206.6,6106.8,147.8,92.6,1702.8,13.8,6892.2,,Please select the painting of style expressionism.
+track_2_cross_category,select_painting,47,47,medoid_h8_rl,1,1.0,1.0,75,100,10,8.0,0.0,8,8,911.6,964.3,3876.4,112.1,86.0,1360.0,12.0,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,48,48,medoid_h8_rl,0,0.0,1.0,100,100,13,8.0,0.0,8,8,1208.2,1314.9,2906.0,180.3,127.7,2452.9,12.9,6892.2,,Please select the painting of style neoclassicism.
+track_2_cross_category,select_painting,49,49,medoid_h8_rl,1,1.0,1.0,82,100,11,8.0,0.0,8,8,986.9,1083.4,3841.2,122.6,97.9,1588.3,13.1,6892.2,,Please select the painting of style expressionism.

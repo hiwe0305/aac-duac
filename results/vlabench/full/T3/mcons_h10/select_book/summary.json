@@ -2,13 +2,13 @@
   "arm": "mcons_h10",
   "track": "track_3_common_sense",
   "episodes": 50,
-  "errors": 0,
-  "success_rate": 0.46,
-  "success_rate_excl_errors": 0.46,
-  "progress_score": 0.53,
-  "mean_h": 7.099,
+  "errors": 1,
+  "success_rate": 0.36,
+  "success_rate_excl_errors": 0.3673,
+  "progress_score": 0.41,
+  "mean_h": 5.019,
   "tasks": {
-    "select_book": 0.46
+    "select_book": 0.36
   },
   "synthetic_dry_run": false
 }

@@ -1,0 +1,30 @@
+{
+  "track": "T1",
+  "tasks": "select_fruit",
+  "episodes": 50,
+  "episode_ids": null,
+  "seed": 0,
+  "max_steps": null,
+  "host": "127.0.0.1",
+  "port": 8720,
+  "vanilla": false,
+  "fixed_horizon": 8,
+  "random_horizon_from": null,
+  "aac_selector": null,
+  "alpha": 3.0,
+  "xi_units": "libero",
+  "no_xi": false,
+  "select": "sample0",
+  "smooth_pos_max": 0.014,
+  "tau": 0.9,
+  "num_probes": 40,
+  "state_bank": true,
+  "save_videos": true,
+  "video_episodes": 2,
+  "synthetic_dry_run": false,
+  "arm": "sample0_h8_rl",
+  "track_resolved": "track_1_in_distribution",
+  "tasks_resolved": [
+    "select_fruit"
+  ]
+}

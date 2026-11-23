@@ -1,0 +1,14 @@
+{
+  "arm": "sample0_h8_rl",
+  "track": "track_3_common_sense",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.48,
+  "success_rate_excl_errors": 0.48,
+  "progress_score": 0.69,
+  "mean_h": 8.0,
+  "tasks": {
+    "select_chemistry_tube": 0.48
+  },
+  "synthetic_dry_run": false
+}

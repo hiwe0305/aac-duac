@@ -3,12 +3,12 @@
   "track": "track_2_cross_category",
   "episodes": 10,
   "errors": 0,
-  "success_rate": 0.3,
-  "success_rate_excl_errors": 0.3,
-  "progress_score": 0.65,
-  "mean_h": 7.508,
+  "success_rate": 0.5,
+  "success_rate_excl_errors": 0.5,
+  "progress_score": 0.75,
+  "mean_h": 6.586,
   "tasks": {
-    "insert_flower": 0.3
+    "insert_flower": 0.5
   },
   "synthetic_dry_run": false
 }

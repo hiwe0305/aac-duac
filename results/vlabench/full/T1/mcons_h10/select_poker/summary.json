@@ -3,12 +3,12 @@
   "track": "track_1_in_distribution",
   "episodes": 50,
   "errors": 0,
-  "success_rate": 0.82,
-  "success_rate_excl_errors": 0.82,
-  "progress_score": 0.8333,
-  "mean_h": 9.899,
+  "success_rate": 0.8,
+  "success_rate_excl_errors": 0.8,
+  "progress_score": 0.82,
+  "mean_h": 9.457,
   "tasks": {
-    "select_poker": 0.82
+    "select_poker": 0.8
   },
   "synthetic_dry_run": false
 }

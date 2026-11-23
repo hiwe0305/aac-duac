@@ -3,12 +3,12 @@
   "track": "track_2_cross_category",
   "episodes": 50,
   "errors": 0,
-  "success_rate": 0.06,
-  "success_rate_excl_errors": 0.06,
-  "progress_score": 0.09,
-  "mean_h": 8.449,
+  "success_rate": 0.02,
+  "success_rate_excl_errors": 0.02,
+  "progress_score": 0.03,
+  "mean_h": 6.531,
   "tasks": {
-    "select_book": 0.06
+    "select_book": 0.02
   },
   "synthetic_dry_run": false
 }

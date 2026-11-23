@@ -16,7 +16,7 @@
 **Vấn đề.**
 - Trên ba benchmark của O-LONG (LIBERO-10 có nhiễu, RoboCasa365, VLABench), AAC và DUAC (hai phương pháp chọn horizon theo độ bất định) đều **không thắng fixed horizon tốt nhất**.
 - Phân tích log cho thấy hai lý do:
-  - Việc chọn horizon gần như không có dư địa: nếu biết trước kết quả rồi chọn fixed tốt nhất cho từng task, mức trần chỉ cao hơn 1–4 pp.
+  - Các thuật toán chọn horizon đã thử (AAC, DUAC, random-h, consensus horizon) không khai thác được lợi ích theo state. Chọn fixed tốt nhất *theo task* sau khi biết kết quả chỉ hơn 1–4 pp; đây là chẩn đoán, **không phải** cận trên của mọi cách chọn h theo state.
   - Tín hiệu bất định không mang thông tin theo state: random-h với cùng phân phối h cho kết quả bằng DUAC.
 
 **Đề xuất.**
@@ -37,8 +37,9 @@
 
 - Lợi ích có ở cả 5 track và ở 43/50 ô (track × task).
 - Kết quả không đổi khi bỏ các episode lỗi mô phỏng.
-- Cơ chế đo được: bước nhảy của lệnh điều khiển ở chỗ nối chunk giảm **2.4 lần** (3.31 → 1.38 cm), gia tốc giảm một nửa, ít bật/tắt gripper hơn. Intention score (chọn đúng vật hay không) gần như không đổi.
-- Kết luận: lợi ích đến từ **thực thi nhất quán**, không phải từ hiểu lệnh tốt hơn.
+- Đi kèm: bước nhảy của lệnh điều khiển ở chỗ nối chunk giảm **2.4 lần** (3.31 → 1.38 cm), gia tốc giảm một nửa, ít bật/tắt gripper hơn. Intention score (chọn đúng vật hay không) gần như không đổi.
+- **Nhưng làm mượt không phải nguyên nhân** (thí nghiệm can thiệp 2×2, mục 6.5): giới hạn tốc độ lệnh cho sample0 xoá hết các cú nhảy mà success không đổi (25.7% so với 25.5%). Lợi ích đến từ **việc chọn được kế hoạch tốt hơn**, không từ độ mượt của lệnh.
+- So với prior work trực tiếp **KeyStone** (arXiv 2605.08638, cài đặt theo mặc định của repo, cùng 20 mẫu): medoid cao hơn **+6.0 pp [+4.0, +8.1]** (36.8% so với 30.8%). Hai cách khác nhau ở metric (pose có geodesic trên đoạn được chạy, so với L2 trên action chuẩn hoá cả chunk) và ở bước phân cụm; chưa tách được yếu tố nào quyết định.
 
 **Kết quả trên LIBERO-10** (Track A, 1.500 episode mỗi arm):
 - medoid_h8 có điểm ước lượng cao nhất trong 9 arm: 71.2% trên 2 suite nhiễu gộp, so với 70.5% của Fixed-10 và 69.4% của sample 0.
@@ -81,7 +82,7 @@ Các mức tăng trong paper AAC và DUAC (+0.5 đến +2.5 pp) được tính s
 
 Nguồn: [track_a/DIAGNOSIS.md](track_a/DIAGNOSIS.md), REPORT VLABench, ablation ξ và random-h.
 
-1. **Dư địa nhỏ.** Chọn fixed tốt nhất riêng cho từng task sau khi biết kết quả chỉ hơn fixed tốt nhất chung 1–4 pp. Với 50 episode mỗi task, CI khoảng ±4 pp.
+1. **Dư địa theo task nhỏ.** Chọn fixed tốt nhất riêng cho từng task sau khi biết kết quả chỉ hơn fixed tốt nhất chung 1–4 pp (với 50 episode mỗi task, CI khoảng ±4 pp). Đây không phải cận trên của chọn h theo state: một policy chọn h theo từng state vẫn có thể vượt mức này.
 2. **h_unc là nhiễu.**
    - Profile bất định có hình chữ U cố định, nên quy tắc "bước nhảy lớn nhất" gần như luôn chọn h = 9 hoặc h = 2.
    - Tự tương quan giữa hai decision liên tiếp chỉ khoảng 0.1.
@@ -301,14 +302,14 @@ Report đầy đủ: [results/vlabench/full/REPORT_CCS.md](../results/vlabench/f
 
 - Chọn chunk cắt bước nhảy ở chỗ nối chunk từ khoảng 4 lần xuống khoảng 2 lần mức thay đổi bên trong chunk.
 - Intention gần như không đổi.
-- H3 được ủng hộ: lợi ích đến từ việc thực thi nhất quán, không phải từ việc chọn đúng vật.
+- H3 **bị bác bỏ một phần** (mục 6.5): intention không đổi nên không phải do chọn đúng vật hơn, nhưng làm mượt lệnh riêng lẻ cũng không tạo ra lợi ích. Giảm bước nhảy là hệ quả đi kèm của việc chọn mẫu, không phải cơ chế gây tăng success.
 
 **Tốc độ:**
 - Số decision mỗi episode như nhau (20.7 so với 21.3 của fixed_8, cùng h = 8).
 - Số bước tới khi thành công tương đương (111 so với 110).
 
 **Selector đã làm gì:**
-- Chunk được chạy khác mẫu 0 ở 95% decision.
+- Chunk được chạy khác mẫu 0 ở 95% decision. (Con số này gần như tất yếu: chọn 1 trong 20 thì xác suất trùng mẫu 0 là khoảng 1/20. Khoảng cách giữa các mẫu ở mục 4 mới là bằng chứng có ý nghĩa.)
 - Bỏ phiếu gripper loại ít nhất một mẫu ở 17.2% decision.
 - Overlap 2 bước với chunk trước ở 95% decision.
 
@@ -376,20 +377,20 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 
 **Động cơ.** Gọi *độ lệch kế hoạch* là khoảng cách giữa 2 bước đầu của chunk mới và 2 bước chưa chạy của chunk trước, tại cùng thời điểm.
 
-| Arm | Decision có độ lệch > 2 cm | AUROC dự đoán thất bại của episode | Success |
+| Arm | Decision có độ lệch > 2 cm | AUROC (tỉ lệ lệch trên cả episode → thất bại) | Success |
 |---|---|---|---|
 | sample0_h8 | 40% | 0.87 | 26% |
 | medoid_h8 | 20% | 0.72 | 35% |
 | ccs_h8 | 15% | 0.68 | 35% |
 
-Độ lệch này dự đoán thất bại rất tốt. Medoid giảm nó một nửa. Câu hỏi đặt ra: xử lý phần còn lại có tăng thêm success không?
+**Đính chính (sau review, 2026-11-22):** AUROC trên cả episode chủ yếu là hiệu ứng độ dài episode. Chỉ riêng độ dài episode đã cho AUROC 0.90; dùng độ lệch của 5 decision đầu chỉ được 0.59 (sample0) và 0.54 (medoid), trung bình trong từng task cũng tương tự. Độ lệch kế hoạch **không** phải tín hiệu báo trước thất bại. Medoid giảm nó một nửa; câu hỏi đặt ra là xử lý phần còn lại có tăng thêm success không.
 
 **Ba ý tưởng đã thử:**
 
 | Ý tưởng | Cơ chế | Kết quả |
 |---|---|---|
 | **ACS** (Anchored Commit-or-Switch) | Thêm 4 mẫu sinh từ noise của chunk vừa chạy, dịch theo thời gian, làm ứng viên "tiếp tục kế hoạch". Giữ kế hoạch nếu đủ mẫu mới ủng hộ | **Giả định sai, dừng ở smoke test; code đã gỡ** (còn trong lịch sử git, commit `5199838`). Trên 126 decision, mẫu neo lệch kế hoạch cũ 0.85 cm, mẫu mới trung vị 0.80 cm; mẫu neo tốt hơn chỉ 52% số lần. Với π0.5, cùng noise không giữ được mode dưới quan sát mới (khớp hạn chế mà PAINT nêu: action expert trộn mạnh giữa các vị trí trong chunk) |
-| **EGC** (Evidence-Gated Commitment) | Đếm số mẫu mới khớp với phần chưa chạy của kế hoạch cũ (bán kính = trung vị khoảng cách giữa các mẫu). Nếu ≥ 0.5 × mode đông nhất thì giữ, chạy medoid của nhóm đó; nếu không thì chạy medoid toàn cục | 37.2%, so với medoid **+0.4 pp [−1.5, +2.3]**, không khác. Giữ kế hoạch ở 31% decision |
+| **EGC** (Evidence-Gated Commitment) | Phân cụm các mẫu thành mode (thành phần liên thông của đồ thị láng giềng cục bộ: 20% láng giềng, hệ số nối 2.0). Nếu mode chứa kế hoạch cũ có khối lượng ≥ 0.5 × mode lớn nhất thì giữ, chạy medoid trong mode đó; nếu không thì chạy medoid toàn cục | **Bản đã sửa sau review:** 36.6%, so với medoid **−0.2 pp [−2.1, +1.7]**, không khác; giữ kế hoạch ở 50% decision. (Bản đầu dùng bán kính = trung vị mọi khoảng cách cặp, bị phình khi có hai mode; được 37.2%, +0.4 pp.) Offline, tỉ lệ giữ kế hoạch nhạy với tham số (29–74%) |
 | **XDC** (Cross-Decision Consensus) | Chọn mẫu ở trung tâm của cả 20 mẫu hiện tại và 20 mẫu của decision trước (trên đoạn chồng nhau), λ = 1 | 36.3%, so với medoid **−0.4 pp [−2.4, +1.5]**, không khác |
 
 **Chẩn đoán vì sao không hơn được.** Offline trên 7.780 decision của medoid_h8:
@@ -411,7 +412,7 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 - Nếu đo uncertainty **trên chính chunk được chọn (medoid)**, và medoid đã làm replan ít nhảy mode hơn, thì h thích nghi có phát huy được không?
 
 **Tín hiệu (`ccs.consensus_horizon`).**
-- k\* = số bước mà ít nhất 50% mẫu còn nằm trong 2 cm quanh medoid; h = max(2, k\*), tối đa 10.
+- k\* = số bước mà ít nhất 50% các mẫu **khác** còn đồng ý với medoid: pose đầy đủ (vị trí + 0.05 m/rad × góc geodesic) trong 2 cm **và** cùng trạng thái gripper; h = max(2, k\*), tối đa 10. (Bản đầu chỉ xét vị trí và tự tính chính medoid; đã sửa sau review.)
 - Offline, tín hiệu này ổn định giữa hai decision liền nhau hơn hẳn DUAC (tương quan 0.33 so với khoảng 0.1) và không có hiệu ứng rìa chunk.
 - Tuy vậy, nó không báo trước được thất bại (AUROC khoảng 0.5).
 
@@ -422,8 +423,9 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 | medoid_h5 | 33.7% | vs medoid_h8 | **−3.1** | [−5.0, −1.1] | 0.025 |
 | medoid_h8 | **36.8%** | — | | | |
 | medoid_h10 | 35.2% | vs medoid_h8 | −1.6 | [−3.7, +0.4] | 0.76 |
-| **mcons_h10** (medoid + consensus horizon) | 36.0% | vs medoid_h10 | +0.9 | [−1.1, +2.8] | 1 |
-| | | vs medoid_h8 | −0.8 | [−2.8, +1.3] | 1 |
+| **mcons_h10** (bản đã sửa) | 33.4% | vs medoid_h10 | −1.7 | [−3.8, +0.2] | 0.74 |
+| | | vs medoid_h8 | **−3.4** | [−5.4, −1.3] | 0.018 |
+| (bản đầu, chỉ xét vị trí) | 36.0% | vs medoid_h10 | +0.9 | [−1.1, +2.8] | 1 |
 
 **Đọc kết quả.**
 1. **Hiệu ứng của h và hiệu ứng của việc chọn chunk cộng dồn, không tương tác.**
@@ -435,7 +437,7 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
    | 10 | 25.9% | 35.2% | +9.3 |
 
    Medoid nâng cả đường cong lên khoảng +10 pp nhưng **không đổi hình dạng** của nó. h = 5 vẫn kém h = 8 một khoảng như cũ (−3.1 pp với medoid, −3.2 pp với một mẫu). Giả thuyết "medoid làm replan dày hết có hại" **bị bác bỏ**.
-2. **Uncertainty chọn h vẫn không giúp**, kể cả khi đo trên chunk được chạy. mcons ngang medoid với h cố định.
+2. **Uncertainty chọn h vẫn không giúp**, kể cả khi đo trên chunk được chạy. Bản đã sửa còn kém medoid_h8 3.4 pp: khi tính cả góc quay và gripper, các mẫu bất đồng ngay từ đầu ở 56% decision, nên h rơi về mức tối thiểu 2 (trung bình 4.6). Kết quả gần giống chạy h ngắn cố định (medoid_h5 cũng kém 3.1 pp).
 3. Khi chạy thật, phân bố h của mcons lại dồn về hai đầu: 27% ở mức tối thiểu h = 2, 55% ở h = 10 (trung bình 7.0 theo decision). Offline thì chỉ khoảng 4% decision có k\* ≤ 2.
    - Một khả năng: replan ngắn đưa robot vào những state mà các mẫu bất đồng ngay từ bước đầu, tạo vòng lặp h ngắn.
    - Cần phân tích thêm nếu muốn đi tiếp hướng này.
@@ -445,6 +447,45 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 - Trên VLABench, uncertainty dùng để chọn h không cải thiện được, kể cả khi kết hợp với chọn chunk.
 - Hai đòn bẩy này độc lập với nhau. Cấu hình tốt nhất vẫn là **medoid với h cố định = 8**.
 - Kết quả này củng cố kết luận của O-LONG (mục 1.3): dư địa của việc chọn h nhỏ và tín hiệu uncertainty không chỉ ra đúng lúc cần replan. Nó còn loại trừ cách giải thích rằng thất bại của AAC/DUAC chỉ do chạy mẫu ngẫu nhiên.
+
+### 6.5 Thí nghiệm bắt buộc sau review: KeyStone và làm mượt 2×2 (VLABench, 2026-11-23)
+
+**Thiết kế.**
+- Cùng server, cùng 20 mẫu, cùng h = 8, ghép cặp với các arm cũ.
+- **KeyStone:** cài theo mặc định của repo tác giả: L2 trên chunk phẳng trong không gian action gốc của policy (normalized), kiểm tra đơn mode τ = 0.3, k-means 2 cụm (khởi tạo bằng 2 mẫu đầu), lấy medoid của cụm lớn nhất. Không dùng góc euler tuyệt đối, vì 63% decision có mẫu nằm ở hai phía ±π.
+- **Làm mượt:** giới hạn tốc độ vị trí đích ở 1.4 cm mỗi bước (p99 của mức thay đổi bên trong chunk của sample0, đặt trước). Góc quay, gripper và h giữ nguyên. Đã kiểm trên action thực gửi xuống simulator: không bước nào vượt 1.40 cm, trong khi sample0 không làm mượt có bước nhảy tới 120 cm; bộ giới hạn can thiệp vào 22% số bước (sample0) và 10% (medoid).
+
+**Kết quả** (2.460 episode mỗi arm):
+
+| | Không làm mượt | Có làm mượt |
+|---|---|---|
+| **sample0** | 25.5% | 25.7% (+0.2 [−1.9, +2.3]) |
+| **medoid** | 36.8% | 37.1% (+0.3 [−1.6, +2.2]) |
+| **KeyStone** | 30.8% | — |
+
+| So sánh | Chênh (pp) | CI 95% | p Holm |
+|---|---|---|---|
+| medoid vs sample0 + làm mượt | **+11.1** | [+9.0, +13.2] | < 0.001 |
+| medoid vs KeyStone | **+6.0** | [+4.0, +8.1] | < 0.001 |
+| KeyStone vs sample0 | +5.2 | [+3.2, +7.3] | < 0.001 |
+
+**Đọc kết quả.**
+1. **Làm mượt lệnh không giải thích được lợi ích.** Theo tiêu chí đặt trước, "nếu B gần bằng C thì medoid chủ yếu sửa lỗi của giao diện lệnh". Ở đây B = 25.7%, C = 36.8%, nên bị bác bỏ. Lợi ích của medoid cộng thêm, độc lập với làm mượt (D − B = +11.4 pp).
+   - Giả thuyết ở mục 6.2 (VLABench được lợi vì gửi đích tuyệt đối, còn LIBERO đã có OSC làm mượt) **không còn được ủng hộ** và cần lời giải thích khác.
+   - Chỉ số bước nhảy ở chỗ nối chunk trong report của các arm có làm mượt được tính trên chunk *trước khi* giới hạn (từ log), nên không phản ánh lệnh thực thi.
+2. **Medoid hơn KeyStone trên benchmark này**, dù KeyStone cũng hơn sample0. Khác biệt có thể nằm ở metric (pose + geodesic trên 8 bước được chạy, so với L2 trên action chuẩn hoá cả 10 bước) hoặc ở bước phân cụm (KeyStone phân cụm ở khoảng 87% decision). Cần một arm "medoid trên không gian chuẩn hoá" để tách hai yếu tố.
+3. EGC và consensus horizon đã sửa xem mục 6.3 và 6.4: cả hai vẫn không hơn medoid.
+
+### 6.6 Đính chính sau code review (2026-11-22)
+
+| Vấn đề | Sửa | Ảnh hưởng tới kết quả đã báo cáo |
+|---|---|---|
+| Bán kính EGC = trung vị mọi khoảng cách cặp, phình bằng khoảng cách giữa hai mode | Khối lượng mode từ phân cụm (thành phần liên thông của đồ thị láng giềng cục bộ) | Chạy lại EGC: 36.6% (−0.2 pp so với medoid) |
+| Góc quay LIBERO cộng như vector, đo Euclid | Nhân rotation theo đúng quy ước OSC của robosuite (R = Exp(δ)·R), đo geodesic SO(3) | Medoid trên LIBERO chỉ đổi lựa chọn ở 0.3–0.5% decision; **không chạy lại** |
+| Consensus horizon chỉ xét vị trí, tự tính chính nó | Pose đầy đủ + cùng trạng thái gripper, chỉ tính trên các mẫu khác | Chạy lại: 33.4% (kém hơn) |
+| KeyStone (bản cài đầu) dùng L2 trên euler tuyệt đối | Dùng không gian action gốc của policy | 25 episode lỗi đã bị bỏ; chạy lại toàn bộ |
+| Hoà gripper 10/10, z-score khi phân tán rất nhỏ, docstring XDC, kiểm tra đầu vào | Đã sửa | Không đáng kể (hoà chỉ ở 0.33% số bước); không chạy lại |
+| AUROC 0.87 | Là hiệu ứng độ dài episode; 5 decision đầu chỉ cho 0.54–0.59 | Đã đính chính ở mục 6.3 |
 
 ## 7. So sánh với các phương pháp liên quan
 
@@ -481,10 +522,10 @@ Report đầy đủ: [results/track_a/SELECT_REPORT.md](../results/track_a/SELEC
 | ElevateHead (arXiv 2610.34031) | Chọn mode một lần rồi giữ suốt episode | **Có** | Có (giữ cứng) | Không phải VLA |
 
 **Vị trí novelty sau khi đọc:**
-1. Chọn theo đồng thuận (medoid) trên N mẫu của một VLA đóng băng chưa thấy ai báo cáo, nhưng là ý tưởng đơn giản.
+1. Chọn theo đồng thuận trên N mẫu của VLA đóng băng **đã có prior work trực tiếp**: KeyStone (arXiv 2605.08638: medoid, phân cụm k-means khi nhiều mode, thử trên π0.5) và KDPE (CoRL 2025: chọn theo mật độ kernel trên pose). Medoid không phải đóng góp thuật toán mới. Trên VLABench, medoid của proposal này vẫn hơn bản cài KeyStone +6.0 pp, nhưng chưa tách được nguyên nhân (metric hay phân cụm).
 2. Đóng góp có giá trị hơn là **phép so sánh có kiểm soát và cơ chế được đo**:
    - Trên cùng N mẫu, chọn h cho 0 pp, chọn chunk cho +11 pp.
-   - Độ lệch kế hoạch dự đoán thất bại (AUROC 0.87).
+   - Làm mượt lệnh riêng lẻ không tạo ra lợi ích (thí nghiệm 2×2), nên mức tăng đến từ việc chọn kế hoạch.
    - Phần lệch còn lại là policy đổi ý theo quan sát.
    - Lợi ích phụ thuộc giao diện điều khiển (đích tuyệt đối so với delta OSC).
 3. Ba mở rộng có tính mới hơn (ACS, EGC, XDC) **không vượt được medoid**. Đây là kết quả âm, cần báo cáo trung thực.

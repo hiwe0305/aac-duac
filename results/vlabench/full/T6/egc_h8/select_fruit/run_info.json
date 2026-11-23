@@ -3,8 +3,6 @@
     "n_samples": 20,
     "seed": 0,
     "seed_per_step": false,
-    "n_anchor": 0,
-    "anchor_sigma": 0.3,
     "benchmark": "vlabench",
     "mode": "aac",
     "checkpoint": "/mnt/ceph-cold-storage/hieudd/checkpoints/vlabench/pi05-primitive-10task",
@@ -18,8 +16,8 @@
     "mujoco": "3.2.2",
     "scipy": "1.14.0",
     "vlabench_commit": "cf588fe60c0c7282174fe979f5913170cfe69017",
-    "repo_commit": "fc443c6ad8a8e4969d9c12e9417766d10b69cce6",
+    "repo_commit": "4172f5706287376c6762d832f4ef1e88d732292c",
     "aac_libero_commit": "ff8c8e421f7805b5845a72d07fbd8f1171df74bf"
   },
-  "started": "2026-11-22 03:39:22"
+  "started": "2026-11-23 02:14:49"
 }

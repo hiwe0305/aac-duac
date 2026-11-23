@@ -1,0 +1,51 @@
+track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
+track_3_common_sense,select_drink,0,0,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2195.4,2313.4,12933.4,221.1,51.7,5465.9,27.5,6946.6,, I want a refreshing beverage with natural fruit sugars.
+track_3_common_sense,select_drink,1,1,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2175.5,2296.0,11540.1,250.3,49.7,5621.9,24.8,6946.6,, I need a caffeinated beverage to jumpstart my morning routine.
+track_3_common_sense,select_drink,2,2,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2198.3,2312.5,13700.3,263.1,47.8,4314.0,24.2,6946.6,," I want a dark, caffeinated drink to energize my afternoon."
+track_3_common_sense,select_drink,3,3,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2179.4,2338.8,14984.7,261.3,49.9,4092.1,25.0,6946.6,, I desire a cold drink that can quench my thirst on a hot day.
+track_3_common_sense,select_drink,4,4,sample0_h8_rl,1,0.5,0.0,112,200,14,8.0,0.0,8,8,1228.1,1287.8,7612.5,161.7,30.3,2394.5,15.3,6946.6,, I want an energy-packed beverage that comes in a distinctive black can with a colorful logo.
+track_3_common_sense,select_drink,5,5,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2170.4,2283.2,16108.7,263.7,42.5,3812.6,25.4,6946.6,, I want the drink that contains caffeine for a quick pick-me-up.
+track_3_common_sense,select_drink,6,6,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2349.6,2479.4,14722.9,258.6,58.1,4418.5,26.8,6946.6,, I need a powerful drink that can help increase my alertness and focus.
+track_3_common_sense,select_drink,7,7,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2340.8,2453.8,16350.0,260.6,49.8,4921.5,27.9,6946.6,, Locate the invigorating drink that can uplift my spirits.
+track_3_common_sense,select_drink,8,8,sample0_h8_rl,1,0.5,0.0,123,200,16,8.0,0.0,8,8,1486.8,1572.9,8533.2,194.2,41.1,2954.0,16.9,6946.6,, I need a refreshing drink full of vitamins.
+track_3_common_sense,select_drink,9,9,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2161.5,2293.6,13304.0,288.6,54.2,4398.9,23.0,6946.6,, I prefer a beverage that contains natural sugars.
+track_3_common_sense,select_drink,10,10,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2314.1,2509.9,8694.4,371.8,89.7,5184.2,19.0,6946.6,," I want a refreshing, carbonated soft drink."
+track_3_common_sense,select_drink,11,11,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2202.0,2356.9,13299.6,261.5,48.6,4157.1,22.4,6946.6,, Pick up a jumpstart to help me stay awake during long working hours.
+track_3_common_sense,select_drink,12,12,sample0_h8_rl,1,1.0,1.0,90,200,12,8.0,0.0,8,8,1043.5,1100.7,7869.4,108.9,24.5,1777.4,15.0,6946.6,, I want an energy drink that provides a quick boost.
+track_3_common_sense,select_drink,13,13,sample0_h8_rl,1,1.0,1.0,151,200,19,8.0,0.0,8,8,1732.5,1834.3,9152.1,204.5,36.9,2953.8,17.9,6946.6,, I need a drink that's high in vitamin C and energizing.
+track_3_common_sense,select_drink,14,14,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2194.5,2303.4,14323.5,263.9,52.7,4495.7,25.3,6946.6,, I need a caffeine-infused beverage to energize me.
+track_3_common_sense,select_drink,15,15,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2147.1,2260.7,14483.3,280.7,52.3,4520.9,25.7,6946.6,, I want an energy drink that boosts focus and alertness.
+track_3_common_sense,select_drink,16,16,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2184.4,2326.9,11920.6,316.6,56.4,4896.1,22.9,6946.6,, I desire a hydrating liquid that comes in a variety of flavors.
+track_3_common_sense,select_drink,17,17,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2315.9,2466.5,9787.5,271.5,56.7,6816.4,21.9,6946.6,, I want a natural drink from pressed fruits for a healthy refreshment.
+track_3_common_sense,select_drink,18,18,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2356.8,2509.5,10215.4,346.8,76.4,5597.5,21.7,6946.6,, I seek a beverage that can help me stay focused and awake.
+track_3_common_sense,select_drink,19,19,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2164.4,2294.3,12079.3,273.2,55.4,4652.2,22.9,6946.6,, Provide me with a flavorful drink rich in vitamin C.
+track_3_common_sense,select_drink,20,20,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2255.3,2388.6,12294.4,266.1,72.8,5023.5,22.8,6946.6,, I need a fruity drink that can hydrate and energize me.
+track_3_common_sense,select_drink,21,21,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2259.9,2408.0,9554.3,269.8,62.1,4738.3,20.3,6946.6,, I need an invigorating drink to jolt me awake for early meetings.
+track_3_common_sense,select_drink,22,22,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2178.7,2298.4,14313.1,272.9,44.5,4153.1,24.7,6946.6,, I seek an energizing drink that can boost my immune system.
+track_3_common_sense,select_drink,23,23,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2236.2,2351.7,13862.2,275.2,45.5,4126.0,24.3,6946.6,," Please get a dark, sugary soda that goes well with fast food."
+track_3_common_sense,select_drink,24,24,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2209.1,2332.4,11999.5,300.4,59.7,5121.8,22.9,6946.6,, I want a carbonated soft drink with a refreshing taste.
+track_3_common_sense,select_drink,25,25,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2207.6,2329.6,14350.1,245.3,52.5,4391.5,24.7,6946.6,, I require a sweet and fruity drink that is hydrating.
+track_3_common_sense,select_drink,26,26,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2162.4,2284.9,14539.8,279.7,50.9,3891.4,23.7,6946.6,, I desire a carbonated beverage with a distinct caramel flavor.
+track_3_common_sense,select_drink,27,27,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2156.4,2272.0,14753.6,268.8,53.8,4682.2,25.5,6946.6,, I want a naturally sweet beverage for a quick boost.
+track_3_common_sense,select_drink,28,28,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2144.4,2257.2,15102.2,249.8,49.3,4220.1,25.8,6946.6,, I need an energizing drink to boost my alertness.
+track_3_common_sense,select_drink,29,29,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2170.9,2283.1,14815.5,266.2,51.5,4471.2,25.5,6946.6,, I need a sweet and hydrating drink for a hot day.
+track_3_common_sense,select_drink,30,30,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2223.4,2361.1,11195.1,295.2,77.3,5026.2,22.1,6946.6,, I'm looking for a sweet and tangy drink to energize my day.
+track_3_common_sense,select_drink,31,31,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2154.6,2265.9,14090.8,258.6,46.6,4331.6,24.3,6946.6,, Grab the drink that aids in quick energy revival.
+track_3_common_sense,select_drink,32,32,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2164.8,2280.5,15317.2,251.0,47.4,4628.4,25.1,6946.6,, I want a carbonated drink with a caramel color.
+track_3_common_sense,select_drink,33,33,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2241.6,2380.7,12412.8,314.9,61.5,4937.1,22.9,6946.6,, I need an energy drink that will revitalize and boost my alertness.
+track_3_common_sense,select_drink,34,34,sample0_h8_rl,1,1.0,1.0,115,200,15,8.0,0.0,8,8,1295.0,1369.4,8877.1,178.3,29.2,2185.8,16.8,6946.6,, I need a drink that rapidly increases my energy levels.
+track_3_common_sense,select_drink,35,35,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2150.3,2262.5,14499.2,272.5,48.3,4191.0,25.3,6946.6,, I need a caffeinated beverage to kick start my morning.
+track_3_common_sense,select_drink,36,36,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2227.6,2369.7,12441.4,273.6,66.1,4574.8,22.0,6946.6,, I want an energizing drink that can boost my alertness swiftly.
+track_3_common_sense,select_drink,37,37,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2374.7,2506.4,13926.9,296.7,53.8,4515.5,24.5,6946.6,, I need a drink that will boost my alertness and performance with its unique energy blend.
+track_3_common_sense,select_drink,38,38,sample0_h8_rl,1,0.5,0.0,143,200,18,8.0,0.0,8,8,1636.7,1757.3,8720.4,213.0,37.7,3589.0,18.9,6946.6,," Bring me a dark, sweet soda that pairs well with a meal."
+track_3_common_sense,select_drink,39,39,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2176.6,2289.0,13244.3,262.9,59.9,4600.0,23.4,6946.6,, I need a beverage that provides a quick pick-me-up.
+track_3_common_sense,select_drink,40,40,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2229.6,2365.7,14126.8,251.1,50.0,4728.8,24.8,6946.6,, I need a colorful drink that provides a variety of antioxidants.
+track_3_common_sense,select_drink,41,41,sample0_h8_rl,0,0.0,0.0,200,200,25,8.0,0.0,8,8,2173.6,2306.3,13205.2,258.1,54.0,5336.9,24.6,6946.6,, Please fetch a cold and bubbling pop that is perfect for quenching thirst.
+track_3_common_sense,select_drink,42,42,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2161.4,2315.3,12393.2,265.8,58.6,4528.9,23.3,6946.6,, I need an energy drink to boost my alertness.
+track_3_common_sense,select_drink,43,43,sample0_h8_rl,1,1.0,1.0,95,200,12,8.0,0.0,8,8,1018.4,1072.0,6584.3,136.7,22.3,1945.8,14.3,6946.6,, I want a drink that comes in a distinctive curved bottle or can.
+track_3_common_sense,select_drink,44,44,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2184.2,2304.7,14175.9,247.4,53.7,5141.9,25.0,6946.6,, I need an energizing drink to boost mental alertness.
+track_3_common_sense,select_drink,45,45,sample0_h8_rl,1,1.0,1.0,86,200,11,8.0,0.0,8,8,945.1,995.4,6316.5,123.5,28.3,1768.9,13.3,6946.6,, I need a fresh juice that provides a quick energy boost.
+track_3_common_sense,select_drink,46,46,sample0_h8_rl,0,0.0,1.0,200,200,25,8.0,0.0,8,8,2163.0,2274.7,12324.0,268.8,51.8,5291.2,23.7,6946.6,, I want a refreshing soda that is usually served chilled.
+track_3_common_sense,select_drink,47,47,sample0_h8_rl,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2211.3,2330.8,13530.3,252.1,53.3,4663.2,26.2,6946.6,, I want a refreshing beverage full of vitamin C.
+track_3_common_sense,select_drink,48,48,sample0_h8_rl,1,0.5,0.0,106,200,14,8.0,0.0,8,8,1238.8,1301.2,8311.3,158.1,29.4,2221.6,15.6,6946.6,, Please provide a drink that helps improve my focus during workouts.
+track_3_common_sense,select_drink,49,49,sample0_h8_rl,1,1.0,1.0,130,200,17,8.0,0.0,8,8,1561.3,1636.9,11132.6,178.6,32.1,2524.7,19.3,6946.6,, I want a refreshing beverage packed with vitamins.

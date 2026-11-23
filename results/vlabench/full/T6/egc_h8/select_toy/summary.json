@@ -3,12 +3,12 @@
   "track": "track_6_unseen_texture",
   "episodes": 50,
   "errors": 0,
-  "success_rate": 0.36,
-  "success_rate_excl_errors": 0.36,
-  "progress_score": 0.61,
+  "success_rate": 0.34,
+  "success_rate_excl_errors": 0.34,
+  "progress_score": 0.53,
   "mean_h": 8.0,
   "tasks": {
-    "select_toy": 0.36
+    "select_toy": 0.34
   },
   "synthetic_dry_run": false
 }

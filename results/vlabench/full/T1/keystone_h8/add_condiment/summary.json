@@ -1,0 +1,14 @@
+{
+  "arm": "keystone_h8",
+  "track": "track_1_in_distribution",
+  "episodes": 50,
+  "errors": 0,
+  "success_rate": 0.68,
+  "success_rate_excl_errors": 0.68,
+  "progress_score": 0.8133,
+  "mean_h": 8.0,
+  "tasks": {
+    "add_condiment": 0.68
+  },
+  "synthetic_dry_run": false
+}

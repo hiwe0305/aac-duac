@@ -3,12 +3,12 @@
   "track": "track_4_semantic_instruction",
   "episodes": 50,
   "errors": 0,
-  "success_rate": 0.14,
-  "success_rate_excl_errors": 0.14,
-  "progress_score": 0.14,
-  "mean_h": 7.98,
+  "success_rate": 0.2,
+  "success_rate_excl_errors": 0.2,
+  "progress_score": 0.2,
+  "mean_h": 5.626,
   "tasks": {
-    "select_painting": 0.14
+    "select_painting": 0.2
   },
   "synthetic_dry_run": false
 }

@@ -1,11 +1,11 @@
 track,task,episode,seed,arm,success,progress_score,intention_score,end_step,max_steps,n_decisions,mean_h,std_h,min_h,max_h,infer_ms_total,server_ms_total,roundtrip_ms_total,render_ms_total,select_ms_total,env_ms_total,wall_s,peak_gpu_mb,error,instruction
-track_2_cross_category,insert_flower,0,0,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2319.2,2458.8,9965.5,517.2,222.2,8842.2,37.7,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,1,1,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2408.8,2625.6,6946.5,458.9,256.9,9779.3,25.1,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,2,2,egc_h8,1,1.0,1.0,187,200,24,8.0,0.0,8,8,2159.5,2286.1,12672.3,375.1,193.5,4629.2,24.0,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,3,3,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2177.6,2303.0,11115.5,503.1,191.6,5152.4,24.1,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,4,4,egc_h8,1,1.0,1.0,161,200,21,8.0,0.0,8,8,1833.3,1936.4,10924.4,267.1,152.2,4239.6,21.7,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,5,5,egc_h8,1,1.0,1.0,177,200,23,8.0,0.0,8,8,1953.1,2060.7,12184.2,309.2,162.1,4023.1,24.1,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,6,6,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2343.7,2580.4,8605.1,513.3,279.6,6200.6,26.6,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,7,7,egc_h8,1,1.0,1.0,193,200,25,8.0,0.0,8,8,2156.2,2276.2,13486.4,567.5,205.5,5173.7,26.8,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,8,8,egc_h8,1,1.0,1.0,170,200,22,8.0,0.0,8,8,1907.4,2020.5,7595.8,544.0,187.7,5316.2,20.6,6824.8,,Insert the daisy_flower into the vase_unseen.
-track_2_cross_category,insert_flower,9,9,egc_h8,1,1.0,1.0,163,200,21,8.0,0.0,8,8,1899.4,2023.7,8720.5,449.8,193.0,5026.6,25.4,6824.8,,Insert the peony into the vase_unseen.
+track_2_cross_category,insert_flower,0,0,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2314.2,2471.2,10168.4,409.1,233.6,8722.0,34.4,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,1,1,egc_h8,1,1.0,1.0,144,200,18,8.0,0.0,8,8,1598.2,1671.8,11934.1,236.5,137.2,4470.2,27.1,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,2,2,egc_h8,1,1.0,1.0,194,200,25,8.0,0.0,8,8,2369.9,2530.9,4581.7,643.2,305.4,8560.6,21.7,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,3,3,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2154.5,2257.9,14941.3,413.8,186.2,5237.9,27.1,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,4,4,egc_h8,1,1.0,1.0,188,200,24,8.0,0.0,8,8,2181.8,2328.4,9049.5,355.0,206.1,5437.8,22.4,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,5,5,egc_h8,1,1.0,1.0,169,200,22,8.0,0.0,8,8,1914.6,2052.3,8487.5,364.7,180.9,3924.1,19.0,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,6,6,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2231.8,2389.3,11381.8,391.5,227.8,5266.8,23.0,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,7,7,egc_h8,0,0.5,1.0,200,200,25,8.0,0.0,8,8,2258.0,2426.8,9869.6,626.3,260.3,6181.4,24.1,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,8,8,egc_h8,1,1.0,1.0,186,200,24,8.0,0.0,8,8,2061.6,2167.9,12534.7,426.0,184.5,4591.6,25.5,6892.2,,Insert the daisy_flower into the vase_unseen.
+track_2_cross_category,insert_flower,9,9,egc_h8,1,1.0,1.0,169,200,22,8.0,0.0,8,8,2141.0,2313.8,3264.3,663.7,253.5,7354.0,23.1,6892.2,,Insert the peony into the vase_unseen.

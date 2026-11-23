@@ -2,13 +2,13 @@
   "arm": "mcons_h10",
   "track": "track_1_in_distribution",
   "episodes": 50,
-  "errors": 1,
-  "success_rate": 0.5,
-  "success_rate_excl_errors": 0.5102,
-  "progress_score": 0.57,
-  "mean_h": 8.118,
+  "errors": 2,
+  "success_rate": 0.38,
+  "success_rate_excl_errors": 0.3958,
+  "progress_score": 0.45,
+  "mean_h": 4.318,
   "tasks": {
-    "select_mahjong": 0.5
+    "select_mahjong": 0.38
   },
   "synthetic_dry_run": false
 }

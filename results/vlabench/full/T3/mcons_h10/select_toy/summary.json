@@ -3,12 +3,12 @@
   "track": "track_3_common_sense",
   "episodes": 50,
   "errors": 0,
-  "success_rate": 0.12,
-  "success_rate_excl_errors": 0.12,
-  "progress_score": 0.49,
-  "mean_h": 6.767,
+  "success_rate": 0.08,
+  "success_rate_excl_errors": 0.08,
+  "progress_score": 0.43,
+  "mean_h": 3.996,
   "tasks": {
-    "select_toy": 0.12
+    "select_toy": 0.08
   },
   "synthetic_dry_run": false
 }

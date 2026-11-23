@@ -3,12 +3,12 @@
   "track": "track_3_common_sense",
   "episodes": 50,
   "errors": 3,
-  "success_rate": 0.14,
-  "success_rate_excl_errors": 0.1489,
-  "progress_score": 0.19,
-  "mean_h": 8.095,
+  "success_rate": 0.12,
+  "success_rate_excl_errors": 0.1277,
+  "progress_score": 0.17,
+  "mean_h": 3.409,
   "tasks": {
-    "select_unique_type_mahjong": 0.14
+    "select_unique_type_mahjong": 0.12
   },
   "synthetic_dry_run": false
 }

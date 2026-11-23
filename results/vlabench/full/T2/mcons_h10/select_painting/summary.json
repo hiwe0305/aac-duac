@@ -3,12 +3,12 @@
   "track": "track_2_cross_category",
   "episodes": 50,
   "errors": 0,
-  "success_rate": 0.28,
-  "success_rate_excl_errors": 0.28,
-  "progress_score": 0.28,
-  "mean_h": 9.657,
+  "success_rate": 0.24,
+  "success_rate_excl_errors": 0.24,
+  "progress_score": 0.24,
+  "mean_h": 8.752,
   "tasks": {
-    "select_painting": 0.28
+    "select_painting": 0.24
   },
   "synthetic_dry_run": false
 }
